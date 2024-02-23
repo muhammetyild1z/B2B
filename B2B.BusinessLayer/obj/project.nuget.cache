@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "DtXWcuL2oOZuXiymQnKKho/nhYER0ORWDfV9coi0ZGd0BwAqDYNTOpKGO0arbosn6IDvA98MnrQ4wAFLFcbZjg==",
+  "dgSpecHash": "p8CWWTGWENgQ4tGi6+kvR/QPNxrdvZVA+2/3AJrO5L7W6RLCWTG+l/7tMfPA/W1+smc3+iqLVDKl9bDDxywT2Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\b2b_g\\B2B\\B2B.BusinessLayer\\B2B.BusinessLayer.csproj",
+  "projectFilePath": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.BusinessLayer\\B2B.BusinessLayer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\muham\\.nuget\\packages\\azure.core\\1.37.0\\azure.core.1.37.0.nupkg.sha512",
     "C:\\Users\\muham\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

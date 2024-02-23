@@ -5114,11 +5114,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\b2b_g\\B2B\\B2B.BusinessLayer\\B2B.BusinessLayer.csproj",
+      "projectUniqueName": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.BusinessLayer\\B2B.BusinessLayer.csproj",
       "projectName": "B2B.BusinessLayer",
-      "projectPath": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\b2b_g\\B2B\\B2B.BusinessLayer\\B2B.BusinessLayer.csproj",
+      "projectPath": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.BusinessLayer\\B2B.BusinessLayer.csproj",
       "packagesPath": "C:\\Users\\muham\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\b2b_g\\B2B\\B2B.BusinessLayer\\obj\\",
+      "outputPath": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.BusinessLayer\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\muham\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -5135,8 +5135,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\b2b_g\\B2B\\B2B.DataAccessLayer\\B2B.DataAccessLayer.csproj": {
-              "projectPath": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\b2b_g\\B2B\\B2B.DataAccessLayer\\B2B.DataAccessLayer.csproj"
+            "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.DataAccessLayer\\B2B.DataAccessLayer.csproj": {
+              "projectPath": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.DataAccessLayer\\B2B.DataAccessLayer.csproj"
             }
           }
         }

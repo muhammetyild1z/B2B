@@ -1,18 +1,10 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\b2b_g\\B2B\\",
+  "WorkspaceRootPath": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D1264D1F-2DEF-4F1D-8466-28135D80ECE7}|B2B.BusinessLayer\\B2B.BusinessLayer.csproj|c:\\users\\muham\\onedrive\\belgeler\\github\\b2b_g\\b2b\\b2b.businesslayer\\fluentvalidation\\productcategoryvalidation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D1264D1F-2DEF-4F1D-8466-28135D80ECE7}|B2B.BusinessLayer\\B2B.BusinessLayer.csproj|solutionrelative:b2b.businesslayer\\fluentvalidation\\productcategoryvalidation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D1264D1F-2DEF-4F1D-8466-28135D80ECE7}|B2B.BusinessLayer\\B2B.BusinessLayer.csproj|c:\\users\\muham\\onedrive\\belgeler\\github\\b2b_g\\b2b\\b2b.businesslayer\\fluentvalidation\\productcolorvalidation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D1264D1F-2DEF-4F1D-8466-28135D80ECE7}|B2B.BusinessLayer\\B2B.BusinessLayer.csproj|solutionrelative:b2b.businesslayer\\fluentvalidation\\productcolorvalidation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D1264D1F-2DEF-4F1D-8466-28135D80ECE7}|B2B.BusinessLayer\\B2B.BusinessLayer.csproj|c:\\users\\muham\\onedrive\\belgeler\\github\\b2b_g\\b2b\\b2b.businesslayer\\fluentvalidation\\productvalidation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D1264D1F-2DEF-4F1D-8466-28135D80ECE7}|B2B.BusinessLayer\\B2B.BusinessLayer.csproj|solutionrelative:b2b.businesslayer\\fluentvalidation\\productvalidation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C0004B1D-E3D1-4E62-A2AC-70EB510984EE}|B2B.API\\B2B.API.csproj|c:\\users\\muham\\onedrive\\belgeler\\github\\b2b\\b2b.api\\controllers\\childsubcategorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0004B1D-E3D1-4E62-A2AC-70EB510984EE}|B2B.API\\B2B.API.csproj|solutionrelative:b2b.api\\controllers\\childsubcategorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,40 +19,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ProductCategoryValidation.cs",
-              "DocumentMoniker": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\b2b_g\\B2B\\B2B.BusinessLayer\\FluentValidation\\ProductCategoryValidation.cs",
-              "RelativeDocumentMoniker": "B2B.BusinessLayer\\FluentValidation\\ProductCategoryValidation.cs",
-              "ToolTip": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\b2b_g\\B2B\\B2B.BusinessLayer\\FluentValidation\\ProductCategoryValidation.cs",
-              "RelativeToolTip": "B2B.BusinessLayer\\FluentValidation\\ProductCategoryValidation.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAALAAAA",
+              "Title": "ChildSubCategoryController.cs",
+              "DocumentMoniker": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.API\\Controllers\\ChildSubCategoryController.cs",
+              "RelativeDocumentMoniker": "B2B.API\\Controllers\\ChildSubCategoryController.cs",
+              "ToolTip": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.API\\Controllers\\ChildSubCategoryController.cs",
+              "RelativeToolTip": "B2B.API\\Controllers\\ChildSubCategoryController.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAADwAAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-22T19:56:16.807Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ProductColorValidation.cs",
-              "DocumentMoniker": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\b2b_g\\B2B\\B2B.BusinessLayer\\FluentValidation\\ProductColorValidation.cs",
-              "RelativeDocumentMoniker": "B2B.BusinessLayer\\FluentValidation\\ProductColorValidation.cs",
-              "ToolTip": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\b2b_g\\B2B\\B2B.BusinessLayer\\FluentValidation\\ProductColorValidation.cs",
-              "RelativeToolTip": "B2B.BusinessLayer\\FluentValidation\\ProductColorValidation.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-22T19:56:15.696Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ProductValidation.cs",
-              "DocumentMoniker": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\b2b_g\\B2B\\B2B.BusinessLayer\\FluentValidation\\ProductValidation.cs",
-              "RelativeDocumentMoniker": "B2B.BusinessLayer\\FluentValidation\\ProductValidation.cs",
-              "ToolTip": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\b2b_g\\B2B\\B2B.BusinessLayer\\FluentValidation\\ProductValidation.cs",
-              "RelativeToolTip": "B2B.BusinessLayer\\FluentValidation\\ProductValidation.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-22T19:56:13.656Z",
+              "WhenOpened": "2024-02-23T13:42:38.303Z",
               "EditorCaption": ""
             }
           ]

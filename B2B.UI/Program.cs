@@ -7,27 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<B2B_Context>();
-builder.Services.AddIdentity<AppUser, AppRole>(
-    opt =>
-    {
-        //google otp
-        opt.SignIn.RequireConfirmedAccount = false;
-        opt.Password.RequireNonAlphanumeric = false;
-        opt.Password.RequiredLength = 1;
-        opt.Password.RequireUppercase = true;
-        opt.Password.RequireLowercase = true;
-        opt.Password.RequireDigit = false;
-        opt.User.RequireUniqueEmail = true;
-        opt.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
 
-
-        // opt.SignIn.RequireConfirmedEmail = true;//mail doðrulamasý olsun mu
-    }
-    )
-   //.AddErrorDescriber<CustomerIdentityValidation>()
-    .AddDefaultTokenProviders()
-    .AddEntityFrameworkStores<B2B_Context>();
 
 var app = builder.Build();
 

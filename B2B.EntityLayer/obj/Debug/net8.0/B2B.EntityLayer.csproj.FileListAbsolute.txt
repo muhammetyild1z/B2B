@@ -23,3 +23,4 @@ C:\Users\muham\OneDrive\Belgeler\GitHub\b2b_g\B2B\B2B.EntityLayer\obj\Debug\net8
 C:\Users\muham\OneDrive\Belgeler\GitHub\b2b_g\B2B\B2B.EntityLayer\obj\Debug\net8.0\refint\B2B.EntityLayer.dll
 C:\Users\muham\OneDrive\Belgeler\GitHub\b2b_g\B2B\B2B.EntityLayer\obj\Debug\net8.0\B2B.EntityLayer.pdb
 C:\Users\muham\OneDrive\Belgeler\GitHub\b2b_g\B2B\B2B.EntityLayer\obj\Debug\net8.0\ref\B2B.EntityLayer.dll
+C:\Users\muham\OneDrive\Belgeler\GitHub\B2B\B2B.EntityLayer\obj\Debug\net8.0\B2B.EntityLayer.sourcelink.json

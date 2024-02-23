@@ -36,14 +36,33 @@ namespace B2B.BusinessLayer.Concrate
 
         public async Task<OperationResult> TInsertAsync(Basket entity)
         {
-            await _basketDal.InsertAsync(entity);
-            return OperationResult.Success;
+            try
+            {
+
+                await _basketDal.InsertAsync(entity);
+                return OperationResult.Success;
+            }
+            catch (Exception ex)
+            {
+
+                return OperationResult.Failure;
+            }
         }
 
         public async Task<OperationResult> TUpdateAsync(Basket entity, Basket unchanged)
         {
-            await _basketDal.UpdateAsync(entity, unchanged);    
-            return OperationResult.Success;
+            try
+            {
+
+                await _basketDal.UpdateAsync(entity, unchanged);
+                return OperationResult.Success;
+            }
+            catch (Exception ex)
+            {
+
+                return OperationResult.Failure;
+            }
+           
         }
     }
 }

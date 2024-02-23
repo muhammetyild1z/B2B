@@ -33,3 +33,4 @@ C:\Users\muham\OneDrive\Belgeler\GitHub\b2b_g\B2B\B2B.DataAccessLayer\obj\Debug\
 C:\Users\muham\OneDrive\Belgeler\GitHub\b2b_g\B2B\B2B.DataAccessLayer\obj\Debug\net8.0\B2B.DataAccessLayer.pdb
 C:\Users\muham\OneDrive\Belgeler\GitHub\b2b_g\B2B\B2B.DataAccessLayer\obj\Debug\net8.0\B2B.DataAccessLayer.genruntimeconfig.cache
 C:\Users\muham\OneDrive\Belgeler\GitHub\b2b_g\B2B\B2B.DataAccessLayer\obj\Debug\net8.0\ref\B2B.DataAccessLayer.dll
+C:\Users\muham\OneDrive\Belgeler\GitHub\B2B\B2B.DataAccessLayer\obj\Debug\net8.0\B2B.DataAccessLayer.sourcelink.json

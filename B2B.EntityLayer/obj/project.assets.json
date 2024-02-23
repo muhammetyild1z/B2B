@@ -1896,11 +1896,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\b2b_g\\B2B\\B2B.EntityLayer\\B2B.EntityLayer.csproj",
+      "projectUniqueName": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.EntityLayer\\B2B.EntityLayer.csproj",
       "projectName": "B2B.EntityLayer",
-      "projectPath": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\b2b_g\\B2B\\B2B.EntityLayer\\B2B.EntityLayer.csproj",
+      "projectPath": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.EntityLayer\\B2B.EntityLayer.csproj",
       "packagesPath": "C:\\Users\\muham\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\b2b_g\\B2B\\B2B.EntityLayer\\obj\\",
+      "outputPath": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.EntityLayer\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\muham\\AppData\\Roaming\\NuGet\\NuGet.Config",

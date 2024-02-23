@@ -33,3 +33,4 @@ C:\Users\muham\OneDrive\Belgeler\GitHub\b2b_g\B2B\B2B.BusinessLayer\obj\Debug\ne
 C:\Users\muham\OneDrive\Belgeler\GitHub\b2b_g\B2B\B2B.BusinessLayer\obj\Debug\net8.0\refint\B2B.BusinessLayer.dll
 C:\Users\muham\OneDrive\Belgeler\GitHub\b2b_g\B2B\B2B.BusinessLayer\obj\Debug\net8.0\B2B.BusinessLayer.pdb
 C:\Users\muham\OneDrive\Belgeler\GitHub\b2b_g\B2B\B2B.BusinessLayer\obj\Debug\net8.0\ref\B2B.BusinessLayer.dll
+C:\Users\muham\OneDrive\Belgeler\GitHub\B2B\B2B.BusinessLayer\obj\Debug\net8.0\B2B.BusinessLayer.sourcelink.json

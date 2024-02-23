@@ -100,6 +100,40 @@ namespace B2B.DataAccessLayer.Migrations
                     b.ToTable("childSubCategories");
                 });
 
+            modelBuilder.Entity("B2B.EntityLayer.Concrate.HomeSlider", b =>
+                {
+                    b.Property<int>("SliderID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SliderID"));
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ProductID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SliderDescription")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("SliderTitle")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
+                    b.HasKey("SliderID");
+
+                    b.HasIndex("ProductID");
+
+                    b.ToTable("homeSliders");
+                });
+
             modelBuilder.Entity("B2B.EntityLayer.Concrate.ParentSubCategory", b =>
                 {
                     b.Property<int>("ParentSubCategoryID")
@@ -108,10 +142,16 @@ namespace B2B.DataAccessLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ParentSubCategoryID"));
 
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
 
                     b.HasKey("ParentSubCategoryID");
 
@@ -452,6 +492,17 @@ namespace B2B.DataAccessLayer.Migrations
                         .IsRequired();
 
                     b.Navigation("appUser");
+
+                    b.Navigation("product");
+                });
+
+            modelBuilder.Entity("B2B.EntityLayer.Concrate.HomeSlider", b =>
+                {
+                    b.HasOne("B2B.EntityLayer.Concrate.Product", "product")
+                        .WithMany()
+                        .HasForeignKey("ProductID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("product");
                 });

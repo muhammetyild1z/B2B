@@ -1,4 +1,5 @@
 ﻿using B2B.BusinessLayer.Abstract;
+using B2B.DataAccessLayer.Abstract;
 using B2B.EntityLayer.Concrate;
 using Microsoft.Graph.Models;
 using System;
@@ -11,37 +12,37 @@ namespace B2B.BusinessLayer.Concrate
 {
     public class ProductCategoryManager : IProductCategoryService
     {
-        IProductCategoryService _productCategory;
+        IProductCategoriesDAL _productCategory;
 
-        public ProductCategoryManager(IProductCategoryService productCategory)
+        public ProductCategoryManager(IProductCategoriesDAL productCategory)
         {
             _productCategory = productCategory;
         }
 
         public void TDelete(ProductCategory entity)
         {
-            _productCategory.TDelete(entity);
+            _productCategory.Delete(entity);
         }
 
         public ProductCategory TGetByID(int id)
         {
-            return _productCategory.TGetByID(id);
+            return _productCategory.GetByID(id);
         }
 
         public Task<List<ProductCategory>> TGetListAsync()
         {
-           return _productCategory.TGetListAsync();
+           return _productCategory.GetListAsync();
         }
 
         public async Task<OperationResult> TInsertAsync(ProductCategory entity)
         {
-           await _productCategory.TInsertAsync(entity); 
+           await _productCategory.InsertAsync(entity); 
             return OperationResult.Success;
         }
 
         public async Task<OperationResult> TUpdateAsync(ProductCategory entity, ProductCategory unchanged)
         {
-            await _productCategory.TUpdateAsync(entity, unchanged);
+            await _productCategory.UpdateAsync(entity, unchanged);
             return OperationResult.Success;
         }
     }
