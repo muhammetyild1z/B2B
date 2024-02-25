@@ -1,8 +1,8 @@
 [
   {
     "ContainingType": "B2B.API.Controllers.BasketController",
-    "Method": "Basket",
-    "RelativePath": "AllGetBasket",
+    "Method": "AllGetBasket",
+    "RelativePath": "api/Basket/AllGetBasket",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -12,30 +12,15 @@
   {
     "ContainingType": "B2B.API.Controllers.BasketController",
     "Method": "CreateBasket",
-    "RelativePath": "CreateBasket",
+    "RelativePath": "api/Basket/CreateBasket",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Status",
-        "Type": "System.Boolean",
-        "IsRequired": false
-      },
-      {
-        "Name": "CreateDate",
-        "Type": "System.DateTime",
-        "IsRequired": false
-      },
-      {
-        "Name": "UserID",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "ProductID",
-        "Type": "System.Int32",
-        "IsRequired": false
+        "Name": "createBasketDto",
+        "Type": "B2B.API.Dtos.BasketDtos.CreateBasketDto",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -43,7 +28,7 @@
   {
     "ContainingType": "B2B.API.Controllers.BasketController",
     "Method": "DeleteBasket",
-    "RelativePath": "DeleteBasket/{id}",
+    "RelativePath": "api/Basket/DeleteBasket/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -59,152 +44,201 @@
   {
     "ContainingType": "B2B.API.Controllers.BasketController",
     "Method": "UpdateBasket",
-    "RelativePath": "UpdateBasket",
+    "RelativePath": "api/Basket/UpdateBasket",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "BasketID",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "Status",
-        "Type": "System.Boolean",
-        "IsRequired": false
-      },
-      {
-        "Name": "CreateDate",
-        "Type": "System.DateTime",
-        "IsRequired": false
-      },
-      {
-        "Name": "appUser.CreateDate",
-        "Type": "System.DateTime",
-        "IsRequired": false
-      },
-      {
-        "Name": "appUser.NameSurname",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "appUser.Status",
-        "Type": "System.Boolean",
-        "IsRequired": false
-      },
-      {
-        "Name": "appUser.Id",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "appUser.UserName",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "appUser.NormalizedUserName",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "appUser.Email",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "appUser.NormalizedEmail",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "appUser.EmailConfirmed",
-        "Type": "System.Boolean",
-        "IsRequired": false
-      },
-      {
-        "Name": "appUser.PasswordHash",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "appUser.SecurityStamp",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "appUser.ConcurrencyStamp",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "appUser.PhoneNumber",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "appUser.PhoneNumberConfirmed",
-        "Type": "System.Boolean",
-        "IsRequired": false
-      },
-      {
-        "Name": "appUser.TwoFactorEnabled",
-        "Type": "System.Boolean",
-        "IsRequired": false
-      },
-      {
-        "Name": "appUser.LockoutEnd",
-        "Type": "System.Nullable\u00601[[System.DateTimeOffset, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "IsRequired": false
-      },
-      {
-        "Name": "appUser.LockoutEnabled",
-        "Type": "System.Boolean",
-        "IsRequired": false
-      },
-      {
-        "Name": "appUser.AccessFailedCount",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "UserID",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "product.Status",
-        "Type": "System.Boolean",
-        "IsRequired": false
-      },
-      {
-        "Name": "product.CreateDate",
-        "Type": "System.DateTime",
-        "IsRequired": false
-      },
-      {
-        "Name": "product.ProductPrice",
-        "Type": "System.Decimal",
-        "IsRequired": false
-      },
-      {
-        "Name": "product.ProductDescription",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "product.ProductImage",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "ProductID",
-        "Type": "System.Int32",
-        "IsRequired": false
+        "Name": "updateBasketDto",
+        "Type": "B2B.API.Dtos.BasketDtos.UpdateBasketDto",
+        "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "B2B.API.Controllers.CategoryController",
+    "Method": "AllGetCategory",
+    "RelativePath": "api/Category/AllGetCategory",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "B2B.API.Controllers.CategoryController",
+    "Method": "CreateCategory",
+    "RelativePath": "api/Category/CreateCategory",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createCategoryDto",
+        "Type": "B2B.API.Dtos.CategoryDtos.CreateCategoryDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "B2B.API.Controllers.CategoryController",
+    "Method": "DeleteCategory",
+    "RelativePath": "api/Category/DeleteCategory/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "B2B.API.Controllers.CategoryController",
+    "Method": "UpdateCategory",
+    "RelativePath": "api/Category/UpdateCategory",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "updateCategoryDto",
+        "Type": "B2B.API.Dtos.CategoryDtos.UpdateCategoryDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "B2B.API.Controllers.ChildSubCategoryController",
+    "Method": "AllGetChildSubCategory",
+    "RelativePath": "api/ChildSubCategory/AllGetChildSubCategory",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "B2B.API.Controllers.ChildSubCategoryController",
+    "Method": "CreateChildSubCategory",
+    "RelativePath": "api/ChildSubCategory/CreateChildSubCategory",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createChildSubCategoryDto",
+        "Type": "B2B.API.Dtos.ChildSubCategoryDtos.CreateChildSubCategoryDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "B2B.API.Controllers.ChildSubCategoryController",
+    "Method": "DeleteChildSubCategory",
+    "RelativePath": "api/ChildSubCategory/DeleteChildSubCategory/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "B2B.API.Controllers.ChildSubCategoryController",
+    "Method": "UpdateChildSubCategory",
+    "RelativePath": "api/ChildSubCategory/UpdateChildSubCategory",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "updateChildSubCategoryDto",
+        "Type": "B2B.API.Dtos.ChildSubCategoryDtos.UpdateChildSubCategoryDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "B2B.API.Controllers.HomeSliderController",
+    "Method": "AllGetHomeSlider",
+    "RelativePath": "api/HomeSlider/AllGetHomeSlider",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "B2B.API.Controllers.HomeSliderController",
+    "Method": "CreateHomeSlider",
+    "RelativePath": "api/HomeSlider/CreateHomeSlider",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createHomeSliderDto",
+        "Type": "B2B.API.Dtos.HomeSliderDtos.CreateHomeSliderDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "B2B.API.Controllers.HomeSliderController",
+    "Method": "DeleteHomeSlider",
+    "RelativePath": "api/HomeSlider/DeleteHomeSlider/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "B2B.API.Controllers.HomeSliderController",
+    "Method": "UpdateHomeSlider",
+    "RelativePath": "api/HomeSlider/UpdateHomeSlider",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "updateHomeSliderDto",
+        "Type": "B2B.API.Dtos.HomeSliderDtos.UpdateHomeSliderDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "B2B.API.Controllers.ParentSubCategoryController",
+    "Method": "Index",
+    "RelativePath": "api/ParentSubCategory/asasa",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   }
 ]

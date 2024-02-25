@@ -9,5 +9,6 @@ namespace B2B.DataAccessLayer.Abstract
 {
     public interface IProductColorDAL:IGenericDal<ProductColor>
     {
+        ProductColor GetProductColorByID(int id);
     }
 }

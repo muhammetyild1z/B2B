@@ -12,8 +12,19 @@ namespace B2B.DataAccessLayer.EntityFramework
 {
     public class efProductRepository : GenericRepository<Product>, IProductDAL
     {
+        private readonly B2B_Context _context;
         public efProductRepository(B2B_Context context) : base(context)
         {
+            _context    = context;
+        }
+
+        public Product GetProductByID(int id)
+        {
+            var product = _context.products.Where(x=>x.Product_ID == id).FirstOrDefault();
+            return product;
         }
     }
 }
+
+
+// apilerde getbyid kisimlarini degistir yeni metotlarla

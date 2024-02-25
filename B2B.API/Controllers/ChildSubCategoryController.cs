@@ -23,7 +23,7 @@ namespace B2B.API.Controllers
         public IActionResult AllGetChildSubCategory()
         {
             var childCategory = _childSubCategoryService.TGetListAsync();
-            return View(_mapper.Map<ResultChildSubCategoryDto>(childCategory));
+            return View(_mapper.Map<List<ResultChildSubCategoryDto>>(childCategory));
         }
 
         [HttpPost("CreateChildSubCategory")]
@@ -65,5 +65,26 @@ namespace B2B.API.Controllers
                 return NotFound();
             }
         }
+
+        [HttpDelete("DeleteChildSubCategory/{id}")]
+        public async Task<IActionResult> DeleteChildSubCategory(int id)
+        {
+            if (id!=0)
+            {
+                var removedChildCategory= _childSubCategoryService.TGetByID(id);
+                if (removedChildCategory!=null)
+                {
+                    _childSubCategoryService.TDelete(removedChildCategory);
+                    return Ok();
+                }
+                return BadRequest();
+               
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+
     }
 }

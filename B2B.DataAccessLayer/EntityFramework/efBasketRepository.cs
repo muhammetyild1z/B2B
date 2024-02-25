@@ -10,10 +10,19 @@ using System.Threading.Tasks;
 
 namespace B2B.DataAccessLayer.EntityFramework
 {
-    public class efBasketRepository : GenericRepository<Basket> , IBasketDAL
+    public class efBasketRepository : GenericRepository<Basket>, IBasketDAL
     {
+        private readonly B2B_Context _context;
         public efBasketRepository(B2B_Context context) : base(context)
         {
+            _context = context;
+        }
+
+        public Basket GetBasketByID(int id)
+        {
+            var basket = _context.baskets.Where(x => x.BasketID == id).FirstOrDefault();
+            return basket;
+
         }
     }
 }

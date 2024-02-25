@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace B2B.API.Controllers
 {
+    [ApiController]
+    [Route("api/[Controller]")]
     public class BasketController : Controller
     {
         private readonly IBasketService _basketService;
@@ -21,7 +23,7 @@ namespace B2B.API.Controllers
         public async Task<IActionResult> AllGetBasket()
         {
             var basket = await _basketService.TGetListAsync();
-            return Ok(basket);
+            return Ok(_mapper.Map<List<Basket>>(basket));
         }
 
         [HttpDelete("DeleteBasket/{id}")]

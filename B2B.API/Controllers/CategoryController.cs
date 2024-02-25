@@ -23,7 +23,7 @@ namespace B2B.API.Controllers
         public IActionResult AllGetCategory()
         {
             var category = _categoryService.TGetListAsync();
-            return Ok(_mapper.Map<Category>(category));
+            return Ok(_mapper.Map<List<Category>>(category));
         }
 
         [HttpPut("UpdateCategory")]
@@ -65,7 +65,7 @@ namespace B2B.API.Controllers
             }
         }
 
-        [HttpDelete("DeleteCategory")]
+        [HttpDelete("DeleteCategory/{id}")]
         public async Task<IActionResult> DeleteCategory(int id)
         {
             if (id != 0)

@@ -9,5 +9,6 @@ namespace B2B.DataAccessLayer.Abstract
 {
     public interface ICategoryDAL:IGenericDal<Category>
     {
+        Category GetCategoryByID(int id);
     }
 }

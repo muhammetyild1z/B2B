@@ -12,8 +12,16 @@ namespace B2B.DataAccessLayer.EntityFramework
 {
     public class efProductCategoriesRepository : GenericRepository<ProductCategory>, IProductCategoriesDAL
     {
+        private readonly B2B_Context _context;
         public efProductCategoriesRepository(B2B_Context context) : base(context)
         {
+            _context = context;
+        }
+
+        public ProductCategory GetProductCategoryByID(int id)
+        {
+            var productCategory = _context.productCategories.Where(x=>x.ProductCategoryID == id).FirstOrDefault();
+            return productCategory;
         }
     }
 }

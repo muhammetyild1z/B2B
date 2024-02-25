@@ -9,5 +9,6 @@ namespace B2B.DataAccessLayer.Abstract
 {
     public interface IParentSubCategoryDAL:IGenericDal<ParentSubCategory>
     {
+        ParentSubCategory GetParentSubByID(int id);
     }
 }

@@ -9,5 +9,6 @@ namespace B2B.DataAccessLayer.Abstract
 {
     public interface IBasketDAL:IGenericDal<Basket>
     {
+        Basket GetBasketByID(int id);
     }
 }

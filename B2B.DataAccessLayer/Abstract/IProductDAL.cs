@@ -9,5 +9,6 @@ namespace B2B.DataAccessLayer.Abstract
 {
     public interface IProductDAL:IGenericDal<Product>
     {
+        Product GetProductByID(int id);
     }
 }
