@@ -21,9 +21,9 @@ namespace B2B.API.Controllers
         }
 
         [HttpGet("AllGetHomeSlider")]
-        public async Task<IActionResult> AllGetHomeSlider()
+        public IActionResult AllGetHomeSlider()
         {
-            var homeSliders = _homeSliderService.TGetListAsync();
+            var homeSliders = _homeSliderService.TGetList();
             return Ok(_mapper.Map<List<ResultHomeSliderDto>>(homeSliders));
         }
 
@@ -31,8 +31,11 @@ namespace B2B.API.Controllers
         public async Task<IActionResult> CreateHomeSlider(CreateHomeSliderDto createHomeSliderDto)
         {
 
-            if (createHomeSliderDto != null)
+            if (createHomeSliderDto.ProductID != null)
             {
+                createHomeSliderDto.CreateDate = DateTime.Now;
+                createHomeSliderDto.Status = false;
+            
                 var result = _homeSliderService.TInsertAsync(_mapper.Map<HomeSlider>(createHomeSliderDto));
                 if (result.IsCompleted)
                 {
@@ -84,7 +87,7 @@ namespace B2B.API.Controllers
         {
             if (id != 0)
             {
-                var removedHomeSlider = _homeSliderService.TGetByID(id);
+                var removedHomeSlider = _homeSliderService.TGetHomeSliderByID(id);
                 if (removedHomeSlider != null)
                 {
                     _homeSliderService.TDelete(removedHomeSlider);

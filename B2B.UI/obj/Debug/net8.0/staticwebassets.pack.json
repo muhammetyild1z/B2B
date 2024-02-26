@@ -1,8 +1,244 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\B2B.UI.bundle.scp.css",
-      "PackagePath": "staticwebassets\\B2B.UI.bundle.scp.css"
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\Source\\OwlCarousel2-2.3.4.zip",
+      "PackagePath": "staticwebassets\\B2B\\Source\\OwlCarousel2-2.3.4.zip"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\Source\\SlickNav-master.zip",
+      "PackagePath": "staticwebassets\\B2B\\Source\\SlickNav-master.zip"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\Source\\bootstrap-4.4.1-dist.zip",
+      "PackagePath": "staticwebassets\\B2B\\Source\\bootstrap-4.4.1-dist.zip"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\Source\\elegant_font.zip",
+      "PackagePath": "staticwebassets\\B2B\\Source\\elegant_font.zip"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\Source\\font-awesome-4.7.0.zip",
+      "PackagePath": "staticwebassets\\B2B\\Source\\font-awesome-4.7.0.zip"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\Source\\jquery-nice-select-1.1.0.zip",
+      "PackagePath": "staticwebassets\\B2B\\Source\\jquery-nice-select-1.1.0.zip"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\Source\\plyr-master.zip",
+      "PackagePath": "staticwebassets\\B2B\\Source\\plyr-master.zip"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\Source\\sass.zip",
+      "PackagePath": "staticwebassets\\B2B\\Source\\sass.zip"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\css\\animate.css",
+      "PackagePath": "staticwebassets\\B2B\\css\\animate.css"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\B2B\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\css\\elegant-icons.css",
+      "PackagePath": "staticwebassets\\B2B\\css\\elegant-icons.css"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\css\\font-awesome.min.css",
+      "PackagePath": "staticwebassets\\B2B\\css\\font-awesome.min.css"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\css\\main.css",
+      "PackagePath": "staticwebassets\\B2B\\css\\main.css"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\css\\nice-select.css",
+      "PackagePath": "staticwebassets\\B2B\\css\\nice-select.css"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\css\\owl.carousel.min.css",
+      "PackagePath": "staticwebassets\\B2B\\css\\owl.carousel.min.css"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\css\\owl.theme.default.min.css",
+      "PackagePath": "staticwebassets\\B2B\\css\\owl.theme.default.min.css"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\css\\plyr.css",
+      "PackagePath": "staticwebassets\\B2B\\css\\plyr.css"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\css\\slicknav.min.css",
+      "PackagePath": "staticwebassets\\B2B\\css\\slicknav.min.css"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\css\\style.css",
+      "PackagePath": "staticwebassets\\B2B\\css\\style.css"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\fonts\\ElegantIcons.eot",
+      "PackagePath": "staticwebassets\\B2B\\fonts\\ElegantIcons.eot"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\fonts\\ElegantIcons.svg",
+      "PackagePath": "staticwebassets\\B2B\\fonts\\ElegantIcons.svg"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\fonts\\ElegantIcons.ttf",
+      "PackagePath": "staticwebassets\\B2B\\fonts\\ElegantIcons.ttf"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\fonts\\ElegantIcons.woff",
+      "PackagePath": "staticwebassets\\B2B\\fonts\\ElegantIcons.woff"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\fonts\\FontAwesome.otf",
+      "PackagePath": "staticwebassets\\B2B\\fonts\\FontAwesome.otf"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\fonts\\fontawesome-webfont.eot",
+      "PackagePath": "staticwebassets\\B2B\\fonts\\fontawesome-webfont.eot"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\fonts\\fontawesome-webfont.svg",
+      "PackagePath": "staticwebassets\\B2B\\fonts\\fontawesome-webfont.svg"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\fonts\\fontawesome-webfont.ttf",
+      "PackagePath": "staticwebassets\\B2B\\fonts\\fontawesome-webfont.ttf"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\fonts\\fontawesome-webfont.woff",
+      "PackagePath": "staticwebassets\\B2B\\fonts\\fontawesome-webfont.woff"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\fonts\\fontawesome-webfont.woff2",
+      "PackagePath": "staticwebassets\\B2B\\fonts\\fontawesome-webfont.woff2"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\img\\favicon.ico",
+      "PackagePath": "staticwebassets\\B2B\\img\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\img\\logo .png",
+      "PackagePath": "staticwebassets\\B2B\\img\\logo .png"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\img\\user.png",
+      "PackagePath": "staticwebassets\\B2B\\img\\user.png"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\B2B\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\js\\extention\\choices.js",
+      "PackagePath": "staticwebassets\\B2B\\js\\extention\\choices.js"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\js\\extention\\custom-materialize.js",
+      "PackagePath": "staticwebassets\\B2B\\js\\extention\\custom-materialize.js"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\js\\extention\\flatpickr.js",
+      "PackagePath": "staticwebassets\\B2B\\js\\extention\\flatpickr.js"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\js\\jquery-3.3.1.min.js",
+      "PackagePath": "staticwebassets\\B2B\\js\\jquery-3.3.1.min.js"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\js\\jquery.nice-select.min.js",
+      "PackagePath": "staticwebassets\\B2B\\js\\jquery.nice-select.min.js"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\js\\jquery.slicknav.js",
+      "PackagePath": "staticwebassets\\B2B\\js\\jquery.slicknav.js"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\js\\main.js",
+      "PackagePath": "staticwebassets\\B2B\\js\\main.js"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\js\\mixitup.min.js",
+      "PackagePath": "staticwebassets\\B2B\\js\\mixitup.min.js"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\js\\owl.carousel.js",
+      "PackagePath": "staticwebassets\\B2B\\js\\owl.carousel.js"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\js\\owl.carousel.min.js",
+      "PackagePath": "staticwebassets\\B2B\\js\\owl.carousel.min.js"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\js\\player.js",
+      "PackagePath": "staticwebassets\\B2B\\js\\player.js"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\sass\\_anime-details.scss",
+      "PackagePath": "staticwebassets\\B2B\\sass\\_anime-details.scss"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\sass\\_anime-watching.scss",
+      "PackagePath": "staticwebassets\\B2B\\sass\\_anime-watching.scss"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\sass\\_base.scss",
+      "PackagePath": "staticwebassets\\B2B\\sass\\_base.scss"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\sass\\_blog-details.scss",
+      "PackagePath": "staticwebassets\\B2B\\sass\\_blog-details.scss"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\sass\\_blog.scss",
+      "PackagePath": "staticwebassets\\B2B\\sass\\_blog.scss"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\sass\\_breadcrumb.scss",
+      "PackagePath": "staticwebassets\\B2B\\sass\\_breadcrumb.scss"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\sass\\_footer.scss",
+      "PackagePath": "staticwebassets\\B2B\\sass\\_footer.scss"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\sass\\_header.scss",
+      "PackagePath": "staticwebassets\\B2B\\sass\\_header.scss"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\sass\\_hero.scss",
+      "PackagePath": "staticwebassets\\B2B\\sass\\_hero.scss"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\sass\\_login.scss",
+      "PackagePath": "staticwebassets\\B2B\\sass\\_login.scss"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\sass\\_mixins.scss",
+      "PackagePath": "staticwebassets\\B2B\\sass\\_mixins.scss"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\sass\\_product.scss",
+      "PackagePath": "staticwebassets\\B2B\\sass\\_product.scss"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\sass\\_responsive.scss",
+      "PackagePath": "staticwebassets\\B2B\\sass\\_responsive.scss"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\sass\\_signup.scss",
+      "PackagePath": "staticwebassets\\B2B\\sass\\_signup.scss"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\sass\\_variable.scss",
+      "PackagePath": "staticwebassets\\B2B\\sass\\_variable.scss"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\sass\\style.scss",
+      "PackagePath": "staticwebassets\\B2B\\sass\\style.scss"
     },
     {
       "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\css\\site.css",

@@ -24,26 +24,36 @@ namespace B2B.BusinessLayer.Concrate
             _productCategory.Delete(entity);
         }
 
+        public List<ProductCategory> TGetAllCategoriesInclude()
+        {
+          return _productCategory.GetAllCategoriesInclude();
+        }
+
         public ProductCategory TGetByID(int id)
         {
             return _productCategory.GetByID(id);
         }
 
-        public Task<List<ProductCategory>> TGetListAsync()
+        public List<ProductCategory> TGetList()
         {
-           return _productCategory.GetListAsync();
+           return _productCategory.GetList();
+        }
+
+        public ProductCategory TGetProductCategoryByID(int id)
+        {
+               return _productCategory.GetProductCategoryByID(id);
         }
 
         public async Task<OperationResult> TInsertAsync(ProductCategory entity)
         {
-           await _productCategory.InsertAsync(entity); 
-            return OperationResult.Success;
+            return await _productCategory.InsertAsync(entity); 
+           
         }
 
         public async Task<OperationResult> TUpdateAsync(ProductCategory entity, ProductCategory unchanged)
         {
-            await _productCategory.UpdateAsync(entity, unchanged);
-            return OperationResult.Success;
+            return await _productCategory.UpdateAsync(entity, unchanged);
+            
         }
     }
 }

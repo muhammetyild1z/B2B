@@ -1,6 +1,7 @@
 ﻿using B2B.DataAccessLayer.Abstract;
 using B2B.DataAccessLayer.Concrate;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Graph.Models;
 
 namespace B2B.DataAccessLayer.Repositories
 {
@@ -24,12 +25,12 @@ namespace B2B.DataAccessLayer.Repositories
             return _context.Set<T>().Find(id);
         }
 
-        public async Task<List<T>> GetListAsync()
+        public List<T> GetList()
         {
             try
             {
-                var entities = await _context.Set<T>().ToListAsync();
-                return entities;
+                return _context.Set<T>().AsNoTracking().ToList();
+
 
             }
             catch (Exception ex)
@@ -39,34 +40,39 @@ namespace B2B.DataAccessLayer.Repositories
         }
 
 
-        public async Task InsertAsync(T entity)
+
+
+        public async Task<OperationResult> InsertAsync(T entity)
         {
+
             try
             {
                 _context.Set<T>().Add(entity);
-               await _context.SaveChangesAsync();
-               
+                _context.SaveChanges();
+                return OperationResult.Success;
+
             }
             catch (Exception)
             {
 
-                throw;
+                return OperationResult.Failure;
             }
-          
+
         }
 
-        public async Task UpdateAsync(T entity, T unchanged)
+        public async Task<OperationResult> UpdateAsync(T entity, T unchanged)
         {
             try
             {
                 _context.Entry(unchanged).CurrentValues.SetValues(entity);
-              await  _context.SaveChangesAsync();
+                _context.SaveChanges();
 
+                return OperationResult.Success;
             }
             catch (Exception)
             {
 
-                throw;
+                return OperationResult.Failure;
             }
         }
     }

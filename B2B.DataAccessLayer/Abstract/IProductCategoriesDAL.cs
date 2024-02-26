@@ -10,5 +10,6 @@ namespace B2B.DataAccessLayer.Abstract
     public interface IProductCategoriesDAL:IGenericDal<ProductCategory>
     {
         ProductCategory GetProductCategoryByID(int id);
+        List<ProductCategory> GetAllCategoriesInclude();
     }
 }

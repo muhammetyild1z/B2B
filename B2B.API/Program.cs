@@ -5,14 +5,21 @@ using B2B.DataAccessLayer.Concrate;
 using B2B.DataAccessLayer.EntityFramework;
 using B2B.EntityLayer.Concrate;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
+using Microsoft.Graph.Models.ExternalConnectors;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
-
 // Add services to the container.
 
 builder.Services.AddControllers();
-builder.Services.AddDbContext<B2B_Context>();
+//builder.Services.AddDbContext<B2B_Context>();
+
+builder.Services.AddDbContext<B2B_Context>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 builder.Services.AddIdentity<AppUser, AppRole>(
     opt =>
     {
@@ -35,18 +42,7 @@ builder.Services.AddIdentity<AppUser, AppRole>(
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowSpecificOrigin",
-        builder =>
-        {
-            builder.SetIsOriginAllowed((host) => true)
-            //WithOrigins("https://localhost:44385/") 
-                   .AllowCredentials()
-                   .AllowAnyMethod()
-                   .AllowAnyHeader();
-        });
-});
+
 
 
 
@@ -74,7 +70,18 @@ builder.Services.AddScoped<IProductCategoryService, ProductCategoryManager>();
 builder.Services.AddScoped<IProductColorDAL, efProductColorRepository>();
 builder.Services.AddScoped<IProductColorService, ProductColorManager>();
 
-
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigin",
+        builder =>
+        {
+            builder.SetIsOriginAllowed((host) => true)
+            //WithOrigins("https://localhost:44385/") 
+                   .AllowCredentials()
+                   .AllowAnyMethod()
+                   .AllowAnyHeader();
+        });
+});
 
 var app = builder.Build();
 
@@ -85,7 +92,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
     app.UseCors("AllowSpecificOrigin");
 }
-app.UseHttpsRedirection();
+
 app.UseStaticFiles();
 app.UseRouting();
 app.UseHttpsRedirection();

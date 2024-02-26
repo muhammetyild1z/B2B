@@ -29,21 +29,26 @@ namespace B2B.BusinessLayer.Concrate
            return _homeslider.GetByID(id);
         }
 
-        public Task<List<HomeSlider>> TGetListAsync()
+        public HomeSlider TGetHomeSliderByID(int id)
         {
-           return _homeslider.GetListAsync();
+              return _homeslider.GetHomeSliderByID(id);
+        }
+
+        public List<HomeSlider> TGetList()
+        {
+           return _homeslider.GetList();
         }
 
         public async Task<OperationResult> TInsertAsync(HomeSlider entity)
         {
-           await _homeslider.InsertAsync(entity);
-            return OperationResult.Success;
+            return await _homeslider.InsertAsync(entity);
+           
         }
 
         public async Task<OperationResult> TUpdateAsync(HomeSlider entity, HomeSlider unchanged)
         {
-            await _homeslider.UpdateAsync(entity, unchanged);
-            return OperationResult.Success;
+            return await _homeslider.UpdateAsync(entity, unchanged);
+           
         }
     }
 }

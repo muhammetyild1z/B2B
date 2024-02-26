@@ -29,21 +29,26 @@ namespace B2B.BusinessLayer.Concrate
            return _productColor.GetByID(id);    
         }
 
-        public Task<List<ProductColor>> TGetListAsync()
+        public List<ProductColor> TGetList()
         {
-           return _productColor.GetListAsync();
+           return _productColor.GetList();
+        }
+
+        public ProductColor TGetProductColorByID(int id)
+        {
+            return _productColor.GetProductColorByID(id);
         }
 
         public async Task<OperationResult> TInsertAsync(ProductColor entity)
         {
-           await _productColor.InsertAsync(entity);
-            return OperationResult.Success;
+            return await _productColor.InsertAsync(entity);
+          
         }
 
         public async Task<OperationResult> TUpdateAsync(ProductColor entity, ProductColor unchanged)
         {
-           await _productColor.UpdateAsync(entity, unchanged);
-            return OperationResult.Success;
+            return await _productColor.UpdateAsync(entity, unchanged);
+            
         }
     }
 }

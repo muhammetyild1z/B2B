@@ -12,6 +12,6 @@ namespace B2B.API.Dtos.HomeSliderDtos
 
 
         public int ProductID { get; set; }
-        public ProductResultDto product { get; set; }
+      
     }
 }

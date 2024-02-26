@@ -27,4 +27,3 @@ namespace B2B.DataAccessLayer.EntityFramework
 }
 
 
-// apilerde getbyid kisimlarini degistir yeni metotlarla

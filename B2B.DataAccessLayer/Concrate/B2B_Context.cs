@@ -1,14 +1,27 @@
 ﻿using B2B.EntityLayer.Concrate;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace B2B.DataAccessLayer.Concrate
 {
     public class B2B_Context : IdentityDbContext
     {
+        private readonly IConfiguration _configuration;
+
+        public B2B_Context(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("server=DESKTOP-CH9SD0T;initial catalog=b2btest; integrated Security=true; TrustServerCertificate=True");
+            //optionsBuilder.UseSqlServer("server=DESKTOP-CH9SD0T;initial catalog=b2btest; integrated Security=true; TrustServerCertificate=True");
+            if (!optionsBuilder.IsConfigured)
+            {
+                string connectionString = _configuration.GetConnectionString("DefaultConnection");
+                optionsBuilder.UseSqlServer(connectionString);
+            }
         }
 
 

@@ -9,5 +9,6 @@ namespace B2B.BusinessLayer.Abstract
 {
     public interface ICategoryService:IGenericService<Category>
     {
+        Category TGetCategoryByID(int id);
     }
 }

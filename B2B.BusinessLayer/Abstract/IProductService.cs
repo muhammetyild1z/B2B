@@ -9,5 +9,6 @@ namespace B2B.BusinessLayer.Abstract
 {
     public interface IProductService:IGenericService<Product>
     {
+        Product TGetProductByID(int id);
     }
 }

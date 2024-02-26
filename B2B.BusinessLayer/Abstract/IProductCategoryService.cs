@@ -9,5 +9,7 @@ namespace B2B.BusinessLayer.Abstract
 {
     public interface IProductCategoryService:IGenericService<ProductCategory>
     {
+        ProductCategory TGetProductCategoryByID(int id);
+        List<ProductCategory> TGetAllCategoriesInclude();
     }
 }

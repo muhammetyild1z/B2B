@@ -29,21 +29,26 @@ namespace B2B.BusinessLayer.Concrate
            return _childCategory.GetByID(id);   
         }
 
-        public Task<List<ChildSubCategory>> TGetListAsync()
+        public ChildSubCategory TGetChildSubByID(int id)
         {
-            return _childCategory.GetListAsync();
+            return _childCategory.GetChildSubByID(id);
+        }
+
+        public List<ChildSubCategory> TGetList()
+        {
+            return _childCategory.GetList();
         }
 
         public async Task<OperationResult> TInsertAsync(ChildSubCategory entity)
         {
-          await _childCategory.InsertAsync(entity);
-            return OperationResult.Success;
+        return  await _childCategory.InsertAsync(entity);
+           // return OperationResult.Success;
         }
 
         public async Task<OperationResult> TUpdateAsync(ChildSubCategory entity, ChildSubCategory unchanged)
         {
-           await _childCategory.UpdateAsync(entity, unchanged);
-            return OperationResult.Success;
+            return await _childCategory.UpdateAsync(entity, unchanged);
+           // return OperationResult.Success;
         }
     }
 }

@@ -1,0 +1,37 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+
+@Html.Partial("_LayoutHeadPartial")
+
+<body>
+
+
+    <!-- Header Section Begin -->
+    @await Component.InvokeAsync("_LayoutNavbar" )
+    <!-- Header End -->
+    <!-- Hero Section Begin -->
+    <!-- Hero Section End -->
+    <!-- Product Section Begin -->
+    @RenderBody()
+    <!-- Product Section End -->
+    <!-- Footer Section Begin -->
+                                                     @*   @await Component.InvokeAsync("_Footer") *@
+    <!-- Footer Section End -->
+    <!-- Search model Begin -->
+    <!-- Search model end -->
+    <!-- Js Plugins -->
+   
+    @Html.Partial("_Script")
+
+
+
+</body>
+<p style="display:none">
+    MUHAMMET YILDIZ TARAFINA AITTIR.
+</p>
+</html>

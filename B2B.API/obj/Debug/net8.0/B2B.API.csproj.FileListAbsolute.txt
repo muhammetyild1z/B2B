@@ -101,6 +101,8 @@ C:\Users\muham\OneDrive\Belgeler\GitHub\B2B\B2B.API\bin\Debug\net8.0\B2B.API.dep
 C:\Users\muham\OneDrive\Belgeler\GitHub\B2B\B2B.API\bin\Debug\net8.0\B2B.API.runtimeconfig.json
 C:\Users\muham\OneDrive\Belgeler\GitHub\B2B\B2B.API\bin\Debug\net8.0\B2B.API.dll
 C:\Users\muham\OneDrive\Belgeler\GitHub\B2B\B2B.API\bin\Debug\net8.0\B2B.API.pdb
+C:\Users\muham\OneDrive\Belgeler\GitHub\B2B\B2B.API\bin\Debug\net8.0\AutoMapper.dll
+C:\Users\muham\OneDrive\Belgeler\GitHub\B2B\B2B.API\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\muham\OneDrive\Belgeler\GitHub\B2B\B2B.API\bin\Debug\net8.0\Azure.Core.dll
 C:\Users\muham\OneDrive\Belgeler\GitHub\B2B\B2B.API\bin\Debug\net8.0\Azure.Identity.dll
 C:\Users\muham\OneDrive\Belgeler\GitHub\B2B\B2B.API\bin\Debug\net8.0\FluentValidation.dll
@@ -190,5 +192,3 @@ C:\Users\muham\OneDrive\Belgeler\GitHub\B2B\B2B.API\obj\Debug\net8.0\refint\B2B.
 C:\Users\muham\OneDrive\Belgeler\GitHub\B2B\B2B.API\obj\Debug\net8.0\B2B.API.pdb
 C:\Users\muham\OneDrive\Belgeler\GitHub\B2B\B2B.API\obj\Debug\net8.0\B2B.API.genruntimeconfig.cache
 C:\Users\muham\OneDrive\Belgeler\GitHub\B2B\B2B.API\obj\Debug\net8.0\ref\B2B.API.dll
-C:\Users\muham\OneDrive\Belgeler\GitHub\B2B\B2B.API\bin\Debug\net8.0\AutoMapper.dll
-C:\Users\muham\OneDrive\Belgeler\GitHub\B2B\B2B.API\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

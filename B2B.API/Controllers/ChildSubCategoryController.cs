@@ -22,16 +22,18 @@ namespace B2B.API.Controllers
         [HttpGet("AllGetChildSubCategory")]
         public IActionResult AllGetChildSubCategory()
         {
-            var childCategory = _childSubCategoryService.TGetListAsync();
-            return View(_mapper.Map<List<ResultChildSubCategoryDto>>(childCategory));
+            var childCategory = _childSubCategoryService.TGetList();
+            return Ok(_mapper.Map<List<ResultChildSubCategoryDto>>(childCategory));
         }
 
         [HttpPost("CreateChildSubCategory")]
         public async Task< IActionResult> CreateChildSubCategory(CreateChildSubCategoryDto createChildSubCategoryDto)
         {
-            if (createChildSubCategoryDto!=null)
+            if (createChildSubCategoryDto.Name!=null)
             {
-                var result = _childSubCategoryService.TGetListAsync();
+                createChildSubCategoryDto.CreateDate = DateTime.Now;
+                createChildSubCategoryDto.Status = false;
+                var result = _childSubCategoryService.TInsertAsync(_mapper.Map<ChildSubCategory>(createChildSubCategoryDto));
                 if (result.IsCompleted)
                 {
                     return Ok();
@@ -71,7 +73,7 @@ namespace B2B.API.Controllers
         {
             if (id!=0)
             {
-                var removedChildCategory= _childSubCategoryService.TGetByID(id);
+                var removedChildCategory= _childSubCategoryService.TGetChildSubByID(id);
                 if (removedChildCategory!=null)
                 {
                     _childSubCategoryService.TDelete(removedChildCategory);

@@ -13,6 +13,6 @@ namespace B2B.BusinessLayer.Abstract
         Task<OperationResult> TUpdateAsync(T entity, T unchanged);
         void TDelete(T entity);
         T TGetByID(int id);
-        Task<List<T>> TGetListAsync();
+        List<T> TGetList();
     }
 }

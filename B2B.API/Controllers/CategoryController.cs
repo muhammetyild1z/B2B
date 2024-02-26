@@ -3,6 +3,7 @@ using B2B.API.Dtos.CategoryDtos;
 using B2B.BusinessLayer.Abstract;
 using B2B.EntityLayer.Concrate;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Graph.Models;
 
 namespace B2B.API.Controllers
 {
@@ -22,24 +23,31 @@ namespace B2B.API.Controllers
         [HttpGet("AllGetCategory")]
         public IActionResult AllGetCategory()
         {
-            var category = _categoryService.TGetListAsync();
+            var category = _categoryService.TGetList();
             return Ok(_mapper.Map<List<Category>>(category));
         }
 
         [HttpPut("UpdateCategory")]
-        public async Task< IActionResult> UpdateCategory(UpdateCategoryDto updateCategoryDto)
+        public async Task<IActionResult> UpdateCategory(UpdateCategoryDto updateCategoryDto)
         {
-            if (updateCategoryDto!=null)
+            if (updateCategoryDto != null)
             {
-                var unchangedCategory= _categoryService.TGetByID(updateCategoryDto.CategoryID);
-                var result =  _categoryService.TUpdateAsync(_mapper.Map<Category>(updateCategoryDto), unchangedCategory);
-                if (result.IsCompleted)
+                var unchangedCategory = _categoryService.TGetByID(updateCategoryDto.CategoryID);
+                if (unchangedCategory != null)
                 {
-                    return Ok();
+                    var result = _categoryService.TUpdateAsync(_mapper.Map<Category>(updateCategoryDto), unchangedCategory);
+                    if (result.IsCompleted)
+                    {
+                        return Ok();
+                    }
+                    else
+                    {
+                        return BadRequest();
+                    }
                 }
                 else
                 {
-                    return BadRequest();
+                    return NotFound();
                 }
             }
             else
@@ -51,13 +59,16 @@ namespace B2B.API.Controllers
         [HttpPost("CreateCategory")]
         public async Task<IActionResult> CreateCategory(CreateCategoryDto createCategoryDto)
         {
-            if (createCategoryDto!=null)
+            if (createCategoryDto.Name != null)
             {
-               var result= _categoryService.TInsertAsync(_mapper.Map<Category>(createCategoryDto));
-                if (result.IsCompleted)
+                createCategoryDto.CreateDate = DateTime.Now;
+                createCategoryDto.Status = false;
+                var result = _categoryService.TInsertAsync(_mapper.Map<Category>(createCategoryDto));
+                if (result.IsCompletedSuccessfully)
                 {
                     return Ok();
-                }else { return BadRequest(); }
+                }
+                else { return BadRequest(); }
             }
             else
             {
@@ -70,7 +81,7 @@ namespace B2B.API.Controllers
         {
             if (id != 0)
             {
-                var deleteCategory = _categoryService.TGetByID(id);
+                var deleteCategory = _categoryService.TGetCategoryByID(id);
                 _categoryService.TDelete(deleteCategory);
                 return Ok();
             }

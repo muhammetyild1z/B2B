@@ -29,21 +29,26 @@ namespace B2B.BusinessLayer.Concrate
           return _productDal.GetByID(id);   
         }
 
-        public Task<List<Product>> TGetListAsync()
+        public List<Product> TGetList()
         {
-            return _productDal.GetListAsync();
+            return _productDal.GetList();
+        }
+
+        public Product TGetProductByID(int id)
+        {
+            return _productDal.GetProductByID(id);
         }
 
         public async Task<OperationResult> TInsertAsync(Product entity)
         {
-            await _productDal.InsertAsync(entity);
-            return OperationResult.Success; 
+            return await _productDal.InsertAsync(entity);
+        
         }
 
         public async Task<OperationResult> TUpdateAsync(Product entity, Product unchanged)
         {
-            await _productDal.UpdateAsync(entity, unchanged);
-            return OperationResult.Success; 
+            return await _productDal.UpdateAsync(entity, unchanged);
+            
         }
     }
 }

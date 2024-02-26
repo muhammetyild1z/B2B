@@ -24,14 +24,19 @@ namespace B2B.BusinessLayer.Concrate
             _basketDal.Delete(entity);
         }
 
+        public Basket TGetBasketByID(int id)
+        {
+            return _basketDal.GetBasketByID(id);
+        }
+
         public Basket TGetByID(int id)
         {
             return _basketDal.GetByID(id);
         }
 
-        public Task<List<Basket>> TGetListAsync()
+        public List<Basket> TGetList()
         {
-           return _basketDal.GetListAsync();
+           return _basketDal.GetList();
         }
 
         public async Task<OperationResult> TInsertAsync(Basket entity)
@@ -39,8 +44,8 @@ namespace B2B.BusinessLayer.Concrate
             try
             {
 
-                await _basketDal.InsertAsync(entity);
-                return OperationResult.Success;
+                return await _basketDal.InsertAsync(entity);
+               
             }
             catch (Exception ex)
             {
@@ -54,8 +59,8 @@ namespace B2B.BusinessLayer.Concrate
             try
             {
 
-                await _basketDal.UpdateAsync(entity, unchanged);
-                return OperationResult.Success;
+                return await _basketDal.UpdateAsync(entity, unchanged);
+               
             }
             catch (Exception ex)
             {

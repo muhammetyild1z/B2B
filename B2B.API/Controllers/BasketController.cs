@@ -20,9 +20,9 @@ namespace B2B.API.Controllers
         }
 
         [HttpGet("AllGetBasket")]
-        public async Task<IActionResult> AllGetBasket()
+        public IActionResult AllGetBasket()
         {
-            var basket = await _basketService.TGetListAsync();
+            var basket =  _basketService.TGetList();
             return Ok(_mapper.Map<List<Basket>>(basket));
         }
 
@@ -31,7 +31,7 @@ namespace B2B.API.Controllers
         {
             if (id != 0)
             {
-                var basketRemove = _basketService.TGetByID(id);
+                var basketRemove = _basketService.TGetBasketByID(id);
                 if (basketRemove != null)
                 {
                     _basketService.TDelete(basketRemove);
@@ -72,8 +72,10 @@ namespace B2B.API.Controllers
         [HttpPost("CreateBasket")]
         public async Task<IActionResult> CreateBasket(CreateBasketDto createBasketDto)
         {
-            if (createBasketDto!=null)
+            if (createBasketDto.UserID!=null)
             {
+                createBasketDto.CreateDate = DateTime.Now;
+                createBasketDto.Status = false;
               var result=   _basketService.TInsertAsync(_mapper.Map<Basket>(createBasketDto));
                 if (result.IsCompleted)
                 {

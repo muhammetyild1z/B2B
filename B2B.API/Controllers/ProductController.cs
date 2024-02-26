@@ -20,9 +20,9 @@ namespace B2B.API.Controllers
         }
 
         [HttpGet("AllGetProduct")]
-        public async Task<IActionResult> AllGetProduct()
+        public IActionResult AllGetProduct()
         {
-            var products= _productService.TGetListAsync();
+            var products= _productService.TGetList();
             return Ok(_mapper.Map<List<Product>>(products));
         }
 
@@ -31,6 +31,9 @@ namespace B2B.API.Controllers
         {
             if (createProductDto!=null)
             {
+                createProductDto.CreateDate= DateTime.Now;
+                createProductDto.Status = false;
+            
                 var result= _productService.TInsertAsync(_mapper.Map<Product>(createProductDto));
                 if (result.IsCompleted)
                 {
@@ -49,7 +52,7 @@ namespace B2B.API.Controllers
         {
             if (id!=0)
             {
-                var removedProduct = _productService.TGetByID(id);
+                var removedProduct = _productService.TGetProductByID(id);
                 if (removedProduct!=null)
                 {
                     _productService.TDelete(removedProduct);
