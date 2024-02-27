@@ -1,4 +1,4 @@
-﻿using B2B.API.Dtos.ProductDtos;
+﻿using B2B.UI.DtosUI.ProductDtos;
 using B2B.EntityLayer.Concrate;
 
 namespace B2B.UI.DtosUI.BasketDtos

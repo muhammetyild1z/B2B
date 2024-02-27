@@ -18,7 +18,54 @@ body {
     background-color: #1D1D1D;
 }
 
+.mega-menu {
+    /*width: 600px;*/ /* Mega menü genişliği */
+    /*padding: 20px;*/ /* Mega menü içerik içeriği */
+    background-color: gray; /* Mega menü arka plan rengi */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Gölge efekti */
+    display: none; /* Başlangıçta gizli */
+}
 
+    .mega-menu ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+        .mega-menu ul li {
+            margin-bottom: 10px;
+        }
+
+            .mega-menu ul li a {
+                color: white; /* Yazı rengi */
+                text-decoration: none;
+                display: block;
+                padding: 5px 0;
+            }
+
+        /* Alt kategorilerin açılır menülerinin stilini değiştirme */
+        .mega-menu ul ul {
+            background-color: gray; /* Alt menü arka plan rengi */
+            padding: 10px; /* Alt menü içeriği */
+            border-radius: 5px; /* Alt menü köşe yuvarlama */
+            box-shadow: none; /* Alt menü gölge kaldırma */
+            display: none; /* Başlangıçta gizli */
+            position: absolute; /* Pozisyonu belirleme */
+            top: 0; /* Üstten mesafe */
+            left: 100%; /* Sağdan mesafe */
+            margin-top: -10px; /* Aralık */
+        }
+
+            .mega-menu ul ul li {
+                margin-bottom: 5px;
+            }
+
+                .mega-menu ul ul li a {
+                    color: white; /* Yazı rengi */
+                    text-decoration: none;
+                    display: block;
+                    padding: 5px 0;
+                }
 
 .search__content__date {
     font-size: 10px;

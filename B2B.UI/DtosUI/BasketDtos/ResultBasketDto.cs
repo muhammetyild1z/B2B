@@ -1,5 +1,6 @@
-﻿using B2B.API.Dtos.ProductDtos;
+﻿
 using B2B.EntityLayer.Concrate;
+using B2B.UI.DtosUI.ProductDtos;
 
 namespace B2B.UI.DtosUI.BasketDtos { 
     public class ResultBasketDto

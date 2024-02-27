@@ -2,27 +2,47 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Graph.Models.ExternalConnectors;
+using Microsoft.Graph.Models.Security;
+
+
 
 namespace B2B.DataAccessLayer.Concrate
 {
     public class B2B_Context : IdentityDbContext
     {
-        private readonly IConfiguration _configuration;
+        //private IConfiguration _configuration;
 
-        public B2B_Context(IConfiguration configuration)
-        {
-            _configuration = configuration;
-        }
 
+        //public B2B_Context(DbContextOptions<B2B_Context> options, IConfiguration configuration) : base(options)
+        //{
+        //    _configuration = configuration;
+        //}
+        //public B2B_Context()
+        //{
+
+        //}
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+
+        //    if (!optionsBuilder.IsConfigured)
+        //    {
+        //        string connectionString = _configuration.GetConnectionString("DefaultConnection");
+        //        optionsBuilder.UseSqlServer(connectionString);
+        //    }
+        //    else
+        //    {             
+        //           optionsBuilder.UseSqlServer("server=DESKTOP-CH9SD0T;initial catalog=b2btest; integrated Security=true; TrustServerCertificate=True");      
+
+        //    }
+        //}
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //optionsBuilder.UseSqlServer("server=DESKTOP-CH9SD0T;initial catalog=b2btest; integrated Security=true; TrustServerCertificate=True");
-            if (!optionsBuilder.IsConfigured)
-            {
-                string connectionString = _configuration.GetConnectionString("DefaultConnection");
-                optionsBuilder.UseSqlServer(connectionString);
-            }
+            optionsBuilder.UseSqlServer("server=DESKTOP-CH9SD0T; initial Catalog=b2bTest;Integrated Security=true ;TrustServerCertificate=True");
+
         }
+
+
 
 
         public DbSet<Product> products { get; set; }
@@ -37,8 +57,8 @@ namespace B2B.DataAccessLayer.Concrate
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<HomeSlider>().HasKey(x=>x.SliderID);
-            modelBuilder.Entity<HomeSlider>().HasOne(x=>x.product).WithMany().HasForeignKey(x=>x.ProductID);
+            modelBuilder.Entity<HomeSlider>().HasKey(x => x.SliderID);
+            modelBuilder.Entity<HomeSlider>().HasOne(x => x.product).WithMany().HasForeignKey(x => x.ProductID);
 
             modelBuilder.Entity<Basket>().HasKey(x => x.BasketID);
             modelBuilder.Entity<Basket>().HasOne(x => x.product).WithMany().HasForeignKey(x => x.ProductID);

@@ -1,63 +1,37 @@
 ﻿@model List<ResultProductCategoryDto>
 
 
+
+
+<script>
+    $(document).ready(function () {
+        $('.dropdown-toggle').mouseenter(function () {
+            $(this).next('.dropdown-menu').toggle('fade'); /* Açılma efekti ekleyelim */
+        });
+
+        $('.dropdown-menu').mouseleave(function () {
+            $(this).toggle('fade'); /* Kapatma efekti ekleyelim */
+        });
+    });
+</script>
+
+
 <div class="row bg-transparent position-absolute " style="z-index:2">
     <div class="col-md-1">
         <div class="header__logo">
             <a href="/Home">
-                <img class="border-0" src="~/animex/img/logo. png" alt="" />
+                <img class="border-0" src="~/B2B/img/logo .png" alt="" />
             </a>
         </div>
     </div>
-    <div class="header__nav bg-transparent col-md-11">
-        <nav class="header__menu mobile-menu ">
-            <ul>
-                <li class="@(ViewBag.ActivePage == "Animeler" ? "active" : "")"><a href="/Animeler/Index/">Anasayfa</a></li>
-
-                @foreach (var item in Model)
-                {
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside">@item.category.Name</a>
-                        <ul class="dropdown-menu shadow">
-
-                            <li class="dropend">
-                                <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside">@item.parentSubCategory.Name</a>
-                                
-
-                            
-                               <ul class="dropdown-menu shadow">
-
-                                    <li class="dropend">
-                                        <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">@item.ChildSubCategory.Name</a>
-                                       @*  ekstra sub kategory lazim olursa aktif et
-                                        <ul class="dropdown-menu dropdown-submenu shadow">
-                                            <li><a class="dropdown-item" href=""> Third level 1</a></li>
-
-                                        </ul> *@
-                                    </li>
-
-                                </ul>
-                            </li>
-
-                        </ul>
-                    </li>
-                }
-                <li><a href="/Account/SignUp">Üye Ol</a></li>
-                <li><a href="/Account/SignIn">Giriş Yap</a></li>
-
-            </ul>
-        </nav>
-    </div>
-
-
-    <div class="row d-flex justify-content-center ">
-        <div class="s004 bg-transparent col-md-6">
+    <div class="col-md-6 ">
+        <div class="s004 bg-transparent ">
             <div class="form legend">
                 <fieldset>
 
                     <div class="inner-form">
                         <div class="input-field">
-                            <input name="query" class="rounded-2 form-control bg-transparent border-1 btn btn-light text-white" id="query" type="text" placeholder="Anime arayın...">
+                            <input name="query" class="rounded-2 form-control bg-transparent border-1 btn btn-light text-white" id="query" type="text" placeholder="Ürün arayın...">
                             <button class="btn-search bg-transparent" onclick="search()">
                                 <svg x="0px" y="0px" width="15" height="15" viewBox="0 0 72 72">
                                     <path d="M 31 11 C 19.973 11 11 19.973 11 31 C 11 42.027 19.973 51 31 51 C 34.974166 51 38.672385 49.821569 41.789062 47.814453 L 54.726562 60.751953 C 56.390563 62.415953 59.088953 62.415953 60.751953 60.751953 C 62.415953 59.087953 62.415953 56.390563 60.751953 54.726562 L 47.814453 41.789062 C 49.821569 38.672385 51 34.974166 51 31 C 51 19.973 42.027 11 31 11 z M 31 19 C 37.616 19 43 24.384 43 31 C 43 37.616 37.616 43 31 43 C 24.384 43 19 37.616 19 31 C 19 24.384 24.384 19 31 19 z"></path>
@@ -73,11 +47,73 @@
 
         </div>
     </div>
+    <div class="header__nav bg-transparent col-md-5 ">
+        <nav class="header__menu mobile-menu ">
+            <ul>
+
+                <li><a href="/Account/SignUp"><i class="fa fa-cart-plus"></i> Sepetim</a></li>
+                <li><a href="/Account/SignUp"> Üye Ol</a></li>
+                <li><a href="/Account/SignIn"><i class="fa fa-right-to-bracket"></i> Giriş Yap</a></li>
+
+            </ul>
+        </nav>
+    </div>
+
+    <div class="header__nav bg-transparent col-md-12 container d-flex justify-content-start">
+        <nav class="header__menu mobile-menu ">
+            <ul>
+                <li class="@(ViewBag.ActivePage == "Animeler" ? "active" : "")"><a href="/Animeler/Index/">Anasayfa</a></li>
+
+                @foreach (var item in Model)
+                {
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" style=" text-decoration: none;">@item.category.Name</a>
+                        <div class="dropdown-menu mega-menu shadow">
+                            <!-- Mega menü -->
+                            @if (@item.parentSubCategory != null)
+                            {
+                                <ul>
+                                    <li class="dropend">
+                                        <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside">@item.parentSubCategory?.Name</a>
+                                        @if (@item.ChildSubCategory != null)
+                                        {
+                                            <ul class="dropdown-menu shadow">
+                                                <li class="dropend">
+                                                    <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">@item.ChildSubCategory?.Name</a>
+                                                </li>
+                                            </ul>
+                                        }
+
+                                    </li>
+                                </ul>
+                            }
+
+
+                        </div>
+                    </li>
+                }
+
+
+            </ul>
+        </nav>
+    </div>
+
+
+
 
 
 
 </div>
 
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.dropdown-toggle').click(function () {
+            $(this).next('.dropdown-menu').toggle('fade'); /* Açılma efekti ekleyelim */
+        });
+    });
+</script>
 
 @* <nav class="navbar navbar-expand-lg navbar-light bg-dark navbar-dark shadow">
     <div class="container-fluid">

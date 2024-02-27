@@ -10,5 +10,6 @@ namespace B2B.DataAccessLayer.Abstract
     public interface IHomeSliderDAL:IGenericDal<HomeSlider>
     {
         HomeSlider GetHomeSliderByID(int id);
+        List<HomeSlider> GetHomeSlidersIncludeProduct();
     }
 }

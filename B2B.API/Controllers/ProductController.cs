@@ -23,7 +23,7 @@ namespace B2B.API.Controllers
         public IActionResult AllGetProduct()
         {
             var products= _productService.TGetList();
-            return Ok(_mapper.Map<List<Product>>(products));
+            return Ok(_mapper.Map<List<ResultProductDto>>(products));
         }
 
         [HttpPost("CreateProduct")]

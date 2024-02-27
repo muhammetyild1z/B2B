@@ -2,7 +2,7 @@
 
 namespace B2B.UI.Controllers
 {
-    public class HomeSliderController : Controller
+    public class HomeController : Controller
     {
         public IActionResult Index()
         {

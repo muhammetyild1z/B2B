@@ -119,6 +119,11 @@ namespace B2B.DataAccessLayer.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
+                    b.Property<string>("SliderImg")
+                        .IsRequired()
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("SliderTitle")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -175,6 +180,11 @@ namespace B2B.DataAccessLayer.Migrations
                         .HasColumnType("nvarchar(300)");
 
                     b.Property<string>("ProductImage")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("ProductName")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");

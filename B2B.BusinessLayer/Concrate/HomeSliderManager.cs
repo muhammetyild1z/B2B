@@ -34,6 +34,11 @@ namespace B2B.BusinessLayer.Concrate
               return _homeslider.GetHomeSliderByID(id);
         }
 
+        public List<HomeSlider> TGetHomeSlidersIncludeProduct()
+        {
+           return _homeslider.GetHomeSlidersIncludeProduct();
+        }
+
         public List<HomeSlider> TGetList()
         {
            return _homeslider.GetList();

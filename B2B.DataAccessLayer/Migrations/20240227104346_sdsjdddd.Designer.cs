@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace B2B.DataAccessLayer.Migrations
 {
     [DbContext(typeof(B2B_Context))]
-    [Migration("20240222175517_skdsds")]
-    partial class skdsds
+    [Migration("20240227104346_sdsjdddd")]
+    partial class sdsjdddd
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,67 +25,48 @@ namespace B2B.DataAccessLayer.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("B2B.EntityLayer.Concrate.AllSpCode", b =>
+            modelBuilder.Entity("B2B.EntityLayer.Concrate.Basket", b =>
                 {
-                    b.Property<int>("All_SpCode_ID")
+                    b.Property<int>("BasketID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("All_SpCode_ID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BasketID"));
 
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("SpCode1_ID")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("SpCode2_ID")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("SpCode3_ID")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("SpCode4_ID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SpCode_ID")
+                    b.Property<int>("ProductID")
                         .HasColumnType("int");
 
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
-                    b.HasKey("All_SpCode_ID");
+                    b.Property<string>("UserID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
-                    b.HasIndex("SpCode1_ID");
+                    b.HasKey("BasketID");
 
-                    b.HasIndex("SpCode2_ID");
+                    b.HasIndex("ProductID");
 
-                    b.HasIndex("SpCode3_ID");
+                    b.HasIndex("UserID");
 
-                    b.HasIndex("SpCode4_ID");
-
-                    b.HasIndex("SpCode_ID");
-
-                    b.ToTable("aLL_SPECODEs");
+                    b.ToTable("baskets");
                 });
 
-            modelBuilder.Entity("B2B.EntityLayer.Concrate.SpCode", b =>
+            modelBuilder.Entity("B2B.EntityLayer.Concrate.Category", b =>
                 {
-                    b.Property<int>("SPECODE_ID")
+                    b.Property<int>("CategoryID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SPECODE_ID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CategoryID"));
 
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("SPECODE_Description")
-                        .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
-
-                    b.Property<string>("SPECODE_Name")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
@@ -93,28 +74,23 @@ namespace B2B.DataAccessLayer.Migrations
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
-                    b.HasKey("SPECODE_ID");
+                    b.HasKey("CategoryID");
 
-                    b.ToTable("sPECODEs");
+                    b.ToTable("categories");
                 });
 
-            modelBuilder.Entity("B2B.EntityLayer.Concrate.SpCode1", b =>
+            modelBuilder.Entity("B2B.EntityLayer.Concrate.ChildSubCategory", b =>
                 {
-                    b.Property<int>("SPECODE1_ID")
+                    b.Property<int>("ChildSubCategoryID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SPECODE1_ID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ChildSubCategoryID"));
 
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("SPECODE1_Description")
-                        .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
-
-                    b.Property<string>("SPECODE1_Name")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
@@ -122,28 +98,36 @@ namespace B2B.DataAccessLayer.Migrations
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
-                    b.HasKey("SPECODE1_ID");
+                    b.HasKey("ChildSubCategoryID");
 
-                    b.ToTable("sPECODE1s");
+                    b.ToTable("childSubCategories");
                 });
 
-            modelBuilder.Entity("B2B.EntityLayer.Concrate.SpCode2", b =>
+            modelBuilder.Entity("B2B.EntityLayer.Concrate.HomeSlider", b =>
                 {
-                    b.Property<int>("SPECODE2_ID")
+                    b.Property<int>("SliderID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SPECODE2_ID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SliderID"));
 
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("SPECODE2_Description")
-                        .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
+                    b.Property<int>("ProductID")
+                        .HasColumnType("int");
 
-                    b.Property<string>("SPECODE2_Name")
+                    b.Property<string>("SliderDescription")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("SliderImg")
+                        .IsRequired()
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("SliderTitle")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
@@ -151,28 +135,25 @@ namespace B2B.DataAccessLayer.Migrations
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
-                    b.HasKey("SPECODE2_ID");
+                    b.HasKey("SliderID");
 
-                    b.ToTable("sPECODE2s");
+                    b.HasIndex("ProductID");
+
+                    b.ToTable("homeSliders");
                 });
 
-            modelBuilder.Entity("B2B.EntityLayer.Concrate.SpCode3", b =>
+            modelBuilder.Entity("B2B.EntityLayer.Concrate.ParentSubCategory", b =>
                 {
-                    b.Property<int>("SPECODE3_ID")
+                    b.Property<int>("ParentSubCategoryID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SPECODE3_ID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ParentSubCategoryID"));
 
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("SPECODE3_Description")
-                        .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
-
-                    b.Property<string>("SPECODE3_Name")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
@@ -180,38 +161,108 @@ namespace B2B.DataAccessLayer.Migrations
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
-                    b.HasKey("SPECODE3_ID");
+                    b.HasKey("ParentSubCategoryID");
 
-                    b.ToTable("sPECODE3s");
+                    b.ToTable("parentSubCategories");
                 });
 
-            modelBuilder.Entity("B2B.EntityLayer.Concrate.SpCode4", b =>
+            modelBuilder.Entity("B2B.EntityLayer.Concrate.Product", b =>
                 {
-                    b.Property<int>("SPECODE4_ID")
+                    b.Property<int>("Product_ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SPECODE4_ID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Product_ID"));
 
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("SPECODE4_Description")
+                    b.Property<string>("ProductDescription")
                         .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
 
-                    b.Property<string>("SPECODE4_Name")
+                    b.Property<string>("ProductImage")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("ProductName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<decimal>("ProductPrice")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
-                    b.HasKey("SPECODE4_ID");
+                    b.HasKey("Product_ID");
 
-                    b.ToTable("sPECODE4s");
+                    b.ToTable("products");
+                });
+
+            modelBuilder.Entity("B2B.EntityLayer.Concrate.ProductCategory", b =>
+                {
+                    b.Property<int>("ProductCategoryID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductCategoryID"));
+
+                    b.Property<int>("CategoryID")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ChildSubCategoryID")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ParentSubCategoryID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ProductCategoryID");
+
+                    b.HasIndex("CategoryID");
+
+                    b.HasIndex("ChildSubCategoryID");
+
+                    b.HasIndex("ParentSubCategoryID");
+
+                    b.HasIndex("ProductID");
+
+                    b.ToTable("productCategories");
+                });
+
+            modelBuilder.Entity("B2B.EntityLayer.Concrate.ProductColor", b =>
+                {
+                    b.Property<int>("ProductColorID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductColorID"));
+
+                    b.Property<string>("ColorCode")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ProductID")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
+                    b.HasKey("ProductColorID");
+
+                    b.HasIndex("ProductID");
+
+                    b.ToTable("productColors");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -278,6 +329,11 @@ namespace B2B.DataAccessLayer.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasMaxLength(13)
+                        .HasColumnType("nvarchar(13)");
+
                     b.Property<string>("Email")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -329,6 +385,10 @@ namespace B2B.DataAccessLayer.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUser");
+
+                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -412,39 +472,94 @@ namespace B2B.DataAccessLayer.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("B2B.EntityLayer.Concrate.AllSpCode", b =>
+            modelBuilder.Entity("B2B.EntityLayer.Concrate.AppUser", b =>
                 {
-                    b.HasOne("B2B.EntityLayer.Concrate.SpCode1", "sPECODE1")
-                        .WithMany()
-                        .HasForeignKey("SpCode1_ID");
+                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
-                    b.HasOne("B2B.EntityLayer.Concrate.SpCode2", "sPECODE2")
-                        .WithMany()
-                        .HasForeignKey("SpCode2_ID");
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
 
-                    b.HasOne("B2B.EntityLayer.Concrate.SpCode3", "sPECODE3")
-                        .WithMany()
-                        .HasForeignKey("SpCode3_ID");
+                    b.Property<string>("NameSurname")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
 
-                    b.HasOne("B2B.EntityLayer.Concrate.SpCode4", "sPECODE4")
-                        .WithMany()
-                        .HasForeignKey("SpCode4_ID");
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
 
-                    b.HasOne("B2B.EntityLayer.Concrate.SpCode", "sPECODE")
+                    b.HasDiscriminator().HasValue("AppUser");
+                });
+
+            modelBuilder.Entity("B2B.EntityLayer.Concrate.Basket", b =>
+                {
+                    b.HasOne("B2B.EntityLayer.Concrate.Product", "product")
                         .WithMany()
-                        .HasForeignKey("SpCode_ID")
+                        .HasForeignKey("ProductID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("sPECODE");
+                    b.HasOne("B2B.EntityLayer.Concrate.AppUser", "appUser")
+                        .WithMany()
+                        .HasForeignKey("UserID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("sPECODE1");
+                    b.Navigation("appUser");
 
-                    b.Navigation("sPECODE2");
+                    b.Navigation("product");
+                });
 
-                    b.Navigation("sPECODE3");
+            modelBuilder.Entity("B2B.EntityLayer.Concrate.HomeSlider", b =>
+                {
+                    b.HasOne("B2B.EntityLayer.Concrate.Product", "product")
+                        .WithMany()
+                        .HasForeignKey("ProductID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("sPECODE4");
+                    b.Navigation("product");
+                });
+
+            modelBuilder.Entity("B2B.EntityLayer.Concrate.ProductCategory", b =>
+                {
+                    b.HasOne("B2B.EntityLayer.Concrate.Category", "category")
+                        .WithMany()
+                        .HasForeignKey("CategoryID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("B2B.EntityLayer.Concrate.ChildSubCategory", "ChildSubCategory")
+                        .WithMany()
+                        .HasForeignKey("ChildSubCategoryID");
+
+                    b.HasOne("B2B.EntityLayer.Concrate.ParentSubCategory", "parentSubCategory")
+                        .WithMany()
+                        .HasForeignKey("ParentSubCategoryID");
+
+                    b.HasOne("B2B.EntityLayer.Concrate.Product", "product")
+                        .WithMany()
+                        .HasForeignKey("ProductID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ChildSubCategory");
+
+                    b.Navigation("category");
+
+                    b.Navigation("parentSubCategory");
+
+                    b.Navigation("product");
+                });
+
+            modelBuilder.Entity("B2B.EntityLayer.Concrate.ProductColor", b =>
+                {
+                    b.HasOne("B2B.EntityLayer.Concrate.Product", "product")
+                        .WithMany()
+                        .HasForeignKey("ProductID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("product");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

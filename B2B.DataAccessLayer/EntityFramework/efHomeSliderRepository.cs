@@ -2,6 +2,7 @@
 using B2B.DataAccessLayer.Concrate;
 using B2B.DataAccessLayer.Repositories;
 using B2B.EntityLayer.Concrate;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,11 @@ namespace B2B.DataAccessLayer.EntityFramework
             
            
            
+        }
+
+        public List<HomeSlider> GetHomeSlidersIncludeProduct()
+        {
+           return _context.homeSliders.Include(x=>x.product).ToList();
         }
     }
 }

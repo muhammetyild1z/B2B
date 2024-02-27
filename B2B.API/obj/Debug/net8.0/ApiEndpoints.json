@@ -217,6 +217,16 @@
   },
   {
     "ContainingType": "B2B.API.Controllers.HomeSliderController",
+    "Method": "HomeSliderIncludeProduct",
+    "RelativePath": "api/HomeSlider/HomeSliderIncludeProduct",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "B2B.API.Controllers.HomeSliderController",
     "Method": "UpdateHomeSlider",
     "RelativePath": "api/HomeSlider/UpdateHomeSlider",
     "HttpMethod": "PUT",

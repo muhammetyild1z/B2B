@@ -14,6 +14,8 @@ namespace B2B.EntityLayer.Concrate
         public string SliderDescription { get; set; }
         [MaxLength(50)]
         public string SliderTitle { get; set; }
+        [MaxLength(450)]
+        public string SliderImg { get; set; }
 
 
         public int ProductID { get; set; }

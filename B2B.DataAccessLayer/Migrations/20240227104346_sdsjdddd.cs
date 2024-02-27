@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace B2B.DataAccessLayer.Migrations
 {
     /// <inheritdoc />
-    public partial class skdsds : Migration
+    public partial class sdsjdddd : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -30,6 +30,10 @@ namespace B2B.DataAccessLayer.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Discriminator = table.Column<string>(type: "nvarchar(13)", maxLength: 13, nullable: false),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    NameSurname = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: true),
+                    Status = table.Column<bool>(type: "bit", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -51,83 +55,66 @@ namespace B2B.DataAccessLayer.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "sPECODE1s",
+                name: "categories",
                 columns: table => new
                 {
-                    SPECODE1_ID = table.Column<int>(type: "int", nullable: false)
+                    CategoryID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    SPECODE1_Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    SPECODE1_Description = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Status = table.Column<bool>(type: "bit", nullable: false),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_sPECODE1s", x => x.SPECODE1_ID);
+                    table.PrimaryKey("PK_categories", x => x.CategoryID);
                 });
 
             migrationBuilder.CreateTable(
-                name: "sPECODE2s",
+                name: "childSubCategories",
                 columns: table => new
                 {
-                    SPECODE2_ID = table.Column<int>(type: "int", nullable: false)
+                    ChildSubCategoryID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    SPECODE2_Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    SPECODE2_Description = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Status = table.Column<bool>(type: "bit", nullable: false),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_sPECODE2s", x => x.SPECODE2_ID);
+                    table.PrimaryKey("PK_childSubCategories", x => x.ChildSubCategoryID);
                 });
 
             migrationBuilder.CreateTable(
-                name: "sPECODE3s",
+                name: "parentSubCategories",
                 columns: table => new
                 {
-                    SPECODE3_ID = table.Column<int>(type: "int", nullable: false)
+                    ParentSubCategoryID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    SPECODE3_Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    SPECODE3_Description = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Status = table.Column<bool>(type: "bit", nullable: false),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_sPECODE3s", x => x.SPECODE3_ID);
+                    table.PrimaryKey("PK_parentSubCategories", x => x.ParentSubCategoryID);
                 });
 
             migrationBuilder.CreateTable(
-                name: "sPECODE4s",
+                name: "products",
                 columns: table => new
                 {
-                    SPECODE4_ID = table.Column<int>(type: "int", nullable: false)
+                    Product_ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    SPECODE4_Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    SPECODE4_Description = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
+                    ProductName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    ProductPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    ProductDescription = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: false),
+                    ProductImage = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Status = table.Column<bool>(type: "bit", nullable: false),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_sPECODE4s", x => x.SPECODE4_ID);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "sPECODEs",
-                columns: table => new
-                {
-                    SPECODE_ID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    SPECODE_Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    SPECODE_Description = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
-                    Status = table.Column<bool>(type: "bit", nullable: false),
-                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_sPECODEs", x => x.SPECODE_ID);
+                    table.PrimaryKey("PK_products", x => x.Product_ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -237,74 +224,116 @@ namespace B2B.DataAccessLayer.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "aLL_SPECODEs",
+                name: "baskets",
                 columns: table => new
                 {
-                    All_SpCode_ID = table.Column<int>(type: "int", nullable: false)
+                    BasketID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    SpCode4_ID = table.Column<int>(type: "int", nullable: true),
-                    SpCode3_ID = table.Column<int>(type: "int", nullable: true),
-                    SpCode2_ID = table.Column<int>(type: "int", nullable: true),
-                    SpCode1_ID = table.Column<int>(type: "int", nullable: true),
-                    SpCode_ID = table.Column<int>(type: "int", nullable: false),
+                    UserID = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ProductID = table.Column<int>(type: "int", nullable: false),
                     Status = table.Column<bool>(type: "bit", nullable: false),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_aLL_SPECODEs", x => x.All_SpCode_ID);
+                    table.PrimaryKey("PK_baskets", x => x.BasketID);
                     table.ForeignKey(
-                        name: "FK_aLL_SPECODEs_sPECODE1s_SpCode1_ID",
-                        column: x => x.SpCode1_ID,
-                        principalTable: "sPECODE1s",
-                        principalColumn: "SPECODE1_ID");
+                        name: "FK_baskets_AspNetUsers_UserID",
+                        column: x => x.UserID,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_aLL_SPECODEs_sPECODE2s_SpCode2_ID",
-                        column: x => x.SpCode2_ID,
-                        principalTable: "sPECODE2s",
-                        principalColumn: "SPECODE2_ID");
-                    table.ForeignKey(
-                        name: "FK_aLL_SPECODEs_sPECODE3s_SpCode3_ID",
-                        column: x => x.SpCode3_ID,
-                        principalTable: "sPECODE3s",
-                        principalColumn: "SPECODE3_ID");
-                    table.ForeignKey(
-                        name: "FK_aLL_SPECODEs_sPECODE4s_SpCode4_ID",
-                        column: x => x.SpCode4_ID,
-                        principalTable: "sPECODE4s",
-                        principalColumn: "SPECODE4_ID");
-                    table.ForeignKey(
-                        name: "FK_aLL_SPECODEs_sPECODEs_SpCode_ID",
-                        column: x => x.SpCode_ID,
-                        principalTable: "sPECODEs",
-                        principalColumn: "SPECODE_ID",
+                        name: "FK_baskets_products_ProductID",
+                        column: x => x.ProductID,
+                        principalTable: "products",
+                        principalColumn: "Product_ID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateIndex(
-                name: "IX_aLL_SPECODEs_SpCode_ID",
-                table: "aLL_SPECODEs",
-                column: "SpCode_ID");
+            migrationBuilder.CreateTable(
+                name: "homeSliders",
+                columns: table => new
+                {
+                    SliderID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SliderDescription = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    SliderTitle = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    SliderImg = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: false),
+                    ProductID = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<bool>(type: "bit", nullable: false),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_homeSliders", x => x.SliderID);
+                    table.ForeignKey(
+                        name: "FK_homeSliders_products_ProductID",
+                        column: x => x.ProductID,
+                        principalTable: "products",
+                        principalColumn: "Product_ID",
+                        onDelete: ReferentialAction.Cascade);
+                });
 
-            migrationBuilder.CreateIndex(
-                name: "IX_aLL_SPECODEs_SpCode1_ID",
-                table: "aLL_SPECODEs",
-                column: "SpCode1_ID");
+            migrationBuilder.CreateTable(
+                name: "productCategories",
+                columns: table => new
+                {
+                    ProductCategoryID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CategoryID = table.Column<int>(type: "int", nullable: false),
+                    ParentSubCategoryID = table.Column<int>(type: "int", nullable: true),
+                    ChildSubCategoryID = table.Column<int>(type: "int", nullable: true),
+                    ProductID = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_productCategories", x => x.ProductCategoryID);
+                    table.ForeignKey(
+                        name: "FK_productCategories_categories_CategoryID",
+                        column: x => x.CategoryID,
+                        principalTable: "categories",
+                        principalColumn: "CategoryID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_productCategories_childSubCategories_ChildSubCategoryID",
+                        column: x => x.ChildSubCategoryID,
+                        principalTable: "childSubCategories",
+                        principalColumn: "ChildSubCategoryID");
+                    table.ForeignKey(
+                        name: "FK_productCategories_parentSubCategories_ParentSubCategoryID",
+                        column: x => x.ParentSubCategoryID,
+                        principalTable: "parentSubCategories",
+                        principalColumn: "ParentSubCategoryID");
+                    table.ForeignKey(
+                        name: "FK_productCategories_products_ProductID",
+                        column: x => x.ProductID,
+                        principalTable: "products",
+                        principalColumn: "Product_ID",
+                        onDelete: ReferentialAction.Cascade);
+                });
 
-            migrationBuilder.CreateIndex(
-                name: "IX_aLL_SPECODEs_SpCode2_ID",
-                table: "aLL_SPECODEs",
-                column: "SpCode2_ID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_aLL_SPECODEs_SpCode3_ID",
-                table: "aLL_SPECODEs",
-                column: "SpCode3_ID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_aLL_SPECODEs_SpCode4_ID",
-                table: "aLL_SPECODEs",
-                column: "SpCode4_ID");
+            migrationBuilder.CreateTable(
+                name: "productColors",
+                columns: table => new
+                {
+                    ProductColorID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ColorCode = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    ProductID = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<bool>(type: "bit", nullable: false),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_productColors", x => x.ProductColorID);
+                    table.ForeignKey(
+                        name: "FK_productColors_products_ProductID",
+                        column: x => x.ProductID,
+                        principalTable: "products",
+                        principalColumn: "Product_ID",
+                        onDelete: ReferentialAction.Cascade);
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -344,14 +373,51 @@ namespace B2B.DataAccessLayer.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_baskets_ProductID",
+                table: "baskets",
+                column: "ProductID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_baskets_UserID",
+                table: "baskets",
+                column: "UserID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_homeSliders_ProductID",
+                table: "homeSliders",
+                column: "ProductID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_productCategories_CategoryID",
+                table: "productCategories",
+                column: "CategoryID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_productCategories_ChildSubCategoryID",
+                table: "productCategories",
+                column: "ChildSubCategoryID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_productCategories_ParentSubCategoryID",
+                table: "productCategories",
+                column: "ParentSubCategoryID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_productCategories_ProductID",
+                table: "productCategories",
+                column: "ProductID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_productColors_ProductID",
+                table: "productColors",
+                column: "ProductID");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "aLL_SPECODEs");
-
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -368,25 +434,34 @@ namespace B2B.DataAccessLayer.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "sPECODE1s");
+                name: "baskets");
 
             migrationBuilder.DropTable(
-                name: "sPECODE2s");
+                name: "homeSliders");
 
             migrationBuilder.DropTable(
-                name: "sPECODE3s");
+                name: "productCategories");
 
             migrationBuilder.DropTable(
-                name: "sPECODE4s");
-
-            migrationBuilder.DropTable(
-                name: "sPECODEs");
+                name: "productColors");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "categories");
+
+            migrationBuilder.DropTable(
+                name: "childSubCategories");
+
+            migrationBuilder.DropTable(
+                name: "parentSubCategories");
+
+            migrationBuilder.DropTable(
+                name: "products");
         }
     }
 }

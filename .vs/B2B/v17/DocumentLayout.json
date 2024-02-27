@@ -1,71 +1,12 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{1A91247A-2B86-4B48-9904-C8F99FA2A1C8}|B2B.UI\\B2B.UI.csproj|c:\\users\\muham\\onedrive\\belgeler\\github\\b2b\\b2b.ui\\views\\shared\\components\\_layoutnavbar\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{1A91247A-2B86-4B48-9904-C8F99FA2A1C8}|B2B.UI\\B2B.UI.csproj|solutionrelative:b2b.ui\\views\\shared\\components\\_layoutnavbar\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C0004B1D-E3D1-4E62-A2AC-70EB510984EE}|B2B.API\\B2B.API.csproj|c:\\users\\muham\\onedrive\\belgeler\\github\\b2b\\b2b.api\\controllers\\productcategorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C0004B1D-E3D1-4E62-A2AC-70EB510984EE}|B2B.API\\B2B.API.csproj|solutionrelative:b2b.api\\controllers\\productcategorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1A91247A-2B86-4B48-9904-C8F99FA2A1C8}|B2B.UI\\B2B.UI.csproj|c:\\users\\muham\\onedrive\\belgeler\\github\\b2b\\b2b.ui\\viewcomponents\\layoutnavbar\\_layoutnavbar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1A91247A-2B86-4B48-9904-C8F99FA2A1C8}|B2B.UI\\B2B.UI.csproj|solutionrelative:b2b.ui\\viewcomponents\\layoutnavbar\\_layoutnavbar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 2,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ProductCategoryController.cs",
-              "DocumentMoniker": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.API\\Controllers\\ProductCategoryController.cs",
-              "RelativeDocumentMoniker": "B2B.API\\Controllers\\ProductCategoryController.cs",
-              "ToolTip": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.API\\Controllers\\ProductCategoryController.cs",
-              "RelativeToolTip": "B2B.API\\Controllers\\ProductCategoryController.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAABkAAAAUAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-26T14:58:33.15Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "_LayoutNavbar.cs",
-              "DocumentMoniker": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\ViewComponents\\LayoutNavbar\\_LayoutNavbar.cs",
-              "RelativeDocumentMoniker": "B2B.UI\\ViewComponents\\LayoutNavbar\\_LayoutNavbar.cs",
-              "ToolTip": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\ViewComponents\\LayoutNavbar\\_LayoutNavbar.cs",
-              "RelativeToolTip": "B2B.UI\\ViewComponents\\LayoutNavbar\\_LayoutNavbar.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAArwBoAAABYAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-26T14:56:50.868Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Default.cshtml",
-              "DocumentMoniker": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\Views\\Shared\\Components\\_LayoutNavbar\\Default.cshtml",
-              "RelativeDocumentMoniker": "B2B.UI\\Views\\Shared\\Components\\_LayoutNavbar\\Default.cshtml",
-              "ToolTip": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\Views\\Shared\\Components\\_LayoutNavbar\\Default.cshtml",
-              "RelativeToolTip": "B2B.UI\\Views\\Shared\\Components\\_LayoutNavbar\\Default.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-02-26T14:51:41.733Z",
-              "EditorCaption": ""
-            }
-          ]
-        }
-      ]
+      "DocumentGroups": []
     }
   ]
 }

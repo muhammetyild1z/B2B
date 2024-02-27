@@ -15,10 +15,10 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
-//builder.Services.AddDbContext<B2B_Context>();
+builder.Services.AddDbContext<B2B_Context>();
 
-builder.Services.AddDbContext<B2B_Context>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+//builder.Services.AddDbContext<B2B_Context>(options =>
+//    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddIdentity<AppUser, AppRole>(
     opt =>

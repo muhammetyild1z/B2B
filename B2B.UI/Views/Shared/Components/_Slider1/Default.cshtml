@@ -1,0 +1,130 @@
+﻿@model List<ResultProductDto>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+@{
+    var a = Model.Count;
+    var options = true;
+    if (Model.Count < 7)
+    {
+        options = false;
+    }
+}
+
+
+
+@if (Model != null)
+{
+    <div class="row mt-4">
+        <div class="col-lg-11 col-md-8 col-sm-8">
+            <div class="section-title">
+                <h4><i class="fa fa-line-chart"> </i>&nbsp;Öne Çıkan Urunler</h4>
+            </div>
+
+        </div>
+        <div class="col-md-1 pt-4 slider__navigate">
+            <button class="Prev" style="background-color: transparent; border: none;">
+                <i class="fa fa-arrow-left fa-lg" style="color:white"> </i>
+            </button>
+
+            <button class="Next" style="background-color: transparent; border: none;">
+                <i class="fa fa-arrow-right fa-lg " style="color:white"> </i>
+
+            </button>
+        </div>
+    </div>
+
+
+    <div id="carousel" class="owl-carousel owl-carouselCokOyAlan " data-options="@options.ToString().ToLower()">
+        @foreach (var item in Model)
+        {
+
+            <div class="item row">
+
+                <div class="product__item col-md-12">
+                    <a href="#">
+                        <div class="product__item__pic set-bg" @* data-setbg="data:image/png;base64,@Convert.ToBase64String(item.ProductImage) *@" href="/Animeİzle/Izle/@item.Product_ID/">
+                            <div class="ep fa fa-star">&nbsp;1/10</div>
+                            @* <div class="comment"><i class="fa fa-comments"></i> @item.animeler.comments.Count()</div>*@
+                           @*  <div class="view"><i class="fa fa-calendar"></i> @item.animeler.AnimeCikisTarihi.Year</div> *@
+                        </div>
+                    </a>
+                    @* <div class="product__item__text">
+                        <ul>
+
+                            @await Component.InvokeAsync("_AnimelerKategori", new { animeID = item.AnimeID })
+
+                            @if (item.animeler.AnimeAdi.Length > 22)
+                            {
+                                <h5>
+                                    @Html.ActionLink(@item.animeler.AnimeAdi.Substring(0, 22), "Izle", "AnimeIzle", new { AnimeID_Sezon = item.AnimeID })..
+
+                                </h5>
+                            }
+                            else
+                            {
+                                <h5> @Html.ActionLink(@item.animeler.AnimeAdi, "Izle", "AnimeIzle", new { AnimeID_Sezon = item.AnimeID })</h5>
+                            }
+                        </ul>
+
+                    </div> *@
+                </div>
+            </div>
+
+
+        }
+    </div>
+}
+
+
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        var owl = $('.owl-carouselCokOyAlan');
+        var options = $('#carousel').data('options') === 'true';
+
+        owl.owlCarousel({
+            loop: options,
+            margin: 10,
+            nav: false, // Navigasyon butonlarını Owl Carousel'ın kendi butonları ile kullanıyoruz
+            responsive: {
+                0: {
+                    items: 2
+                },
+                600: {
+                    items: 3
+                },
+                1000: {
+                    items: 6
+                }
+            }
+        });
+
+        // İleri butonu
+        $('.Next1').click(function () {
+            owl.trigger('next.owl.carousel');
+        });
+
+        // Geri butonu
+        $('.Prev1').click(function () {
+            owl.trigger('prev.owl.carousel');
+        });
+    });
+</script>
+
+
+
+
+
+
+
+
+

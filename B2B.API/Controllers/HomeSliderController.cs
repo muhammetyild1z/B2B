@@ -103,5 +103,13 @@ namespace B2B.API.Controllers
             return NotFound();
 
         }
+
+        [HttpGet("HomeSliderIncludeProduct")]
+        public IActionResult HomeSliderIncludeProduct()
+        {
+            var SliderWithCategory= _homeSliderService.TGetHomeSlidersIncludeProduct();
+            return Ok(SliderWithCategory);
+        }
+
     }
 }

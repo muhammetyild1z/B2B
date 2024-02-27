@@ -1,0 +1,52 @@
+﻿@model List<ResultHomeSliderDto>
+
+
+
+<Style>
+    /* CSS */
+    .videoContainer.fullscreen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        padding: 0;
+    }
+
+        .videoContainer.fullscreen iframe {
+            width: 100%;
+            height: 100%;
+        }
+</Style>
+
+<section class="hero pt-0" style="margin-top: -4%; overflow: hidden;">
+    <div class="hero__slider owl-carousel">
+        @foreach (var item in Model)
+        {
+            <div class="videoContainer ml-0" id="video-container-1">
+                <div class="row mt-5 ml-5">
+                    <div class="col-lg-6">
+                        <div class="hero__text align-items-center">
+                            <div class="label">@item.SliderTitle</div>
+                            <h2>@item.product.ProductDescription</h2>
+                            <!-- Your additional content can go here -->
+                            <!-- Example: -->
+                          
+                         @*    <div class="row">
+                            @await Component.InvokeAsync("_SliderKategoriCekme", new { animeID = item.AnimeID })
+                               a etıketı buraya gelecek
+                            </div> *@
+                            <a class="col-md-12 mt-4" href="#"><span>Hemen İncele</span> <i class="fa fa-angle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <img src="@item.product.ProductImage" />
+            </div>
+        }
+    </div>
+</section>
+
+
+
+
