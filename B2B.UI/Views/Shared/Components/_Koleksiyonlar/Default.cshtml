@@ -1,0 +1,99 @@
+﻿@model List<ResultProductDto>
+<style>
+    .carousel-wrap {
+        /*   margin: 90px auto;
+            padding: 0 5%; */
+        /*   width: 80%; */
+        position: relative;
+    }
+
+    /* fix blank or flashing items on carousel */
+    .owl-carousel .item {
+        position: relative;
+        z-index: 100;
+        -webkit-backface-visibility: hidden;
+    }
+
+    /* end fix */
+    .owl-nav > div {
+        margin-top: -26px;
+        position: absolute;
+        top: 50%;
+        color: #cdcbcd;
+    }
+
+    .owl-nav i {
+        font-size: 52px;
+    }
+
+    .owl-nav .owl-prev {
+        left: -30px;
+    }
+
+    .owl-nav .owl-next {
+        right: -30px;
+    }
+</style>
+
+
+
+
+
+
+
+
+<div class="row">
+    <div class="col-lg-11 col-md-8 col-sm-8 mobile__slider__nav_newEpisode">
+        <div class="section-title">
+            <h4><i class="fa fa-upload"> </i>&nbsp;Yeni Eklenen Bölümler</h4>
+        </div>
+
+    </div>
+
+    <div class="carousel-wrap">
+        <div class="owl-carousel owl-1">
+            @foreach (var item in Model)
+            {
+                <a href="#">
+
+                    <div class="product__item__pic set-bg" data-setbg="@item.ProductImage">
+                        @*   <div class="ep fa fa-calendar">&nbsp;@item.EpisodeCreateDate.ToString("dd MMMM", trCulture)</div> *@
+                        @*<div class="comment col-md-6"><i class="fa fa-calendar"></i> @item.BolumCreateDate.ToString("dd-MMMM")</div>*@
+                        @*   <div class="comment"><i class="fa fa-comments"></i> @item.animeler.</div>*@
+
+                        @*    <div class="comment col-md-11 opacity-50"><i class="fa fa-tv"></i>&nbsp;@item.Sezon .Sezon @item.Episode .Bölüm</div> *@
+                    </div>
+                </a>
+            }
+
+
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+    <script>
+        $('.owl-1').owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: true,
+            navText: [
+                "<i class='fa fa-caret-left'></i>",
+                "<i class='fa fa-caret-right'></i>"
+            ],
+            autoplay: true,
+            autoplayHoverPause: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 3
+                },
+                1000: {
+                    items: 5
+                }
+            }
+        })
+    </script>

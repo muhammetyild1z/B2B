@@ -1,3 +1,6 @@
-
+// sliderler bitince iletisim sayfasini yaz
+//slider 1 son eklenenler
+//slider 2 begenilenler
+//slider 3 kafana gore
 
 
