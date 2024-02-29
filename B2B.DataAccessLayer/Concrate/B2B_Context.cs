@@ -53,10 +53,16 @@ namespace B2B.DataAccessLayer.Concrate
         public DbSet<ProductColor> productColors { get; set; }
         public DbSet<Basket> baskets { get; set; }
         public DbSet<HomeSlider> homeSliders { get; set; }
+        public DbSet<Contact> contacts { get; set; }
+        public DbSet<ContactMailRequest> contactMailRequests { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Contact>().HasKey(x => x.ContactID);
+
+            modelBuilder.Entity<ContactMailRequest>().HasKey(x => x.ContactMailRequestID);
+
             modelBuilder.Entity<HomeSlider>().HasKey(x => x.SliderID);
             modelBuilder.Entity<HomeSlider>().HasOne(x => x.product).WithMany().HasForeignKey(x => x.ProductID);
 

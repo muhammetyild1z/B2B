@@ -241,6 +241,50 @@
       "PackagePath": "staticwebassets\\B2B\\sass\\style.scss"
     },
     {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\contactPage\\fonts\\icomoon\\Read Me.txt",
+      "PackagePath": "staticwebassets\\contactPage\\fonts\\icomoon\\Read Me.txt"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\contactPage\\fonts\\icomoon\\demo-files\\demo.css",
+      "PackagePath": "staticwebassets\\contactPage\\fonts\\icomoon\\demo-files\\demo.css"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\contactPage\\fonts\\icomoon\\demo-files\\demo.js",
+      "PackagePath": "staticwebassets\\contactPage\\fonts\\icomoon\\demo-files\\demo.js"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\contactPage\\fonts\\icomoon\\demo.html",
+      "PackagePath": "staticwebassets\\contactPage\\fonts\\icomoon\\demo.html"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\contactPage\\fonts\\icomoon\\fonts\\icomoon.eot",
+      "PackagePath": "staticwebassets\\contactPage\\fonts\\icomoon\\fonts\\icomoon.eot"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\contactPage\\fonts\\icomoon\\fonts\\icomoon.svg",
+      "PackagePath": "staticwebassets\\contactPage\\fonts\\icomoon\\fonts\\icomoon.svg"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\contactPage\\fonts\\icomoon\\fonts\\icomoon.ttf",
+      "PackagePath": "staticwebassets\\contactPage\\fonts\\icomoon\\fonts\\icomoon.ttf"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\contactPage\\fonts\\icomoon\\fonts\\icomoon.woff",
+      "PackagePath": "staticwebassets\\contactPage\\fonts\\icomoon\\fonts\\icomoon.woff"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\contactPage\\fonts\\icomoon\\selection.json",
+      "PackagePath": "staticwebassets\\contactPage\\fonts\\icomoon\\selection.json"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\contactPage\\fonts\\icomoon\\style.css",
+      "PackagePath": "staticwebassets\\contactPage\\fonts\\icomoon\\style.css"
+    },
+    {
+      "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\contactPage\\index.html",
+      "PackagePath": "staticwebassets\\contactPage\\index.html"
+    },
+    {
       "Id": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

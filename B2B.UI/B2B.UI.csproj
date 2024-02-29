@@ -8,9 +8,27 @@
 
   <ItemGroup>
     <Compile Remove="wwwroot\animeX\**" />
+    <Compile Remove="wwwroot\contactPage\images\**" />
+    <Compile Remove="wwwroot\contactPage\js\**" />
+    <Compile Remove="wwwroot\contact\**" />
     <Content Remove="wwwroot\animeX\**" />
+    <Content Remove="wwwroot\contactPage\images\**" />
+    <Content Remove="wwwroot\contactPage\js\**" />
+    <Content Remove="wwwroot\contact\**" />
     <EmbeddedResource Remove="wwwroot\animeX\**" />
+    <EmbeddedResource Remove="wwwroot\contactPage\images\**" />
+    <EmbeddedResource Remove="wwwroot\contactPage\js\**" />
+    <EmbeddedResource Remove="wwwroot\contact\**" />
     <None Remove="wwwroot\animeX\**" />
+    <None Remove="wwwroot\contactPage\images\**" />
+    <None Remove="wwwroot\contactPage\js\**" />
+    <None Remove="wwwroot\contact\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\contactPage\fonts\.DS_Store" />
+    <None Include="wwwroot\contactPage\fonts\icomoon\demo-files\demo.js" />
+    <None Include="wwwroot\contactPage\fonts\icomoon\fonts\icomoon.svg" />
   </ItemGroup>
 
   <ItemGroup>

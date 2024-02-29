@@ -1,0 +1,42 @@
+﻿@model ResultContactMailRequestDto
+
+
+
+<div class="col-md-6">
+    <form class="mb-5" method="post"  asp-action="ResultContactMailRequest" asp-controller="Contact">
+        <div class="row">
+
+            <div class="col-md-12 form-group">
+                <label for="name" class="col-form-label text-white">Ad Soyad</label>
+                <input type="text" class="form-control" asp-for="Name" id="name">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <label for="email" class="col-form-label text-white">Email</label>
+                <input type="text" class="form-control" asp-for="Email" id="email">
+            </div>
+        </div>
+            <div class="row">
+            <div class="col-md-12 form-group">
+                <label for="tel" class="col-form-label text-white">Telefon</label>
+                <input type="tel" class="form-control" asp-for="Phone" id="tel">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <label for="message" class="col-form-label text-white">Mesajınız</label>
+                <textarea class="form-control" asp-for="Message" id="message" cols="30" rows="7"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <input type="submit" value="Gönder" class="btn btn-primary rounded-0 py-2 px-4">
+                <span class="submitting"></span>
+            </div>
+        </div>
+    </form>
+
+  
+</div>

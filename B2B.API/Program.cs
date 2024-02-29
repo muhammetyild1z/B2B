@@ -45,6 +45,11 @@ builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 
 
+builder.Services.AddScoped<IContactDal, efContactRepository>();
+builder.Services.AddScoped<IContactService, ContactManager>();
+
+builder.Services.AddScoped<IContactMailRequestDal, efContactMailRequestRepository>();
+builder.Services.AddScoped<IContactMailRequestService, ContactMailRequestManager>();
 
 builder.Services.AddScoped<IBasketDAL, efBasketRepository>();
 builder.Services.AddScoped<IBasketService, BasketManager>();

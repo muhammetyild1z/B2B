@@ -18,6 +18,16 @@ body {
     background-color: #1D1D1D;
 }
 
+
+/*Contact*/
+.content {
+    padding: 7rem 0;
+}
+/*Contact end*/
+
+
+
+
 .mega-menu {
     /*width: 600px;*/ /* Mega menü genişliği */
     /*padding: 20px;*/ /* Mega menü içerik içeriği */
@@ -2787,20 +2797,20 @@ ol {
 -----------------------*/
 
 .footer {
-    position:absolute;
-    bottom:0;
+   /* position:absolute;
+    bottom:0;*/
     background: black;
     padding-top: 60px;
     padding-bottom: 40px;
-    position: relative;
+  /*  position: relative;*/
     width: 100%;
     z-index: 1000;
 }
 
 .page-up {
-    position: absolute;
+    position: relative;
     left: 50%;
-    top: -25px;
+    top: -25%;
     margin-left: -25px;
 }
 

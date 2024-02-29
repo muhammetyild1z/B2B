@@ -1,8 +1,5 @@
 ﻿@model List<ResultProductCategoryDto>
 
-
-
-
 <script>
     $(document).ready(function () {
         $('.dropdown-toggle').mouseenter(function () {
@@ -24,7 +21,7 @@
             </a>
         </div>
     </div>
-    <div class="col-md-6 ">
+    <div class="col-md-5 ">
         <div class="s004 bg-transparent ">
             <div class="form legend">
                 <fieldset>
@@ -47,13 +44,15 @@
 
         </div>
     </div>
-    <div class="header__nav bg-transparent col-md-5 ">
+    <div class="header__nav bg-transparent col-md-6">
         <nav class="header__menu mobile-menu ">
             <ul>
-
-                <li><a href="/Account/SignUp"><i class="fa fa-cart-plus"></i> Sepetim</a></li>
-                <li><a href="/Account/SignUp"> Üye Ol</a></li>
-                <li><a href="/Account/SignIn"><i class="fa fa-right-to-bracket"></i> Giriş Yap</a></li>
+                <li class="@(ViewBag.ActivePage == "Animeler" ? "active" : "")"><a href="/Animeler/Index/"><i class="fa fa-home"></i> Anasayfa</a></li>
+                <li><a href="/Basket"><i class="fa fa-cart-plus"></i> Sepetim</a></li>
+                <li><a href="/Account/SignUp"><i class="fa fa-user-plus"></i> Üye Ol</a></li>
+                <li><a href="/Account/SignIn"><i class="fa fa-user-circle"></i> Giriş Yap</a></li>
+                <li><a href="/Contact"><i class="fa fa-address-book"></i> İletişim</a></li>
+              
 
             </ul>
         </nav>
@@ -62,7 +61,7 @@
     <div class="header__nav bg-transparent col-md-12 container d-flex justify-content-start">
         <nav class="header__menu mobile-menu ">
             <ul>
-                <li class="@(ViewBag.ActivePage == "Animeler" ? "active" : "")"><a href="/Animeler/Index/">Anasayfa</a></li>
+              
 
                 @foreach (var item in Model)
                 {
@@ -106,7 +105,7 @@
 </div>
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <script>
     $(document).ready(function () {
         $('.dropdown-toggle').click(function () {
