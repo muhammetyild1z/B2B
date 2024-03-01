@@ -1,62 +1,91 @@
 ﻿@model List<ResultProductDto>
 
 
-
-
-
-
-
+<style>
+    .basketAdd {
+        display: none;
+    }
+    .item:hover .basketAdd {
+        display: block;
+    }
+    .product__item__pic:hover {
+        transition: transform 0.3s ease;
+        transform: scale(1.2);
+        overflow: hidden;
+    }
+</style>
 
 <div class="row mt-5">
     <div class="col-lg-11 col-md-8 col-sm-8 mobile__slider__nav_newEpisode">
         <div class="section-title">
-            <h4><i class="fa fa-upload"> </i>&nbsp;Urun Slider 1</h4>
+            <h4><i class="fa fa-upload"> </i>&nbsp;Urun Slider 2</h4>
         </div>
-
     </div>
-
     <div class="carousel-wrap">
-        <div class="owl-carousel owl-3">
+        <div class="owl-carousel owl-2">
             @foreach (var item in Model)
             {
-                <a href="#">
+                <div class="item row">
+                    <a href="/product/productDetails?productID=@item.Product_ID">
+                        <div class="product__item__pic set-bg" data-setbg="@item.ProductImage">
+                            <div class="ep">
+                                <i class="icon-heart-o"></i>
+                                <i class="icon-heart ep_hover"></i>
+                            </div>
+                            <button class="basketAdd btn btn-sm btn-danger " style="position:absolute; bottom:2px; min-width:100%">
+                                Sepete Ekle
+                                <i class="icon-shopping_basket"> </i>
+                            </button>
+                        </div>
+                    </a>
+                    <div class="product__item__text">
+                        <ul>
+                            @if (item.ProductName.Length > 22)
+                            {
+                                <h5>
+                                    @Html.ActionLink(@item.ProductName.Substring(0, 22), "productDetails", "product"
+                                             , new { productID = item.Product_ID }) ..
+                                </h5>
+                            }
+                            else
+                            {
+                                <h5>
+                                    @Html.ActionLink(@item.ProductName, "productDetails", "product"
+                                             , new { productID = item.Product_ID })
+                                </h5>
+                            }
+                            <h5 class="text-white font-weight-bold">@item.ProductPrice ₺</h5>
+                        </ul>
 
-                    <div class="product__item__pic set-bg" data-setbg="@item.ProductImage">
-                        @*   <div class="ep fa fa-calendar">&nbsp;@item.EpisodeCreateDate.ToString("dd MMMM", trCulture)</div> *@
-                        @*<div class="comment col-md-6"><i class="fa fa-calendar"></i> @item.BolumCreateDate.ToString("dd-MMMM")</div>*@
-                        @*   <div class="comment"><i class="fa fa-comments"></i> @item.animeler.</div>*@
-
-                        @*    <div class="comment col-md-11 opacity-50"><i class="fa fa-tv"></i>&nbsp;@item.Sezon .Sezon @item.Episode .Bölüm</div> *@
                     </div>
-                </a>
+                </div>
             }
-
 
         </div>
     </div>
-    </div>
+</div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
- 
-    <script>
-        $('.owl-3').owlCarousel({
-            loop: true,
-            margin: 10,
-            nav: true,
-          
-            autoplay: true,
-            autoplayHoverPause: true,
-            responsive: {
-                0: {
-                    items: 1
-                },
-                600: {
-                    items: 3
-                },
-                1000: {
-                    items: 5
-                }
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script>
+    $('.owl-2').owlCarousel({
+        loop: true,
+        margin: 30,
+        nav: true,
+
+        autoplay: true,
+        autoplayHoverPause: true,
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 3
+            },
+            1000: {
+                items: 6
             }
-        })
-    </script>
+        }
+    })
+</script>

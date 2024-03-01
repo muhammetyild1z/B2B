@@ -619,17 +619,18 @@ body {
 .notification-list .notification-list_content .notification-list_img img {
     margin-top: 40px !important;
     max-width: 130%; /* Ensures image doesn't exceed its parent container */
-    max-height:150px;
+    max-height: 150px;
     margin-right: 20px;
 }
+
 .mobile__search__menu {
     display: none;
 }
 
 @media (max-width: 768px) {
 
-    #myIframe{
-        height:250px;
+    #myIframe {
+        height: 250px;
     }
 
 
@@ -638,8 +639,8 @@ body {
         margin-left: 10px;
     }
 
-    .mobile__search__content{
-        max-width:70px;
+    .mobile__search__content {
+        max-width: 70px;
     }
 
     .user__fav__mobile {
@@ -649,6 +650,7 @@ body {
     .site-btn {
         min-width: 100%;
     }
+
     .reg-btn {
         text-align: center;
         min-width: 100%;
@@ -661,6 +663,7 @@ body {
     .slicknav_menutxt {
         display: none !important;
     }
+
     .product.spad.mobile__fav__section {
         min-width: 100%;
         margin: 0 !important;
@@ -672,9 +675,11 @@ body {
         text-overflow: ellipsis;
         white-space: nowrap;
     }
-    .product__item__text a{
-        font-size:10px;
+
+    .product__item__text a {
+        font-size: 10px;
     }
+
     .home__section {
         max-width: 80%;
         position: relative;
@@ -693,19 +698,23 @@ body {
         margin-top: -60px;
     }
 
-  
+
     .mobile__search__menu {
         display: block;
     }
+
     .custom__search__web {
         display: none;
     }
+
     .mobile__begenilen {
         margin-top: 20px;
     }
+
     .hero {
         margin-top: 15px;
     }
+
     .mobile__slider__text__card {
         display: none;
     }
@@ -747,7 +756,7 @@ body {
     }
 
     .notification-list_button {
-        max-width:20px;
+        max-width: 20px;
         flex: 0 0 30%; /* Butonun tam genişlikte olmasını sağla */
         margin-top: 50px;
         margin-bottom: 10px; /* Buton ile içerik arasına boşluk ekle */
@@ -1507,6 +1516,7 @@ ol {
     position: relative;
     border-radius: 5px;
 }
+
 .product__item__pic__watchLater {
     /*width: 300px !important;*/
     height: 150px !important;
@@ -1514,41 +1524,69 @@ ol {
     border-radius: 5px !important;
 }
 
-    .product__item__pic .ep {
-        font-size: 13px;
-        color: #ffffff;
-        background: #e53637;
-        display: inline-block;
-        padding: 2px 12px;
-        border-radius: 4px;
-        position: absolute;
-        left: 10px;
-        top: 10px;
-    }
+.product__item__pic .ep_hover {
+    font-size: 13px;
+    color: #ffffff;
+    background: #e53637;
+    display: none;
+    padding: 2px 12px;
+    border-radius: 4px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
 
-    .product__item__pic .comment {
-        font-size: 13px;
-        color: #ffffff;
-        background: #3d3d3d;
-        display: inline-block;
-        padding: 2px 10px;
-        border-radius: 4px;
-        position: absolute;
-        left: 10px;
-        bottom: 10px;
-    }
+.product__item__pic .ep {
+    font-size: 13px;
+    color: #ffffff;
+    background: #e53637;
+    display: block;
+    padding: 2px 12px;
+    border-radius: 4px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
 
-    .product__item__pic .view {
-        font-size: 13px;
-        color: #ffffff;
-        background: #3d3d3d;
-        display: inline-block;
-        padding: 2px 10px;
-        border-radius: 4px;
-        position: absolute;
-        right: 10px;
-        bottom: 10px;
-    }
+.icon-heart-o {
+    display: block; /* Boş kalp başlangıçta görünecek */
+}
+
+.icon-heart {
+    display: none; /* Dolu kalp başlangıçta gizlenecek */
+}
+
+.ep:hover .icon-heart-o {
+    display: none; /* Boş kalp, fare üzerine gelince gizlenecek */
+}
+
+.ep:hover .icon-heart {
+    display: block; /* Dolu kalp, fare üzerine gelince görünecek */
+}
+
+.product__item__pic .comment {
+    font-size: 13px;
+    color: #ffffff;
+    background: #3d3d3d;
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 4px;
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+}
+
+.product__item__pic .view {
+    font-size: 13px;
+    color: #ffffff;
+    background: #3d3d3d;
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 4px;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
 
 .product__item__text {
     padding-top: 15px;
@@ -2129,7 +2167,6 @@ ol {
         }
 
 .anime__details__episodes {
-
     margin-bottom: 35px;
 }
 
@@ -2797,12 +2834,12 @@ ol {
 -----------------------*/
 
 .footer {
-   /* position:absolute;
+    /* position:absolute;
     bottom:0;*/
     background: black;
     padding-top: 60px;
     padding-bottom: 40px;
-  /*  position: relative;*/
+    /*  position: relative;*/
     width: 100%;
     z-index: 1000;
 }

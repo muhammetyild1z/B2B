@@ -9,7 +9,7 @@ namespace B2B.API.Dtos.ProductDtos
         public decimal ProductPrice { get; set; }
         public string ProductName { get; set; }
         public string ProductDescription { get; set; }
-      
+        public int Product_ID { get; set; }
         public string ProductImage { get; set; }
     }
 }

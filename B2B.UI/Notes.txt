@@ -1,1 +1,1 @@
-// sliderler bitince iletisim sayfasini yaz
+// her halinin 1 koleksiyonu olur vt ayarla

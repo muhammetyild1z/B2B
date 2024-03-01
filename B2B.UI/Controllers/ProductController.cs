@@ -8,5 +8,10 @@ namespace B2B.UI.Controllers
         {
             return View();
         }
+     
+        public IActionResult ProductDetails(int productID)
+        {
+            return View();
+        }
     }
 }

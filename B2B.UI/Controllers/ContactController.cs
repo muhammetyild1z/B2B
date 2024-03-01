@@ -6,6 +6,7 @@ using FluentValidation;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Text;
 
 
 namespace B2B.UI.Controllers
@@ -44,8 +45,8 @@ namespace B2B.UI.Controllers
                 return BadRequest(ModelState);
             }
             var jsonData = JsonConvert.SerializeObject(createContactMailRequestDto);
-            StringContent stringContent = new StringContent(jsonData);
-            //type hatasu var
+            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+         
             HttpResponseMessage responseMessage = await _httpClient.PostAsync("CreateContactMailRequest", stringContent);
             if (responseMessage.IsSuccessStatusCode)
             {
