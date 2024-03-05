@@ -50,15 +50,32 @@ namespace B2B.DataAccessLayer.Concrate
         public DbSet<ParentSubCategory> parentSubCategories { get; set; }
         public DbSet<ChildSubCategory> childSubCategories { get; set; }
         public DbSet<ProductCategory> productCategories { get; set; }
+        public DbSet<Color> colors { get; set; }
         public DbSet<ProductColor> productColors { get; set; }
         public DbSet<Basket> baskets { get; set; }
         public DbSet<HomeSlider> homeSliders { get; set; }
         public DbSet<Contact> contacts { get; set; }
         public DbSet<ContactMailRequest> contactMailRequests { get; set; }
+        public DbSet<Productdimensions> productdimensions { get; set; }
+        public DbSet<ProductStock> productStocks { get; set; }
+        public DbSet<Dimensions> dimensions { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Dimensions>().HasKey(x => x.DimensionsID);
+
+
+            modelBuilder.Entity<Productdimensions>().HasKey(x => x.ProductdimensionsID);
+            modelBuilder.Entity<Productdimensions>().HasOne(x => x.product).WithMany().HasForeignKey(x => x.ProductID); 
+            modelBuilder.Entity<Productdimensions>().HasOne(x => x.dimensions).WithMany().HasForeignKey(x => x.DimensionsID); 
+            
+            modelBuilder.Entity<ProductStock>().HasKey(x => new { x.ProductStockID,x.ProductID });
+            modelBuilder.Entity<ProductStock>().HasOne(x => x.product).WithMany().HasForeignKey(x => x.ProductID);
+
+            modelBuilder.Entity<ProductColor>().HasKey(x => x.ProductColorID);
+            modelBuilder.Entity<ProductColor>().HasOne(x => x.product).WithMany().HasForeignKey(x=>x.productID).OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.Entity<ProductColor>().HasOne(x => x.color).WithMany().HasForeignKey(x=>x.ColorID).OnDelete(DeleteBehavior.Restrict);
             modelBuilder.Entity<Contact>().HasKey(x => x.ContactID);
 
             modelBuilder.Entity<ContactMailRequest>().HasKey(x => x.ContactMailRequestID);
@@ -70,8 +87,8 @@ namespace B2B.DataAccessLayer.Concrate
             modelBuilder.Entity<Basket>().HasOne(x => x.product).WithMany().HasForeignKey(x => x.ProductID);
             modelBuilder.Entity<Basket>().HasOne(x => x.appUser).WithMany().HasForeignKey(x => x.UserID);
 
-            modelBuilder.Entity<ProductColor>().HasKey(x => x.ProductColorID);
-            modelBuilder.Entity<ProductColor>().HasOne(x => x.product).WithMany().HasForeignKey(x => x.ProductID);
+            modelBuilder.Entity<Color>().HasKey(x => x.ColorID);
+          //  modelBuilder.Entity<Color>().HasOne(x => x.product).WithMany().HasForeignKey(x => x.ProductID);
 
             modelBuilder.Entity<Product>().HasKey(x => x.Product_ID);
             modelBuilder.Entity<Category>().HasKey(x => x.CategoryID);

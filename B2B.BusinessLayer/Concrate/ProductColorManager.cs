@@ -39,6 +39,11 @@ namespace B2B.BusinessLayer.Concrate
             return _productColor.GetProductColorByID(id);
         }
 
+        public List<ProductColor> TGetProductColorInclude()
+        {
+            return _productColor.GetProductColorInclude();
+        }
+
         public async Task<OperationResult> TInsertAsync(ProductColor entity)
         {
             return await _productColor.InsertAsync(entity);

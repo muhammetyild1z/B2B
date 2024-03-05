@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace B2B.DataAccessLayer.Migrations
 {
     [DbContext(typeof(B2B_Context))]
-    [Migration("20240227104346_sdsjdddd")]
-    partial class sdsjdddd
+    [Migration("20240304085544_akdejdei")]
+    partial class akdejdei
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -103,6 +103,95 @@ namespace B2B.DataAccessLayer.Migrations
                     b.ToTable("childSubCategories");
                 });
 
+            modelBuilder.Entity("B2B.EntityLayer.Concrate.Color", b =>
+                {
+                    b.Property<int>("ColorID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ColorID"));
+
+                    b.Property<string>("ColorCode")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
+                    b.HasKey("ColorID");
+
+                    b.ToTable("colors");
+                });
+
+            modelBuilder.Entity("B2B.EntityLayer.Concrate.Contact", b =>
+                {
+                    b.Property<int>("ContactID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ContactID"));
+
+                    b.Property<string>("ContactAdress")
+                        .IsRequired()
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
+
+                    b.Property<string>("ContactDesc")
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
+
+                    b.Property<string>("ContactMail1")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("ContactPhone1")
+                        .IsRequired()
+                        .HasMaxLength(11)
+                        .HasColumnType("nvarchar(11)");
+
+                    b.HasKey("ContactID");
+
+                    b.ToTable("contacts");
+                });
+
+            modelBuilder.Entity("B2B.EntityLayer.Concrate.ContactMailRequest", b =>
+                {
+                    b.Property<int>("ContactMailRequestID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ContactMailRequestID"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasMaxLength(11)
+                        .HasColumnType("nvarchar(11)");
+
+                    b.HasKey("ContactMailRequestID");
+
+                    b.ToTable("contactMailRequests");
+                });
+
             modelBuilder.Entity("B2B.EntityLayer.Concrate.HomeSlider", b =>
                 {
                     b.Property<int>("SliderID")
@@ -179,11 +268,23 @@ namespace B2B.DataAccessLayer.Migrations
 
                     b.Property<string>("ProductDescription")
                         .IsRequired()
-                        .HasMaxLength(300)
-                        .HasColumnType("nvarchar(300)");
+                        .HasMaxLength(600)
+                        .HasColumnType("nvarchar(600)");
 
                     b.Property<string>("ProductImage")
                         .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("ProductImage1")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("ProductImage2")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("ProductImage3")
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
@@ -244,23 +345,23 @@ namespace B2B.DataAccessLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductColorID"));
 
-                    b.Property<string>("ColorCode")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                    b.Property<int>("ColorID")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("ProductID")
-                        .HasColumnType("int");
-
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
+                    b.Property<int>("productID")
+                        .HasColumnType("int");
+
                     b.HasKey("ProductColorID");
 
-                    b.HasIndex("ProductID");
+                    b.HasIndex("ColorID");
+
+                    b.HasIndex("productID");
 
                     b.ToTable("productColors");
                 });
@@ -553,11 +654,19 @@ namespace B2B.DataAccessLayer.Migrations
 
             modelBuilder.Entity("B2B.EntityLayer.Concrate.ProductColor", b =>
                 {
+                    b.HasOne("B2B.EntityLayer.Concrate.Color", "color")
+                        .WithMany()
+                        .HasForeignKey("ColorID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.HasOne("B2B.EntityLayer.Concrate.Product", "product")
                         .WithMany()
-                        .HasForeignKey("ProductID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasForeignKey("productID")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.Navigation("color");
 
                     b.Navigation("product");
                 });

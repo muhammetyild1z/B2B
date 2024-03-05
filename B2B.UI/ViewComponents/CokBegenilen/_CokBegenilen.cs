@@ -1,18 +1,17 @@
 ﻿using B2B.UI.DtosUI.ProductDtos;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Net.Http;
 
 namespace B2B.UI.ViewComponents.CokBegenilen
 {
     public class _CokBegenilen:ViewComponent
     {
         private readonly HttpClient _httpClient;
-        public _CokBegenilen()
-        {
-            _httpClient = new HttpClient();
-            _httpClient.BaseAddress = new Uri("https://localhost:7268/api/Product/");
-            _httpClient.DefaultRequestHeaders.Clear();
 
+        public _CokBegenilen(IHttpClientFactory httpClientFactory)
+        {
+            _httpClient = httpClientFactory.CreateClient("Product");
         }
         public async Task<IViewComponentResult> InvokeAsync()
         {

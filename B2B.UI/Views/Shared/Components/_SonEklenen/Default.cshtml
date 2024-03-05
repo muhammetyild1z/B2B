@@ -1,66 +1,46 @@
 ﻿@model List<ResultProductDto>
 
 
-<style>
-    .basketAdd {
-        display: none;
-    }
-
-    .item:hover .basketAdd {
-        display: block;
-    }
-
-    .product__item__pic:hover {
-        transition: transform 0.3s ease;
-        transform: scale(1.2);
-        overflow: hidden;
-    }
-
-</style>
 
 <div class="row mt-5">
     <div class="col-lg-11 col-md-8 col-sm-8 mobile__slider__nav_newEpisode">
         <div class="section-title">
-            <h4><i class="fa fa-upload"> </i>&nbsp;Urun Slider 1</h4>
+            <h4><i class="fa fa-upload"> </i>&nbsp;Son Eklenenler</h4>
         </div>
-
     </div>
-
     <div class="carousel-wrap">
         <div class="owl-carousel owl-1">
             @foreach (var item in Model)
             {
-                <div class="item row">
-                    <a href="#">
+                <div class="item">
 
-                        <div class="product__item__pic set-bg" data-setbg="@item.ProductImage">
+
+                    <a href="/product/productDetails?productID=@item.Product_ID">
+                        <div class="product__item__pic set-bg col-md-12" data-setbg="@item.ProductImage">
                             <div class="ep">
                                 <i class="icon-heart-o"></i>
                                 <i class="icon-heart ep_hover"></i>
                             </div>
-                            <button class="basketAdd btn btn-sm btn-danger " style="position:absolute; bottom:2px; min-width:100%" >
+                            <button class="basketAdd btn btn-sm btn-danger" data-product-id="@item.Product_ID">
                                 Sepete Ekle
                                 <i class="icon-shopping_basket"> </i>
                             </button>
-
                         </div>
-
                     </a>
-                    <div class="product__item__text">
+                    <div class="product__item__text pl-4">
                         <ul>
                             @if (item.ProductName.Length > 22)
                             {
                                 <h5>
-                                    @Html.ActionLink(@item.ProductName.Substring(0, 22), "Izle", "AnimeIzle")
-                                    @*   , new { AnimeID_Sezon = item.AnimeID, animeSezonsAndEpisodeID = item.AnimeSezonsAndEpisodeID, sezon = item.Sezon }) .. *@
-
+                                    @Html.ActionLink(@item.ProductName.Substring(0, 22), "productDetails", "product"
+                                             , new { productID = item.Product_ID }) ..
                                 </h5>
                             }
                             else
                             {
                                 <h5>
-                                    @Html.ActionLink(@item.ProductName, "Izle", "AnimeIzle")
-                                    @*   ,new { AnimeID_Sezon = item.AnimeID, animeSezonsAndEpisodeID = item.AnimeSezonsAndEpisodeID, sezon = item.Sezon }) *@
+                                    @Html.ActionLink(@item.ProductName, "productDetails", "product"
+                                             , new { productID = item.Product_ID })
                                 </h5>
                             }
                             <h5 class="text-white font-weight-bold">@item.ProductPrice ₺</h5>
@@ -70,14 +50,17 @@
                 </div>
             }
 
-
         </div>
     </div>
 </div>
 
 
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 <script>
+
+  
     $('.owl-1').owlCarousel({
         loop: true,
         margin: 30,

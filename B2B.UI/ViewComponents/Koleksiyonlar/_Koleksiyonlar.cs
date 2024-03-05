@@ -8,11 +8,9 @@ namespace B2B.UI.ViewComponents.Koleksiyonlar
     {
         private readonly HttpClient _httpClient;
 
-        public _Koleksiyonlar()
+        public _Koleksiyonlar(IHttpClientFactory httpClientFactory)
         {
-            _httpClient = new HttpClient();
-            _httpClient.BaseAddress = new Uri("https://localhost:7268/api/Product/");
-            _httpClient.DefaultRequestHeaders.Clear();
+            _httpClient = httpClientFactory.CreateClient("Product");
         }
         public async Task<IViewComponentResult> InvokeAsync()
         {

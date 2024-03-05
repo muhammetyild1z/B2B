@@ -22,19 +22,37 @@ namespace B2B.API.Controllers
         [HttpGet("AllGetProduct")]
         public IActionResult AllGetProduct()
         {
-            var products= _productService.TGetList();
+            var products = _productService.TGetList();
             return Ok(_mapper.Map<List<ResultProductDto>>(products));
+        } 
+
+        [HttpGet("GetByIdProduct/{productID}")]
+        public IActionResult GetByIdProduct(int productID)
+        {
+            if (productID != 0)
+            {
+                var product = _productService.TGetByID(productID);
+                if (product != null)
+                {
+                    return Ok(product);
+                }
+
+                return BadRequest();
+
+            }
+            return NotFound();
+
         }
 
         [HttpPost("CreateProduct")]
-        public async Task <IActionResult> CreateProduct(CreateProductDto createProductDto)
+        public async Task<IActionResult> CreateProduct(CreateProductDto createProductDto)
         {
-            if (createProductDto!=null)
+            if (createProductDto != null)
             {
-                createProductDto.CreateDate= DateTime.Now;
+                createProductDto.CreateDate = DateTime.Now;
                 createProductDto.Status = false;
-            
-                var result= _productService.TInsertAsync(_mapper.Map<Product>(createProductDto));
+
+                var result = _productService.TInsertAsync(_mapper.Map<Product>(createProductDto));
                 if (result.IsCompleted)
                 {
                     return Ok();
@@ -50,10 +68,10 @@ namespace B2B.API.Controllers
         [HttpDelete("DeleteProduct/{id}")]
         public IActionResult DeleteProduct(int id)
         {
-            if (id!=0)
+            if (id != 0)
             {
                 var removedProduct = _productService.TGetProductByID(id);
-                if (removedProduct!=null)
+                if (removedProduct != null)
                 {
                     _productService.TDelete(removedProduct);
                     return Ok();
@@ -69,12 +87,12 @@ namespace B2B.API.Controllers
         [HttpPut("UpdateProduct")]
         public async Task<IActionResult> UpdateProduct(UpdateProductDto updateProductDto)
         {
-            if (updateProductDto!=null)
+            if (updateProductDto != null)
             {
-                var unchangedProduct= _productService.TGetByID(updateProductDto.Product_ID);
-                if (unchangedProduct!=null)
+                var unchangedProduct = _productService.TGetByID(updateProductDto.Product_ID);
+                if (unchangedProduct != null)
                 {
-                    var result = _productService.TUpdateAsync(_mapper.Map<Product>(updateProductDto),unchangedProduct);
+                    var result = _productService.TUpdateAsync(_mapper.Map<Product>(updateProductDto), unchangedProduct);
                     if (result.IsCompleted)
                     {
                         return Ok();
@@ -87,5 +105,7 @@ namespace B2B.API.Controllers
             }
             return NotFound();
         }
+
+        
     }
 }

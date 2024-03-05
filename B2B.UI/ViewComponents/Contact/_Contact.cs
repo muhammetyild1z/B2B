@@ -6,12 +6,11 @@ namespace B2B.UI.ViewComponents.Contact
 {
     public class _Contact : ViewComponent
     {
-        private readonly HttpClient _httpClient;
-        public _Contact()
+     
+         private readonly HttpClient _httpClient;
+        public _Contact(IHttpClientFactory httpClientFactory)
         {
-            _httpClient = new HttpClient();
-            _httpClient.BaseAddress = new Uri("https://localhost:7268/api/Contact/");
-            _httpClient.DefaultRequestHeaders.Clear();
+            _httpClient = httpClientFactory.CreateClient("Contact");
         }
 
         public async Task<IViewComponentResult> InvokeAsync()

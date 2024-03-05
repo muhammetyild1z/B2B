@@ -22,11 +22,11 @@ namespace B2B.BusinessLayer.FluentValidation
            .MaximumLength(100).WithMessage("Mail Kismi En Fazla 100 karakter Olabilir!")
            .MinimumLength(10).WithMessage("Mail Kismi En Az 10 karakter Olabilir!");
 
-            RuleFor(x => x.ContactMail2)
+           // RuleFor(x => x.ContactMail2)
 
-               .EmailAddress().WithMessage("Mail Tipini Kontrol Edin!")
-           .MaximumLength(100).WithMessage("Mail Kismi En Fazla 100 karakter Olabilir!")
-           .MinimumLength(10).WithMessage("Mail Kismi En Az 10 karakter Olabilir!");
+           //    .EmailAddress().WithMessage("Mail Tipini Kontrol Edin!")
+           //.MaximumLength(100).WithMessage("Mail Kismi En Fazla 100 karakter Olabilir!")
+           //.MinimumLength(10).WithMessage("Mail Kismi En Az 10 karakter Olabilir!");
 
 
             RuleFor(x => x.ContactAdress)
@@ -39,10 +39,10 @@ namespace B2B.BusinessLayer.FluentValidation
             .Length(11).WithMessage("Telefon Numaranizi 11 Hane Olarak Girin")
              .Matches(@"[0-9]+").WithMessage("Telefon 1 numarası sadece rakam içermelidir.");
 
-            RuleFor(x => x.ContactPhone2)
+          //  RuleFor(x => x.ContactPhone2)
 
-          .Length(11).WithMessage("Telefon Numaranizi 11 Hane Olarak Girin")
-           .Matches(@"[0-9]+").WithMessage("Telefon 2 numarası sadece rakam içermelidir.");
+          //.Length(11).WithMessage("Telefon Numaranizi 11 Hane Olarak Girin")
+          // .Matches(@"[0-9]+").WithMessage("Telefon 2 numarası sadece rakam içermelidir.");
 
 
         }

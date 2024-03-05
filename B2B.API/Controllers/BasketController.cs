@@ -75,7 +75,7 @@ namespace B2B.API.Controllers
             if (createBasketDto.UserID!=null)
             {
                 createBasketDto.CreateDate = DateTime.Now;
-                createBasketDto.Status = false;
+                createBasketDto.Status = true;
               var result=   _basketService.TInsertAsync(_mapper.Map<Basket>(createBasketDto));
                 if (result.IsCompleted)
                 {

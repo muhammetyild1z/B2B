@@ -1,12 +1,37 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{1A91247A-2B86-4B48-9904-C8F99FA2A1C8}|B2B.UI\\B2B.UI.csproj|c:\\users\\muham\\onedrive\\belgeler\\github\\b2b\\b2b.ui\\views\\product\\productdetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1A91247A-2B86-4B48-9904-C8F99FA2A1C8}|B2B.UI\\B2B.UI.csproj|solutionrelative:b2b.ui\\views\\product\\productdetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ProductDetails.cshtml",
+              "DocumentMoniker": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\Views\\Product\\ProductDetails.cshtml",
+              "RelativeDocumentMoniker": "B2B.UI\\Views\\Product\\ProductDetails.cshtml",
+              "ToolTip": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\Views\\Product\\ProductDetails.cshtml",
+              "RelativeToolTip": "B2B.UI\\Views\\Product\\ProductDetails.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAIkCAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-05T14:24:45.568Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

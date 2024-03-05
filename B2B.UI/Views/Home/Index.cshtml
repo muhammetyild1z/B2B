@@ -15,3 +15,36 @@
         </div>
     </div>
 </section>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script>
+
+    $(".basketAdd").on("click", function (e) {
+        e.preventDefault();
+        var productID = $(this).attr("data-product-id");
+
+        $.post("/Basket/BasketAdd/" + productID)
+            .done(function (data) {
+                toastr.success('Sepete Eklendi!', { position: "toast-top-end", timeOut: 1000 });
+                updatePageContent();
+            })
+            .fail(function (xhr, status, error) {
+
+                if (xhr.status == 404) {
+                    toastr.error('Beklenmeyen bir hata oluştu!', { position: "toast-top-end" });
+                }
+                if (xhr.status == 401) {
+                    toastr.warning('İşlemi Yapmak İçin Giriş Yapmalısın!', { position: "toast-top-end" });
+                }
+                if (xhr.status == 400) {
+                    toastr.warning('Bu Anime Favori Listenden Daha Önce Kaldırılmış!', { position: "toast-top-end" });
+                }
+            });
+    });
+
+    function updatePageContent() {
+        // Sepet içeriğini güncellemek için gerekli kodlar buraya eklenecek
+    }
+    </script>

@@ -45,6 +45,12 @@ builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 
 
+builder.Services.AddScoped<IProductStockDAL, efProductStockRepository>();
+builder.Services.AddScoped<IProductStockService, ProductStockManager>();
+
+builder.Services.AddScoped<IProductDimensionsDAL, efProductdimensionsRepository>();
+builder.Services.AddScoped<IProductdimensionsService, ProductdimensionsManager>();
+
 builder.Services.AddScoped<IContactDal, efContactRepository>();
 builder.Services.AddScoped<IContactService, ContactManager>();
 
@@ -53,6 +59,10 @@ builder.Services.AddScoped<IContactMailRequestService, ContactMailRequestManager
 
 builder.Services.AddScoped<IBasketDAL, efBasketRepository>();
 builder.Services.AddScoped<IBasketService, BasketManager>();
+
+builder.Services.AddScoped<IColorDal, efColorRepository>();
+builder.Services.AddScoped<IColorService, IColorManager>();
+
 
 builder.Services.AddScoped<ICategoryDAL, efCategoryRepository>();
 builder.Services.AddScoped<ICategoryService, CategoryManager>();

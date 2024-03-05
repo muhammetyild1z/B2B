@@ -2,6 +2,7 @@
 using B2B.DataAccessLayer.Concrate;
 using B2B.DataAccessLayer.Repositories;
 using B2B.EntityLayer.Concrate;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,10 +19,22 @@ namespace B2B.DataAccessLayer.EntityFramework
             _context = context;
         }
 
+      
+
         public ProductColor GetProductColorByID(int id)
         {
-            var productColor = _context.productColors.Where(x=>x.ProductColorID == id).FirstOrDefault();
-            return productColor;
+            var productColor = _context.productColors.Where(x => x.productID == id).FirstOrDefault();
+            if (productColor != null)
+            {
+                return productColor;
+            }
+            return null;
+
+        }
+
+        public List<ProductColor> GetProductColorInclude()
+        {
+            return _context.productColors.Include(x => x.color).ToList();
         }
     }
 }

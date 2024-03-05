@@ -28,6 +28,25 @@ body {
 
 
 
+.basketAdd {
+    position: absolute;
+    bottom: 20px;
+
+    left: 45px;
+    display: none;
+}
+
+.item:hover .basketAdd {
+    display: block;
+}
+
+.product__item__pic:hover {
+    transition: transform 0.3s ease;
+    transform: scale(1.2);
+    overflow: hidden;
+}
+
+
 .mega-menu {
     /*width: 600px;*/ /* Mega menü genişliği */
     /*padding: 20px;*/ /* Mega menü içerik içeriği */
@@ -628,6 +647,20 @@ body {
 }
 
 @media (max-width: 768px) {
+
+    .basketAdd {
+        position: absolute;
+        bottom: 2px;
+        min-width: 60%;
+        left: 60px;
+        display: block !important;
+    }
+
+    .ep {
+     
+        display: block;
+      
+    }
 
     #myIframe {
         height: 250px;
@@ -1425,6 +1458,7 @@ ol {
 
 @media (max-width: 768px) {
     .product__item__pic {
+        background-size:contain;
         height: 300px !important;
     }
 
@@ -1512,6 +1546,7 @@ ol {
 }
 
 .product__item__pic {
+    background-size: contain;
     height: 325px;
     position: relative;
     border-radius: 5px;
@@ -1524,29 +1559,21 @@ ol {
     border-radius: 5px !important;
 }
 
-.product__item__pic .ep_hover {
-    font-size: 13px;
-    color: #ffffff;
-    background: #e53637;
-    display: none;
-    padding: 2px 12px;
-    border-radius: 4px;
-    position: absolute;
-    right: 10px;
-    top: 10px;
-}
+
+
 
 .product__item__pic .ep {
     font-size: 13px;
     color: #ffffff;
     background: #e53637;
     display: block;
-    padding: 2px 12px;
+    padding: 5px 10px;
     border-radius: 4px;
     position: absolute;
-    right: 10px;
-    top: 10px;
+    right:5px;
+    top: 25px;
 }
+
 
 .icon-heart-o {
     display: block; /* Boş kalp başlangıçta görünecek */
@@ -1844,6 +1871,12 @@ ol {
     .anime__details__pic {
         height: 500px !important;
     }
+
+
+    .icon-heart-o {
+        display: block !important; /* Boş kalp başlangıçta görünecek */
+    }
+
 }
 
 .anime-details {

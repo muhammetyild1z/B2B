@@ -29,7 +29,7 @@
                     <div class="col-lg-6">
                         <div class="hero__text align-items-center">
                             <div class="label">@item.SliderTitle</div>
-                            <h2>@item.product.ProductDescription</h2>
+                            <h2>@item.SliderDescription.Substring(0,20)</h2>
                             <!-- Your additional content can go here -->
                             <!-- Example: -->
                           
@@ -41,7 +41,7 @@
                         </div>
                     </div>
                 </div>
-                <img src="@item.product.ProductImage" />
+                <img src="@item.SliderImg" />
             </div>
         }
     </div>

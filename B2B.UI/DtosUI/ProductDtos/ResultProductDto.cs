@@ -12,5 +12,11 @@ namespace B2B.UI.DtosUI.ProductDtos
         public string ProductDescription { get; set; }
         
         public string ProductImage { get; set; }
+
+        public string? ProductImage1 { get; set; }
+
+        public string? ProductImage2 { get; set; }
+
+        public string? ProductImage3 { get; set; }
     }
 }

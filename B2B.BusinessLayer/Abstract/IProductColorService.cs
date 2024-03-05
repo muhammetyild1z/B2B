@@ -10,5 +10,6 @@ namespace B2B.BusinessLayer.Abstract
     public interface IProductColorService:IGenericService<ProductColor>
     {
         ProductColor TGetProductColorByID(int id);
+        List<ProductColor> TGetProductColorInclude();
     }
 }

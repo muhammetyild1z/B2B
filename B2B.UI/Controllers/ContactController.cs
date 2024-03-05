@@ -14,15 +14,14 @@ namespace B2B.UI.Controllers
     public class ContactController : Controller
     {
         private readonly HttpClient _httpClient;
-       
-
-        public ContactController()
+     
+        public ContactController(IHttpClientFactory httpClientFactory)
         {
-            _httpClient = new HttpClient();
-            _httpClient.BaseAddress = new Uri("https://localhost:7268/api/ContactMailRequest/");
-            _httpClient.DefaultRequestHeaders.Clear();
-            _httpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+            _httpClient = httpClientFactory.CreateClient("ContactMailRequest");
         }
+
+
+     
 
         public IActionResult Index()
         {

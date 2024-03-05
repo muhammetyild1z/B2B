@@ -8,9 +8,7 @@ namespace B2B.API.Mapping
     {
         public ProductColorMapping()
         {
-                CreateMap<ProductColor,CreateProductColorDto>().ReverseMap();
-                CreateMap<ProductColor,UpdateProductColorDto>().ReverseMap();
-                CreateMap<ProductColor,ResultProductColorDto>().ReverseMap();
+            CreateMap<ProductColor, ResultProductColorDto>().ReverseMap();
         }
     }
 }

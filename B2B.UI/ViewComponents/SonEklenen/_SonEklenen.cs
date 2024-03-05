@@ -8,11 +8,9 @@ namespace B2B.UI.ViewComponents.Slider1
     {
         private readonly HttpClient _httpClient;
 
-        public _SonEklenen()
+        public _SonEklenen(IHttpClientFactory httpClientFactory)
         {
-            _httpClient = new HttpClient();
-            _httpClient.BaseAddress = new Uri("https://localhost:7268/api/Product/");
-            _httpClient.DefaultRequestHeaders.Clear();
+            _httpClient = httpClientFactory.CreateClient("Product");
         }
         public async Task<IViewComponentResult> InvokeAsync()
         {
@@ -21,7 +19,7 @@ namespace B2B.UI.ViewComponents.Slider1
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
                 var sonEklenen= JsonConvert.DeserializeObject<List<ResultProductDto>>(jsonData);
-                return View(sonEklenen);
+                return View(sonEklenen.OrderByDescending(x=>x.CreateDate).ToList());
             }
             return View();
         }

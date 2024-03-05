@@ -1,1 +1,4 @@
-// her halinin 1 koleksiyonu olur vt ayarla
+// sepet view yap
+// ebat yap tablo ve detayda gostersin
+// login
+

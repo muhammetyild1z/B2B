@@ -10,10 +10,10 @@
 
         public string ContactPhone1 { get; set; }
 
-        public string? ContactPhone2 { get; set; }
+    //    public string? ContactPhone2 { get; set; }
 
         public string ContactMail1 { get; set; }
 
-        public string? ContactMail2 { get; set; }
+      //  public string? ContactMail2 { get; set; }
     }
 }

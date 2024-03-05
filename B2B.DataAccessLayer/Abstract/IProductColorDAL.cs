@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace B2B.DataAccessLayer.Abstract
 {
-    public interface IProductColorDAL:IGenericDal<ProductColor>
+    public interface IProductColorDAL : IGenericDal<ProductColor>
     {
         ProductColor GetProductColorByID(int id);
+        List<ProductColor> GetProductColorInclude();
     }
 }

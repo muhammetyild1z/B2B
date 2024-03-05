@@ -1,0 +1,9 @@
+﻿@model List<ResultDimensionsDto>
+
+
+@foreach (var item in Model)
+{
+    <button class="btn-sm btn btn-light">
+        @item.dimensions.En X @item.dimensions.Boy
+    </button>
+}

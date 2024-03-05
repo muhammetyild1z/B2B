@@ -16,12 +16,12 @@ namespace B2B.EntityLayer.Concrate
         public  string ContactAdress { get; set; }
         [MaxLength(11)]
         public  string ContactPhone1 { get; set; }
-        [MaxLength(11)]
-        public  string? ContactPhone2 { get; set; }
+     //   [MaxLength(11)]
+     //   public  string? ContactPhone2 { get; set; }
         [MaxLength(100)]
         public  string ContactMail1 { get; set; }
-        [MaxLength(100)]
-        public  string? ContactMail2 { get; set; }
+      //  [MaxLength(100)]
+      //  public  string? ContactMail2 { get; set; }
 
     }
 }

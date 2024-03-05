@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace B2B.DataAccessLayer.Migrations
 {
     [DbContext(typeof(B2B_Context))]
-    [Migration("20240229073747_sjdssa")]
-    partial class sjdssa
+    [Migration("20240304075713_sdajsda")]
+    partial class sdajsda
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -101,6 +101,30 @@ namespace B2B.DataAccessLayer.Migrations
                     b.HasKey("ChildSubCategoryID");
 
                     b.ToTable("childSubCategories");
+                });
+
+            modelBuilder.Entity("B2B.EntityLayer.Concrate.Color", b =>
+                {
+                    b.Property<int>("ColorID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ColorID"));
+
+                    b.Property<string>("ColorCode")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
+                    b.HasKey("ColorID");
+
+                    b.ToTable("colors");
                 });
 
             modelBuilder.Entity("B2B.EntityLayer.Concrate.Contact", b =>
@@ -252,11 +276,23 @@ namespace B2B.DataAccessLayer.Migrations
 
                     b.Property<string>("ProductDescription")
                         .IsRequired()
-                        .HasMaxLength(300)
-                        .HasColumnType("nvarchar(300)");
+                        .HasMaxLength(600)
+                        .HasColumnType("nvarchar(600)");
 
                     b.Property<string>("ProductImage")
                         .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("ProductImage1")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("ProductImage2")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("ProductImage3")
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
@@ -317,23 +353,23 @@ namespace B2B.DataAccessLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductColorID"));
 
-                    b.Property<string>("ColorCode")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                    b.Property<int>("ColorID")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("ProductID")
-                        .HasColumnType("int");
-
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
+                    b.Property<int>("productID")
+                        .HasColumnType("int");
+
                     b.HasKey("ProductColorID");
 
-                    b.HasIndex("ProductID");
+                    b.HasIndex("ColorID");
+
+                    b.HasIndex("productID");
 
                     b.ToTable("productColors");
                 });
@@ -626,11 +662,19 @@ namespace B2B.DataAccessLayer.Migrations
 
             modelBuilder.Entity("B2B.EntityLayer.Concrate.ProductColor", b =>
                 {
+                    b.HasOne("B2B.EntityLayer.Concrate.Color", "color")
+                        .WithMany()
+                        .HasForeignKey("ColorID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.HasOne("B2B.EntityLayer.Concrate.Product", "product")
                         .WithMany()
-                        .HasForeignKey("ProductID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasForeignKey("productID")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.Navigation("color");
 
                     b.Navigation("product");
                 });

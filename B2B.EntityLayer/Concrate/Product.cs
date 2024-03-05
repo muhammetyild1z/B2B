@@ -14,10 +14,18 @@ namespace B2B.EntityLayer.Concrate
         [MaxLength(100)]
         public string ProductName { get; set; }
         public decimal ProductPrice { get; set; }
-        [MaxLength(300)]
+        [MaxLength(600)]
         public string ProductDescription { get; set; }
         [MaxLength(100)]
         public string ProductImage { get; set; }
+        [MaxLength(100)]
+        public string? ProductImage1 { get; set; }
+        [MaxLength(100)]
+        public string? ProductImage2 { get; set; }
+        [MaxLength(100)]
+        public string? ProductImage3 { get; set; }
+
+
 
 
 
