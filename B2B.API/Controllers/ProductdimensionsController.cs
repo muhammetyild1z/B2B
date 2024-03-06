@@ -11,6 +11,7 @@ namespace B2B.API.Controllers
     {
         private readonly IMapper _mapper;
         private readonly IProductdimensionsService _dimensions;
+     
 
         public ProductdimensionsController(IMapper mapper, IProductdimensionsService datasetsService)
         {
@@ -28,5 +29,16 @@ namespace B2B.API.Controllers
             }
             return NotFound();
         }
+        [HttpGet("GetByIdDimension/{ProductdimensionsID}")]
+        public IActionResult GetByIdDimension(int ProductdimensionsID)
+        {
+            if (ProductdimensionsID != 0)
+            {
+                var dimensions = _dimensions.TGetList().Where(x=>x.ProductdimensionsID== ProductdimensionsID).Select(x=>x.ProductPrice).FirstOrDefault();
+                return Ok(dimensions);
+            }
+            return NotFound();
+        }
+
     }
 }

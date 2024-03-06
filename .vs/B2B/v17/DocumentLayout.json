@@ -3,8 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1A91247A-2B86-4B48-9904-C8F99FA2A1C8}|B2B.UI\\B2B.UI.csproj|c:\\users\\muham\\onedrive\\belgeler\\github\\b2b\\b2b.ui\\views\\product\\productdetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{1A91247A-2B86-4B48-9904-C8F99FA2A1C8}|B2B.UI\\B2B.UI.csproj|solutionrelative:b2b.ui\\views\\product\\productdetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{1A91247A-2B86-4B48-9904-C8F99FA2A1C8}|B2B.UI\\B2B.UI.csproj|c:\\users\\muham\\onedrive\\belgeler\\github\\b2b\\b2b.ui\\views\\basket\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1A91247A-2B86-4B48-9904-C8F99FA2A1C8}|B2B.UI\\B2B.UI.csproj|solutionrelative:b2b.ui\\views\\basket\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1A91247A-2B86-4B48-9904-C8F99FA2A1C8}|B2B.UI\\B2B.UI.csproj|c:\\users\\muham\\onedrive\\belgeler\\github\\b2b\\b2b.ui\\wwwroot\\b2b\\css\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{1A91247A-2B86-4B48-9904-C8F99FA2A1C8}|B2B.UI\\B2B.UI.csproj|solutionrelative:b2b.ui\\wwwroot\\b2b\\css\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FCC6D553-798D-43BE-8F94-04CBD52C0182}|B2B.EntityLayer\\B2B.EntityLayer.csproj|c:\\users\\muham\\onedrive\\belgeler\\github\\b2b\\b2b.entitylayer\\concrate\\basket.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FCC6D553-798D-43BE-8F94-04CBD52C0182}|B2B.EntityLayer\\B2B.EntityLayer.csproj|solutionrelative:b2b.entitylayer\\concrate\\basket.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1A91247A-2B86-4B48-9904-C8F99FA2A1C8}|B2B.UI\\B2B.UI.csproj|c:\\users\\muham\\onedrive\\belgeler\\github\\b2b\\b2b.ui\\controllers\\basketcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1A91247A-2B86-4B48-9904-C8F99FA2A1C8}|B2B.UI\\B2B.UI.csproj|solutionrelative:b2b.ui\\controllers\\basketcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -13,20 +25,59 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "DockedWidth": 233,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "style.css",
+              "DocumentMoniker": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\css\\style.css",
+              "RelativeDocumentMoniker": "B2B.UI\\wwwroot\\B2B\\css\\style.css",
+              "ToolTip": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\css\\style.css",
+              "RelativeToolTip": "B2B.UI\\wwwroot\\B2B\\css\\style.css",
+              "ViewState": "AQIAAHMCAAAAAAAAAAAowIsCAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-03-06T11:38:43.765Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ProductDetails.cshtml",
-              "DocumentMoniker": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\Views\\Product\\ProductDetails.cshtml",
-              "RelativeDocumentMoniker": "B2B.UI\\Views\\Product\\ProductDetails.cshtml",
-              "ToolTip": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\Views\\Product\\ProductDetails.cshtml",
-              "RelativeToolTip": "B2B.UI\\Views\\Product\\ProductDetails.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAIkCAAAcAAAA",
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\Views\\Basket\\Index.cshtml",
+              "RelativeDocumentMoniker": "B2B.UI\\Views\\Basket\\Index.cshtml",
+              "ToolTip": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\Views\\Basket\\Index.cshtml",
+              "RelativeToolTip": "B2B.UI\\Views\\Basket\\Index.cshtml",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-05T14:24:45.568Z",
+              "WhenOpened": "2024-03-06T11:26:11.272Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Basket.cs",
+              "DocumentMoniker": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.EntityLayer\\Concrate\\Basket.cs",
+              "RelativeDocumentMoniker": "B2B.EntityLayer\\Concrate\\Basket.cs",
+              "ToolTip": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.EntityLayer\\Concrate\\Basket.cs",
+              "RelativeToolTip": "B2B.EntityLayer\\Concrate\\Basket.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-06T11:20:11.871Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BasketController.cs",
+              "DocumentMoniker": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\Controllers\\BasketController.cs",
+              "RelativeDocumentMoniker": "B2B.UI\\Controllers\\BasketController.cs",
+              "ToolTip": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\Controllers\\BasketController.cs",
+              "RelativeToolTip": "B2B.UI\\Controllers\\BasketController.cs",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAACgAAABUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-06T11:17:17.561Z",
               "EditorCaption": ""
             }
           ]

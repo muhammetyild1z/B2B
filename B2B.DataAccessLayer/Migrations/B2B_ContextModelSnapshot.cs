@@ -33,9 +33,6 @@ namespace B2B.DataAccessLayer.Migrations
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("ProductID")
-                        .HasColumnType("int");
-
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
@@ -43,11 +40,14 @@ namespace B2B.DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<int>("productdimensionsID")
+                        .HasColumnType("int");
+
                     b.HasKey("BasketID");
 
-                    b.HasIndex("ProductID");
-
                     b.HasIndex("UserID");
+
+                    b.HasIndex("productdimensionsID");
 
                     b.ToTable("baskets");
                 });
@@ -432,6 +432,9 @@ namespace B2B.DataAccessLayer.Migrations
                     b.Property<int>("ProductID")
                         .HasColumnType("int");
 
+                    b.Property<decimal>("ProductPrice")
+                        .HasColumnType("decimal(18,2)");
+
                     b.HasKey("ProductdimensionsID");
 
                     b.HasIndex("DimensionsID");
@@ -668,21 +671,21 @@ namespace B2B.DataAccessLayer.Migrations
 
             modelBuilder.Entity("B2B.EntityLayer.Concrate.Basket", b =>
                 {
-                    b.HasOne("B2B.EntityLayer.Concrate.Product", "product")
-                        .WithMany()
-                        .HasForeignKey("ProductID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("B2B.EntityLayer.Concrate.AppUser", "appUser")
                         .WithMany()
                         .HasForeignKey("UserID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("B2B.EntityLayer.Concrate.Productdimensions", "productdimensions")
+                        .WithMany()
+                        .HasForeignKey("productdimensionsID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("appUser");
 
-                    b.Navigation("product");
+                    b.Navigation("productdimensions");
                 });
 
             modelBuilder.Entity("B2B.EntityLayer.Concrate.HomeSlider", b =>

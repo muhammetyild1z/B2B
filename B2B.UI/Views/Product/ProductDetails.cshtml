@@ -4,15 +4,15 @@
     Layout = "~/Views/Layout/LayoutIndex.cshtml";
 
     var sliderCount = 0;
-    if (Model.ProductImage1!=null)
+    if (Model.ProductImage1 != null)
     {
         sliderCount++;
-    }  
-    if (Model.ProductImage2!=null)
+    }
+    if (Model.ProductImage2 != null)
     {
         sliderCount++;
-    } 
-    if (Model.ProductImage3!=null)
+    }
+    if (Model.ProductImage3 != null)
     {
         sliderCount++;
     }
@@ -94,8 +94,9 @@
         width: 100%;
         min-height: 1000px;
         background-color: #1f1f1f;
-/*         background: url("https://github.com/BlackStar1991/CardProduct/blob/master/app/img/bgRectangl.png?raw=true") left center no-repeat, url("https://github.com/BlackStar1991/CardProduct/blob/master/app/img/bgPhons.png?raw=true") center center no-repeat, url("https://github.com/BlackStar1991/CardProduct/blob/master/app/img/layer-3-copy-2.png?raw=true") center center no-repeat, url("https://github.com/BlackStar1991/CardProduct/blob/master/app/img/mainBg.png?raw=true") center center no-repeat;
- */    }
+        /*         background: url("https://github.com/BlackStar1991/CardProduct/blob/master/app/img/bgRectangl.png?raw=true") left center no-repeat, url("https://github.com/BlackStar1991/CardProduct/blob/master/app/img/bgPhons.png?raw=true") center center no-repeat, url("https://github.com/BlackStar1991/CardProduct/blob/master/app/img/layer-3-copy-2.png?raw=true") center center no-repeat, url("https://github.com/BlackStar1991/CardProduct/blob/master/app/img/mainBg.png?raw=true") center center no-repeat;
+     */
+    }
 
     .productCard_block {
         position: relative;
@@ -659,27 +660,27 @@
                                             <li class="sliderBlock_items__itemPhoto sliderBlock_items__showing" style="width: 100%;">
                                                 <img src="@Model.ProductImage" alt="">
                                             </li>
-                                            @if (Model.ProductImage1!=null)
+                                            @if (Model.ProductImage1 != null)
                                             {
                                                 <li class="sliderBlock_items__itemPhoto sliderBlock_items__showing" style="width: 100%;">
                                                     <img src="@Model.ProductImage1" alt="">
                                                 </li>
                                             }
-                                             @if (Model.ProductImage2!=null)
+                                            @if (Model.ProductImage2 != null)
                                             {
                                                 <li class="sliderBlock_items__itemPhoto sliderBlock_items__showing" style="width: 100%;">
                                                     <img src="@Model.ProductImage2" alt="">
                                                 </li>
                                             }
-                                             @if (Model.ProductImage3!=null)
+                                            @if (Model.ProductImage3 != null)
                                             {
                                                 <li class="sliderBlock_items__itemPhoto sliderBlock_items__showing" style="width: 100%;">
                                                     <img src="@Model.ProductImage3" alt="">
                                                 </li>
                                             }
-                                         
 
-                                        
+
+
 
                                         </ul>
 
@@ -702,8 +703,8 @@
                                                 {
                                                     <li class="sliderBlock_positionControls__paginatorItem"></li>
                                                 }
-                                                
-                                              
+
+
 
                                             </ul>
                                         </div>
@@ -713,17 +714,17 @@
                             <div class="small-12 large-6 columns col-md-6">
 
                                 <div class="productCard_rightSide">
-                                @*     <div class="block_specification">
-                                        <div class="block_specification__specificationShow">
-                                             <i class="fa fa-cog block_specification__button block_specification__button__rotate"
-                                            aria-hidden="true"></i>
-                                             <span class="block_specification__text">Daha Fazla Detay</span>
-                                        </div>
-                                        <div class="block_specification__informationShow hide">
-                                            <i class="fa fa-info-circle block_specification__button block_specification__button__jump"
-                                               aria-hidden="true"></i>
-                                            <span class="block_specification__text">Daha Fazla Detay</span>
-                                        </div>
+                                    @*     <div class="block_specification">
+                                    <div class="block_specification__specificationShow">
+                                    <i class="fa fa-cog block_specification__button block_specification__button__rotate"
+                                    aria-hidden="true"></i>
+                                    <span class="block_specification__text">Daha Fazla Detay</span>
+                                    </div>
+                                    <div class="block_specification__informationShow hide">
+                                    <i class="fa fa-info-circle block_specification__button block_specification__button__jump"
+                                    aria-hidden="true"></i>
+                                    <span class="block_specification__text">Daha Fazla Detay</span>
+                                    </div>
                                     </div> *@
 
                                     <p class="block_model">
@@ -735,8 +736,8 @@
 
                                         <h2 class="block_name block_name__addName">@Model.ProductName</h2>
 
-                                        @await Component.InvokeAsync("_ProductStock" , new{productID= Model.Product_ID})
-                                      
+                                        @await Component.InvokeAsync("_ProductStock", new { productID = Model.Product_ID })
+
 
                                         <div class="block_informationAboutDevice">
 
@@ -746,44 +747,44 @@
                                                 </span>
                                             </div>
                                             @await Component.InvokeAsync("_Dimensions", new { ProductID = Model.Product_ID })
-                                         @*    <div class="block_rating clearfix">
-                                                <fieldset class="block_rating__stars">
-                                                    <input type="radio" id="star5" name="rating" value="5" />
-                                                    <label class="full" for="star5" title="Awesome - 5 stars"></label>
-                                                    <input type="radio" id="star4half" name="rating"
-                                                           value="4 and a half" />
-                                                    <label class="half" for="star4half"
-                                                           title="Pretty good - 4.5 stars"></label>
-                                                    <input type="radio" id="star4" name="rating" value="4" />
-                                                    <label class="full" for="star4" title="Good - 4 stars"></label>
-                                                    <input type="radio" id="star3half" name="rating"
-                                                           value="3 and a half" />
-                                                    <label class="half" for="star3half"
-                                                           title="Above average - 3.5 stars"></label>
-                                                    <input type="radio" id="star3" name="rating" value="3" />
-                                                    <label class="full" for="star3" title="Average - 3 stars"></label>
-                                                    <input type="radio" id="star2half" name="rating"
-                                                           value="2 and a half" />
-                                                    <label class="half" for="star2half"
-                                                           title="Kinda bad - 2.5 stars"></label>
-                                                    <input type="radio" id="star2" name="rating" value="2" />
-                                                    <label class="full" for="star2"
-                                                           title="Kinda bad - 2 stars"></label>
-                                                    <input type="radio" id="star1half" name="rating"
-                                                           value="1 and a half" />
-                                                    <label class="half" for="star1half"
-                                                           title="Meh - 1.5 stars"></label>
-                                                    <input type="radio" id="star1" name="rating" value="1" />
-                                                    <label class="full" for="star1"
-                                                           title="Sucks big time - 1 star"></label>
-                                                    <input type="radio" id="starhalf" name="rating"
-                                                           value="half" />
-                                                    <label class="half" for="starhalf"
-                                                           title="Sucks big time - 0.5 stars"></label>
-                                                </fieldset>
+                                            @*    <div class="block_rating clearfix">
+                                            <fieldset class="block_rating__stars">
+                                            <input type="radio" id="star5" name="rating" value="5" />
+                                            <label class="full" for="star5" title="Awesome - 5 stars"></label>
+                                            <input type="radio" id="star4half" name="rating"
+                                            value="4 and a half" />
+                                            <label class="half" for="star4half"
+                                            title="Pretty good - 4.5 stars"></label>
+                                            <input type="radio" id="star4" name="rating" value="4" />
+                                            <label class="full" for="star4" title="Good - 4 stars"></label>
+                                            <input type="radio" id="star3half" name="rating"
+                                            value="3 and a half" />
+                                            <label class="half" for="star3half"
+                                            title="Above average - 3.5 stars"></label>
+                                            <input type="radio" id="star3" name="rating" value="3" />
+                                            <label class="full" for="star3" title="Average - 3 stars"></label>
+                                            <input type="radio" id="star2half" name="rating"
+                                            value="2 and a half" />
+                                            <label class="half" for="star2half"
+                                            title="Kinda bad - 2.5 stars"></label>
+                                            <input type="radio" id="star2" name="rating" value="2" />
+                                            <label class="full" for="star2"
+                                            title="Kinda bad - 2 stars"></label>
+                                            <input type="radio" id="star1half" name="rating"
+                                            value="1 and a half" />
+                                            <label class="half" for="star1half"
+                                            title="Meh - 1.5 stars"></label>
+                                            <input type="radio" id="star1" name="rating" value="1" />
+                                            <label class="full" for="star1"
+                                            title="Sucks big time - 1 star"></label>
+                                            <input type="radio" id="starhalf" name="rating"
+                                            value="half" />
+                                            <label class="half" for="starhalf"
+                                            title="Sucks big time - 0.5 stars"></label>
+                                            </fieldset>
 
-                                                <span class="block_rating__avarage">4.25</span>
-                                                <span class="block_rating__reviews">(153 Yorum)</span>
+                                            <span class="block_rating__avarage">4.25</span>
+                                            <span class="block_rating__reviews">(153 Yorum)</span>
 
                                             </div> *@
                                             <div class="row ">
@@ -811,11 +812,11 @@
                                                 </div>
 
                                             </div>
-                                           
+
                                         </div>
                                     </div>
                                 </div>
-                               
+
                             </div>
                         </div>
                     </div>
@@ -831,10 +832,32 @@
 <!-- Related items section-->
 
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
 <script>
 
- 
+    $(".dimension").on("click", function (e) {
+        e.preventDefault();
+        var dimensionID = $(this).attr("data-dimension-id");
+
+        $.get("/Product/GetProductDimensionId/" + dimensionID)
+            .done(function (data) {
+             
+                $(".block_price__currency").text(data + "₺")
+            })
+            .fail(function (xhr, status, error) {
+
+                if (xhr.status == 404) {
+                    toastr.error('Beklenmeyen bir hata oluştu!', { position: "toast-top-end" });
+                }
+                if (xhr.status == 401) {
+                    toastr.warning('İşlemi Yapmak İçin Giriş Yapmalısın!', { position: "toast-top-end" });
+                }
+                if (xhr.status == 400) {
+                    toastr.warning('Bu Anime Favori Listenden Daha Önce Kaldırılmış!', { position: "toast-top-end" });
+                }
+            });
+    });
 
 
     window.onload = function () {

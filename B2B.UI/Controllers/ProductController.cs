@@ -7,11 +7,14 @@ namespace B2B.UI.Controllers
     public class ProductController : Controller
     {
         private readonly HttpClient _httpClient;
-        public ProductController()
+        private readonly HttpClient _httpClient1;
+
+        public ProductController(IHttpClientFactory httpClientFac)
         {
-            _httpClient = new HttpClient();
-            _httpClient.BaseAddress = new Uri("https://localhost:7268/api/Product/");
-            _httpClient.DefaultRequestHeaders.Clear();
+            _httpClient = httpClientFac.CreateClient("Product");
+            _httpClient1 = httpClientFac.CreateClient("Productdimensions");
+          
+     
         }
         public IActionResult Index()
         {
@@ -23,11 +26,23 @@ namespace B2B.UI.Controllers
             HttpResponseMessage response = await _httpClient.GetAsync($"GetByIdProduct/{productID}");
             if (response.IsSuccessStatusCode)
             {
-                var jsonData = await response.Content.ReadAsStringAsync(); 
+                var jsonData = await response.Content.ReadAsStringAsync();
                 var productDetail = JsonConvert.DeserializeObject<ResultProductDto>(jsonData);
                 return View(productDetail);
             }
             return View();
         }
+        public async Task<IActionResult> GetProductDimensionId(int id)
+        {
+            HttpResponseMessage response = await _httpClient1.GetAsync($"GetByIdDimension/{id}");
+            if (response.IsSuccessStatusCode)
+            {
+                var jsonData = await response.Content.ReadAsStringAsync();
+              
+                return Ok(jsonData);
+            }
+            return NotFound ();
+        }
+
     }
 }

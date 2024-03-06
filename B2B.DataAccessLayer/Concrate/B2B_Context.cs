@@ -84,7 +84,7 @@ namespace B2B.DataAccessLayer.Concrate
             modelBuilder.Entity<HomeSlider>().HasOne(x => x.product).WithMany().HasForeignKey(x => x.ProductID);
 
             modelBuilder.Entity<Basket>().HasKey(x => x.BasketID);
-            modelBuilder.Entity<Basket>().HasOne(x => x.product).WithMany().HasForeignKey(x => x.ProductID);
+            modelBuilder.Entity<Basket>().HasOne(x => x.productdimensions).WithMany().HasForeignKey(x => x.productdimensionsID);
             modelBuilder.Entity<Basket>().HasOne(x => x.appUser).WithMany().HasForeignKey(x => x.UserID);
 
             modelBuilder.Entity<Color>().HasKey(x => x.ColorID);

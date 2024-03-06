@@ -1,9 +1,12 @@
 ﻿@model List<ResultDimensionsDto>
 
 
+    <p>
+        Ebat Seçin
+    </p>
 @foreach (var item in Model)
 {
-    <button class="btn-sm btn btn-light">
+    <button class="btn-sm btn btn-light dimension" data-dimension-id="@item.ProductdimensionsID">
         @item.dimensions.En X @item.dimensions.Boy
     </button>
 }

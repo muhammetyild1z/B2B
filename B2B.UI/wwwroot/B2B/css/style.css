@@ -648,6 +648,13 @@ body {
 
 @media (max-width: 768px) {
 
+    .mobile__basket__Pay{
+        position:sticky;
+    }
+
+
+
+
     .basketAdd {
         position: absolute;
         bottom: 2px;

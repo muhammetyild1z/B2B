@@ -565,6 +565,22 @@
   },
   {
     "ContainingType": "B2B.API.Controllers.ProductdimensionsController",
+    "Method": "GetByIdDimension",
+    "RelativePath": "api/Productdimensions/GetByIdDimension/{ProductdimensionsID}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ProductdimensionsID",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "B2B.API.Controllers.ProductdimensionsController",
     "Method": "GetProductWithDimensions",
     "RelativePath": "api/Productdimensions/GetProductWithDimensions/{productID}",
     "HttpMethod": "GET",
