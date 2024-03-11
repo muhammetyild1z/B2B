@@ -22,6 +22,7 @@ namespace B2B.API.Controllers
         [HttpGet("AllGetProduct")]
         public IActionResult AllGetProduct()
         {
+         
             var products = _productService.TGetList();
             return Ok(_mapper.Map<List<ResultProductDto>>(products));
         } 

@@ -22,7 +22,7 @@ namespace B2B.API.Controllers
         [HttpGet("AllGetBasket")]
         public IActionResult AllGetBasket()
         {
-            var basket =  _basketService.TGetList();
+            var basket = _basketService.TGetList();
             return Ok(_mapper.Map<List<Basket>>(basket));
         }
 
@@ -54,14 +54,14 @@ namespace B2B.API.Controllers
         {
             if (updateBasketDto != null)
             {
-                var unchangedBasket = _basketService.TGetByID(updateBasketDto.BasketID);         
-                var result =  _basketService.TUpdateAsync(_mapper.Map<Basket>(updateBasketDto),unchangedBasket);
+                var unchangedBasket = _basketService.TGetByID(updateBasketDto.BasketID);
+                var result = _basketService.TUpdateAsync(_mapper.Map<Basket>(updateBasketDto), unchangedBasket);
                 if (result.IsCompleted)
                 {
                     return Ok();
                 }
                 return BadRequest();
-                          
+
             }
             else
             {
@@ -70,23 +70,19 @@ namespace B2B.API.Controllers
         }
 
         [HttpPost("CreateBasket")]
-        public async Task<IActionResult> CreateBasket(CreateBasketDto createBasketDto)
+        public async Task<IActionResult> CreateBasket([FromBody] CreateBasketDto dto)
         {
-            if (createBasketDto.UserID!=null)
+            dto.Status = true;
+            dto.CreateDate = DateTime.Now;
+            var basket = _mapper.Map<Basket>(dto);
+            var result = _basketService.TInsertAsync(basket);
+            if (result.IsCompleted)
             {
-                createBasketDto.CreateDate = DateTime.Now;
-                createBasketDto.Status = true;
-              var result=   _basketService.TInsertAsync(_mapper.Map<Basket>(createBasketDto));
-                if (result.IsCompleted)
-                {
-                    return Ok();
-                }
-                else { return BadRequest(); }
+                return Ok();
             }
-            else
-            {
-                return NotFound();
-            }
+
+            return NotFound();
+
         }
     }
 }

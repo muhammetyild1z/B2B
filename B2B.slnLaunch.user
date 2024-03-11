@@ -3,11 +3,11 @@
     "Name": "New Profile",
     "Projects": [
       {
-        "Name": "B2B.UI\\B2B.UI.csproj",
+        "Name": "B2B.API\\B2B.API.csproj",
         "Action": "Start"
       },
       {
-        "Name": "B2B.API\\B2B.API.csproj",
+        "Name": "B2B.UI\\B2B.UI.csproj",
         "Action": "Start"
       }
     ]

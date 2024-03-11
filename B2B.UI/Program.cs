@@ -16,17 +16,12 @@ builder.Services.AddHttpClient<Product>(client =>
     client.DefaultRequestHeaders.Accept.Clear();
 });
 
-builder.Services.AddHttpClient<Productdimensions>(client =>
+builder.Services.AddHttpClient<ProductPrice>(client =>
 {
-    client.BaseAddress = new Uri("https://localhost:7268/api/Productdimensions/");
+    client.BaseAddress = new Uri("https://localhost:7268/api/ProductPrice/");
     client.DefaultRequestHeaders.Accept.Clear();
 });
 
-builder.Services.AddHttpClient<ProductStock>(client =>
-{
-    client.BaseAddress = new Uri("https://localhost:7268/api/ProductStock/");
-    client.DefaultRequestHeaders.Accept.Clear();
-});
 
 
 builder.Services.AddHttpClient<ContactMailRequest>(client =>
@@ -48,17 +43,14 @@ builder.Services.AddHttpClient<Contact>(client =>
     client.DefaultRequestHeaders.Accept.Clear();
 });
 
-builder.Services.AddHttpClient<ProductColor>(client =>
-{
-    client.BaseAddress = new Uri("https://localhost:7268/api/ProductColor/");
-    client.DefaultRequestHeaders.Accept.Clear();
-});
+
 
 builder.Services.AddHttpClient<Basket>(client =>
 {
     client.BaseAddress = new Uri("https://localhost:7268/api/Basket/");
     client.DefaultRequestHeaders.Accept.Clear();
 });
+
 
 
 

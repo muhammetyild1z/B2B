@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace B2B.DataAccessLayer.Migrations
 {
     /// <inheritdoc />
-    public partial class sjds : Migration
+    public partial class asas : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -166,11 +166,11 @@ namespace B2B.DataAccessLayer.Migrations
                 name: "products",
                 columns: table => new
                 {
-                    Product_ID = table.Column<int>(type: "int", nullable: false)
+                    ProductID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ProductName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    ProductPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     ProductDescription = table.Column<string>(type: "nvarchar(600)", maxLength: 600, nullable: false),
+                    ProductUseGuide = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
                     ProductImage = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     ProductImage1 = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
                     ProductImage2 = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
@@ -180,7 +180,7 @@ namespace B2B.DataAccessLayer.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_products", x => x.Product_ID);
+                    table.PrimaryKey("PK_products", x => x.ProductID);
                 });
 
             migrationBuilder.CreateTable(
@@ -290,6 +290,28 @@ namespace B2B.DataAccessLayer.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "baskets",
+                columns: table => new
+                {
+                    BasketID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserID = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Count = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<bool>(type: "bit", nullable: false),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_baskets", x => x.BasketID);
+                    table.ForeignKey(
+                        name: "FK_baskets_AspNetUsers_UserID",
+                        column: x => x.UserID,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "homeSliders",
                 columns: table => new
                 {
@@ -309,7 +331,7 @@ namespace B2B.DataAccessLayer.Migrations
                         name: "FK_homeSliders_products_ProductID",
                         column: x => x.ProductID,
                         principalTable: "products",
-                        principalColumn: "Product_ID",
+                        principalColumn: "ProductID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -347,7 +369,7 @@ namespace B2B.DataAccessLayer.Migrations
                         name: "FK_productCategories_products_ProductID",
                         column: x => x.ProductID,
                         principalTable: "products",
-                        principalColumn: "Product_ID",
+                        principalColumn: "ProductID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -357,10 +379,8 @@ namespace B2B.DataAccessLayer.Migrations
                 {
                     ProductColorID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    productID = table.Column<int>(type: "int", nullable: false),
-                    ColorID = table.Column<int>(type: "int", nullable: false),
-                    Status = table.Column<bool>(type: "bit", nullable: false),
-                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    ProductID = table.Column<int>(type: "int", nullable: false),
+                    ColorID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -370,90 +390,108 @@ namespace B2B.DataAccessLayer.Migrations
                         column: x => x.ColorID,
                         principalTable: "colors",
                         principalColumn: "ColorID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_productColors_products_productID",
-                        column: x => x.productID,
+                        name: "FK_productColors_products_ProductID",
+                        column: x => x.ProductID,
                         principalTable: "products",
-                        principalColumn: "Product_ID",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "ProductID",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "productdimensions",
+                name: "productPrices",
                 columns: table => new
                 {
-                    ProductdimensionsID = table.Column<int>(type: "int", nullable: false)
+                    PriceID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ProductID = table.Column<int>(type: "int", nullable: false),
+                    ColorID = table.Column<int>(type: "int", nullable: false),
                     DimensionsID = table.Column<int>(type: "int", nullable: false),
-                    ProductPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    price = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_productdimensions", x => x.ProductdimensionsID);
+                    table.PrimaryKey("PK_productPrices", x => x.PriceID);
                     table.ForeignKey(
-                        name: "FK_productdimensions_dimensions_DimensionsID",
+                        name: "FK_productPrices_colors_ColorID",
+                        column: x => x.ColorID,
+                        principalTable: "colors",
+                        principalColumn: "ColorID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_productPrices_dimensions_DimensionsID",
                         column: x => x.DimensionsID,
                         principalTable: "dimensions",
                         principalColumn: "DimensionsID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_productdimensions_products_ProductID",
+                        name: "FK_productPrices_products_ProductID",
                         column: x => x.ProductID,
                         principalTable: "products",
-                        principalColumn: "Product_ID",
+                        principalColumn: "ProductID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "productStocks",
+                name: "productSizes",
                 columns: table => new
                 {
-                    ProductStockID = table.Column<int>(type: "int", nullable: false)
+                    ProductSizeID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ProductID = table.Column<int>(type: "int", nullable: false),
-                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Stock = table.Column<int>(type: "int", nullable: false),
-                    Status = table.Column<bool>(type: "bit", nullable: false),
-                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    DimensionsID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_productStocks", x => new { x.ProductStockID, x.ProductID });
+                    table.PrimaryKey("PK_productSizes", x => x.ProductSizeID);
                     table.ForeignKey(
-                        name: "FK_productStocks_products_ProductID",
+                        name: "FK_productSizes_dimensions_DimensionsID",
+                        column: x => x.DimensionsID,
+                        principalTable: "dimensions",
+                        principalColumn: "DimensionsID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_productSizes_products_ProductID",
                         column: x => x.ProductID,
                         principalTable: "products",
-                        principalColumn: "Product_ID",
+                        principalColumn: "ProductID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "baskets",
+                name: "stock",
                 columns: table => new
                 {
-                    BasketID = table.Column<int>(type: "int", nullable: false)
+                    StockID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserID = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    productdimensionsID = table.Column<int>(type: "int", nullable: false),
+                    ProductID = table.Column<int>(type: "int", nullable: false),
+                    ColorID = table.Column<int>(type: "int", nullable: false),
+                    DimensionsID = table.Column<int>(type: "int", nullable: false),
+                    Quantity = table.Column<int>(type: "int", nullable: false),
                     Status = table.Column<bool>(type: "bit", nullable: false),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_baskets", x => x.BasketID);
+                    table.PrimaryKey("PK_stock", x => x.StockID);
                     table.ForeignKey(
-                        name: "FK_baskets_AspNetUsers_UserID",
-                        column: x => x.UserID,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
+                        name: "FK_stock_colors_ColorID",
+                        column: x => x.ColorID,
+                        principalTable: "colors",
+                        principalColumn: "ColorID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_baskets_productdimensions_productdimensionsID",
-                        column: x => x.productdimensionsID,
-                        principalTable: "productdimensions",
-                        principalColumn: "ProductdimensionsID",
+                        name: "FK_stock_dimensions_DimensionsID",
+                        column: x => x.DimensionsID,
+                        principalTable: "dimensions",
+                        principalColumn: "DimensionsID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_stock_products_ProductID",
+                        column: x => x.ProductID,
+                        principalTable: "products",
+                        principalColumn: "ProductID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -497,11 +535,6 @@ namespace B2B.DataAccessLayer.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_baskets_productdimensionsID",
-                table: "baskets",
-                column: "productdimensionsID");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_baskets_UserID",
                 table: "baskets",
                 column: "UserID");
@@ -537,23 +570,48 @@ namespace B2B.DataAccessLayer.Migrations
                 column: "ColorID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_productColors_productID",
+                name: "IX_productColors_ProductID",
                 table: "productColors",
-                column: "productID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_productdimensions_DimensionsID",
-                table: "productdimensions",
-                column: "DimensionsID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_productdimensions_ProductID",
-                table: "productdimensions",
                 column: "ProductID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_productStocks_ProductID",
-                table: "productStocks",
+                name: "IX_productPrices_ColorID",
+                table: "productPrices",
+                column: "ColorID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_productPrices_DimensionsID",
+                table: "productPrices",
+                column: "DimensionsID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_productPrices_ProductID",
+                table: "productPrices",
+                column: "ProductID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_productSizes_DimensionsID",
+                table: "productSizes",
+                column: "DimensionsID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_productSizes_ProductID",
+                table: "productSizes",
+                column: "ProductID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_stock_ColorID",
+                table: "stock",
+                column: "ColorID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_stock_DimensionsID",
+                table: "stock",
+                column: "DimensionsID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_stock_ProductID",
+                table: "stock",
                 column: "ProductID");
         }
 
@@ -594,16 +652,19 @@ namespace B2B.DataAccessLayer.Migrations
                 name: "productColors");
 
             migrationBuilder.DropTable(
-                name: "productStocks");
+                name: "productPrices");
+
+            migrationBuilder.DropTable(
+                name: "productSizes");
+
+            migrationBuilder.DropTable(
+                name: "stock");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
-
-            migrationBuilder.DropTable(
-                name: "productdimensions");
 
             migrationBuilder.DropTable(
                 name: "categories");

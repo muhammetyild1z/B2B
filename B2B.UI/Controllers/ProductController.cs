@@ -11,7 +11,7 @@ namespace B2B.UI.Controllers
 
         public ProductController(IHttpClientFactory httpClientFac)
         {
-            _httpClient = httpClientFac.CreateClient("Product");
+            _httpClient = httpClientFac.CreateClient("Product");  
             _httpClient1 = httpClientFac.CreateClient("Productdimensions");
           
      
@@ -20,6 +20,7 @@ namespace B2B.UI.Controllers
         {
             return View();
         }
+
 
         public async Task<IActionResult> ProductDetails(int productID)
         {
@@ -32,6 +33,7 @@ namespace B2B.UI.Controllers
             }
             return View();
         }
+
         public async Task<IActionResult> GetProductDimensionId(int id)
         {
             HttpResponseMessage response = await _httpClient1.GetAsync($"GetByIdDimension/{id}");

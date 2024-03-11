@@ -1,6 +1,9 @@
-﻿@{
+﻿
+@{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Layout/LayoutIndex.cshtml";
+   
+
 }
 
 @await Component.InvokeAsync("_HomeSlider")
@@ -18,33 +21,97 @@
 
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-<script>
+<script type="text/javascript">
+  
 
-    $(".basketAdd").on("click", function (e) {
-        e.preventDefault();
-        var productID = $(this).attr("data-product-id");
 
-        $.post("/Basket/BasketAdd/" + productID)
-            .done(function (data) {
-                toastr.success('Sepete Eklendi!', { position: "toast-top-end", timeOut: 1000 });
-                updatePageContent();
-            })
-            .fail(function (xhr, status, error) {
+    $(document).ready(function () {
+        $(".iframe1").click(function () {
+            var productId = $(this).data('product-id');
+            var iframeURL = "Product/ProductDetails?productID=" + productId;
 
-                if (xhr.status == 404) {
-                    toastr.error('Beklenmeyen bir hata oluştu!', { position: "toast-top-end" });
-                }
-                if (xhr.status == 401) {
-                    toastr.warning('İşlemi Yapmak İçin Giriş Yapmalısın!', { position: "toast-top-end" });
-                }
-                if (xhr.status == 400) {
-                    toastr.warning('Bu Anime Favori Listenden Daha Önce Kaldırılmış!', { position: "toast-top-end" });
+            // Colorbox ile iframe'i aç
+            $.colorbox({
+                iframe: true,
+                href: iframeURL,
+                width: "90%",
+                height: "85%",
+                onComplete: function () {
+                    // İframe yüklendikten sonra yapılacaklar
+                    var iframe = $(".iframe1");
+                    iframe.on("load", function () {
+                        // İframe içeriği yüklendikten sonra yapılacaklar
+                       
+                    });
+
+                    // Popup açıldığında 
+                    $(".home__section").css("opacity", "0.4");
+                },
+                onClosed: function () {
+                    // Popup kapatıldığında 
+                    $(".home__section").css("opacity", "1");
                 }
             });
+        });
     });
+
+</script>
+
+
+
+@*
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+ <script>
+    $('.basketAdd').click(function () {
+        var dimensionId = $(this).data('dimension-id');
+        var dimensionId = $(this).data('dimension-id');
+        var dto = {
+            ProductDimensionsId: dimensionId,
+            UserID: userId,
+            Count:
+        };
+
+        $.ajax({
+            type: 'POST',
+            url: '/Basket/BasketAdd', 
+            contentType: 'application/json',
+            data: JSON.stringify(dto),
+            success: function (response) {
+                // Başarılı 
+                console.log(response);
+            },
+            error: function (xhr, status, error) {
+                // Hata
+                console.error(error);
+            }
+        });
+    });
+
+    // $(".basketAdd").on("click", function (e) {
+    //     e.preventDefault();
+    //     var productID = $(this).attr("data-product-id");
+
+    //     $.post("/Basket/BasketAdd/" + { productID= productID })
+    //         .done(function (data) {
+    //             toastr.success('Sepete Eklendi!', { position: "toast-top-end", timeOut: 1000 });
+    //             updatePageContent();
+    //         })
+    //         .fail(function (xhr, status, error) {
+
+    //             if (xhr.status == 404) {
+    //                 toastr.error('Beklenmeyen bir hata oluştu!', { position: "toast-top-end" });
+    //             }
+    //             if (xhr.status == 401) {
+    //                 toastr.warning('İşlemi Yapmak İçin Giriş Yapmalısın!', { position: "toast-top-end" });
+    //             }
+    //             if (xhr.status == 400) {
+    //                 toastr.warning('Bu Anime Favori Listenden Daha Önce Kaldırılmış!', { position: "toast-top-end" });
+    //             }
+    //         });
+    // });
 
     function updatePageContent() {
         // Sepet içeriğini güncellemek için gerekli kodlar buraya eklenecek
     }
     </script>
+    *@

@@ -30,6 +30,9 @@ namespace B2B.DataAccessLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BasketID"));
 
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
@@ -40,14 +43,9 @@ namespace B2B.DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("productdimensionsID")
-                        .HasColumnType("int");
-
                     b.HasKey("BasketID");
 
                     b.HasIndex("UserID");
-
-                    b.HasIndex("productdimensionsID");
 
                     b.ToTable("baskets");
                 });
@@ -279,11 +277,11 @@ namespace B2B.DataAccessLayer.Migrations
 
             modelBuilder.Entity("B2B.EntityLayer.Concrate.Product", b =>
                 {
-                    b.Property<int>("Product_ID")
+                    b.Property<int>("ProductID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Product_ID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductID"));
 
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
@@ -315,13 +313,15 @@ namespace B2B.DataAccessLayer.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<decimal>("ProductPrice")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<string>("ProductUseGuide")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
 
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
-                    b.HasKey("Product_ID");
+                    b.HasKey("ProductID");
 
                     b.ToTable("products");
                 });
@@ -370,61 +370,28 @@ namespace B2B.DataAccessLayer.Migrations
                     b.Property<int>("ColorID")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreateDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("Status")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("productID")
+                    b.Property<int>("ProductID")
                         .HasColumnType("int");
 
                     b.HasKey("ProductColorID");
 
                     b.HasIndex("ColorID");
 
-                    b.HasIndex("productID");
+                    b.HasIndex("ProductID");
 
                     b.ToTable("productColors");
                 });
 
-            modelBuilder.Entity("B2B.EntityLayer.Concrate.ProductStock", b =>
+            modelBuilder.Entity("B2B.EntityLayer.Concrate.ProductPrice", b =>
                 {
-                    b.Property<int>("ProductStockID")
+                    b.Property<int>("PriceID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductStockID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PriceID"));
 
-                    b.Property<int>("ProductID")
+                    b.Property<int>("ColorID")
                         .HasColumnType("int");
-
-                    b.Property<DateTime>("CreateDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("Status")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("Stock")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("UpdateDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("ProductStockID", "ProductID");
-
-                    b.HasIndex("ProductID");
-
-                    b.ToTable("productStocks");
-                });
-
-            modelBuilder.Entity("B2B.EntityLayer.Concrate.Productdimensions", b =>
-                {
-                    b.Property<int>("ProductdimensionsID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductdimensionsID"));
 
                     b.Property<int>("DimensionsID")
                         .HasColumnType("int");
@@ -432,16 +399,78 @@ namespace B2B.DataAccessLayer.Migrations
                     b.Property<int>("ProductID")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("ProductPrice")
+                    b.Property<decimal>("price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.HasKey("ProductdimensionsID");
+                    b.HasKey("PriceID");
+
+                    b.HasIndex("ColorID");
 
                     b.HasIndex("DimensionsID");
 
                     b.HasIndex("ProductID");
 
-                    b.ToTable("productdimensions");
+                    b.ToTable("productPrices");
+                });
+
+            modelBuilder.Entity("B2B.EntityLayer.Concrate.ProductSize", b =>
+                {
+                    b.Property<int>("ProductSizeID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductSizeID"));
+
+                    b.Property<int>("DimensionsID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ProductSizeID");
+
+                    b.HasIndex("DimensionsID");
+
+                    b.HasIndex("ProductID");
+
+                    b.ToTable("productSizes");
+                });
+
+            modelBuilder.Entity("B2B.EntityLayer.Concrate.Stock", b =>
+                {
+                    b.Property<int>("StockID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StockID"));
+
+                    b.Property<int>("ColorID")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("DimensionsID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
+                    b.HasKey("StockID");
+
+                    b.HasIndex("ColorID");
+
+                    b.HasIndex("DimensionsID");
+
+                    b.HasIndex("ProductID");
+
+                    b.ToTable("stock");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -677,15 +706,7 @@ namespace B2B.DataAccessLayer.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("B2B.EntityLayer.Concrate.Productdimensions", "productdimensions")
-                        .WithMany()
-                        .HasForeignKey("productdimensionsID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("appUser");
-
-                    b.Navigation("productdimensions");
                 });
 
             modelBuilder.Entity("B2B.EntityLayer.Concrate.HomeSlider", b =>
@@ -735,13 +756,13 @@ namespace B2B.DataAccessLayer.Migrations
                     b.HasOne("B2B.EntityLayer.Concrate.Color", "color")
                         .WithMany()
                         .HasForeignKey("ColorID")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("B2B.EntityLayer.Concrate.Product", "product")
                         .WithMany()
-                        .HasForeignKey("productID")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .HasForeignKey("ProductID")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("color");
@@ -749,18 +770,34 @@ namespace B2B.DataAccessLayer.Migrations
                     b.Navigation("product");
                 });
 
-            modelBuilder.Entity("B2B.EntityLayer.Concrate.ProductStock", b =>
+            modelBuilder.Entity("B2B.EntityLayer.Concrate.ProductPrice", b =>
                 {
-                    b.HasOne("B2B.EntityLayer.Concrate.Product", "product")
+                    b.HasOne("B2B.EntityLayer.Concrate.Color", "color")
+                        .WithMany()
+                        .HasForeignKey("ColorID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("B2B.EntityLayer.Concrate.Dimensions", "dimensions")
+                        .WithMany()
+                        .HasForeignKey("DimensionsID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("B2B.EntityLayer.Concrate.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("product");
+                    b.Navigation("Product");
+
+                    b.Navigation("color");
+
+                    b.Navigation("dimensions");
                 });
 
-            modelBuilder.Entity("B2B.EntityLayer.Concrate.Productdimensions", b =>
+            modelBuilder.Entity("B2B.EntityLayer.Concrate.ProductSize", b =>
                 {
                     b.HasOne("B2B.EntityLayer.Concrate.Dimensions", "dimensions")
                         .WithMany()
@@ -777,6 +814,33 @@ namespace B2B.DataAccessLayer.Migrations
                     b.Navigation("dimensions");
 
                     b.Navigation("product");
+                });
+
+            modelBuilder.Entity("B2B.EntityLayer.Concrate.Stock", b =>
+                {
+                    b.HasOne("B2B.EntityLayer.Concrate.Color", "color")
+                        .WithMany()
+                        .HasForeignKey("ColorID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("B2B.EntityLayer.Concrate.Dimensions", "dimensions")
+                        .WithMany()
+                        .HasForeignKey("DimensionsID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("B2B.EntityLayer.Concrate.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("color");
+
+                    b.Navigation("dimensions");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

@@ -20,7 +20,7 @@ namespace B2B.DataAccessLayer.EntityFramework
 
         public Product GetProductByID(int id)
         {
-            var product = _context.products.Where(x=>x.Product_ID == id).FirstOrDefault();
+            var product = _context.products.Where(x=>x.ProductID == id).FirstOrDefault();
             return product;
         }
     }

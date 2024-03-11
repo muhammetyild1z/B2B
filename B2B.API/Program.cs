@@ -45,11 +45,11 @@ builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 
 
-builder.Services.AddScoped<IProductStockDAL, efProductStockRepository>();
-builder.Services.AddScoped<IProductStockService, ProductStockManager>();
 
-builder.Services.AddScoped<IProductDimensionsDAL, efProductdimensionsRepository>();
-builder.Services.AddScoped<IProductdimensionsService, ProductdimensionsManager>();
+
+
+builder.Services.AddScoped<IProductPriceDAL, efProductPriceRepository>();
+builder.Services.AddScoped<IProductPriceService, ProductPriceManager>();
 
 builder.Services.AddScoped<IContactDal, efContactRepository>();
 builder.Services.AddScoped<IContactService, ContactManager>();
@@ -82,8 +82,7 @@ builder.Services.AddScoped<IProductService, ProductManager>();
 builder.Services.AddScoped<IProductCategoriesDAL, efProductCategoriesRepository>();
 builder.Services.AddScoped<IProductCategoryService, ProductCategoryManager>();
 
-builder.Services.AddScoped<IProductColorDAL, efProductColorRepository>();
-builder.Services.AddScoped<IProductColorService, ProductColorManager>();
+
 
 builder.Services.AddCors(options =>
 {

@@ -1,4 +1,7 @@
-// sepet view yap
-// ebat yap tablo ve detayda gostersin
-// login
 
+
+
+// detay sayfasini yap sonra sepete eklmeyi duzelt
+// register
+// login 
+ 

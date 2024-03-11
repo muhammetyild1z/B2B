@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace B2B.BusinessLayer.Abstract
 {
-    public interface IProductdimensionsService:IGenericService<Productdimensions>
+    public interface IProductPriceService:IGenericService<ProductPrice>
     {
-        List<Productdimensions> TGetProductDimensionsInclude();
+        List<ProductPrice> TGetIncludePriceList();
     }
 }

@@ -18,7 +18,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "createBasketDto",
+        "Name": "dto",
         "Type": "B2B.API.Dtos.BasketDtos.CreateBasketDto",
         "IsRequired": true
       }
@@ -548,67 +548,13 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "B2B.API.Controllers.ProductColorController",
-    "Method": "GetProduct",
-    "RelativePath": "api/ProductColor/GetProductColor/{productID}",
+    "ContainingType": "B2B.API.Controllers.ProductPriceController",
+    "Method": "GetAllProductPrice",
+    "RelativePath": "api/ProductPrice/GetAllProductPrice",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [
-      {
-        "Name": "productID",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "B2B.API.Controllers.ProductdimensionsController",
-    "Method": "GetByIdDimension",
-    "RelativePath": "api/Productdimensions/GetByIdDimension/{ProductdimensionsID}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "ProductdimensionsID",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "B2B.API.Controllers.ProductdimensionsController",
-    "Method": "GetProductWithDimensions",
-    "RelativePath": "api/Productdimensions/GetProductWithDimensions/{productID}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "productID",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "B2B.API.Controllers.ProductStockController",
-    "Method": "GetProductStock",
-    "RelativePath": "api/ProductStock/GetProductStock/{productID}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "productID",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
+    "Parameters": [],
     "ReturnTypes": []
   }
 ]

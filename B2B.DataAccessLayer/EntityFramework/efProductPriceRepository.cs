@@ -11,18 +11,18 @@ using System.Threading.Tasks;
 
 namespace B2B.DataAccessLayer.EntityFramework
 {
-    public class efProductdimensionsRepository : GenericRepository<Productdimensions>, IProductDimensionsDAL
+    public class efProductPriceRepository : GenericRepository<ProductPrice> , IProductPriceDAL
     {
         private readonly B2B_Context _context;
 
-        public efProductdimensionsRepository(B2B_Context context) : base(context)
+        public efProductPriceRepository(B2B_Context context) : base(context)
         {
-            _context=context;
+            _context = context;
         }
 
-        public List<Productdimensions> GetProductDimensionsInclude()
+        public List<ProductPrice> GetIncludePriceList()
         {
-            return _context.productdimensions.Include(x => x.dimensions).ToList();
+            return _context.productPrices.Include(x => x.Product).Include(x=>x.dimensions).Include(x=>x.color).ToList();
         }
     }
 }

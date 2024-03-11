@@ -1,19 +1,10 @@
 ﻿@model List<ResultProductCategoryDto>
 
-<script>
-    $(document).ready(function () {
-        $('.dropdown-toggle').mouseenter(function () {
-            $(this).next('.dropdown-menu').toggle('fade'); /* Açılma efekti ekleyelim */
-        });
-
-        $('.dropdown-menu').mouseleave(function () {
-            $(this).toggle('fade'); /* Kapatma efekti ekleyelim */
-        });
-    });
-</script>
+  
 
 
-<div class="row bg-transparent position-absolute " style="z-index:2" >
+
+<div class="row bg-transparent position-absolute navbar__custom" style="z-index:2" >
     <div class="col-md-1">
         <div class="header__logo">
             <a href="/Home">
@@ -28,7 +19,7 @@
 
                     <div class="inner-form">
                         <div class="input-field">
-                            <input name="query" class="rounded-2 form-control bg-transparent border-1 btn btn-light text-white" id="query" type="text" placeholder="Ürün arayın...">
+                            <input style="cursor: auto;" name="query" class="rounded-2 form-control bg-transparent border-1 btn btn-light text-white" id="query" type="text" placeholder="Ürün arayın...">
                             <button class="btn-search bg-transparent" onclick="search()">
                                 <svg x="0px" y="0px" width="15" height="15" viewBox="0 0 72 72">
                                     <path d="M 31 11 C 19.973 11 11 19.973 11 31 C 11 42.027 19.973 51 31 51 C 34.974166 51 38.672385 49.821569 41.789062 47.814453 L 54.726562 60.751953 C 56.390563 62.415953 59.088953 62.415953 60.751953 60.751953 C 62.415953 59.087953 62.415953 56.390563 60.751953 54.726562 L 47.814453 41.789062 C 49.821569 38.672385 51 34.974166 51 31 C 51 19.973 42.027 11 31 11 z M 31 19 C 37.616 19 43 24.384 43 31 C 43 37.616 37.616 43 31 43 C 24.384 43 19 37.616 19 31 C 19 24.384 24.384 19 31 19 z"></path>
@@ -48,7 +39,7 @@
         <nav class="header__menu mobile-menu ">
             <ul>
                 <li class="@(ViewBag.ActivePage == "Animeler" ? "active" : "")"><a href="/Animeler/Index/"><i class="fa fa-home"></i> Anasayfa</a></li>
-                <li><a href="/Basket"><i class="fa fa-cart-plus"></i> Sepetim</a></li>
+                <li><a class="iframe" href="#"><i class="fa fa-cart-plus"></i> Sepetim</a></li>
                 <li><a href="/Account/SignUp"><i class="fa fa-user-plus"></i> Üye Ol</a></li>
                 <li><a href="/Account/SignIn"><i class="fa fa-user-circle"></i> Giriş Yap</a></li>
                 <li><a href="/Contact"><i class="fa fa-address-book"></i> İletişim</a></li>
@@ -106,75 +97,60 @@
 
 
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.colorbox/1.6.4/jquery.colorbox-min.js"></script>
 <script>
     $(document).ready(function () {
-        $('.dropdown-toggle').click(function () {
+        $('.dropdown-toggle').mouseenter(function () {
             $(this).next('.dropdown-menu').toggle('fade'); /* Açılma efekti ekleyelim */
+        });
+
+        $('.dropdown-menu').mouseleave(function () {
+            $(this).toggle('fade'); /* Kapatma efekti ekleyelim */
         });
     });
 </script>
 
-@* <nav class="navbar navbar-expand-lg navbar-light bg-dark navbar-dark shadow">
-    <div class="container-fluid">
+<script type="text/javascript">
 
-        <div class="collapse navbar-collapse" id="navbar-content">
-            <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Anasayfa</a>
-                </li>
+    $(document).ready(function () {
+        $(".iframe").click(function () {         
+            var iframeURL = "Basket" ;
 
+           
+            $.colorbox({
+                iframe: true,
+                href: iframeURL,
+                width: "90%",
+                height: "95%",
+                onComplete: function () {
+                  
+                    var iframe = $(".iframe1");
+                    iframe.on("load", function () {
+                        
 
+                    });
 
+                   
+                    $(".home__section").css("opacity", "0.4");
+                },
+                onClosed: function () {
+                  
+                    $(".home__section").css("opacity", "1");
+                }
+            });
+        });
+    });
 
+</script>
+<script>
+    $(document).ready(function () {
+        $('.dropdown-toggle').click(function () {
+            $(this).next('.dropdown-menu').toggle('fade'); /* Açılma efekti  */
+        });
+    });
+</script>
 
-
-
-                <li class="nav-item dropdown dropdown-mega position-static">
-                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside">Megamenu</a>
-                    <div class="dropdown-menu shadow">
-                        <div class="mega-content px-4">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-12 col-sm-4 col-md-3 py-4">
-                                        <h5>Title</h5>
-                                        <div class="list-group">
-                                            <a class="list-group-item" href="#">Mega Menu Link</a>
-                                            <a class="list-group-item" href="#">Mega Menu Link</a>
-                                            <a class="list-group-item" href="#">Mega Menu Link</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-4 col-md-3 py-4">
-                                        <h5>Card Title</h5>
-                                        <div class="card">
-                                            <img src="img/banner-image.jpg" class="img-fluid" alt="image">
-                                            <div class="card-body">
-                                                <p class="card-text">Description goes here...</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-4 col-md-3 py-4">
-                                        <h5>Title</h5>
-                                        <p>Description goes here...</p>
-                                    </div>
-                                    <div class="col-12 col-sm-12 col-md-3 py-4">
-                                        <h5>Title</h5>
-                                        <div class="list-group">
-                                            <a class="list-group-item" href="#">Menu Link</a>
-                                            <a class="list-group-item" href="#">Menu Link</a>
-                                            <a class="list-group-item" href="#">Menu Link</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-
-            </ul>
-
-        </div>
-    </div>
-</nav> *@
 
 <!-- Bootstrap 5 JS -->
 <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js'></script>

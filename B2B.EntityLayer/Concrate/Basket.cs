@@ -17,9 +17,10 @@ namespace B2B.EntityLayer.Concrate
 
         //public decimal BasketTotalPrice { get; set; }
 
-        public Productdimensions productdimensions  { get; set; }
-        public int productdimensionsID { get; set; }
+      
 
-  
+        public int Count  { get; set; }
+    
+
     }
 }

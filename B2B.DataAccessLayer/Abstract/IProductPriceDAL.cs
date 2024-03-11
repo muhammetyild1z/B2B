@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace B2B.DataAccessLayer.Abstract
 {
-    public interface IProductStockDAL:IGenericDal<ProductStock>
+    public interface IProductPriceDAL:IGenericDal<ProductPrice>
     {
-        
+        List<ProductPrice> GetIncludePriceList();
     }
 }

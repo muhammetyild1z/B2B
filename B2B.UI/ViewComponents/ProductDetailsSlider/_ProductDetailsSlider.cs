@@ -1,30 +1,32 @@
-﻿using B2B.UI.DtosUI.ProductDtos;
+﻿using B2B.UI.DtosUI.DimensionsDtos;
+using B2B.UI.DtosUI.ProductDtos;
+using B2B.UI.DtosUI.ProductPriceDtos;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Net.Http;
 
 namespace B2B.UI.ViewComponents.ProductDetailsSlider
 {
     public class _ProductDetailsSlider:ViewComponent
     {
-        
+
         private readonly HttpClient _httpClient;
 
-        public _ProductDetailsSlider(IHttpClientFactory _clientFactory)
+        public _ProductDetailsSlider(IHttpClientFactory httpClientFactory)
         {
-            _httpClient = _clientFactory.CreateClient("Product");
+            _httpClient = httpClientFactory.CreateClient("ProductPrice");
         }
-
-        public async Task< IViewComponentResult> InvokeAsync()
+        public async Task<IViewComponentResult> InvokeAsync()
         {
-            HttpResponseMessage response = await _httpClient.GetAsync("AllGetProduct");
-
-            if (response.IsSuccessStatusCode)
+            HttpResponseMessage responseMessage = await _httpClient.GetAsync("GetAllProductPrice");
+            if (responseMessage.IsSuccessStatusCode)
             {
-                var jsonData = await response.Content.ReadAsStringAsync();
-                var product = JsonConvert.DeserializeObject<List<ResultProductDto>>(jsonData);
-                return View(product);
-            }
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
 
+                var cokBegenilen = JsonConvert.DeserializeObject<List<ResultProductPriceDto>>(jsonData);
+
+                return View(cokBegenilen);
+            }
             return View();
         }
     }

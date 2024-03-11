@@ -10,12 +10,14 @@ namespace B2B.EntityLayer.Concrate
 {
     public class Product : Base
     {
-        public int Product_ID { get; set; }
+        public int ProductID { get; set; }
         [MaxLength(100)]
         public string ProductName { get; set; }
-        public decimal ProductPrice { get; set; }
+       // public decimal ProductPrice { get; set; }
         [MaxLength(600)]
         public string ProductDescription { get; set; }
+        [MaxLength(1000)]
+        public string ProductUseGuide { get; set; }
         [MaxLength(100)]
         public string ProductImage { get; set; }
         [MaxLength(100)]

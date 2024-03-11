@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "b2eFed/aeahzg7deN0YTGRTldTq41o+or3i9qvYoIi4=",
+  "Hash": "S++Q4ch8CxSUaQ8Etnkq6Zqi0XiaeBrDBbVzGb+XCBo=",
   "Source": "B2B.UI",
   "BasePath": "_content/B2B.UI",
   "Mode": "Default",
@@ -53,6 +53,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\B2B\\css\\bootstrap.min.css"
+    },
+    {
+      "Identity": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\css\\colorbox.css",
+      "SourceId": "B2B.UI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\",
+      "BasePath": "_content/B2B.UI",
+      "RelativePath": "B2B/css/colorbox.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\B2B\\css\\colorbox.css"
     },
     {
       "Identity": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\css\\elegant-icons.css",
@@ -547,6 +566,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\B2B\\js\\extention\\flatpickr.js"
+    },
+    {
+      "Identity": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\js\\jquery.colorbox.js",
+      "SourceId": "B2B.UI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\",
+      "BasePath": "_content/B2B.UI",
+      "RelativePath": "B2B/js/jquery.colorbox.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\B2B\\js\\jquery.colorbox.js"
     },
     {
       "Identity": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\wwwroot\\B2B\\js\\jquery.nice-select.min.js",
