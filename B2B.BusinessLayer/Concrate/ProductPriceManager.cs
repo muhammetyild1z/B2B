@@ -22,22 +22,27 @@ namespace B2B.BusinessLayer.Concrate
 
         public void TDelete(ProductPrice entity)
         {
-             _productPriceDal.Delete(entity); 
+            _productPriceDal.Delete(entity);
         }
 
         public ProductPrice TGetByID(int id)
         {
-           return _productPriceDal.GetByID(id);
+            return _productPriceDal.GetByID(id);
+        }
+
+        public ProductPrice TGetByIdIncludePrice(int priceId)
+        {
+            return _productPriceDal.GetByIdIncludePrice(priceId);
         }
 
         public List<ProductPrice> TGetIncludePriceList()
         {
-           return _productPriceDal.GetIncludePriceList();
+            return _productPriceDal.GetIncludePriceList();
         }
 
         public List<ProductPrice> TGetList()
         {
-           return _productPriceDal.GetList();
+            return _productPriceDal.GetList();
         }
 
         public async Task<OperationResult> TInsertAsync(ProductPrice entity)
@@ -57,7 +62,7 @@ namespace B2B.BusinessLayer.Concrate
         {
             try
             {
-                return await _productPriceDal.UpdateAsync(entity, unchanged);  
+                return await _productPriceDal.UpdateAsync(entity, unchanged);
             }
             catch (Exception)
             {

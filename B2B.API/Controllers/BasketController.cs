@@ -24,6 +24,12 @@ namespace B2B.API.Controllers
         {
             var basket = _basketService.TGetList();
             return Ok(_mapper.Map<List<Basket>>(basket));
+        } 
+        [HttpGet("UserAllBasket/{id}")]
+        public IActionResult UserAllBasket(string id)
+        {
+            var basketList = _basketService.TGetIncludeAllUserBasket().Where(x=>x.UserID==id).ToList();
+            return Ok(_mapper.Map<List<ResultBasketDto>>(basketList));
         }
 
         [HttpDelete("DeleteBasket/{id}")]
@@ -76,7 +82,7 @@ namespace B2B.API.Controllers
             dto.CreateDate = DateTime.Now;
             var basket = _mapper.Map<Basket>(dto);
             var result = _basketService.TInsertAsync(basket);
-            if (result.IsCompleted)
+            if (result.IsCompletedSuccessfully)
             {
                 return Ok();
             }

@@ -1,5 +1,6 @@
 using B2B.DataAccessLayer.Concrate;
 using B2B.EntityLayer.Concrate;
+using B2B.UI.ViewComponents.Dimensions;
 using B2B.UI.ViewComponents.ProductDetailsSlider;
 using Microsoft.AspNetCore.Identity;
 using System.Net.Http;
@@ -8,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
 
 
 builder.Services.AddHttpClient<Product>(client =>
@@ -22,6 +24,11 @@ builder.Services.AddHttpClient<ProductPrice>(client =>
     client.DefaultRequestHeaders.Accept.Clear();
 });
 
+builder.Services.AddHttpClient<Dimensions>(client =>
+{
+    client.BaseAddress = new Uri("https://localhost:7268/api/Dimensions/");
+    client.DefaultRequestHeaders.Accept.Clear();
+});
 
 
 builder.Services.AddHttpClient<ContactMailRequest>(client =>

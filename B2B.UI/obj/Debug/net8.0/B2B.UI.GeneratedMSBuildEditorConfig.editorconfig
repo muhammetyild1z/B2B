@@ -26,8 +26,8 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\muham\OneDrive\Belgeler\GitHub\B2B\B2B.UI
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B.UI/Views/Basket/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFza2V0XEluZGV4LmNzaHRtbA==
+[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B.UI/Views/Basket/BasketList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFza2V0XEJhc2tldExpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B.UI/Views/Contact/Index.cshtml]
@@ -80,6 +80,18 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B.UI/Views/Shared/Components/_ProductDetailsSlider/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX1Byb2R1Y3REZXRhaWxzU2xpZGVyXERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B.UI/Views/Shared/Components/_ProductPropColor/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX1Byb2R1Y3RQcm9wQ29sb3JcRGVmYXVsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B.UI/Views/Shared/Components/_ProductPropDimensions/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX1Byb2R1Y3RQcm9wRGltZW5zaW9uc1xEZWZhdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B.UI/Views/Shared/Components/_ProductProp/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX1Byb2R1Y3RQcm9wXERlZmF1bHQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B.UI/Views/Shared/Components/_SonEklenen/Default.cshtml]

@@ -9,7 +9,6 @@ namespace B2B.UI.ViewComponents.ProductDetailsSlider
 {
     public class _ProductDetailsSlider:ViewComponent
     {
-
         private readonly HttpClient _httpClient;
 
         public _ProductDetailsSlider(IHttpClientFactory httpClientFactory)

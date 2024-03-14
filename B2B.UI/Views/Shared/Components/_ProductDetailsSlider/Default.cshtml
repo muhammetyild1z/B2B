@@ -2,9 +2,9 @@
 
 
 <div class="row mt-5 product__slider">
-    <div class="col-lg-11 col-md-8 col-sm-8 mobile__slider__nav_newEpisode">
+    <div class="pt-4 col-lg-11 col-md-8 col-sm-8 mobile__slider__nav_newEpisode">
         <div class="section-title">
-            <h4 class="text-dark"><i class="fa fa-upload"> </i>&nbsp;Son Eklenenler</h4>
+            <h4 ><i class="fa fa-upload"> </i>&nbsp;Son Eklenenler</h4>
         </div>
     </div>
     <div class="carousel-wrap">
@@ -13,7 +13,7 @@
             {
          
                     <div class="item">
-                    <a href="/product/productDetails?productID=@item.ProductID">
+                    <a href="/product/productDetails?priceID=@item.PriceID">
                         <div class="product__item__pic set-bg col-md-12" data-setbg="@item.Product.ProductImage">
                             <div class="ep">
                                 <i class="icon-heart-o"></i>
@@ -21,10 +21,10 @@
                             </div>
 
                         </div>
-                           <button class="basketAdd1 btn btn-sm btn-danger iframe1" data-product-Id="@item.ProductID">
+                  @*       <button class="basketAdd1 btn btn-sm btn-danger iframe1" data-product-Id="@item.PriceID">
                     Sepete Ekle
                     <i class="icon-shopping_basket"> </i>
-                    </button>
+                    </button> *@
                     </a>
                         <div class="product__item__text pl-4">
                             <ul>
@@ -32,14 +32,14 @@
                                 {
                                     <h5 class="text-dark">
                                     @Html.ActionLink(@item.Product.ProductName.Substring(0, 22), "productDetails", "product"
-                                             , new { productID = item.Product.ProductID }, new { @class = "text-dark" }) ..
+                                             , new { priceID = item.PriceID}, new { @class = "text-dark" }) ..
                                     </h5>
                                 }
                                 else
                                 {
                                     <h5 class="text-dark">
                                     @Html.ActionLink(@item.Product.ProductName, "productDetails", "product"
-                                             , new { productID = item.Product.ProductID }, new { @class = "text-dark" })
+                                             , new { priceID = item.PriceID }, new { @class = "text-dark" })
                                     </h5>
                                 }
                             <h5 class=" font-weight-bold">@item.price ₺</h5>

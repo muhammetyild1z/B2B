@@ -1,7 +1,9 @@
 
+//renkler uzerinde calisma yap hangi renk olacagi sorulacak(?)
 
+// stock mýktarýndan fazla mýktar sepete eklenemeyecek ýster apýde bak ýster js tarafýnda
 
-// detay sayfasini yap sonra sepete eklmeyi duzelt
 // register
 // login 
- 
+ //gecici logo
+ //stok yazdir urun detay sayfasina stok yoksa buton aktif olsun ve bildirim tablosu yap mail gonderilecek stok girilince

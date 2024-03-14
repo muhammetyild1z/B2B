@@ -1,37 +1,19 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{1A91247A-2B86-4B48-9904-C8F99FA2A1C8}|B2B.UI\\B2B.UI.csproj|c:\\users\\muham\\onedrive\\belgeler\\github\\b2b\\b2b.ui\\notes.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{1A91247A-2B86-4B48-9904-C8F99FA2A1C8}|B2B.UI\\B2B.UI.csproj|solutionrelative:b2b.ui\\notes.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 293,
-          "SelectedChildIndex": 1,
+          "DockedWidth": 1013,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Notes.txt",
-              "DocumentMoniker": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\Notes.txt",
-              "RelativeDocumentMoniker": "B2B.UI\\Notes.txt",
-              "ToolTip": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\Notes.txt",
-              "RelativeToolTip": "B2B.UI\\Notes.txt",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2024-03-11T19:28:53.656Z",
-              "EditorCaption": ""
             }
           ]
         }

@@ -4,42 +4,50 @@ using B2B.UI.DtosUI.BasketDtos;
 using B2B.UI.DtosUI.ProductDtos;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Net.Http;
 using System.Security.Claims;
 using System.Text;
 
 namespace B2B.UI.Controllers
 {
-    [Route("Basket")]
+   
     public class BasketController : Controller
     {
-        private readonly HttpClient _httpClient;
+        
         private readonly HttpClient _httpClient1;
 
         public BasketController(IHttpClientFactory httpClientFac)
         {
-            _httpClient = httpClientFac.CreateClient("Productdimensions");
+          
             _httpClient1 = httpClientFac.CreateClient("Basket");
 
         }
-
-        public IActionResult Index()
+    
+        public async Task< IActionResult> BasketList(int id)
         {
+            HttpResponseMessage response = await _httpClient1.GetAsync($"UserAllBasket/{id}");
+            if (response.IsSuccessStatusCode)
+            {
+                var jsonData= await response.Content.ReadAsStringAsync();
+                var basketList= JsonConvert.DeserializeObject<List<ResultBasketDto>>(jsonData);
+                return View(basketList);
+            }
+             
             return View();
         }
 
         [HttpPost]
-        [Route("BasketAdd")]
-        public async Task< IActionResult> BasketAdd([FromBody] CreateBasketDto dto)
+        public async Task<IActionResult> BasketAdd([FromBody] CreateBasketDto dto)
         {
             var jsonData = JsonConvert.SerializeObject(dto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-         
+
             HttpResponseMessage responseMessage = await _httpClient1.PostAsync("CreateBasket", stringContent);
             if (responseMessage.IsSuccessStatusCode)
             {
                 return Ok();
             }
-            return Ok();
+            return Unauthorized();
         }
     }
 

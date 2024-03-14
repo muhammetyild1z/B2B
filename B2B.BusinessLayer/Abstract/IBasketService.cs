@@ -10,5 +10,6 @@ namespace B2B.BusinessLayer.Abstract
     public interface IBasketService:IGenericService<Basket>
     {
         Basket TGetBasketByID(int id);
+        List<Basket> TGetIncludeAllUserBasket();
     }
 }

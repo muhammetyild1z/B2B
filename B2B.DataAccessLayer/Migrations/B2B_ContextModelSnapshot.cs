@@ -36,6 +36,9 @@ namespace B2B.DataAccessLayer.Migrations
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("PriceID")
+                        .HasColumnType("int");
+
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
@@ -44,6 +47,8 @@ namespace B2B.DataAccessLayer.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("BasketID");
+
+                    b.HasIndex("PriceID");
 
                     b.HasIndex("UserID");
 
@@ -700,6 +705,12 @@ namespace B2B.DataAccessLayer.Migrations
 
             modelBuilder.Entity("B2B.EntityLayer.Concrate.Basket", b =>
                 {
+                    b.HasOne("B2B.EntityLayer.Concrate.ProductPrice", "productPrice")
+                        .WithMany()
+                        .HasForeignKey("PriceID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("B2B.EntityLayer.Concrate.AppUser", "appUser")
                         .WithMany()
                         .HasForeignKey("UserID")
@@ -707,6 +718,8 @@ namespace B2B.DataAccessLayer.Migrations
                         .IsRequired();
 
                     b.Navigation("appUser");
+
+                    b.Navigation("productPrice");
                 });
 
             modelBuilder.Entity("B2B.EntityLayer.Concrate.HomeSlider", b =>

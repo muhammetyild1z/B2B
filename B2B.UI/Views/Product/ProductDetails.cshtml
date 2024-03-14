@@ -1,18 +1,18 @@
-﻿@model ResultProductDto
+﻿@model ResultProductPriceDto
 @{
     ViewData["Title"] = "ProductDetails";
     Layout = "~/Views/Layout/LayoutIndex.cshtml";
-
+   var productId = Model.ProductID;
     var sliderCount = 0;
-    if (Model.ProductImage1 != null)
+    if (Model.Product.ProductImage1 != null)
     {
         sliderCount++;
     }
-    if (Model.ProductImage2 != null)
+    if (Model.Product.ProductImage2 != null)
     {
         sliderCount++;
     }
-    if (Model.ProductImage3 != null)
+    if (Model.Product.ProductImage3 != null)
     {
         sliderCount++;
     }
@@ -24,14 +24,15 @@
     /*COLORS*/
     /*********************************************/
 
- 
-    .navbar__custom{
-        display:none !important;
-    }
 
-    .footer{
+    .navbar__custom {
         display: none !important;
     }
+
+    .footer {
+        display: none !important;
+    }
+
     .navbar__custom {
         box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
         border-bottom: 2px solid #cfcfcf;
@@ -92,55 +93,57 @@
         position: relative;
         width: 100%;
         min-width: 320px;
-        min-height: 1000px;
+       
         padding: 0;
         margin: 0 !important;
-        background: radial-gradient(rgb(48, 61, 85), rgb(47, 51, 82));
+      
     }
 
 </style>
 
 <main class="main">
-    <button>
-        X
-    </button>
+    <a id="iframeClose"  class="btn-sm btn-danger btn-close" disabled aria-label="Close" style="z-index: 9999;
+    right: 20px;
+    top: 10px;
+background-color: red;
+    position: fixed;"></a>
     <div class="mainWrapper">
         <div class="mainBackground clearfix">
-            <div class="row ">
+            <div class="row " style="background-color: #FAF1E4;">
                 <div class="column small-centered">
                     <div class="productCard_block">
                         <div class="row">
-                            <div class="d-flex justify-content-center"> 
-                                <button class="btn btn-secondary">
+                            <div class="d-flex justify-content-center">
+                                <button class="btn btn-outline-danger">
                                     <i class="fa fa-bell-o"></i>
                                     Stoğa Eklendiğinde bildirim gönder
                                 </button>
                             </div>
-                        
+
                             <div class="small-12 large-6 columns" style=" max-width: 40%;">
                                 <div class="productCard_leftSide clearfix">
 
                                     <div class="sliderBlock">
                                         <ul class="sliderBlock_items">
                                             <li class="sliderBlock_items__itemPhoto sliderBlock_items__showing" style="width: 100%;">
-                                                <img src="@Model.ProductImage" alt="">
+                                                <img src="@Model.Product.ProductImage" alt="">
                                             </li>
-                                            @if (Model.ProductImage1 != null)
+                                            @if (Model.Product.ProductImage1 != null)
                                             {
                                                 <li class="sliderBlock_items__itemPhoto sliderBlock_items__showing" style="width: 100%;">
-                                                    <img src="@Model.ProductImage1" alt="">
+                                                    <img src="@Model.Product.ProductImage1" alt="">
                                                 </li>
                                             }
-                                            @if (Model.ProductImage2 != null)
+                                            @if (Model.Product.ProductImage2 != null)
                                             {
                                                 <li class="sliderBlock_items__itemPhoto sliderBlock_items__showing" style="width: 100%;">
-                                                    <img src="@Model.ProductImage2" alt="">
+                                                    <img src="@Model.Product.ProductImage2" alt="">
                                                 </li>
                                             }
-                                            @if (Model.ProductImage3 != null)
+                                            @if (Model.Product.ProductImage3 != null)
                                             {
                                                 <li class="sliderBlock_items__itemPhoto sliderBlock_items__showing" style="width: 100%;">
-                                                    <img src="@Model.ProductImage3" alt="">
+                                                    <img src="@Model.Product.ProductImage3" alt="">
                                                 </li>
                                             }
 
@@ -176,7 +179,7 @@
                                     </div>
                                 </div>
                             </div>
-                          
+
                             <div class="small-12 large-6 columns col-md-6">
 
                                 <div class="productCard_rightSide">
@@ -192,11 +195,11 @@
                                             </div>
                                             <div class="block_specification__content   " style="display: none;">
                                                 <span style="overflow-wrap: anywhere;color:black ">
-                                                    @Model.ProductUseGuide
+                                                    @Model.Product.ProductUseGuide
                                                 </span>
                                             </div>
                                         </div>
-                                      
+
                                         @*   <div class="block_specification__informationShow hide">
                                         <i class="fa fa-info-circle block_specification__button block_specification__button__jump"
                                         aria-hidden="true"></i>
@@ -204,17 +207,21 @@
                                         </div> *@
 
                                     </div>
-                                   
+
                                     <p class="block_model">
                                         <span class="block_model__text">Model: </span>
-                                        <span class="block_model__number">@Model.ProductID</span>
+                                        <span class="block_model__number">@Model.Product.ProductID</span>
                                     </p>
-                              @*       @await Component.InvokeAsync("_ProductProp", new { productPropID = Model.Product_ID }) *@
-                                  
+
+                                    @await Component.InvokeAsync("_ProductProp", new { priceID = Model.PriceID })
+                                    <button class=" basketAdd1 btn btn-outline-info mb-4 mt-2 d-flex justify-content-center">
+                                        Sepete Ekle
+                                        <i class="icon-shopping_basket"></i>
+                                    </button>
                                 </div>
-                            
-                            </div> 
-                          
+                              
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -224,49 +231,60 @@
 
 </main>
 
-@* 
-@await Component.InvokeAsync("_ProductDetailsSlider") *@
+
+@await Component.InvokeAsync("_ProductDetailsSlider")
 <!-- Related items section-->
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
 <script>
+  
 
 
     // $(document).ready(function () {
-      
-    //     $(".iframe").click(function () {      
+
+    //     $(".iframe").click(function () {
     //         var productId = $(this).data('product-id');
-          
+
     //         $.colorbox({ iframe: true, href: "Product/ProductDetails?productID="
     //         + productId, width: "90%", height: "85%" });
-          
+
     //     });
     // });
 
+   
+    $('.basketAdd1').click(function () {
+        // var dimensionId = $(".dimension").data("dimension-id");
+        // var colorID;
 
-    $('.basketAdd').click(function () {
-        var dimensionId = $(".dimension").data("dimension-id");
-        var colorID; 
+        // $('input[name="colorOfItem"]').each(function () {
+        //     if ($(this).is(':checked')) {
+        //         var selectedColorID = $(this).attr('id').replace('radioColor_', '');
 
-        $('input[name="colorOfItem"]').each(function () {
-            if ($(this).is(':checked')) {
-                var selectedColorID = $(this).attr('id').replace('radioColor_', '');
-              
-                colorID = selectedColorID; // colorID ayarlayın
-            }
-        });
+        //         colorID = selectedColorID; // colorID ayarlayın
+        //     }
+        // });
 
         var userId = $(this).data('userId');
-        var count = $(".block_quantity__number").val(); 
 
-        var dto = {
-            ProductDimensionsId: dimensionId,
+        var count = $(".block_quantity__number").val();
+        if (count <= 0 || isNaN(count)) {
+            toastr.error('Lütfen geçerli bir miktar giriniz!', { position: "toast-top-end" });
+            return;
+        }
+        // if (!userId) {
+        //     toastr.warning('Lütfen sepete eklemek için giriş yapın!', { position: "toast-top-end" });
+        //     return;
+        // }
+       
+
+        var dto = {       
             UserID: "1",
             Count: count,
-            productColorID: colorID
+            PriceID: productPriceID          
         };
+
 
         $.ajax({
             type: 'POST',
@@ -274,28 +292,9 @@
             contentType: 'application/json',
             data: JSON.stringify(dto),
             success: function (response) {
-                // Başarılı
-                console.log(response);
+                toastr.success('Sepete Eklendi!', { position: "toast-top-end" });
             },
             error: function (xhr, status, error) {
-                // Hata
-                console.error(error);
-            }
-        });
-    });
-
-
-    $(".dimension").on("click", function (e) {
-        e.preventDefault();
-        var dimensionID = $(this).attr("data-dimension-id");
-
-        $.get("/Product/GetProductDimensionId/" + dimensionID)
-            .done(function (data) {
-
-                $(".block_price__currency").text(data + "₺")
-            })
-            .fail(function (xhr, status, error) {
-
                 if (xhr.status == 404) {
                     toastr.error('Beklenmeyen bir hata oluştu!', { position: "toast-top-end" });
                 }
@@ -303,10 +302,86 @@
                     toastr.warning('İşlemi Yapmak İçin Giriş Yapmalısın!', { position: "toast-top-end" });
                 }
                 if (xhr.status == 400) {
-                    toastr.warning('Bu Anime Favori Listenden Daha Önce Kaldırılmış!', { position: "toast-top-end" });
+                    toastr.warning('Bu Daha Önce Kaldırılmış!', { position: "toast-top-end" });
                 }
-            });
+            }
+        });
     });
+
+
+
+
+    $(document).ready(function () {
+        // Seçilen boyut ve renk id'lerini saklayacak değişkenler
+        var selectedDimensionId;
+        var selectedColorId;
+        var productPrice;
+
+        // Boyut butonlarına click olayı ekle
+        $(".dimension").click(function () {
+            // Seçilen butonun data-dimension-id özelliğini al
+            selectedDimensionId = $(this).data("dimension-id");
+
+            // Seçilen boyut ve renk id'lerini kontrol et ve AJAX isteğini gönder
+            sendAjaxRequest();
+        });
+
+        // Renk butonlarına click olayı ekle
+        $(".color").click(function () {
+            // Seçilen butonun data-color-id özelliğini al
+            selectedColorId = $(this).data("color-id");
+
+            // Seçilen boyut ve renk id'lerini kontrol et ve AJAX isteğini gönder
+            sendAjaxRequest();
+        });
+
+        // AJAX isteğini gönderen fonksiyon
+        function sendAjaxRequest() {
+            // Her iki parametre de tanımlıysa AJAX isteğini gönder
+            if (selectedDimensionId !== undefined && selectedColorId !== undefined) {
+                var productID = @Html.Raw(productId);
+
+               
+                var dto = {
+                    ProductID: productID,
+                    ColorID: selectedColorId,
+                    DimensionsID: selectedDimensionId,
+                    Stock:0
+
+                };
+
+                       
+                $.ajax({
+                    type: 'POST',
+                    url: '/Product/GetProductDimension',
+                    contentType: 'application/json',
+                    data: JSON.stringify(dto),
+                    success: function (response) {
+                        // Başarılı                  
+                        var restData = JSON.parse(response); 
+                        productPriceID = restData.priceID;
+                          
+                        $(".block_price__currency").text(restData.price + " ₺");
+                        $(".product__stock").text(restData.stock + " Adet");
+                    },
+                    error: function (xhr, status, error) {
+                      
+                        if (xhr.status == 404) {
+                            toastr.error('Beklenmeyen bir hata oluştu!', { position: "toast-top-end" });
+                        }
+                        if (xhr.status == 401) {
+                            toastr.warning('İşlemi Yapmak İçin Giriş Yapmalısın!', { position: "toast-top-end" });
+                        }
+                        if (xhr.status == 400) {
+                            toastr.warning('Bu Daha Önce Kaldırılmış!', { position: "toast-top-end" });
+                        }
+                    }
+                });
+            }
+        }
+    });
+
+
 
 
     $(document).ready(function () {
@@ -430,3 +505,25 @@
 
 
 
+    @* // $(".dimension").on("click", function (e) {
+    //     e.preventDefault();
+    //     var dimensionID = $(this).attr("data-dimension-id");
+
+    //     $.get("/Product/GetProductDimension/" + dimensionID)
+    //         .done(function (data) {
+
+    //             $(".block_price__currency").text(data + "₺")
+    //         })
+    //         .fail(function (xhr, status, error) {
+
+    //             if (xhr.status == 404) {
+    //                 toastr.error('Beklenmeyen bir hata oluştu!', { position: "toast-top-end" });
+    //             }
+    //             if (xhr.status == 401) {
+    //                 toastr.warning('İşlemi Yapmak İçin Giriş Yapmalısın!', { position: "toast-top-end" });
+    //             }
+    //             if (xhr.status == 400) {
+    //                 toastr.warning('Bu Anime Favori Listenden Daha Önce Kaldırılmış!', { position: "toast-top-end" });
+    //             }
+    //         });
+    // }); *@

@@ -1,6 +1,7 @@
 ﻿
 @{
     Layout = null;
+    var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 }
 
 <!DOCTYPE html>

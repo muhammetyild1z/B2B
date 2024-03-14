@@ -1,0 +1,11 @@
+﻿ 
+@model  List<ResultDimensionsDto>
+
+
+
+@foreach (var item in Model)
+        {
+    <button class="btn-sm btn btn-light dimension" data-dimension-id="@item.DimensionsID">
+                @item.En X @item.Boy
+            </button>
+        }

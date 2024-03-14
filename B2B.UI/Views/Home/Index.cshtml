@@ -27,8 +27,8 @@
 
     $(document).ready(function () {
         $(".iframe1").click(function () {
-            var productId = $(this).data('product-id');
-            var iframeURL = "Product/ProductDetails?productID=" + productId;
+            var priceID = $(this).data('product-id');
+            var iframeURL = "Product/ProductDetails?priceID=" + priceID;
 
             // Colorbox ile iframe'i aç
             $.colorbox({
@@ -41,20 +41,25 @@
                     var iframe = $(".iframe1");
                     iframe.on("load", function () {
                         // İframe içeriği yüklendikten sonra yapılacaklar
-                       
+                      
                     });
 
                     // Popup açıldığında 
+
                     $(".home__section").css("opacity", "0.4");
                 },
                 onClosed: function () {
                     // Popup kapatıldığında 
                     $(".home__section").css("opacity", "1");
                 }
-            });
+            }); 
         });
+      
     });
-
+    $(document).on("click", "#iframeClose", function () {
+        $.colorbox.close();
+    });
+   
 </script>
 
 

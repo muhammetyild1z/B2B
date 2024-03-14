@@ -10,5 +10,6 @@ namespace B2B.BusinessLayer.Abstract
     public interface IProductPriceService:IGenericService<ProductPrice>
     {
         List<ProductPrice> TGetIncludePriceList();
+        ProductPrice TGetByIdIncludePrice(int priceId);
     }
 }

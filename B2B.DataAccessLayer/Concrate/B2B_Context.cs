@@ -70,8 +70,11 @@ namespace B2B.DataAccessLayer.Concrate
             modelBuilder.Entity<Contact>().HasKey(x => x.ContactID);
             modelBuilder.Entity<HomeSlider>().HasKey(x => x.SliderID);
             modelBuilder.Entity<HomeSlider>().HasOne(x => x.product).WithMany().HasForeignKey(x => x.ProductID);
+
             modelBuilder.Entity<Basket>().HasKey(x => x.BasketID);
             modelBuilder.Entity<Basket>().HasOne(x => x.appUser).WithMany().HasForeignKey(x => x.UserID);
+            modelBuilder.Entity<Basket>().HasOne(x => x.productPrice).WithMany().HasForeignKey(x => x.PriceID);
+
             modelBuilder.Entity<Category>().HasKey(x => x.CategoryID);
             modelBuilder.Entity<ChildSubCategory>().HasKey(x => x.ChildSubCategoryID);
             modelBuilder.Entity<ParentSubCategory>().HasKey(x => x.ParentSubCategoryID);

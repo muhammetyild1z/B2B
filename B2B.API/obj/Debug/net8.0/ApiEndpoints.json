@@ -58,6 +58,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "B2B.API.Controllers.BasketController",
+    "Method": "UserAllBasket",
+    "RelativePath": "api/Basket/UserAllBasket/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "B2B.API.Controllers.CategoryController",
     "Method": "AllGetCategory",
     "RelativePath": "api/Category/AllGetCategory",
@@ -284,6 +300,22 @@
       {
         "Name": "updateContactMailRequestDto",
         "Type": "B2B.API.Dtos.ContactMailRequestDtos.UpdateContactMailRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "B2B.API.Controllers.DimensionsController",
+    "Method": "GetByIDProductSize",
+    "RelativePath": "api/Dimensions/GetByIDProductSize/{productID}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productID",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],
@@ -555,6 +587,54 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "B2B.API.Controllers.ProductPriceController",
+    "Method": "GetByIdProductPrice",
+    "RelativePath": "api/ProductPrice/GetByIdProductPrice/{priceID}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "priceID",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "B2B.API.Controllers.ProductPriceController",
+    "Method": "GetProductColor",
+    "RelativePath": "api/ProductPrice/GetProductColor/{productID}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productID",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "B2B.API.Controllers.ProductPriceController",
+    "Method": "GetProductDimension",
+    "RelativePath": "api/ProductPrice/GetProductDimension",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "B2B.API.Dtos.ProductPriceDtos.CreateProductPriceDto",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   }
 ]

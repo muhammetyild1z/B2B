@@ -10,5 +10,6 @@ namespace B2B.DataAccessLayer.Abstract
     public interface IProductPriceDAL:IGenericDal<ProductPrice>
     {
         List<ProductPrice> GetIncludePriceList();
+        ProductPrice GetByIdIncludePrice(int priceId);
     }
 }

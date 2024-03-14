@@ -5,7 +5,7 @@
 <div class="row mt-5 product__slider">
     <div class="col-lg-11 col-md-8 col-sm-8 mobile__slider__nav_newEpisode">
         <div class="section-title">
-            <h4 class="text-dark"><i class="fa fa-upload"> </i>&nbsp;Son Eklenenler</h4>
+            <h4 ><i class="fa fa-upload"> </i>&nbsp;Son Eklenenler</h4>
         </div>
     </div>
     <div class="carousel-wrap">
@@ -19,18 +19,18 @@
                                 <i class="icon-heart-o"></i>
                                 <i class="icon-heart ep_hover"></i>
                             </div>
-                        <button class="basketAdd btn btn-sm btn-danger iframe1" data-product-Id="@item.Product.ProductID">
+                        <button class="col-md-10 basketAdd btn btn-sm btn-danger iframe1" data-product-Id="@item.PriceID" style="position:absolute; left:9%; ">
                             Sepete Ekle
                             <i class="icon-shopping_basket"> </i>
                         </button>
                         </div>
 
-                    <div style="display: flex; align-items: center;">
-                        <p style="border: 1px solid black; padding: 5px; margin-right: 10px; color:black">
+                    <div >
+                        <p style="border: 1px solid #B7C4CF; padding: 5px; margin-right: 10px; color:snow; display:flex; justify-content:center">
                             Ebat:
-                            <span style="border: 1px solid black; padding: 3px;">@item.dimensions.En</span>
+                            <span >@item.dimensions.En</span>
                             X
-                            <span style="border: 1px solid black; padding: 3px;">@item.dimensions.Boy</span>
+                            <span >@item.dimensions.Boy</span>
                         </p>
                     
                     </div>

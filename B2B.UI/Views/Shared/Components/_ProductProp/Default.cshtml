@@ -1,0 +1,61 @@
+﻿@model  ResultProductPriceDto
+
+<div class="block_product">
+
+    <h2 class="block_name block_name__addName">@Model.Product.ProductName</h2>
+
+    
+    <p class="block_product__advantagesProduct">
+        Stok:
+        <span class="text-weight-bold product__stock">Ürün detaylarını seçin</span> 
+    </p>
+
+
+    <div class="block_informationAboutDevice">
+
+        <div class="block_descriptionInformation overflow-auto ">
+            <span style="overflow-wrap: anywhere;">
+                @Model.Product.ProductDescription
+            </span>
+        </div>
+        <p class="text-dark">
+            Ebat Seçin
+        </p>
+        @await Component.InvokeAsync("_ProductPropDimensions",new {productID=Model.ProductID})
+       
+
+        <div class="row ">
+            <div class="large-6 small-12 column left-align ml-1">
+                <div class="block_price">
+                    <p class="block_price__currency">@Model.price ₺</p>
+                    @*  <p class="block_price__shipping">Shipping and taxes extra</p> *@
+                </div>
+                <div class="block_quantity clearfix ml-1">
+                    <span class="text_specification">Adet</span>
+                    <div class="block_quantity__chooseBlock">
+                        <input class="block_quantity__number" name="quantityNumber"
+                               type="number" min="1" value="1" oninput="validity.valid||(value='');">
+
+                        <button class="block_quantity__button block_quantity__up"></button>
+                        <button class="block_quantity__button block_quantity__down"></button>
+                    </div>
+                </div>
+            </div>
+            <div class="large-6 small-12 column end ml-3">
+
+                <div class="block_goodColor">
+                    <span class="text_specification">Mevcut Renkler</span>
+                    <div class="block_goodColor__allColors">
+
+                     
+
+                        @await Component.InvokeAsync("_ProductPropColor", new { productID = Model.ProductID })
+                    </div>
+                </div>
+            </div>
+
+        </div>
+      
+    </div>
+
+</div>

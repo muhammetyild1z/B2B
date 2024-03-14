@@ -48,6 +48,19 @@ builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 
 
+builder.Services.AddScoped<IStockDAL, efStockRepository>();
+builder.Services.AddScoped<IStockService, StockManager>();
+
+builder.Services.AddScoped<IProductColorDAL, efProductColorRepository>();
+builder.Services.AddScoped<IProductColorService, ProductColorManager>();
+
+builder.Services.AddScoped<IDimensionsDAL, efDimensionsRepository>();
+builder.Services.AddScoped<IDimensionsService, DimensionsManager>();
+
+builder.Services.AddScoped<IProductSizeDAL, efProductSizeRepository>();
+builder.Services.AddScoped<IProductSizeService, ProductSizeManager>();
+
+
 builder.Services.AddScoped<IProductPriceDAL, efProductPriceRepository>();
 builder.Services.AddScoped<IProductPriceService, ProductPriceManager>();
 

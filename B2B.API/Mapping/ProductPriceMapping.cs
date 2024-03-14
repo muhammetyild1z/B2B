@@ -9,6 +9,7 @@ namespace B2B.API.Mapping
         public ProductPriceMapping()
         {
                 CreateMap<ProductPrice , ResultProductPriceDto>().ReverseMap();
+                CreateMap<ProductPrice , CreateProductPriceDto>().ReverseMap();
         }
     }
 }
