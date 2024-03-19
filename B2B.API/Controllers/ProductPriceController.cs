@@ -43,9 +43,10 @@ namespace B2B.API.Controllers
         {
             CreateProductPriceDto a = new CreateProductPriceDto();
           var  productPrice = _productPriceService.TGetList().FirstOrDefault(x => x.DimensionsID == dto.DimensionsID && x.ColorID == dto.ColorID && x.ProductID == dto.ProductID);
-            a= _mapper.Map<CreateProductPriceDto>(productPrice);
            
-                a.Stock = _stockService.TGetList().Find(x => x.ProductID == dto.ProductID && x.ColorID == dto.ColorID && x.DimensionsID == dto.DimensionsID).Quantity;         
+            a = _mapper.Map<CreateProductPriceDto>(productPrice);
+            a.StockQuantity = _stockService.TGetList().Find(x => x.StockID == productPrice.StockID).Quantity;
+
             return Ok(a);
         }
 

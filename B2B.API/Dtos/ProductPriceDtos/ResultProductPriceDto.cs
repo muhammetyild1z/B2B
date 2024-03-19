@@ -6,6 +6,7 @@ namespace B2B.API.Dtos.ProductPriceDtos
     {
         public int PriceID { get; set; }
 
+        public int StockID { get; set; }
         public int ProductID { get; set; }
         public Product Product { get; set; }
 

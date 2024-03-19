@@ -78,15 +78,31 @@ namespace B2B.API.Controllers
         [HttpPost("CreateBasket")]
         public async Task<IActionResult> CreateBasket([FromBody] CreateBasketDto dto)
         {
+       
             dto.Status = true;
             dto.CreateDate = DateTime.Now;
             var basket = _mapper.Map<Basket>(dto);
-            var result = _basketService.TInsertAsync(basket);
-            if (result.IsCompletedSuccessfully)
+            var basketCheck = _basketService.TGetIncludeAllUserBasket().Find(x=>x.UserID== basket.UserID && x.PriceID==basket.PriceID );
+            if (basketCheck==null)
             {
-                return Ok();
+                var result = _basketService.TInsertAsync(basket);
+                if (result.IsCompleted)
+                {
+                    return Ok();
+                }
             }
+            else
+            {
+                basketCheck.Count += dto.Count;
+                var result = _basketService.TUpdateAsync(basketCheck, basketCheck);
+                if (result.IsCompleted)
+                {
+                    return Ok();
+                }
+               
 
+            }
+        
             return NotFound();
 
         }

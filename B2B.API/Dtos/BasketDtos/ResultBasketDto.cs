@@ -9,7 +9,8 @@ namespace B2B.API.Dtos.BasketDtos
         public bool Status { get; set; }
         public DateTime CreateDate { get; set; }
         public int BasketID { get; set; }
-
+        public Stock stock { get; set; }
+        public int StockID { get; set; }
         public AppUser appUser { get; set; }
         public string UserID { get; set; }
 

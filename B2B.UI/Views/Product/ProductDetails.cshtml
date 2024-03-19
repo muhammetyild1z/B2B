@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "ProductDetails";
     Layout = "~/Views/Layout/LayoutIndex.cshtml";
-   var productId = Model.ProductID;
+    var productId = Model.ProductID;
     var sliderCount = 0;
     if (Model.Product.ProductImage1 != null)
     {
@@ -17,6 +17,7 @@
         sliderCount++;
     }
     var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+    var productPriceId = Model.PriceID;
 }
 
 <style>
@@ -105,7 +106,7 @@
     <a id="iframeClose"  class="btn-sm btn-danger btn-close" disabled aria-label="Close" style="z-index: 9999;
     right: 20px;
     top: 10px;
-background-color: red;
+    background-color: red;
     position: fixed;"></a>
     <div class="mainWrapper">
         <div class="mainBackground clearfix">
@@ -253,38 +254,35 @@ background-color: red;
     //     });
     // });
 
-   
+    var stock = 0;
     $('.basketAdd1').click(function () {
-        // var dimensionId = $(".dimension").data("dimension-id");
-        // var colorID;
 
-        // $('input[name="colorOfItem"]').each(function () {
-        //     if ($(this).is(':checked')) {
-        //         var selectedColorID = $(this).attr('id').replace('radioColor_', '');
-
-        //         colorID = selectedColorID; // colorID ayarlayın
-        //     }
-        // });
-
+      
         var userId = $(this).data('userId');
-
+   
         var count = $(".block_quantity__number").val();
         if (count <= 0 || isNaN(count)) {
             toastr.error('Lütfen geçerli bir miktar giriniz!', { position: "toast-top-end" });
             return;
         }
+       
         // if (!userId) {
         //     toastr.warning('Lütfen sepete eklemek için giriş yapın!', { position: "toast-top-end" });
         //     return;
         // }
-       
 
-        var dto = {       
-            UserID: "1",
+
+        var dto = {
+            UserID: "3fe7b6fa-82fc-46ba-9087-c9590673aa51",
             Count: count,
-            PriceID: productPriceID          
-        };
+            PriceID: @Html.Raw(productPriceId),
+            
+    };
 
+        if (count > stock) {
+            toastr.error('Stoktan fazla urun ekleyemezsiniz', { position: "toast-top-end" });
+            return;
+        }
 
         $.ajax({
             type: 'POST',
@@ -302,7 +300,7 @@ background-color: red;
                     toastr.warning('İşlemi Yapmak İçin Giriş Yapmalısın!', { position: "toast-top-end" });
                 }
                 if (xhr.status == 400) {
-                    toastr.warning('Bu Daha Önce Kaldırılmış!', { position: "toast-top-end" });
+                    toastr.warning('Stoktan fazla Ekleme Yapamazsiniz!', { position: "toast-top-end" });
                 }
             }
         });
@@ -316,11 +314,13 @@ background-color: red;
         var selectedDimensionId;
         var selectedColorId;
         var productPrice;
+      
 
         // Boyut butonlarına click olayı ekle
         $(".dimension").click(function () {
             // Seçilen butonun data-dimension-id özelliğini al
             selectedDimensionId = $(this).data("dimension-id");
+        
 
             // Seçilen boyut ve renk id'lerini kontrol et ve AJAX isteğini gönder
             sendAjaxRequest();
@@ -340,6 +340,7 @@ background-color: red;
             // Her iki parametre de tanımlıysa AJAX isteğini gönder
             if (selectedDimensionId !== undefined && selectedColorId !== undefined) {
                 var productID = @Html.Raw(productId);
+             
 
                
                 var dto = {
@@ -360,9 +361,10 @@ background-color: red;
                         // Başarılı                  
                         var restData = JSON.parse(response); 
                         productPriceID = restData.priceID;
-                          
+                        stock = restData.stockQuantity;
+                      
                         $(".block_price__currency").text(restData.price + " ₺");
-                        $(".product__stock").text(restData.stock + " Adet");
+                        $(".product__stock").text(stock + " Adet");
                     },
                     error: function (xhr, status, error) {
                       
@@ -527,3 +529,14 @@ background-color: red;
     //             }
     //         });
     // }); *@
+
+  @*      // var dimensionId = $(".dimension").data("dimension-id");
+        // var colorID;
+
+        // $('input[name="colorOfItem"]').each(function () {
+        //     if ($(this).is(':checked')) {
+        //         var selectedColorID = $(this).attr('id').replace('radioColor_', '');
+
+        //         colorID = selectedColorID; // colorID ayarlayın
+        //     }
+        // }); *@

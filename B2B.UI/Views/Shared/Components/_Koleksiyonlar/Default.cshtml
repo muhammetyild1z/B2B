@@ -1,82 +1,82 @@
-﻿@model List<ResultProductPriceDto>
+﻿
+@{
+    var appSettings = Context.RequestServices.GetRequiredService<IOptions<AppSettings>>().Value;
+    var apiUrl = appSettings.ApiCokBegenilenUrl;
+}
 
 
 
-<div class="row mt-5 product__slider">
-    <div class="pt-4 col-lg-11 col-md-8 col-sm-8 mobile__slider__nav_newEpisode">
+<div id="productSliderContainer" class="row mt-5 product__slider">
+    <div class="col-lg-11 col-md-8 col-sm-8 mobile__slider__nav_newEpisode">
         <div class="section-title">
-            <h4 ><i class="fa fa-upload"> </i>&nbsp;Son Eklenenler</h4>
+            <h4><i class="fa fa-upload"> </i>&nbsp;Son Eklenenler</h4>
         </div>
     </div>
     <div class="carousel-wrap">
-        <div class="owl-carousel owl-2">
-            @foreach (var item in Model)
-            {
-                <div class="item">
-
-                    <div class="product__item__pic set-bg col-md-12" data-setbg="@item.Product.ProductImage">
-                        <div class="ep">
-                            <i class="icon-heart-o"></i>
-                            <i class="icon-heart ep_hover"></i>
-                        </div>
-                        <button class="col-md-10 basketAdd btn btn-sm btn-danger iframe1" data-product-Id="@item.PriceID" style="position:absolute; left:9%; ">
-                            Sepete Ekle
-                            <i class="icon-shopping_basket"> </i>
-                        </button>
-                    </div>
-               
-
-
-
-                    <div class="product__item__text pl-4">
-                        <ul>
-                            @if (item.Product.ProductName.Length > 22)
-                            {
-                                <h5 class="text-dark">
-                                    @Html.ActionLink(@item.Product.ProductName.Substring(0, 22), "productDetails", "product"
-                                             , new { productID = item.Product.ProductID }, new { @class = "text-dark" }) ..
-                                </h5>
-                            }
-                            else
-                            {
-                                <h5 class="text-dark">
-                                    @Html.ActionLink(@item.Product.ProductName, "productDetails", "product"
-                                             , new { productID = item.Product.ProductID }, new { @class = "text-dark" })
-                                </h5>
-                            }
-                            <h5 class=" font-weight-bold">@item.price ₺</h5>
-                        </ul>
-
-                    </div>
-                </div>
-            }
-
+        <div class="owl-carousel owl-3">
+            <!-- AJAX isteği ile alınan ürünler buraya yerleştirilecek -->
         </div>
     </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 <script>
+    $(document).ready(function () {
+        $.ajax({
+            type: 'GET',
+            url: '@Html.Raw(apiUrl)',
+            success: function (response) {
+                var html = '';
+                $.each(response, function (index, item) {
+                    html += '<div class="item row">';
+                    html += '<div class="product__item__pic set-bg col-md-12">';
+                    html += '<img src="' + item.product.productImage + '" alt="Product Image">';
+                    html += '<div class="ep">';
+                    html += '<i class="icon-heart-o"></i>';
+                    html += '<i class="icon-heart ep_hover"></i>';
+                    html += '</div>';
+                    html += '<button class="col-md-10 basketAdd btn btn-sm btn-danger iframe1" data-product-Id="' + item.priceID + '" style="position:absolute; left:9%;">';
+                    html += 'Sepete Ekle <i class="icon-shopping_basket"></i>';
+                    html += '</button>';
+                    html += '</div>';
+                    
+                   
+                    html += '<div class="product__item__text pl-4">';
+                    html += '<ul>';
+                    if (item.product.productName.length > 22) {
+                        html += '<h5 class="text-dark"><a href="/product/productDetails?productID=' + item.product.productID + '" class="text-dark">' + item.product.productName.substring(0, 22) + '...</a></h5>';
+                    } else {
+                        html += '<h5 class="text-dark"><a href="/product/productDetails?productID=' + item.product.productID + '" class="text-dark">' + item.product.productName + '</a></h5>';
+                    }
+                    html += '<h5 class="font-weight-bold">' + item.price + '₺</h5>';
+                    html += '</ul>';
+                    html += '</div>';
+                    html += '</div>';
+                });
 
+                $('.owl-3').html(html);
 
-    $('.owl-2').owlCarousel({
-        loop: true,
-        margin: 30,
-        nav: false,
-
-        autoplay: true,
-        autoplayHoverPause: true,
-        responsive: {
-            0: {
-                items: 1
+                $('.owl-3').owlCarousel({
+                    loop: true,
+                    margin: 30,
+                    nav: false,
+                    autoplay: true,
+                    autoplayHoverPause: true,
+                    responsive: {
+                        0: {
+                            items: 1
+                        },
+                        600: {
+                            items: 3
+                        },
+                        1000: {
+                            items: 6
+                        }
+                    }
+                });
             },
-            600: {
-                items: 3
-            },
-            1000: {
-                items: 6
+            error: function (xhr, status, error) {
+                console.error(error);
             }
-        }
-    })
+        });
+    });
 </script>

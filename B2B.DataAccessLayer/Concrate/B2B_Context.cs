@@ -9,7 +9,7 @@ using Microsoft.Graph.Models.Security;
 
 namespace B2B.DataAccessLayer.Concrate
 {
-    public class B2B_Context : IdentityDbContext
+    public class B2B_Context : IdentityDbContext<AppUser, AppRole, string>
     {
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -60,20 +60,24 @@ namespace B2B.DataAccessLayer.Concrate
             modelBuilder.Entity<ProductPrice>().HasOne(x => x.color).WithMany().HasForeignKey(x => x.ColorID);
             modelBuilder.Entity<ProductPrice>().HasOne(x => x.Product).WithMany().HasForeignKey(x => x.ProductID);
             modelBuilder.Entity<ProductPrice>().HasOne(x => x.dimensions).WithMany().HasForeignKey(x => x.DimensionsID);
+            modelBuilder.Entity<ProductPrice>().HasOne(x => x.stock).WithMany().HasForeignKey(x => x.StockID);
 
             modelBuilder.Entity<Stock>().HasKey(x => x.StockID);
-            modelBuilder.Entity<Stock>().HasOne(x => x.color).WithMany().HasForeignKey(x => x.ColorID);
-            modelBuilder.Entity<Stock>().HasOne(x => x.Product).WithMany().HasForeignKey(x => x.ProductID);
-            modelBuilder.Entity<Stock>().HasOne(x => x.dimensions).WithMany().HasForeignKey(x => x.DimensionsID);
+           //modelBuilder.Entity<Stock>().HasOne(x => x.productPrice).WithMany().HasForeignKey(x => x.PriceID);
+          //  modelBuilder.Entity<Stock>().HasOne(x => x.color).WithMany().HasForeignKey(x => x.ColorID);
+          //  modelBuilder.Entity<Stock>().HasOne(x => x.Product).WithMany().HasForeignKey(x => x.ProductID);
+          //  modelBuilder.Entity<Stock>().HasOne(x => x.dimensions).WithMany().HasForeignKey(x => x.DimensionsID);
 
             modelBuilder.Entity<ContactMailRequest>().HasKey(x => x.ContactMailRequestID);
             modelBuilder.Entity<Contact>().HasKey(x => x.ContactID);
             modelBuilder.Entity<HomeSlider>().HasKey(x => x.SliderID);
             modelBuilder.Entity<HomeSlider>().HasOne(x => x.product).WithMany().HasForeignKey(x => x.ProductID);
 
-            modelBuilder.Entity<Basket>().HasKey(x => x.BasketID);
-            modelBuilder.Entity<Basket>().HasOne(x => x.appUser).WithMany().HasForeignKey(x => x.UserID);
-            modelBuilder.Entity<Basket>().HasOne(x => x.productPrice).WithMany().HasForeignKey(x => x.PriceID);
+            modelBuilder.Entity<Basket>().HasKey(x => new { x.BasketID });
+            modelBuilder.Entity<Basket>().HasOne(x => x.appUser).WithMany().HasForeignKey(x => x.UserID).OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<Basket>().HasOne(x => x.productPrice).WithMany().HasForeignKey(x => x.PriceID).OnDelete(DeleteBehavior.NoAction);
+         //   modelBuilder.Entity<Basket>().HasOne(x => x.stock).WithMany().HasForeignKey(x => x.StockID).OnDelete(DeleteBehavior.NoAction);  
+
 
             modelBuilder.Entity<Category>().HasKey(x => x.CategoryID);
             modelBuilder.Entity<ChildSubCategory>().HasKey(x => x.ChildSubCategoryID);

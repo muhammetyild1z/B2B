@@ -14,7 +14,7 @@ namespace B2B.UI.DtosUI.ProductPriceDtos
 
         public int DimensionsID { get; set; }
         public Dimensions dimensions { get; set; }
-     //   public int Stock { get; set; }
+        public int StockID { get; set; }
         public decimal price { get; set; }
     }
 }

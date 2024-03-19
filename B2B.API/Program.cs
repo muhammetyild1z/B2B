@@ -27,8 +27,8 @@ builder.Services.AddIdentity<AppUser, AppRole>(
         opt.SignIn.RequireConfirmedAccount = false;
         opt.Password.RequireNonAlphanumeric = false;
         opt.Password.RequiredLength = 1;
-        opt.Password.RequireUppercase = true;
-        opt.Password.RequireLowercase = true;
+        opt.Password.RequireUppercase = false;
+        opt.Password.RequireLowercase = false;
         opt.Password.RequireDigit = false;
         opt.User.RequireUniqueEmail = true;
         opt.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";

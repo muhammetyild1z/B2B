@@ -1,0 +1,129 @@
+﻿@model SignInDto
+@{
+    ViewData["Title"] = "SignIn";
+    Layout = "~/Views/Layout/LayoutIndex.cshtml";
+   
+    var appSettings = Context.RequestServices.GetRequiredService<IOptions<AppSettings>>().Value;
+    var apiUrl = appSettings.ApiSignInUrl;
+
+
+}
+
+
+@if (User.Identity.IsAuthenticated == false)
+{
+
+    <!-- Login Section Begin -->
+    <section class="login spad">
+        <div class="container mobile__login">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="login__form">
+                        <h3 title="Oturum Açın">Giriş Yap</h3>
+                        <form id="loginForm" method="post">
+                            <div class="input__item">
+                                <input type="text" placeholder="Kullanici adi" asp-for="UserName">
+                                <span class="icon_profile"></span>
+                            </div>
+                            <div class="input__item">
+                                <input type="password" placeholder="Sifre" asp-for="Password">
+                                <span class="icon_lock"></span>
+                            </div>
+
+                            @if (ViewBag.ErrorCount != null)
+                            {
+                                <ul>
+                                    <li class=" text-white">
+                                        @Html.ValidationSummary()
+                                    </li>
+                                </ul>
+                            }
+                            <button type="submit" class="site-btn">GİRİŞ YAP</button>
+
+                        </form>
+                        <a href="/Account/ForgetPasswordChange/" class="forget_pass">Şifreni Mi Unuttun?</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="login__register">
+                        <h3>Hesabın Yok Mu?</h3>
+
+                        <button class="primary-btn reg-btn" onclick="window.location.href='/Account/SignUp'"> Şimdi Kayıt Ol</button>
+
+
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="login__social">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-lg-6">
+                        <div class="login__social__links">
+                            <span>Veya</span>
+                            <ul>
+                           @*      <li>
+                                    <a href="#" class="facebook">
+                                        <i class="fa fa-facebook"></i> Facebook İle Giriş Yap
+                                    </a>
+                                </li> *@
+                                <li>
+                                    <a class="google" asp-controller="Account" asp-action="GoogleLogin" class="btn btn-primary">
+                                        <i class="fa fa-google"></i>  Google ile Giriş Yap
+                                        </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </section>
+
+
+
+}
+else
+{
+    <script>
+
+        window.location.href = "/";
+    </script>
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#loginForm').submit(function (event) {
+            event.preventDefault();
+
+            var formData = {
+                UserName: $('#UserName').val(),
+                Password: $('#Password').val()
+            };
+
+            $.ajax({
+                url: '@Html.Raw(apiUrl)',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(formData),
+                success: function (response) {
+                    console.log('Giriş başarılı:', response);
+                    // Başarılı bir şekilde giriş yapıldığında yapılacak işlemler
+                },
+                error: function (xhr, status, error) {
+                    console.error('Giriş hatası:', error);
+                    // Giriş hatası durumunda yapılacak işlemler
+                }
+            });
+        });
+    });
+
+</script>
+
+

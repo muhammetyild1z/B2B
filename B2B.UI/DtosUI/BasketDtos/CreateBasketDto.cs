@@ -14,9 +14,9 @@ namespace B2B.UI.DtosUI.BasketDtos
         public int PriceID { get; set; }
 
         public string UserID { get; set; }
+        public int Stock { get; set; }
 
- 
-      
+
 
         public int Count { get; set; }
     }

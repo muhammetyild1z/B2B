@@ -18,7 +18,8 @@ namespace B2B.UI.DtosUI.BasketDtos {
         //public decimal BasketTotalPrice { get; set; }
         public ProductPrice productPrice { get; set; }
         public int PriceID { get; set; }
-
+        public Stock stock { get; set; }
+        public int StockID { get; set; }
 
         public int Count { get; set; }
     }

@@ -1,5 +1,37 @@
 [
   {
+    "ContainingType": "B2B.API.Controllers.AccountController",
+    "Method": "SignIn",
+    "RelativePath": "api/Account/SignIn",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "signInDto",
+        "Type": "B2B.API.Dtos.AccountDtos.SignInDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "B2B.API.Controllers.AccountController",
+    "Method": "SignUp",
+    "RelativePath": "api/Account/SignUp",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "signupDto",
+        "Type": "B2B.API.Dtos.AccountDtos.SignUpDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "B2B.API.Controllers.BasketController",
     "Method": "AllGetBasket",
     "RelativePath": "api/Basket/AllGetBasket",

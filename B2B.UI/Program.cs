@@ -1,8 +1,11 @@
 using B2B.DataAccessLayer.Concrate;
 using B2B.EntityLayer.Concrate;
+using B2B.UI.Models;
 using B2B.UI.ViewComponents.Dimensions;
 using B2B.UI.ViewComponents.ProductDetailsSlider;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Graph.Models.ExternalConnectors;
+using System.Configuration;
 using System.Net.Http;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -30,13 +33,11 @@ builder.Services.AddHttpClient<Dimensions>(client =>
     client.DefaultRequestHeaders.Accept.Clear();
 });
 
-
 builder.Services.AddHttpClient<ContactMailRequest>(client =>
 {
     client.BaseAddress = new Uri("https://localhost:7268/api/ContactMailRequest/");
     client.DefaultRequestHeaders.Accept.Clear();
 });
-
 
 builder.Services.AddHttpClient<HomeSlider>(client =>
 {
@@ -50,16 +51,15 @@ builder.Services.AddHttpClient<Contact>(client =>
     client.DefaultRequestHeaders.Accept.Clear();
 });
 
-
-
 builder.Services.AddHttpClient<Basket>(client =>
 {
     client.BaseAddress = new Uri("https://localhost:7268/api/Basket/");
     client.DefaultRequestHeaders.Accept.Clear();
 });
 
-
-
+// appsettings.json dosyasýndan yapýlandýrmayý yükle
+var appSettingsSection = builder.Configuration.GetSection("AppSettings");
+builder.Services.Configure<AppSettings>(appSettingsSection);
 
 builder.Services.AddHttpClient();
 

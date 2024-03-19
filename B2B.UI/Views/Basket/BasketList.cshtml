@@ -2,12 +2,18 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Layout/LayoutIndex.cshtml";
+    var productCount = Model.Select(x => x.Count);
+    decimal totalPrice = 0;
+    // var duplicateProducts = Model.GroupBy(p => new { p.UserID, p.PriceID })
+    //                              .Where(g => g.Count() > 1)
+    //                              .SelectMany(g => g);
 }
 <style>
     .navbar__custom {
         display: none;
-    }   
-    .footer{
+    }
+
+    .footer {
         display: none !important;
     }
 </style>
@@ -25,12 +31,13 @@
 
                         @foreach (var item in Model)
                         {
+
                             <!-- Single item -->
                             <div class="row">
                                 <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
                                     <!-- Image -->
                                     <div class="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
-                                        @*     <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Vertical/12a.webp" *@
+
                                         <img src="@item.productPrice.Product.ProductImage"
                                              class="w-100" alt="Urun Adı" />
                                         <a href="#!">
@@ -43,10 +50,15 @@
                                 <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
                                     <!-- Data -->
                                     <p><strong>@item.productPrice.Product.ProductName</strong></p>
-                                    <p>Renk: @item.productPrice.color.ColorCode</p>
+                                    <p>
+                                        Renk:
+                                        <div style="width:20px; height:20px; border-radius:50%; background-color:#@item.productPrice.color.ColorCode">
+                                        </div>
+                                    </p>
+
                                     <p>Ebat: @item.productPrice.dimensions.Boy X @item.productPrice.dimensions.En</p>
-                                    <button type="button" class="btn btn-primary btn-sm me-1 mb-2" data-mdb-toggle="tooltip"
-                                            title="Sepetten kaldır">
+                                    <button type="button" class="removed__basket btn btn-primary btn-sm me-1 mb-2" data-mdb-toggle="tooltip"
+                                            data-basket-id="@item.BasketID" title="Sepetten kaldır">
                                         <i class="fa fa-trash"></i>
                                     </button>
                                     <button type="button" class="btn btn-danger btn-sm mb-2" data-mdb-toggle="tooltip"
@@ -59,30 +71,32 @@
                                 <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
                                     <!-- Quantity -->
                                     <div class="d-flex mb-4" style="max-width: 300px">
-                                        <button class="btn  px-3 me-2"
-                                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                                            <i class="fa fa-minus"></i>
-                                        </button>
+                                        @*    <button class="btn btn-plus  px-3 me-2"
+                                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                                    <i class="fa fa-minus"></i>
+                                    </button> *@
 
                                         <div class="form-outline">
-                                            <input id="form1" min="1" name="quantity" value="1" type="number" class="form-control" />
+                                            <input disabled id="form1" min="1" name="quantity" value="@item.Count" type="number" class="form-control mw-100 " />
                                         </div>
-
-                                        <button class="btn  px-3 ms-2"
-                                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                                            <i class="fa fa-plus"></i>
-                                        </button>
+                                        @*
+                                    <button class="btn  px-3 ms-2"
+                                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                                    <i class="fa fa-plus"></i>
+                                    </button> *@
                                     </div>
                                     <!-- Quantity -->
                                     @* <!-- Price -->   textine adetx fiyat yazdir  *@
+                                    @*  @(item.Count*item.productPrice.price) *@
                                     <p class="text-start text-md-center">
-                                        <p>
-                                            Tutar:
+                                    <p>
+                                        Tutar:
                                         <strong class="productTotalPrice">
-                                            @(item.Count*item.productPrice.price)
-                                            </strong>
-                                        </p>
-                                       
+
+                                                @(item.productPrice.price * item.Count)
+                                        </strong>
+                                    </p>
+
                                     </p>
                                     <!-- Price -->
                                 </div>
@@ -90,12 +104,9 @@
                             <!-- Single item -->
                             <hr class="my-4" />
                         }
-                   
-
-                     
 
                     </div>
-                </div>         
+                </div>
             </div>
             <div class="col-md-4 mobile__basket__Pay">
                 <div class="card mb-4">
@@ -106,7 +117,13 @@
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                                 Ürünler Toplam Fiyatı
-                                <span>total ürün prıce</span>
+                                @for (int i = 0; i < Model.Count; i++)
+                                {
+                                    totalPrice += Model[i].productPrice.price * Model[i].Count;
+                                }
+                                <span>@totalPrice ₺</span>
+
+                            @*     .Select(x => x.productPrice.price).Sum(); *@
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center px-0">
                                 Kargo
@@ -146,3 +163,41 @@
         </div>
     </div>
 </section>
+<!-- Toastr CSS -->
+<link href="https://cdn.jsdelivr.net/npm/toastr@2.1.4/toastr.min.css" rel="stylesheet">
+
+<!-- Toastr JS -->
+<script src="https://cdn.jsdelivr.net/npm/toastr@2.1.4/toastr.min.js"></script>
+
+@* //app user tablosunu yapinca user id yolla *@
+<script>
+    $(".removed__basket").on("click", function () {
+        var basketid = $(this).data("basket-id");
+
+        $.post("/Basket/BasketRemoved/" + basketid)
+            .done(function () {
+                toastr.success('Sepetten Kaldirildi!', { position: "toast-top-end", timeOut: 1000 });
+                // Sepet içeriğini güncelledikten sonra sayfayı yenile
+
+                setTimeout(function () {
+                    location.reload();
+                }, 1000);
+            })
+            .fail(function (xhr, status, error) {
+                if (xhr.status == 404) {
+                    toastr.error('Beklenmeyen bir hata oluştu!', { position: "toast-top-end" });
+                } else if (xhr.status == 401) {
+                    toastr.warning('İşlemi Yapmak İçin Giriş Yapmalısın!', { position: "toast-top-end" });
+                } else if (xhr.status == 400) {
+                    toastr.warning('Bu Bölüm Zaten Listende!', { position: "toast-top-end" });
+                }
+            });
+
+    });
+
+
+</script>
+
+
+
+

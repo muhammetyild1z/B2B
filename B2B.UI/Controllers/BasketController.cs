@@ -4,6 +4,7 @@ using B2B.UI.DtosUI.BasketDtos;
 using B2B.UI.DtosUI.ProductDtos;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Net;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Text;
@@ -37,8 +38,24 @@ namespace B2B.UI.Controllers
         }
 
         [HttpPost]
+        public async Task<IActionResult> BasketRemoved(int id)
+        {
+            HttpResponseMessage response = await _httpClient1.DeleteAsync($"DeleteBasket/{id}");
+            if (response.IsSuccessStatusCode)
+            {
+                return Ok();
+            }
+            return NotFound();
+        }
+        
+        [HttpPost]
         public async Task<IActionResult> BasketAdd([FromBody] CreateBasketDto dto)
         {
+            if (dto.PriceID==0)
+            {
+                return NotFound();
+            }
+
             var jsonData = JsonConvert.SerializeObject(dto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
 
@@ -47,8 +64,13 @@ namespace B2B.UI.Controllers
             {
                 return Ok();
             }
+            if (responseMessage.StatusCode == HttpStatusCode.BadRequest)
+            {
+                return BadRequest();
+            }
             return Unauthorized();
         }
+
     }
 
 }

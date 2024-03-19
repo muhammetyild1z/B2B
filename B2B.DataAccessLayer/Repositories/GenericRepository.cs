@@ -65,15 +65,15 @@ namespace B2B.DataAccessLayer.Repositories
             try
             {
                 _context.Entry(unchanged).CurrentValues.SetValues(entity);
-                _context.SaveChanges();
+                 _context.SaveChanges(); 
 
                 return OperationResult.Success;
             }
             catch (Exception)
             {
-
                 return OperationResult.Failure;
             }
         }
+
     }
 }

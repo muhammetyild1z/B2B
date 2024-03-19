@@ -26,6 +26,14 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\muham\OneDrive\Belgeler\GitHub\B2B\B2B.UI
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B.UI/Views/Account/SignIn.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxTaWduSW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B.UI/Views/Account/SignUp.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxTaWduVXAuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B.UI/Views/Basket/BasketList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFza2V0XEJhc2tldExpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
