@@ -17,7 +17,10 @@ namespace B2B.BusinessLayer.FluentValidation
          .MinimumLength(2).WithMessage("Kategori Adı En Az 2 Karakter Olmalıdır!");
 
               RuleFor(x => x.Message).NotEmpty().WithMessage(" Mesaj Boş Geçilemez!")
-         .MaximumLength(500).WithMessage("Mesaj En Fazla 50 Karakter Olabilir!")
+         .MaximumLength(500).WithMessage("Mesaj En Fazla 500 Karakter Olabilir!")
+         .MinimumLength(10).WithMessage("Mesaj En Az 10 Karakter Olmalıdır!");  
+            RuleFor(x => x.Subject)
+         .MaximumLength(500).WithMessage("Mesaj En Fazla 100 Karakter Olabilir!")
          .MinimumLength(10).WithMessage("Mesaj En Az 10 Karakter Olmalıdır!");
 
             RuleFor(x => x.Phone).NotEmpty().WithMessage(" Ad Boş Geçilemez!")

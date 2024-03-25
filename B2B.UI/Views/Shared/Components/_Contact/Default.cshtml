@@ -1,23 +1,37 @@
 ﻿@model List<ResultContactDto>
 
-<div class="col-md-5 mr-auto p-5">
-    <h2 class="font-weight-bold text-white">Bizimle İletişime Geçin</h2>
-    @foreach (var item in Model)
-{
+<div class="row">
+    <div class="col-md-4">
+        <div class="contact-box text-center">
+            <h3>Adres</h3>
 
-        <p class="mb-5">
-            @item.ContactDesc
-        </p>
+            <address>@Model.First().ContactAdress </address>
+        </div><!-- End .contact-box -->
+    </div><!-- End .col-md-4 -->
 
-        <ul class="list-unstyled pl-md-5 mb-5 text-white">
-            <li class="d-flex text-black mb-2">
-                <span class="mr-3"><span class="icon-map"></span></span> @item.ContactAdress
-            </li>
-            <li class="d-flex text-black mb-2"><span class="mr-3"><span class="icon-phone"></span></span> @item.ContactPhone1</li>
-  
-            <li class="d-flex text-black"><span class="mr-3"><span class="icon-envelope-o"></span></span> @item.ContactMail1 </li>
-           
-        </ul>
- 
-}
-</div>
+    <div class="col-md-4">
+        <div class="contact-box text-center">
+            <h3>İletişime geç</h3>
+
+            <div><a href="mailto:@Model.First().ContactMail1">@Model.First().ContactMail1</a></div>
+            <div>
+               @*  <a href="tel:#">+1 987-876-6543</a>  *@
+                <a href="tel:@Model.First().ContactPhone1">@Model.First().ContactPhone1</a>
+            </div>
+        </div><!-- End .contact-box -->
+    </div><!-- End .col-md-4 -->
+
+    <div class="col-md-4">
+        <div class="contact-box text-center">
+            <h3>Sosyal medya hesaplarımz</h3>
+
+            <div class="social-icons social-icons-color justify-content-center">
+                <a href="#" class="social-icon social-facebook" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
+                <a href="#" class="social-icon social-twitter" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
+                <a href="#" class="social-icon social-instagram" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
+                <a href="#" class="social-icon social-youtube" title="Youtube" target="_blank"><i class="icon-youtube"></i></a>
+                <a href="#" class="social-icon social-pinterest" title="Pinterest" target="_blank"><i class="icon-pinterest"></i></a>
+            </div><!-- End .soial-icons -->
+        </div><!-- End .contact-box -->
+    </div><!-- End .col-md-4 -->
+</div><!-- End .row -->

@@ -1,0 +1,9 @@
+﻿@model List<ResultCategoryDto>
+
+<li class="active"><a href="#" data-filter="*">Hepsi</a></li>
+    @foreach (var item in Model)
+    {
+
+    <li><a href="#" data-filter=".@item.Name.Replace(" ", "").Trim()">@item.Name</a></li>
+    
+    }

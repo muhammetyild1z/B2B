@@ -1,0 +1,119 @@
+﻿@model List<ResultBasketDto>
+@{
+    var productCount = Model.Sum(x => x.Count);
+    var userID = "3fe7b6fa-82fc-46ba-9087-c9590673aa51";
+    var appSettings = Context.RequestServices.GetRequiredService<IOptions<AppSettings>>().Value;
+    var apiUrl = appSettings.ApiBasketRemove;
+}
+
+
+
+<div class="dropdown cart-dropdown">
+    <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
+        <i class="icon-shopping-cart"></i>
+        <span class="cart-count">@productCount</span>
+
+    </a>
+
+    <div class="dropdown-menu dropdown-menu-right">
+        <div class="dropdown-cart-products">
+            @foreach (var item in Model.OrderByDescending(x => x.CreateDate).Take(5))
+            {
+                <div class="product">
+                    <div class="product-cart-details">
+                        <h4 class="product-title">
+                            <a href="product.html">@item.productPrice.Product.ProductName</a>
+                        </h4>
+                        <span>Renk:</span>
+                        <div class="product-nav product-nav-dots">               
+                            <a href="#" class="active" style="background: #@item.productPrice.color.ColorCode"><span class="sr-only">Color </span></a>
+                        </div>
+                        <span>
+                            Ebat:
+                        </span>
+                        <input type="text" disabled style="max-width:90px" class="form-control " required="" placeholder="@(item.productPrice.dimensions.En+ "X" +item.productPrice.dimensions.Boy)">
+                        <span class="cart-product-info">
+                            <span class="cart-product-qty">@item.Count</span>
+                            x @item.productPrice.price ₺
+                        </span>
+                    </div><!-- End .product-cart-details -->
+
+                    <figure class="product-image-container">
+                        <a href="product.html" class="product-image">
+                            <img src="@item.productPrice.Product.ProductImage" alt="product">
+                        </a>
+                    </figure>
+                    <a  class="btn-remove" title="Remove Product" data-basket-id="@item.BasketID"><i class="icon-close"></i></a>
+                </div>
+
+                <!-- End .product -->
+            }
+
+
+            <!-- sepet urunlerı kucuk -->
+
+
+
+        </div><!-- End .cart-product -->
+
+        <div class="dropdown-cart-total">
+            <span>Toplam</span>
+
+            <span class="cart-total-price">@(Model.Sum(x => x.productPrice.price * x.Count)) ₺</span>
+        </div><!-- End .dropdown-cart-total -->
+
+        <div class="dropdown-cart-action">
+            <a href="/basket/basketlist/@userID" class="btn btn-primary">Sepete Git</a>
+            <a href="checkout.html" class="btn btn-outline-primary-2"><span>Sipraiş Ver </span><i class="icon-long-arrow-right"></i></a>
+        </div><!-- End .dropdown-cart-total -->
+    </div><!-- End .dropdown-menu -->
+</div><!-- End .cart-dropdown -->
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script>
+    $(".btn-remove").on("click", function () {
+        var basketid = $(this).data("basket-id");
+
+        $.post("@Html.Raw(apiUrl)" + basketid)
+            .done(function () {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Ürün Kaldırıldı!',
+                    position: "top-end",
+                    timer: 1000,
+                    showConfirmButton: false
+                });
+
+                setTimeout(function () {
+                    location.reload();
+                }, 1000);
+            })
+            .fail(function (xhr, status, error) {
+                if (xhr.status == 404) {
+                    toastr.error('Beklenmeyen bir hata oluştu!', { position: "toast-top-end" });
+                } else if (xhr.status == 401) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Bir sorun oluştu!',
+                        position: "top-end",
+                        timer: 1000,
+                        showConfirmButton: false
+                    });
+                } else if (xhr.status == 400) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Bir problem oluştu!',
+                        position: "top-end",
+                        timer: 1000,
+                        showConfirmButton: false
+                    });
+                }
+            });
+
+    });
+
+
+</script>

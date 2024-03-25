@@ -1,11 +1,10 @@
-﻿ 
-@model  List<ResultDimensionsDto>
+﻿@model List<ResultDimensionsDto>
 
+<select name="dimension" id="size" class="form-control">
+    <option value="" selected="selected"> Ebat Seçiniz</option>
+    @foreach (var item in Model)
+    {
+        <option  data-dimension-id="@item.DimensionsID" value="@item.DimensionsID" selected="selected"> @item.En X @item.Boy</option>
 
-
-@foreach (var item in Model)
-        {
-    <button class="btn-sm btn btn-light dimension" data-dimension-id="@item.DimensionsID">
-                @item.En X @item.Boy
-            </button>
-        }
+    }
+</select>

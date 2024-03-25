@@ -2,7 +2,9 @@
 using B2B.API.Dtos.ContactDtos;
 using B2B.API.Dtos.ContactMailRequestDtos;
 using B2B.BusinessLayer.Abstract;
+using B2B.BusinessLayer.FluentValidation;
 using B2B.EntityLayer.Concrate;
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 
 namespace B2B.API.Controllers
@@ -30,12 +32,18 @@ namespace B2B.API.Controllers
         [HttpPost("CreateContactMailRequest")]
         public async Task<IActionResult> CreateContactMailRequest(CreateContactMailRequestDto createContactMailRequestDto)
         {
-            var result = _contactMailRequestService.TInsertAsync(_mapper.Map<ContactMailRequest>(createContactMailRequestDto));
-
-            if (result.IsCompleted)
+            ContactMailRequestValidation cmv = new ContactMailRequestValidation();
+            var validationResult = cmv.Validate(_mapper.Map<ContactMailRequest>(createContactMailRequestDto));
+            if (validationResult.IsValid)
             {
-                return Ok();
+                var result = _contactMailRequestService.TInsertAsync(_mapper.Map<ContactMailRequest>(createContactMailRequestDto));
+                if (result.IsCompleted)
+                {
+                    return Ok();
+                }
+
             }
+         
             return BadRequest();
         }
 

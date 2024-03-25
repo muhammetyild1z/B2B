@@ -296,6 +296,10 @@ namespace B2B.DataAccessLayer.Migrations
                         .HasMaxLength(11)
                         .HasColumnType("nvarchar(11)");
 
+                    b.Property<string>("Subject")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
                     b.HasKey("ContactMailRequestID");
 
                     b.ToTable("contactMailRequests");
@@ -577,6 +581,33 @@ namespace B2B.DataAccessLayer.Migrations
                     b.ToTable("stock");
                 });
 
+            modelBuilder.Entity("B2B.EntityLayer.Concrate.UserFavoriList", b =>
+                {
+                    b.Property<int>("FavoriID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FavoriID"));
+
+                    b.Property<DateTime>("createDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("priceID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("userID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("FavoriID");
+
+                    b.HasIndex("priceID");
+
+                    b.HasIndex("userID");
+
+                    b.ToTable("userFavoriLists");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.Property<int>("Id")
@@ -731,9 +762,7 @@ namespace B2B.DataAccessLayer.Migrations
 
                     b.HasOne("B2B.EntityLayer.Concrate.Product", "product")
                         .WithMany()
-                        .HasForeignKey("ProductID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ProductID");
 
                     b.Navigation("ChildSubCategory");
 
@@ -813,6 +842,25 @@ namespace B2B.DataAccessLayer.Migrations
                     b.Navigation("dimensions");
 
                     b.Navigation("product");
+                });
+
+            modelBuilder.Entity("B2B.EntityLayer.Concrate.UserFavoriList", b =>
+                {
+                    b.HasOne("B2B.EntityLayer.Concrate.ProductPrice", "price")
+                        .WithMany()
+                        .HasForeignKey("priceID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("B2B.EntityLayer.Concrate.AppUser", "appUser")
+                        .WithMany()
+                        .HasForeignKey("userID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("appUser");
+
+                    b.Navigation("price");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

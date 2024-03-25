@@ -2,6 +2,7 @@
 using B2B.API.Dtos.ProductPriceDtos;
 using B2B.BusinessLayer.Abstract;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json.Serialization;
 
 namespace B2B.API.Controllers
 {
@@ -29,6 +30,13 @@ namespace B2B.API.Controllers
             return Ok(_mapper.Map<List<ResultProductPriceDto>>(productPrice));
         }
 
+             [HttpGet("GetAllProductPriceByProductID/{productID}")]
+        public IActionResult GetAllProductPriceByProductID(int productID)
+        {
+            var productPrice = _productPriceService.TGetIncludePriceList().Find(x=>x.ProductID==productID);
+            return Ok(_mapper.Map<ResultProductPriceDto>(productPrice));
+        }
+
 
         [HttpGet("GetByIdProductPrice/{priceID}")]
         public IActionResult GetByIdProductPrice(int priceID)
@@ -39,14 +47,14 @@ namespace B2B.API.Controllers
 
 
         [HttpPost("GetProductDimension")]
-        public IActionResult GetProductDimension(CreateProductPriceDto dto)
+        public IActionResult GetProductDimension([FromBody]CreateProductPriceDto dto)
         {
             CreateProductPriceDto a = new CreateProductPriceDto();
           var  productPrice = _productPriceService.TGetList().FirstOrDefault(x => x.DimensionsID == dto.DimensionsID && x.ColorID == dto.ColorID && x.ProductID == dto.ProductID);
            
             a = _mapper.Map<CreateProductPriceDto>(productPrice);
             a.StockQuantity = _stockService.TGetList().Find(x => x.StockID == productPrice.StockID).Quantity;
-
+          
             return Ok(a);
         }
 

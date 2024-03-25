@@ -20,13 +20,13 @@ namespace B2B.DataAccessLayer.EntityFramework
             _context = context;
         }
 
-        public ProductPrice GetByIdIncludePrice(int priceId)
+        public ProductPrice GetByIdIncludePrice(/*int priceId*/ int productid)
         {
-            if (priceId==0)
+            if (productid == 0)
             {
                 return null;
             }
-            return _context.productPrices.Include(x => x.Product).Include(x => x.dimensions).Include(x => x.color).First(x=>x.PriceID==priceId);
+            return _context.productPrices.Include(x => x.Product).Include(x => x.dimensions).Include(x => x.color).First(x=>x.ProductID== productid);
         }
 
         public List<ProductPrice> GetIncludePriceList()

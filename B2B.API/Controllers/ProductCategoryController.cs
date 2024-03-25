@@ -27,6 +27,16 @@ namespace B2B.API.Controllers
             return Ok(_mapper.Map<List<ProductCategory>>(category));
         }
 
+        
+        [HttpGet("GetByIdProductCategory/{producID}")]
+        public IActionResult GetByIdProductCategory(int producID)
+        {
+            var category = _categoryService.TGetAllCategoriesInclude().Where(x => x.ProductID == producID);
+            return Ok(_mapper.Map<List<ResultProductCategoryDto>>(category));
+        }
+
+
+
         [HttpPut("UpdateProductCategory")]
         public async Task<IActionResult> UpdateProductCategory(UpdateProductCategoryDto updateProductCategoryDto)
         {
@@ -88,6 +98,14 @@ namespace B2B.API.Controllers
             else return NotFound();
         }
 
+
+
+        [HttpGet("AllGetIncludeProductCategory")]
+        public IActionResult AllGetIncludeProductCategory()
+        {
+            var category = _categoryService.TAllGetIncludeProductCategory();
+            return Ok(_mapper.Map<List<ResultProductCategoryDto>>(category));
+        }
     }
 }
 

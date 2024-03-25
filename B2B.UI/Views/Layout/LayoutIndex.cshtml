@@ -1,36 +1,39 @@
-﻿
-@{
+﻿@{
     Layout = null;
     var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 }
 
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 
 @Html.Partial("_LayoutHeadPartial")
 
 <body>
+    <div class="page-wrapper">
+
+     
+
+        @await Component.InvokeAsync("_LayoutNavbar")
+        <main class="main">
+            <nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
+                <div class="container">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Anasayfa</a></li>
+                      @*   <li class="breadcrumb-item"><a href="#">Login</a></li> *@
+                        <li class="breadcrumb-item active">Login</li>
+                    </ol>
+                </div><!-- End .container -->
+            </nav><!-- End .breadcrumb-nav -->
+        @RenderBody()
+        </main>
+        @await Component.InvokeAsync("_Footer")
 
 
-    <!-- Header Section Begin -->
-    @await Component.InvokeAsync("_LayoutNavbar" )
-    <!-- Header End -->
-    <!-- Hero Section Begin -->
-    <!-- Hero Section End -->
-    <!-- Product Section Begin -->
-    @RenderBody()
-    <!-- Product Section End -->
-    <!-- Footer Section Begin -->
-                                                       @await Component.InvokeAsync("_Footer")
-    <!-- Footer Section End -->
-    <!-- Search model Begin -->
-    <!-- Search model end -->
-    <!-- Js Plugins -->
-   
-    @Html.Partial("_Script")
+        @Html.Partial("_Script")
 
 
-
+    </div>
+    <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
 </body>
 
 </html>

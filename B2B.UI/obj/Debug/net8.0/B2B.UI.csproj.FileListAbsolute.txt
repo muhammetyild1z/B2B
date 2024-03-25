@@ -438,3 +438,4 @@ C:\Users\muham\OneDrive\Belgeler\GitHub\B2B\B2B.UI\obj\Debug\net8.0\refint\B2B.U
 C:\Users\muham\OneDrive\Belgeler\GitHub\B2B\B2B.UI\obj\Debug\net8.0\B2B.UI.pdb
 C:\Users\muham\OneDrive\Belgeler\GitHub\B2B\B2B.UI\obj\Debug\net8.0\B2B.UI.genruntimeconfig.cache
 C:\Users\muham\OneDrive\Belgeler\GitHub\B2B\B2B.UI\obj\Debug\net8.0\ref\B2B.UI.dll
+C:\Users\muham\OneDrive\Belgeler\GitHub\B2B\B2B.UI\bin\Debug\net8.0\libman.json

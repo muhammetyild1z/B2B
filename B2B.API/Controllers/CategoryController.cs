@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using B2B.API.Dtos.CategoryDtos;
+using B2B.API.Dtos.ProductCategoryDtos;
 using B2B.BusinessLayer.Abstract;
 using B2B.EntityLayer.Concrate;
 using Microsoft.AspNetCore.Mvc;
@@ -13,11 +14,13 @@ namespace B2B.API.Controllers
     {
         private readonly IMapper _mapper;
         private readonly ICategoryService _categoryService;
+        private readonly IProductCategoryService _productCategory;
 
-        public CategoryController(IMapper mapper, ICategoryService categoryService)
+        public CategoryController(IMapper mapper, ICategoryService categoryService, IProductCategoryService productCategory)
         {
             _mapper = mapper;
             _categoryService = categoryService;
+            _productCategory = productCategory;
         }
 
         [HttpGet("AllGetCategory")]
@@ -87,6 +90,23 @@ namespace B2B.API.Controllers
             }
             else return NotFound();
         }
+
+        [HttpGet("HomeCategory")]
+        public async Task<IActionResult> HomeCategory()
+        {
+            var getGategory = _categoryService.TGetList().Take(4);
+            return Ok(_mapper.Map<List<ResultCategoryDto>>(getGategory));
+
+        }
+
+        [HttpGet("ProductPropCategory")]
+        public async Task<IActionResult> ProductPropCategory(int id)
+        {
+            var productPropCategory = _productCategory.TGetList().Where(x=>x.ProductID==id);
+            return Ok(_mapper.Map<List<ResultProductCategoryDto>>(productPropCategory));
+
+        }
+
 
     }
 }

@@ -2,7 +2,9 @@
 using B2B.EntityLayer.Concrate;
 using B2B.UI.DtosUI.BasketDtos;
 using B2B.UI.DtosUI.ProductDtos;
+using B2B.UI.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using System.Net;
 using System.Net.Http;
@@ -11,67 +13,36 @@ using System.Text;
 
 namespace B2B.UI.Controllers
 {
-   
-    public class BasketController : Controller
-    {
-        
-        private readonly HttpClient _httpClient1;
 
-        public BasketController(IHttpClientFactory httpClientFac)
-        {
-          
-            _httpClient1 = httpClientFac.CreateClient("Basket");
+	public class BasketController : Controller
+	{
 
-        }
-    
-        public async Task< IActionResult> BasketList(int id)
-        {
-            HttpResponseMessage response = await _httpClient1.GetAsync($"UserAllBasket/{id}");
-            if (response.IsSuccessStatusCode)
-            {
-                var jsonData= await response.Content.ReadAsStringAsync();
-                var basketList= JsonConvert.DeserializeObject<List<ResultBasketDto>>(jsonData);
-                return View(basketList);
-            }
-             
-            return View();
-        }
+		private readonly HttpClient _httpClient;
+		private readonly IOptions<AppSettings> _appSettings;
 
-        [HttpPost]
-        public async Task<IActionResult> BasketRemoved(int id)
-        {
-            HttpResponseMessage response = await _httpClient1.DeleteAsync($"DeleteBasket/{id}");
-            if (response.IsSuccessStatusCode)
-            {
-                return Ok();
-            }
-            return NotFound();
-        }
-        
-        [HttpPost]
-        public async Task<IActionResult> BasketAdd([FromBody] CreateBasketDto dto)
-        {
-            if (dto.PriceID==0)
-            {
-                return NotFound();
-            }
+		public BasketController(HttpClient httpClient, IOptions<AppSettings> appSettings)
+		{
+			_httpClient = httpClient;
+			_appSettings = appSettings;
+		}
 
-            var jsonData = JsonConvert.SerializeObject(dto);
-            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+		public async Task<IActionResult> BasketList(string id)
+		{
+			var apiUrl = _appSettings.Value.ApiUserBasketUrl;
+			HttpResponseMessage response = await _httpClient.GetAsync(apiUrl + "/" + id);
+			if (response.IsSuccessStatusCode)
+			{
+				var jsonData = await response.Content.ReadAsStringAsync();
+				var basketList = JsonConvert.DeserializeObject<List<ResultBasketDto>>(jsonData);
+				return View(basketList);
+			}
 
-            HttpResponseMessage responseMessage = await _httpClient1.PostAsync("CreateBasket", stringContent);
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                return Ok();
-            }
-            if (responseMessage.StatusCode == HttpStatusCode.BadRequest)
-            {
-                return BadRequest();
-            }
-            return Unauthorized();
-        }
+			return View();
+		}
 
-    }
+	
+
+	}
 
 }
 

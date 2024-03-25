@@ -2,59 +2,193 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Layout/LayoutIndex.cshtml";
-   
+
 
 }
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.colorbox/1.6.4/jquery.colorbox-min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.colorbox/1.6.4/example1/colorbox.min.css" />
+<style>
+    .breadcrumb-nav {
+        display: none;
+    }
+</style>
+
+
+
 @await Component.InvokeAsync("_HomeSlider")
-<section class="product spad home__section" style="max-width:95%; position: relative;  margin: auto;">
-    <div class="container mt-2">
-        <div class="row">
-            @await Component.InvokeAsync("_CokBegenilen")
-            @await Component.InvokeAsync("_SonEklenen")
-         @await Component.InvokeAsync("_Koleksiyonlar") 
 
 
-        </div>
+<div class="container">
+    <div class="toolbox toolbox-filter">
+        <div class="toolbox-left">
+            <a href="#" class="filter-toggler">Filters</a>
+
+        </div><!-- End .toolbox-left -->
+
+        <div class="toolbox-right">
+            <ul class="nav-filter product-filter">
+                @await Component.InvokeAsync("_HomeCategory")
+               
+
+            </ul>
+        </div><!-- End .toolbox-right -->
+
+
+    </div><!-- End .filter-toolbox -->
+
+    <div class="widget-filter-area" id="product-filter-area">
+        <a href="#" class="widget-filter-clear">Clean All</a>
+
+        <div class="filter-area-wrapper">
+            <div class="row">
+                <div class="col-sm-6 col-lg-3">
+                    <div class="widget">
+                        <h3 class="widget-title">
+                            Category:
+                        </h3><!-- End .widget-title -->
+
+                        <div class="filter-items filter-items-count">
+                            <div class="filter-item">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="cat-1">
+                                    <label class="custom-control-label" for="cat-1">All</label>
+                                </div><!-- End .custom-checkbox -->
+                                <span class="item-count">24</span>
+                            </div><!-- End .filter-item -->
+
+                            <div class="filter-item">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="cat-2">
+                                    <label class="custom-control-label" for="cat-2">Furniture</label>
+                                </div><!-- End .custom-checkbox -->
+                                <span class="item-count">3</span>
+                            </div><!-- End .filter-item -->
+
+                            <div class="filter-item">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="cat-3">
+                                    <label class="custom-control-label" for="cat-3">Lighting</label>
+                                </div><!-- End .custom-checkbox -->
+                                <span class="item-count">2</span>
+                            </div><!-- End .filter-item -->
+
+                            <div class="filter-item">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="cat-4">
+                                    <label class="custom-control-label" for="cat-4">Accessories</label>
+                                </div><!-- End .custom-checkbox -->
+                                <span class="item-count">4</span>
+                            </div><!-- End .filter-item -->
+
+                            <div class="filter-item">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="cat-5">
+                                    <label class="custom-control-label" for="cat-5">Sale</label>
+                                </div><!-- End .custom-checkbox -->
+                                <span class="item-count">2</span>
+                            </div><!-- End .filter-item -->
+                        </div><!-- End .filter-items -->
+                    </div><!-- End .widget -->
+                </div><!-- End .col-sm-6 col-lg-3 -->
+
+                <div class="col-sm-6 col-lg-3">
+                    <div class="widget">
+                        <h3 class="widget-title">
+                            Sort by:
+                        </h3><!-- End .widget-title -->
+
+                        <div class="filter-items">
+                            <div class="filter-item">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="radio" class="custom-control-input" checked id="sort-1" name="sortby">
+                                    <label class="custom-control-label" for="sort-1">Default</label>
+                                </div><!-- End .custom-checkbox -->
+                            </div><!-- End .filter-item -->
+
+                            <div class="filter-item">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="radio" class="custom-control-input" id="sort-2" name="sortby">
+                                    <label class="custom-control-label" for="sort-2">Popularity</label>
+                                </div><!-- End .custom-checkbox -->
+                            </div><!-- End .filter-item -->
+
+                            <div class="filter-item">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="radio" class="custom-control-input" id="sort-3" name="sortby">
+                                    <label class="custom-control-label" for="sort-3">Average Rating</label>
+                                </div><!-- End .custom-checkbox -->
+                            </div><!-- End .filter-item -->
+
+                            <div class="filter-item">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="radio" class="custom-control-input" id="sort-4" name="sortby">
+                                    <label class="custom-control-label" for="sort-4">Newness</label>
+                                </div><!-- End .custom-checkbox -->
+                            </div><!-- End .filter-item -->
+
+                            <div class="filter-item">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="radio" class="custom-control-input" id="sort-5" name="sortby">
+                                    <label class="custom-control-label" for="sort-5">Price: Low to High</label>
+                                </div><!-- End .custom-checkbox -->
+                            </div><!-- End .filter-item -->
+
+                            <div class="filter-item">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="radio" class="custom-control-input" id="sort-6" name="sortby">
+                                    <label class="custom-control-label" for="sort-6">Price: High to Low</label>
+                                </div><!-- End .custom-checkbox -->
+                            </div><!-- End .filter-item -->
+                        </div><!-- End .filter-items -->
+                    </div><!-- End .widget -->
+                </div><!-- End .col-sm-6 col-lg-3 -->
+
+                <div class="col-sm-6 col-lg-3">
+                    <div class="widget">
+                        <h3 class="widget-title">
+                            Colour:
+                        </h3><!-- End .widget-title -->
+
+                        <div class="filter-colors filter-colors-vertical">
+                            <a href="#" style="background: #b87145;"><span>Brown</span></a>
+                            <a href="#" style="background: #f0c04a;"><span>Yellow</span></a>
+                            <a href="#" style="background: #333333;"><span>Black</span></a>
+                            <a href="#" class="selected" style="background: #cc3333;"><span>Red</span></a>
+                            <a href="#" style="background: #ebebeb;"><span>White</span></a>
+                        </div><!-- End .filter-colors -->
+                    </div><!-- End .widget -->
+                </div><!-- End .col-sm-6 col-lg-3 -->
+
+                <div class="col-sm-6 col-lg-3">
+                    <div class="widget">
+                        <h3 class="widget-title">
+                            Price:
+                        </h3><!-- End .widget-title -->
+
+                        <div class="filter-price">
+                            <div class="filter-price-text">
+                                Price Range:
+                                <span id="filter-price-range"></span>
+                            </div><!-- End .filter-price-text -->
+
+                            <div id="price-slider"></div><!-- End #price-slider -->
+                        </div><!-- End .filter-price -->
+                    </div><!-- End .widget -->
+                </div><!-- End .col-sm-6 col-lg-3 -->
+            </div><!-- End .row -->
+        </div><!-- End .filter-area-wrapper -->
+    </div><!-- End #product-filter-area.widget-filter-area -->
+
+
+    <div class="products-container" data-layout="fitRows">
+        @await Component.InvokeAsync("_SonEklenen")
     </div>
-</section>
 
-<script type="text/javascript">
-    $(document).ready(function () {
-        $(document).on("click", ".iframe1", function () {
-            var priceID = $(this).data('product-id');
-            var iframeURL = "/Product/ProductDetails?priceID=" + priceID;
-
-            // Colorbox ile iframe'i aç
-            $.colorbox({
-                iframe: true,
-                href: iframeURL,
-                width: "90%",
-                height: "85%",
-                onComplete: function () {
-                    // İframe yüklendikten sonra yapılacaklar
-                    var iframe = $(".iframe1");
-                    iframe.on("load", function () {
-                        // İframe içeriği yüklendikten sonra yapılacaklar
-                    });
-
-                    // Popup açıldığında
-                    $(".home__section").css("opacity", "0.4");
-                },
-                onClosed: function () {
-                    // Colorbox kapatıldığında yapılacaklar
-                    $(".home__section").css("opacity", "1");
-                }
-            });
-        });
-    });
-  
-   
-</script>
+    <!-- End .products-container -->
+</div><!-- End .container -->
 
 
+
+
+@* ////////////////////////////////////////////////////////////////////////////////////////////// *@
 
 @*
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
@@ -70,11 +204,11 @@
 
         $.ajax({
             type: 'POST',
-            url: '/Basket/BasketAdd', 
+            url: '/Basket/BasketAdd',
             contentType: 'application/json',
             data: JSON.stringify(dto),
             success: function (response) {
-                // Başarılı 
+                // Başarılı
                 console.log(response);
             },
             error: function (xhr, status, error) {

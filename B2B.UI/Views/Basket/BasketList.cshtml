@@ -2,183 +2,149 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Layout/LayoutIndex.cshtml";
-    var productCount = Model.Select(x => x.Count);
     decimal totalPrice = 0;
-    // var duplicateProducts = Model.GroupBy(p => new { p.UserID, p.PriceID })
-    //                              .Where(g => g.Count() > 1)
-    //                              .SelectMany(g => g);
+
+    var appSettings = Context.RequestServices.GetRequiredService<IOptions<AppSettings>>().Value;
+    var apiUrl = appSettings.ApiBasketRemove;
+   
 }
-<style>
-    .navbar__custom {
-        display: none;
-    }
 
-    .footer {
-        display: none !important;
-    }
-</style>
+    <div class="page-content">
+        <div class="cart">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9">
+                        <table class="table table-cart table-mobile">
+                            <thead>
+                                <tr>
+                                    <th>Ürünler</th>
+                                    <th>Fiyat</th>
+                                    <th>Adet</th>
+                                    <th>Fİyat</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
 
-
-<section class="h-100 gradient-custom mt-5">
-    <div class="container ">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card m-0">
-                    <div class="card-header py-3">
-                        <h5 class="mb-0 text-white">Sepetim - @Model.Count() Ürün</h5>
-                    </div>
-                    <div class="card-body">
-
-                        @foreach (var item in Model)
-                        {
-
-                            <!-- Single item -->
-                            <div class="row">
-                                <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
-                                    <!-- Image -->
-                                    <div class="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
-
-                                        <img src="@item.productPrice.Product.ProductImage"
-                                             class="w-100" alt="Urun Adı" />
-                                        <a href="#!">
-                                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
-                                        </a>
-                                    </div>
-                                    <!-- Image -->
-                                </div>
-
-                                <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
-                                    <!-- Data -->
-                                    <p><strong>@item.productPrice.Product.ProductName</strong></p>
-                                    <p>
-                                        Renk:
-                                        <div style="width:20px; height:20px; border-radius:50%; background-color:#@item.productPrice.color.ColorCode">
-                                        </div>
-                                    </p>
-
-                                    <p>Ebat: @item.productPrice.dimensions.Boy X @item.productPrice.dimensions.En</p>
-                                    <button type="button" class="removed__basket btn btn-primary btn-sm me-1 mb-2" data-mdb-toggle="tooltip"
-                                            data-basket-id="@item.BasketID" title="Sepetten kaldır">
-                                        <i class="fa fa-trash"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-danger btn-sm mb-2" data-mdb-toggle="tooltip"
-                                            title="Move to the wish list">
-                                        <i class="fa fa-heart"></i>
-                                    </button>
-                                    <!-- Data -->
-                                </div>
-
-                                <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
-                                    <!-- Quantity -->
-                                    <div class="d-flex mb-4" style="max-width: 300px">
-                                        @*    <button class="btn btn-plus  px-3 me-2"
-                                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                                    <i class="fa fa-minus"></i>
-                                    </button> *@
-
-                                        <div class="form-outline">
-                                            <input disabled id="form1" min="1" name="quantity" value="@item.Count" type="number" class="form-control mw-100 " />
-                                        </div>
-                                        @*
-                                    <button class="btn  px-3 ms-2"
-                                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                                    <i class="fa fa-plus"></i>
-                                    </button> *@
-                                    </div>
-                                    <!-- Quantity -->
-                                    @* <!-- Price -->   textine adetx fiyat yazdir  *@
-                                    @*  @(item.Count*item.productPrice.price) *@
-                                    <p class="text-start text-md-center">
-                                    <p>
-                                        Tutar:
-                                        <strong class="productTotalPrice">
-
-                                                @(item.productPrice.price * item.Count)
-                                        </strong>
-                                    </p>
-
-                                    </p>
-                                    <!-- Price -->
-                                </div>
-                            </div>
-                            <!-- Single item -->
-                            <hr class="my-4" />
-                        }
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mobile__basket__Pay">
-                <div class="card mb-4">
-                    <div class="card-header py-3">
-                        <h5 style="color: #FAF1E4;" class="m-0">Sipariş Detayı</h5>
-                    </div>
-                    <div class="card-body">
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
-                                Ürünler Toplam Fiyatı
-                                @for (int i = 0; i < Model.Count; i++)
+                            <tbody>
+                                @foreach (var item in Model)
                                 {
-                                    totalPrice += Model[i].productPrice.price * Model[i].Count;
+                                <tr >
+                                        <td class="product-col">
+                                        <div class="product" >
+                                                <figure class="product-media">
+                                                    <a href="#">
+                                                        <img src="@item.productPrice.Product.ProductImage" alt="Product image">
+                                                    </a>
+                                                </figure>
+
+                                                <h3 class="product-title">
+                                                    <a href="#">@item.productPrice.Product.ProductName</a>
+                                                </h3><!-- End .product-title -->
+                                            </div><!-- End .product -->
+                                        </td>
+                                        <td class="price-col">@item.productPrice.price ₺</td>
+                                        <td class="quantity-col">
+                                            <div class="cart-product-quantity">
+                                                <input type="number" class="form-control" value="@item.Count" min="1" max="10" step="1" data-decimals="0" required>
+                                            </div><!-- End .cart-product-quantity -->
+                                        </td>
+                                        <td class="total-col">@(item.Count*item.productPrice.price) ₺</td>
+                                        <td class="remove-col"><button class="btn-remove" data-basket-id="@item.BasketID"><i class="icon-close"></i></button></td>
+                                    </tr>
                                 }
-                                <span>@totalPrice ₺</span>
 
-                            @*     .Select(x => x.productPrice.price).Sum(); *@
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-                                Kargo
-                                <span>100 ₺</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
-                                <div>
-                                    <strong>Toplam Ödenmesi Gereken Tutar</strong>
-                                    <strong>
-                                        <p class="mb-0">(including VAT)</p>
-                                    </strong>
-                                </div>
-                                <span><strong>Basket total prıce</strong></span>
-                            </li>
-                        </ul>
+                            </tbody>
+                        </table><!-- End .table table-wishlist -->
 
-                        <button type="button" class="btn btn-primary btn-lg btn-block">
-                            Ödemeye İlerle
-                        </button>
-                    </div>
-                </div>
-                <div class="card mb-4 mb-lg-0">
-                    <div class="card-body">
-                        <p><strong>Ödeme Kanalları</strong></p>
-                        <img class="me-2" width="45"
-                             src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/visa.svg"
-                             alt="Visa" />
-                        <img class="me-2" width="45"
-                             src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/amex.svg"
-                             alt="American Express" />
-                        <img class="me-2" width="45"
-                             src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/mastercard.svg"
-                             alt="Mastercard" />
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Toastr CSS -->
-<link href="https://cdn.jsdelivr.net/npm/toastr@2.1.4/toastr.min.css" rel="stylesheet">
+                        <div class="cart-bottom">
+                            <div class="cart-discount">
+                                <form action="#">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" required placeholder="Kupon Kodu">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-primary-2" type="submit"><i class="icon-long-arrow-right"></i></button>
+                                        </div><!-- .End .input-group-append -->
+                                    </div><!-- End .input-group -->
+                                </form>
+                            </div><!-- End .cart-discount -->
 
-<!-- Toastr JS -->
-<script src="https://cdn.jsdelivr.net/npm/toastr@2.1.4/toastr.min.js"></script>
+                            <a href="#" class="btn btn-outline-dark-2"><span>Sepeti Güncelle</span><i class="icon-refresh"></i></a>
+                        </div><!-- End .cart-bottom -->
+                    </div><!-- End .col-lg-9 -->
+                    <aside class="col-lg-3">
+                        <div class="summary summary-cart">
+                            <h3 class="summary-title">Sepet Toplam</h3><!-- End .summary-title -->
 
-@* //app user tablosunu yapinca user id yolla *@
+                            <table class="table table-summary">
+                                <tbody>
+                                    <tr class="summary-subtotal">
+                                        <td>Genel Toplam:</td>
+                                        <td>
+
+                                            @for (int i = 0; i < Model.Count; i++)
+                                            {
+                                                totalPrice += Model[i].productPrice.price * Model[i].Count;
+                                            }
+                                            @totalPrice ₺
+                                            
+                                        </td>
+                                    </tr><!-- End .summary-subtotal -->
+                                    <tr class="summary-shipping">
+                                        <td>Kargo:</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+
+
+
+                                    <tr class="summary-shipping-row">
+                                        <td>
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" id="standart-shipping" name="shipping" class="custom-control-input">
+                                                <label class="custom-control-label" for="standart-shipping">Standart:</label>
+                                            </div><!-- End .custom-control -->
+                                        </td>
+                                        <td>00.00 ₺</td>
+                                    </tr><!-- End .summary-shipping-row -->
+                             
+
+                                    <tr class="summary-shipping-estimate">
+                                        @* <td>Estimate for Your Country<br> <a href="dashboard.html">Adresi Değiştir</a></td> *@
+                                        <td>&nbsp;</td>
+                                    </tr><!-- End .summary-shipping-estimate -->
+
+                                    <tr class="summary-total">
+                                        <td>Toplam:</td>
+                                        <td>160.00 ₺</td>
+                                    </tr><!-- End .summary-total -->
+                                </tbody>
+                            </table><!-- End .table table-summary -->
+                            @* 	<a href="checkout.html" class="btn btn-outline-primary-2 btn-order btn-block">PROCEED TO CHECKOUT</a> *@
+
+                        </div><!-- End .summary -->
+
+                        <a href="category.html" class="btn btn-outline-dark-2 btn-block mb-3"><span>Ödemeye Devam Et</span><i class="icon-refresh"></i></a>
+                    </aside><!-- End .col-lg-3 -->
+                </div><!-- End .row -->
+            </div><!-- End .container -->
+        </div><!-- End .cart -->
+    </div><!-- End .page-content -->
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script>
-    $(".removed__basket").on("click", function () {
+    $(".btn-remove").on("click", function () {
         var basketid = $(this).data("basket-id");
-
-        $.post("/Basket/BasketRemoved/" + basketid)
+      
+        $.post("@Html.Raw(apiUrl)" + basketid)
             .done(function () {
-                toastr.success('Sepetten Kaldirildi!', { position: "toast-top-end", timeOut: 1000 });
-                // Sepet içeriğini güncelledikten sonra sayfayı yenile
-
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Ürün Kaldırıldı!',
+                    position: "top-end",
+                    timer: 1000,
+                    showConfirmButton: false
+                });
+             
                 setTimeout(function () {
                     location.reload();
                 }, 1000);
@@ -197,7 +163,3 @@
 
 
 </script>
-
-
-
-

@@ -44,9 +44,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 
-
-
-
+builder.Services.AddScoped<IUserFavoriDAL, efUserFavoriRepository>();
+builder.Services.AddScoped<IUserFavoriService, UserFavoriManager>();
 
 builder.Services.AddScoped<IStockDAL, efStockRepository>();
 builder.Services.AddScoped<IStockService, StockManager>();

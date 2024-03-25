@@ -4,6 +4,11 @@ using B2B.EntityLayer.Concrate;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Graph.Models;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace B2B.API.Controllers
 {
@@ -23,17 +28,56 @@ namespace B2B.API.Controllers
         }
 
         [HttpPost("SignIn")]
-        public async Task<IActionResult> SignIn(SignInDto signInDto)
+        public async Task<IActionResult> SignIn([FromBody] SignInDto signInDto) 
         {
-            var result = await _signInManager.PasswordSignInAsync(signInDto.UserName, signInDto.Password, false, false);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var result = await _signInManager.PasswordSignInAsync(signInDto.UserName, signInDto.Password, signInDto.rememberMe, false);
+
             if (result.Succeeded)
             {
-                return Ok();
+                var user = await _userManager.FindByNameAsync(signInDto.UserName);
+                if (user == null)
+                {
+                    return Unauthorized(); // Kullanıcı bulunamadı, uygun hata kodunu döndür
+                }
+
+                var tokenHandler = new JwtSecurityTokenHandler();
+                var key = new byte[32]; // 256-bit (32-byte) bir anahtar kullanıyoruz
+                using (var rng = RandomNumberGenerator.Create())
+                {
+                    rng.GetBytes(key);
+                }
+                var tokenDescriptor = new SecurityTokenDescriptor
+                {
+                    Subject = new ClaimsIdentity(new Claim[]
+                    {
+                new Claim(ClaimTypes.Name, user.UserName),
+                new Claim(ClaimTypes.NameIdentifier, user.Id),
+                new Claim(ClaimTypes.Email, user.Email)
+                    }),
+                    Expires = DateTime.UtcNow.AddHours(1), // Token geçerlilik süresi
+                    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+                };
+
+                var token = tokenHandler.CreateToken(tokenDescriptor);
+                var tokenString = tokenHandler.WriteToken(token);
+
+                return Ok(new { Token = tokenString });
             }
-            return BadRequest();
+            else
+            {
+                ModelState.AddModelError(string.Empty, "Geçersiz kullanıcı adı veya parola.");
+                return BadRequest(ModelState);
+            }
         }
+
+
         [HttpPost("SignUp")]
-        public async Task<IActionResult> SignUp(SignUpDto signupDto)
+        public async Task<IActionResult> SignUp([FromBody] SignUpDto signupDto)
         {
 
             //var mailCheck = new System.Net.Mail.MailAddress(signupDto.Email);
@@ -55,14 +99,14 @@ namespace B2B.API.Controllers
             if (signupDto.Password != signupDto.PasswordR)
             {
                 ModelState.AddModelError("", "Girilen şifreler uyuşmuyor.");
-                return View(signupDto);
+                return Ok(signupDto);
             }
 
             var result = await _userManager.CreateAsync(_mapper.Map<AppUser>(signupDto), signupDto.Password);
             if (result.Succeeded)
             {
 
-                return RedirectToAction("SignIn", "Account");
+                return Ok();
             }
             else
             {
@@ -70,7 +114,7 @@ namespace B2B.API.Controllers
                 {
                     ModelState.AddModelError("", error.Description);
                 }
-                return View(signupDto);
+                return BadRequest();
             }
         }
     }

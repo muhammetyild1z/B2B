@@ -2,7 +2,6 @@ using B2B.DataAccessLayer.Concrate;
 using B2B.EntityLayer.Concrate;
 using B2B.UI.Models;
 using B2B.UI.ViewComponents.Dimensions;
-using B2B.UI.ViewComponents.ProductDetailsSlider;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Graph.Models.ExternalConnectors;
 using System.Configuration;

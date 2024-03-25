@@ -61,7 +61,7 @@
     "ContainingType": "B2B.API.Controllers.BasketController",
     "Method": "DeleteBasket",
     "RelativePath": "api/Basket/DeleteBasket/{id}",
-    "HttpMethod": "DELETE",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -143,6 +143,32 @@
         "Name": "id",
         "Type": "System.Int32",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "B2B.API.Controllers.CategoryController",
+    "Method": "HomeCategory",
+    "RelativePath": "api/Category/HomeCategory",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "B2B.API.Controllers.CategoryController",
+    "Method": "ProductPropCategory",
+    "RelativePath": "api/Category/ProductPropCategory",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -555,6 +581,16 @@
   },
   {
     "ContainingType": "B2B.API.Controllers.ProductCategoryController",
+    "Method": "AllGetIncludeProductCategory",
+    "RelativePath": "api/ProductCategory/AllGetIncludeProductCategory",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "B2B.API.Controllers.ProductCategoryController",
     "Method": "AllGetProductCategory",
     "RelativePath": "api/ProductCategory/AllGetProductCategory",
     "HttpMethod": "GET",
@@ -597,6 +633,22 @@
   },
   {
     "ContainingType": "B2B.API.Controllers.ProductCategoryController",
+    "Method": "GetByIdProductCategory",
+    "RelativePath": "api/ProductCategory/GetByIdProductCategory/{producID}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "producID",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "B2B.API.Controllers.ProductCategoryController",
     "Method": "UpdateProductCategory",
     "RelativePath": "api/ProductCategory/UpdateProductCategory",
     "HttpMethod": "PUT",
@@ -619,6 +671,22 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "B2B.API.Controllers.ProductPriceController",
+    "Method": "GetAllProductPriceByProductID",
+    "RelativePath": "api/ProductPrice/GetAllProductPriceByProductID/{productID}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productID",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -664,6 +732,38 @@
       {
         "Name": "dto",
         "Type": "B2B.API.Dtos.ProductPriceDtos.CreateProductPriceDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "B2B.API.Controllers.UserFavoriController",
+    "Method": "CreateFavori",
+    "RelativePath": "api/UserFavori/CreateFavori",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createFavoriDto",
+        "Type": "B2B.API.Dtos.UserFavoriDtos.CreateFavoriDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "B2B.API.Controllers.UserFavoriController",
+    "Method": "ListFavori",
+    "RelativePath": "api/UserFavori/ListFavori/{userID}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userID",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],

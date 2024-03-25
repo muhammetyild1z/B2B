@@ -11,18 +11,22 @@
     <Compile Remove="wwwroot\contactPage\images\**" />
     <Compile Remove="wwwroot\contactPage\js\**" />
     <Compile Remove="wwwroot\contact\**" />
+    <Compile Remove="wwwroot\hırdavat\**" />
     <Content Remove="wwwroot\animeX\**" />
     <Content Remove="wwwroot\contactPage\images\**" />
     <Content Remove="wwwroot\contactPage\js\**" />
     <Content Remove="wwwroot\contact\**" />
+    <Content Remove="wwwroot\hırdavat\**" />
     <EmbeddedResource Remove="wwwroot\animeX\**" />
     <EmbeddedResource Remove="wwwroot\contactPage\images\**" />
     <EmbeddedResource Remove="wwwroot\contactPage\js\**" />
     <EmbeddedResource Remove="wwwroot\contact\**" />
+    <EmbeddedResource Remove="wwwroot\hırdavat\**" />
     <None Remove="wwwroot\animeX\**" />
     <None Remove="wwwroot\contactPage\images\**" />
     <None Remove="wwwroot\contactPage\js\**" />
     <None Remove="wwwroot\contact\**" />
+    <None Remove="wwwroot\hırdavat\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -37,6 +41,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.2" />
+    <PackageReference Include="toastr" Version="2.1.1" />
   </ItemGroup>
 
   <ItemGroup>

@@ -33,12 +33,17 @@ namespace B2B.DataAccessLayer.Concrate
         public DbSet<ProductPrice> productPrices { get; set; }
         public DbSet<ProductColor> productColors { get; set; }
         public DbSet<ProductSize> productSizes { get; set; }
+        public DbSet<UserFavoriList> userFavoriLists { get; set; }
 
 
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            modelBuilder.Entity<UserFavoriList>().HasKey(x => x.FavoriID);
+            modelBuilder.Entity<UserFavoriList>().HasOne(x => x.appUser).WithMany().HasForeignKey(x => x.userID);
+            modelBuilder.Entity<UserFavoriList>().HasOne(x => x.price).WithMany().HasForeignKey(x => x.priceID);
 
             modelBuilder.Entity<Dimensions>().HasKey(x => x.DimensionsID);
 
@@ -88,7 +93,7 @@ namespace B2B.DataAccessLayer.Concrate
             modelBuilder.Entity<ProductCategory>().HasOne(x => x.category).WithMany().HasForeignKey(x => x.CategoryID).IsRequired(true);
             modelBuilder.Entity<ProductCategory>().HasOne(x => x.parentSubCategory).WithMany().HasForeignKey(x => x.ParentSubCategoryID).IsRequired(false);
             modelBuilder.Entity<ProductCategory>().HasOne(x => x.ChildSubCategory).WithMany().HasForeignKey(x => x.ChildSubCategoryID).IsRequired(false);
-            modelBuilder.Entity<ProductCategory>().HasOne(x => x.product).WithMany().HasForeignKey(x => x.ProductID).IsRequired(true);
+            modelBuilder.Entity<ProductCategory>().HasOne(x => x.product).WithMany().HasForeignKey(x => x.ProductID).IsRequired(false);
 
 
 

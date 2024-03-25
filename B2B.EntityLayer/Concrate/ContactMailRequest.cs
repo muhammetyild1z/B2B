@@ -18,6 +18,8 @@ namespace B2B.EntityLayer.Concrate
         public string Phone { get; set; }
         [MaxLength(500)]
         public string Message { get; set; }
+        [MaxLength(100)]
+        public string? Subject { get; set; }
 
     }
 }

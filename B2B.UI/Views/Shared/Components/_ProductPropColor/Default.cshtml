@@ -3,8 +3,7 @@
 
 @foreach (var item in Model)
 {
-    <input type="radio" name="colorOfItem" class="radio_button color " data-color-id="@item.ColorID"
-           id="radioColor_@item.ColorID" checked />
-    <label for="radioColor_@item.ColorID" data-color-id="@item.ColorID"
-           class="block_goodColor__radio color" style="background-color: #@item.color.ColorCode;"></label>
+    <a class="color"  data-color-id="@item.ColorID" style="background: #@item.color.ColorCode;"><span class="sr-only">Color name</span></a>
+
+  
 }

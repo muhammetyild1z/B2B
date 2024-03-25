@@ -11,5 +11,6 @@ namespace B2B.DataAccessLayer.Abstract
     {
         ProductCategory GetProductCategoryByID(int id);
         List<ProductCategory> GetAllCategoriesInclude();
+        List<ProductCategory> AllGetIncludeProductCategory();
     }
 }

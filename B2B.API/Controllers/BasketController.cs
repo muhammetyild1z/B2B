@@ -32,7 +32,7 @@ namespace B2B.API.Controllers
             return Ok(_mapper.Map<List<ResultBasketDto>>(basketList));
         }
 
-        [HttpDelete("DeleteBasket/{id}")]
+        [HttpPost("DeleteBasket/{id}")]
         public async Task<IActionResult> DeleteBasket(int id)
         {
             if (id != 0)

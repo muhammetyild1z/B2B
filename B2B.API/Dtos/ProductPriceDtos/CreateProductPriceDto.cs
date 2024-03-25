@@ -8,7 +8,7 @@ namespace B2B.API.Dtos.ProductPriceDtos
       
 
         public int ColorID { get; set; }
-        public int StockID { get; set; }
+       // public int StockID { get; set; }
        
 
         public int DimensionsID { get; set; }

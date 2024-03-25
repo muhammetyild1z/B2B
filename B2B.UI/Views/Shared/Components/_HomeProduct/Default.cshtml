@@ -1,0 +1,26 @@
+﻿@model ResultProductPriceDto
+
+
+    <div class="product product-4">
+        <figure class="product-media">
+            <a href="/product/productDetails?productid=@Model.ProductID">
+            <img src="@Model.Product.ProductImage" alt="Product image" class="product-image">
+            </a>
+
+            <div class="product-action-vertical">
+            <a class="btn-product-icon btn-wishlist btn-expandable" data-price-id="@Model.PriceID"><span>Favoriye Ekle</span></a>
+            </div><!-- End .product-action -->
+
+        </figure><!-- End .product-media -->
+
+        <div class="product-body">
+        <h3 class="product-title"><a href="product.html">@Model.Product.ProductName</a></h3><!-- End .product-title -->
+
+            <div class="product-action">
+            <a href="/product/productDetails?productid=@Model.ProductID" class="btn-product btn-cart"><span>Sepete ekle</span><i class="icon-long-arrow-right"></i></a>
+            </div><!-- End .product-action -->
+        </div><!-- End .product-body -->
+    </div>
+
+    <!-- End .product -->
+

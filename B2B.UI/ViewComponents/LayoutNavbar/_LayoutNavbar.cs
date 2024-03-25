@@ -1,6 +1,8 @@
 ﻿using B2B.UI.DtosUI.ProductCategoryDtos;
+using B2B.UI.Models;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using System.Net.Http;
 
@@ -9,25 +11,47 @@ namespace B2B.UI.ViewComponents.LayoutHeaderPartial
     public class _LayoutNavbar : ViewComponent
     {
         private readonly HttpClient _httpClient;
+        private readonly IOptions<AppSettings> _appSettings;
 
-        public _LayoutNavbar()
+        public _LayoutNavbar(HttpClient httpClient, IOptions<AppSettings> appSettings)
         {
-            _httpClient = new HttpClient();
-            _httpClient.BaseAddress = new Uri("https://localhost:7268/api/ProductCategory/");
-            _httpClient.DefaultRequestHeaders.Accept.Clear();
-
+            _httpClient = httpClient;
+            _appSettings = appSettings;
         }
         public async Task<IViewComponentResult> InvokeAsync()
-
         {
-            HttpResponseMessage responseMessage = await _httpClient.GetAsync("AllGetProductCategory");
-            if (responseMessage.IsSuccessStatusCode)
+
+
+            try
             {
-                var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var value = JsonConvert.DeserializeObject<List<ResultProductCategoryDto>>(jsonData);
-                return View(value);
+                var apiUrl = _appSettings.Value.ApiLayoutNavbar;
+                HttpResponseMessage response = await _httpClient.GetAsync(apiUrl);
+                if (response.IsSuccessStatusCode)
+                {
+                    var jsonData = await response.Content.ReadAsStringAsync();
+                    var value = JsonConvert.DeserializeObject<List<ResultProductCategoryDto>>(jsonData);
+                    return View(value);
+                }
+                else
+                {
+                    // API'den başarısız bir yanıt alındığında burada işlemler yapabilirsiniz.
+                    // Örneğin: Loglama, hata mesajı gösterimi vs.
+                    return Content("API isteği başarısız!");
+                }
             }
-            return View();
+            catch (Exception ex)
+            {
+                // Herhangi bir hata durumunda burada işlemler yapabilirsiniz.
+                // Örneğin: Loglama, istisna fırlatma vs.
+                return Content($"API isteği sırasında bir hata oluştu: {ex.Message}");
+            }
+
+
+
+
+
+
+          
         }
     }
 }

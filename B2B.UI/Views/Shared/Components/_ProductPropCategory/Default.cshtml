@@ -1,0 +1,15 @@
+﻿@model List<ResultProductCategoryDto>
+
+
+
+
+<div class="product-cat">
+    <span>Kategoriler:</span>
+    @foreach (var item in Model.DistinctBy(x=>x.category.Name))
+    {
+        <a href="#">@item.category.Name.ToLower() </a>
+
+    }
+</div>
+
+<!-- End .product-cat -->

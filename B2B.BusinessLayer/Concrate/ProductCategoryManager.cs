@@ -19,6 +19,11 @@ namespace B2B.BusinessLayer.Concrate
             _productCategory = productCategory;
         }
 
+        public List<ProductCategory> TAllGetIncludeProductCategory()
+        {
+            return _productCategory.AllGetIncludeProductCategory();
+        }
+
         public void TDelete(ProductCategory entity)
         {
             _productCategory.Delete(entity);

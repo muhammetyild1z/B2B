@@ -11,5 +11,7 @@ namespace B2B.BusinessLayer.Abstract
     {
         ProductCategory TGetProductCategoryByID(int id);
         List<ProductCategory> TGetAllCategoriesInclude();
+        List<ProductCategory> TAllGetIncludeProductCategory();
+
     }
 }

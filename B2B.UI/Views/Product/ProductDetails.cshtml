@@ -3,269 +3,286 @@
     ViewData["Title"] = "ProductDetails";
     Layout = "~/Views/Layout/LayoutIndex.cshtml";
     var productId = Model.ProductID;
-    var sliderCount = 0;
-    if (Model.Product.ProductImage1 != null)
-    {
-        sliderCount++;
-    }
-    if (Model.Product.ProductImage2 != null)
-    {
-        sliderCount++;
-    }
-    if (Model.Product.ProductImage3 != null)
-    {
-        sliderCount++;
-    }
-    var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+   // var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+    var userId = "3fe7b6fa-82fc-46ba-9087-c9590673aa51";
     var productPriceId = Model.PriceID;
+    var appSettings = Context.RequestServices.GetRequiredService<IOptions<AppSettings>>().Value;
+    var apiUrl = appSettings.ApiBasketAddUrl;
+    var apiurl1 = appSettings.ApiGetProductDimensionUrl;
+    var apiurl2 = appSettings.ApiUserBasketUrl;
+
 }
+<input type="hidden" id="apiUrl" value="@apiUrl" />
+<div class="page-content">
+    <div class="container">
+        <div class="product-details-top mb-2">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="product-gallery">
+                        <figure class="product-main-image">
+                            <img id="product-zoom" src="@Model.Product.ProductImage" data-zoom-image="@Model.Product.ProductImage" alt="product image">
 
-<style>
-    /*********************************************/
-    /*COLORS*/
-    /*********************************************/
+                            <a href="#" id="btn-product-gallery" class="btn-product-gallery">
+                                <i class="icon-arrows"></i>
+                            </a>
+                        </figure><!-- End .product-main-image -->
+
+                        <div id="product-zoom-gallery" class="product-image-gallery">
+
+                            <a class="product-gallery-item" href="#" data-image="@Model.Product.ProductImage1" data-zoom-image="@Model.Product.ProductImage1">
+                                <img src="@Model.Product.ProductImage1" alt="product side">
+                            </a>
+
+                            <a class="product-gallery-item" href="#" data-image="@Model.Product.ProductImage2" data-zoom-image="@Model.Product.ProductImage2">
+                                <img src="@Model.Product.ProductImage2" alt="product cross">
+                            </a>
+
+                            <a class="product-gallery-item active" href="#" data-image="@Model.Product.ProductImage3" data-zoom-image="@Model.Product.ProductImage3">
+                                <img src="@Model.Product.ProductImage3" alt="product with model">
+                            </a>
 
 
-    .navbar__custom {
-        display: none !important;
-    }
 
-    .footer {
-        display: none !important;
-    }
+                        </div><!-- End .product-image-gallery -->
+                    </div><!-- End .product-gallery -->
+                </div><!-- End .col-md-6 -->
 
-    .navbar__custom {
-        box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
-        border-bottom: 2px solid #cfcfcf;
-        min-width: 100%;
-    }
+                <div class="col-md-6">
+                    <div class="product-details">
+                        <h1 class="product-title">@Model.Product.ProductName</h1><!-- End .product-title -->
 
-    .header__menu ul li a {
-        color: black;
-    }
+                        <div class="ratings-container">
+                            <div class="ratings">
+                                <div class="ratings-val" style="width: 80%;"></div><!-- End .ratings-val -->
+                            </div><!-- End .ratings -->
+                            <a class="ratings-text" href="#product-review-link" id="review-link">( 2 Değerlendirme )</a>
+                        </div><!-- End .rating-container -->
 
-    .btn-light {
-        border-color: #a9a9a9 !important;
-    }
+                        <div class="product__stock font-weight-bold mb-1">
+                         Stok: Stok Miktarı İçin Ebat Ve Renk Seçin
+                        </div><!-- End .product-price -->
+                        
+                        <div class="product-price">
+                            @Model.price ₺
+                        </div><!-- End .product-price -->
+
+                        <div class="product-content">
+                            <p>@Model.Product.ProductDescription </p>
+                        </div><!-- End .product-content -->
+
+                        <div class="details-filter-row details-row-size">
+                            <label>Renkler:</label>
+
+                            <div class="product-nav product-nav-dots">
+                                @await Component.InvokeAsync("_ProductPropColor", new { productID = Model.ProductID })
+                            </div><!-- End .product-nav -->
+
+                        </div><!-- End .details-filter-row -->
+
+                        <div class="details-filter-row details-row-size">
+                            <label for="size">Ebat:</label>
+                            <div class="select-custom">
+
+                                @await Component.InvokeAsync("_ProductPropDimensions", new { productID = Model.ProductID })
 
 
-    img {
-        max-width: 100%;
-        height: auto;
-    }
+                            </div><!-- End .select-custom -->
+                            @*    <a href="#" class="size-guide"><i class="icon-th-list"></i>size guide</a> *@
 
-    ul {
-        margin: 0;
-        padding: 0;
-        list-style-type: none !important;
-    }
+                        </div><!-- End .details-filter-row -->
 
-    a {
-        text-decoration: none;
-        color: black;
-    }
+                        <div class="details-filter-row details-row-size">
+                            <label for="qty">Adet:</label>
+                            <div class="product-details-quantity">
 
-        a:hover, a:focus, a:active {
-            text-decoration: none;
-            color: black;
-        }
+                                <input type="number" id="qty" class="form-control quantity__number" value="1" min="1"  step="1" data-decimals="0" required>
 
-    input,
-    input:focus,
-    input:active {
-        outline: none;
-    }
+                            </div><!-- End .product-details-quantity -->
+                        </div><!-- End .details-filter-row -->
 
-    button,
-    button:active,
-    button:focus,
-    button:hover {
-        outline: none;
-    }
+                        <div class="product-details-action">
+                            <a  class="basketAdd1  btn-product btn-cart"><span>sepete ekle</span></a>
 
-    button {
-        padding: 0;
-        margin: 0;
-        background-color: transparent;
-        color: #000;
-    }
+                            <div class="details-action-wrapper">
+                                <a href="#" class="btn-product btn-wishlist" title="Favoriye Ekle"><span>Favoriye Ekle</span></a>
+                                @*    <a href="#" class="btn-product btn-compare" title="Compare"><span>Add to Compare</span></a> *@
+                            </div><!-- End .details-action-wrapper -->
+                        </div><!-- End .product-details-action -->
 
-    .mainWrapper {
-        position: relative;
-        width: 100%;
-        min-width: 320px;
-       
-        padding: 0;
-        margin: 0 !important;
-      
-    }
+                        <div class="product-details-footer">
 
-</style>
+                            @await Component.InvokeAsync("_ProductPropCategory", new { productID = Model.ProductID })
 
-<main class="main">
-    <a id="iframeClose"  class="btn-sm btn-danger btn-close" disabled aria-label="Close" style="z-index: 9999;
-    right: 20px;
-    top: 10px;
-    background-color: red;
-    position: fixed;"></a>
-    <div class="mainWrapper">
-        <div class="mainBackground clearfix">
-            <div class="row " style="background-color: #FAF1E4;">
-                <div class="column small-centered">
-                    <div class="productCard_block">
+                            <div class="social-icons social-icons-sm">
+                                <span class="social-label">Share:</span>
+                                <a href="#" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
+                                <a href="#" class="social-icon" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
+                                <a href="#" class="social-icon" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
+                                <a href="#" class="social-icon" title="Pinterest" target="_blank"><i class="icon-pinterest"></i></a>
+                            </div>
+                        </div><!-- End .product-details-footer -->
+                    </div><!-- End .product-details -->
+                </div><!-- End .col-md-6 -->
+
+            </div><!-- End .row -->
+        </div><!-- End .product-details-top -->
+
+    </div><!-- End .container -->
+
+    <div class="product-details-tab product-details-extended">
+        <div class="container">
+            <ul class="nav nav-pills justify-content-center" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="product-desc-link" data-toggle="tab" href="#product-desc-tab" role="tab" aria-controls="product-desc-tab" aria-selected="true">Açıklama</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="product-info-link" data-toggle="tab" href="#product-info-tab" role="tab" aria-controls="product-info-tab" aria-selected="false">Kullanım Şekli</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="product-shipping-link" data-toggle="tab" href="#product-shipping-tab" role="tab" aria-controls="product-shipping-tab" aria-selected="false">İade Koşulları</a>
+                </li>
+                @*   <li class="nav-item">
+                <a class="nav-link" id="product-review-link" data-toggle="tab" href="#product-review-tab" role="tab" aria-controls="product-review-tab" aria-selected="false">Reviews (2)</a>
+                </li> *@
+            </ul>
+        </div><!-- End .container -->
+
+        <div class="tab-content">
+            <div class="tab-pane fade show active" id="product-desc-tab" role="tabpanel" aria-labelledby="product-desc-link">
+                <div class="product-desc-content">
+                    <div class="container">
                         <div class="row">
-                            <div class="d-flex justify-content-center">
-                                <button class="btn btn-outline-danger">
-                                    <i class="fa fa-bell-o"></i>
-                                    Stoğa Eklendiğinde bildirim gönder
-                                </button>
-                            </div>
-
-                            <div class="small-12 large-6 columns" style=" max-width: 40%;">
-                                <div class="productCard_leftSide clearfix">
-
-                                    <div class="sliderBlock">
-                                        <ul class="sliderBlock_items">
-                                            <li class="sliderBlock_items__itemPhoto sliderBlock_items__showing" style="width: 100%;">
-                                                <img src="@Model.Product.ProductImage" alt="">
-                                            </li>
-                                            @if (Model.Product.ProductImage1 != null)
-                                            {
-                                                <li class="sliderBlock_items__itemPhoto sliderBlock_items__showing" style="width: 100%;">
-                                                    <img src="@Model.Product.ProductImage1" alt="">
-                                                </li>
-                                            }
-                                            @if (Model.Product.ProductImage2 != null)
-                                            {
-                                                <li class="sliderBlock_items__itemPhoto sliderBlock_items__showing" style="width: 100%;">
-                                                    <img src="@Model.Product.ProductImage2" alt="">
-                                                </li>
-                                            }
-                                            @if (Model.Product.ProductImage3 != null)
-                                            {
-                                                <li class="sliderBlock_items__itemPhoto sliderBlock_items__showing" style="width: 100%;">
-                                                    <img src="@Model.Product.ProductImage3" alt="">
-                                                </li>
-                                            }
-
-
-
-
+                            <div class="col-md-3" style="    background: no-repeat;   height: 400px;  background-size: contain; background-position: center; background-image: url('@Model.Product.ProductImage')">
+                                <!-- No need for additional div for background image -->
+                            </div><!-- End .col-md-3 -->
+                            <div class="col-md-9 mt-3">
+                                <div class="row">
+                                    <div class="col-sm-6 col-lg-4">
+                                        <h2 style="margin-top: 0;">Özellikler</h2>
+                                        <ul>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>Heel Height: 7cm / 2.5 inches</li>
                                         </ul>
+                                    </div><!-- End .col-lg-4 -->
+                                </div><!-- End .row -->
+                            </div><!-- End .col-md-9 -->
+                        </div><!-- End .row -->
+                    </div><!-- End .container -->
+                </div><!-- End .product-desc-content -->
+            </div><!-- .End .tab-pane -->
 
-                                        <div class="sliderBlock_controls">
-                                            <div class="sliderBlock_controls__navigatin">
-                                                <div class="sliderBlock_controls__wrapper">
-                                                    <div class="sliderBlock_controls__arrow sliderBlock_controls__arrowBackward">
-                                                        <i class="fa fa-angle-left" aria-hidden="true"></i>
-                                                    </div>
-                                                    <div class="sliderBlock_controls__arrow sliderBlock_controls__arrowForward">
-                                                        <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <ul class="sliderBlock_positionControls">
-
-                                                <li class="sliderBlock_positionControls__paginatorItem sliderBlock_positionControls__active"></li>
-                                                @for (int i = 0; i < sliderCount; i++)
-                                                {
-                                                    <li class="sliderBlock_positionControls__paginatorItem"></li>
-                                                }
+            <div class="tab-pane fade" id="product-info-tab" role="tabpanel" aria-labelledby="product-info-link">
+                <div class="product-desc-content">
+                    <div class="container">
+                        <h3>@Model.Product.ProductName</h3>
+                        <p>
+                            @Model.Product.ProductUseGuide
+                        </p>
 
 
+                        @*
+                        <h3>Size</h3>
+                        <p>one size</p> *@
+                    </div><!-- End .container -->
+                </div><!-- End .product-desc-content -->
+            </div><!-- .End .tab-pane -->
+            <div class="tab-pane fade" id="product-shipping-tab" role="tabpanel" aria-labelledby="product-shipping-link">
+                <div class="product-desc-content">
+                    <div class="container">
+                        <h3>Delivery & returns</h3>
+                        <p>
+                            We deliver to over 100 countries around the world. For full details of the delivery options we offer, please view our <a href="#">Delivery information</a><br>
+                            We hope you’ll love every purchase, but if you ever need to return an item you can do so within a month of receipt. For full details of how to make a return, please view our <a href="#">Returns information</a>
+                        </p>
+                    </div><!-- End .container -->
+                </div><!-- End .product-desc-content -->
+            </div><!-- .End .tab-pane -->
+            <div class="tab-pane fade" id="product-review-tab" role="tabpanel" aria-labelledby="product-review-link">
+                <div class="reviews">
+                    <div class="container">
+                        <h3>Reviews (2)</h3>
+                        <div class="review">
+                            <div class="row no-gutters">
+                                <div class="col-auto">
+                                    <h4><a href="#">Samanta J.</a></h4>
+                                    <div class="ratings-container">
+                                        <div class="ratings">
+                                            <div class="ratings-val" style="width: 80%;"></div><!-- End .ratings-val -->
+                                        </div><!-- End .ratings -->
+                                    </div><!-- End .rating-container -->
+                                    <span class="review-date">6 days ago</span>
+                                </div><!-- End .col -->
+                                <div class="col">
+                                    <h4>Good, perfect size</h4>
 
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                    <div class="review-content">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus cum dolores assumenda asperiores facilis porro reprehenderit animi culpa atque blanditiis commodi perspiciatis doloremque, possimus, explicabo, autem fugit beatae quae voluptas!</p>
+                                    </div><!-- End .review-content -->
 
-                            <div class="small-12 large-6 columns col-md-6">
+                                    <div class="review-action">
+                                        <a href="#"><i class="icon-thumbs-up"></i>Helpful (2)</a>
+                                        <a href="#"><i class="icon-thumbs-down"></i>Unhelpful (0)</a>
+                                    </div><!-- End .review-action -->
+                                </div><!-- End .col-auto -->
+                            </div><!-- End .row -->
+                        </div><!-- End .review -->
 
-                                <div class="productCard_rightSide">
-                                    <div class="block_specification">
+                        <div class="review">
+                            <div class="row no-gutters">
+                                <div class="col-auto">
+                                    <h4><a href="#">John Doe</a></h4>
+                                    <div class="ratings-container">
+                                        <div class="ratings">
+                                            <div class="ratings-val" style="width: 100%;"></div><!-- End .ratings-val -->
+                                        </div><!-- End .ratings -->
+                                    </div><!-- End .rating-container -->
+                                    <span class="review-date">5 days ago</span>
+                                </div><!-- End .col -->
+                                <div class="col">
+                                    <h4>Very good</h4>
 
+                                    <div class="review-content">
+                                        <p>Sed, molestias, tempore? Ex dolor esse iure hic veniam laborum blanditiis laudantium iste amet. Cum non voluptate eos enim, ab cumque nam, modi, quas iure illum repellendus, blanditiis perspiciatis beatae!</p>
+                                    </div><!-- End .review-content -->
 
-
-                                        <div class="block_specification">
-                                            <div class="block_specification__specificationShow">
-                                                <i class="fa fa-info-circle block_specification__button block_specification__button__jump"
-                                                   aria-hidden="true"></i>
-                                                <span class="block_specification__text">Daha Fazla Detay</span>
-                                            </div>
-                                            <div class="block_specification__content   " style="display: none;">
-                                                <span style="overflow-wrap: anywhere;color:black ">
-                                                    @Model.Product.ProductUseGuide
-                                                </span>
-                                            </div>
-                                        </div>
-
-                                        @*   <div class="block_specification__informationShow hide">
-                                        <i class="fa fa-info-circle block_specification__button block_specification__button__jump"
-                                        aria-hidden="true"></i>
-                                        <span class="block_specification__text">Daha Fazla Detay</span>
-                                        </div> *@
-
-                                    </div>
-
-                                    <p class="block_model">
-                                        <span class="block_model__text">Model: </span>
-                                        <span class="block_model__number">@Model.Product.ProductID</span>
-                                    </p>
-
-                                    @await Component.InvokeAsync("_ProductProp", new { priceID = Model.PriceID })
-                                    <button class=" basketAdd1 btn btn-outline-info mb-4 mt-2 d-flex justify-content-center">
-                                        Sepete Ekle
-                                        <i class="icon-shopping_basket"></i>
-                                    </button>
-                                </div>
-                              
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</main>
+                                    <div class="review-action">
+                                        <a href="#"><i class="icon-thumbs-up"></i>Helpful (0)</a>
+                                        <a href="#"><i class="icon-thumbs-down"></i>Unhelpful (0)</a>
+                                    </div><!-- End .review-action -->
+                                </div><!-- End .col-auto -->
+                            </div><!-- End .row -->
+                        </div><!-- End .review -->
+                    </div><!-- End .container -->
+                </div><!-- End .reviews -->
+            </div><!-- .End .tab-pane -->
+        </div><!-- End .tab-content -->
+    </div><!-- End .product-details-tab -->
+    @await Component.InvokeAsync("_ProductDetailsSlider")
 
 
-@await Component.InvokeAsync("_ProductDetailsSlider")
+
+
+</div><!-- End .page-content -->
 <!-- Related items section-->
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 <script>
-  
 
 
-    // $(document).ready(function () {
-
-    //     $(".iframe").click(function () {
-    //         var productId = $(this).data('product-id');
-
-    //         $.colorbox({ iframe: true, href: "Product/ProductDetails?productID="
-    //         + productId, width: "90%", height: "85%" });
-
-    //     });
-    // });
-
-    var stock = 0;
+    var StockQuantity = 0;
     $('.basketAdd1').click(function () {
-
+        var apiUrl = $("#apiUrl").val();
       
-        var userId = $(this).data('userId');
-   
-        var count = $(".block_quantity__number").val();
-        if (count <= 0 || isNaN(count)) {
-            toastr.error('Lütfen geçerli bir miktar giriniz!', { position: "toast-top-end" });
-            return;
-        }
-       
+        var count = $(".quantity__number").val();
+  
+    
         // if (!userId) {
         //     toastr.warning('Lütfen sepete eklemek için giriş yapın!', { position: "toast-top-end" });
         //     return;
@@ -273,34 +290,80 @@
 
 
         var dto = {
-            UserID: "3fe7b6fa-82fc-46ba-9087-c9590673aa51",
+            UserID: '@Html.Raw(userId)',
             Count: count,
             PriceID: @Html.Raw(productPriceId),
-            
-    };
 
-        if (count > stock) {
-            toastr.error('Stoktan fazla urun ekleyemezsiniz', { position: "toast-top-end" });
+        };    
+       
+        if (count > StockQuantity) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Stoktan fazla Ekleme Yapamazsiniz!',
+                position: "top-end",
+                timer: 1000,
+                showConfirmButton: false
+            });
             return;
         }
-
+     
         $.ajax({
             type: 'POST',
-            url: '/Basket/BasketAdd',
+            url: apiUrl,
             contentType: 'application/json',
             data: JSON.stringify(dto),
             success: function (response) {
-                toastr.success('Sepete Eklendi!', { position: "toast-top-end" });
+
+                $.ajax({
+                    type: 'GET',
+                    url: '@Html.Raw(apiurl2)' + "/" + '@Html.Raw(userId)',
+                    success: function (getResponse) {
+                        $(".cart-count").text(getResponse[0].count);
+                    }
+                });
+
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Sepete Eklendi!',
+                    position: "top-end",
+                    timer: 1000,
+                    showConfirmButton: false
+                });
+
             },
             error: function (xhr, status, error) {
                 if (xhr.status == 404) {
-                    toastr.error('Beklenmeyen bir hata oluştu!', { position: "toast-top-end" });
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Beklenmeyen bir hata oluştu!',
+                        position: "top-end",
+                        timer: 1000,
+                        showConfirmButton: false
+                    });
+
+                   
                 }
                 if (xhr.status == 401) {
-                    toastr.warning('İşlemi Yapmak İçin Giriş Yapmalısın!', { position: "toast-top-end" });
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'İşlemi Yapmak İçin Giriş Yapmalısın!',
+                        position: "top-end",
+                        timer: 1000,
+                        showConfirmButton: false
+                    });
+
+                    toastr.warning('', { position: "toast-top-end" });
                 }
                 if (xhr.status == 400) {
-                    toastr.warning('Stoktan fazla Ekleme Yapamazsiniz!', { position: "toast-top-end" });
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Stoktan fazla Ekleme Yapamazsiniz!',
+                        position: "top-end",
+                        timer: 1000,
+                        showConfirmButton: false
+                    });
+
+                    
                 }
             }
         });
@@ -314,15 +377,13 @@
         var selectedDimensionId;
         var selectedColorId;
         var productPrice;
-      
 
         // Boyut butonlarına click olayı ekle
-        $(".dimension").click(function () {
-            // Seçilen butonun data-dimension-id özelliğini al
-            selectedDimensionId = $(this).data("dimension-id");
-        
-
-            // Seçilen boyut ve renk id'lerini kontrol et ve AJAX isteğini gönder
+        $("#size").change(function () {
+            // Get the selected value of the <select> element
+            selectedDimensionId = $(this).val();
+            console.log(selectedDimensionId);
+            // Call the function to send AJAX request with the selected value
             sendAjaxRequest();
         });
 
@@ -330,7 +391,7 @@
         $(".color").click(function () {
             // Seçilen butonun data-color-id özelliğini al
             selectedColorId = $(this).data("color-id");
-
+            console.log(selectedColorId);
             // Seçilen boyut ve renk id'lerini kontrol et ve AJAX isteğini gönder
             sendAjaxRequest();
         });
@@ -339,35 +400,30 @@
         function sendAjaxRequest() {
             // Her iki parametre de tanımlıysa AJAX isteğini gönder
             if (selectedDimensionId !== undefined && selectedColorId !== undefined) {
-                var productID = @Html.Raw(productId);
-             
-
-               
+                var productID = @Html.Raw(productId); // Bu kısmı kendi productID'nizle doldurun
                 var dto = {
                     ProductID: productID,
                     ColorID: selectedColorId,
                     DimensionsID: selectedDimensionId,
-                    Stock:0
-
+                    StockQuantity: 0
                 };
+                console.log(dto);
 
-                       
                 $.ajax({
                     type: 'POST',
-                    url: '/Product/GetProductDimension',
+                    url: '@Html.Raw(apiurl1)', // Replace this with your API URL
                     contentType: 'application/json',
                     data: JSON.stringify(dto),
                     success: function (response) {
-                        // Başarılı                  
-                        var restData = JSON.parse(response); 
-                        productPriceID = restData.priceID;
-                        stock = restData.stockQuantity;
-                      
-                        $(".block_price__currency").text(restData.price + " ₺");
-                        $(".product__stock").text(stock + " Adet");
+                        // Successful response
+                        productPriceID = response.priceID;
+                        StockQuantity = response.stockQuantity;
+                       
+                        $(".product-price").text(response.price + " ₺");
+                        $(".product__stock").text(StockQuantity + " Adet");
                     },
                     error: function (xhr, status, error) {
-                      
+                        // Hata durumu
                         if (xhr.status == 404) {
                             toastr.error('Beklenmeyen bir hata oluştu!', { position: "toast-top-end" });
                         }
@@ -384,130 +440,12 @@
     });
 
 
-
-
-    $(document).ready(function () {
-        $(".block_specification__specificationShow").click(function () {
-            // Tıklanan öğenin bir sonraki kardeşi olan <p> etiketini bul
-            var content = $(this).next("div");
-
-            // Eğer içerik gösteriliyorsa, kapat; değilse, aç
-            if (content.is(":visible")) {
-                content.slideUp();
-            } else {
-                content.slideDown();
-            }
-        });
-    });
-
-    window.onload = function () {
-
-        //// SLIDER
-        var slider = document.getElementsByClassName("sliderBlock_items");
-        var slides = document.getElementsByClassName("sliderBlock_items__itemPhoto");
-        var next = document.getElementsByClassName("sliderBlock_controls__arrowForward")[0];
-        var previous = document.getElementsByClassName("sliderBlock_controls__arrowBackward")[0];
-        var items = document.getElementsByClassName("sliderBlock_positionControls")[0];
-        var currentSlideItem = document.getElementsByClassName("sliderBlock_positionControls__paginatorItem");
-
-        var currentSlide = 0;
-        var slideInterval = setInterval(nextSlide, 5000);  /// Delay time of slides
-
-        function nextSlide() {
-            goToSlide(currentSlide + 1);
-        }
-
-        function previousSlide() {
-            goToSlide(currentSlide - 1);
-        }
-
-
-        function goToSlide(n) {
-            slides[currentSlide].className = 'sliderBlock_items__itemPhoto';
-            items.children[currentSlide].className = 'sliderBlock_positionControls__paginatorItem';
-            currentSlide = (n + slides.length) % slides.length;
-            slides[currentSlide].className = 'sliderBlock_items__itemPhoto sliderBlock_items__showing';
-            items.children[currentSlide].className = 'sliderBlock_positionControls__paginatorItem sliderBlock_positionControls__active';
-        }
-
-
-        next.onclick = function () {
-            nextSlide();
-        };
-        previous.onclick = function () {
-            previousSlide();
-        };
-
-
-        function goToSlideAfterPushTheMiniBlock() {
-            for (var i = 0; i < currentSlideItem.length; i++) {
-                currentSlideItem[i].onclick = function (i) {
-                    var index = Array.prototype.indexOf.call(currentSlideItem, this);
-                    goToSlide(index);
-                }
-            }
-        }
-
-        goToSlideAfterPushTheMiniBlock();
-
-
-        /////////////////////////////////////////////////////////
-
-        ///// Specification Field
-
-
-        var buttonFullSpecification = document.getElementsByClassName("block_specification")[0];
-        var buttonSpecification = document.getElementsByClassName("block_specification__specificationShow")[0];
-        var buttonInformation = document.getElementsByClassName("block_specification__informationShow")[0];
-
-        var blockCharacteristiic = document.querySelector(".block_descriptionCharacteristic");
-        var activeCharacteristic = document.querySelector(".block_descriptionCharacteristic__active");
-
-
-        buttonFullSpecification.onclick = function () {
-
-            console.log("OK");
-
-
-            buttonSpecification.classList.toggle("hide");
-            buttonInformation.classList.toggle("hide");
-
-
-            blockCharacteristiic.classList.toggle("block_descriptionCharacteristic__active");
-
-
-        };
-
-
-        /////  QUANTITY ITEMS
-
-        var up = document.getElementsByClassName('block_quantity__up')[0],
-            down = document.getElementsByClassName('block_quantity__down')[0],
-            input = document.getElementsByClassName('block_quantity__number')[0];
-
-        function getValue() {
-            return parseInt(input.value);
-        }
-
-        up.onclick = function (event) {
-            input.value = getValue() + 1;
-        };
-        down.onclick = function (event) {
-            if (input.value <= 1) {
-                return 1;
-            } else {
-                input.value = getValue() - 1;
-            }
-
-        }
-
-
-    };
+    
 </script>
 
 
 
-    @* // $(".dimension").on("click", function (e) {
+@* // $(".dimension").on("click", function (e) {
     //     e.preventDefault();
     //     var dimensionID = $(this).attr("data-dimension-id");
 
@@ -530,7 +468,7 @@
     //         });
     // }); *@
 
-  @*      // var dimensionId = $(".dimension").data("dimension-id");
+@*      // var dimensionId = $(".dimension").data("dimension-id");
         // var colorID;
 
         // $('input[name="colorOfItem"]').each(function () {
