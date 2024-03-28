@@ -106,6 +106,20 @@ namespace B2B.API.Controllers
             var category = _categoryService.TAllGetIncludeProductCategory();
             return Ok(_mapper.Map<List<ResultProductCategoryDto>>(category));
         }
+
+        [HttpGet("GetIncludeProductCategory/{categoryId}")]
+        public IActionResult GetIncludeProductCategory(int categoryId)
+        {
+            var categoryProduct = _categoryService.TAllGetIncludeProductCategory().Where(x=>x.CategoryID==categoryId);
+            return Ok(_mapper.Map<List<ResultProductCategoryDto>>(categoryProduct));
+        }
+
+        [HttpGet("GetIncludeProductSubCategory/{subcategory}")]
+        public IActionResult GetIncludeProductSubCategory(int subcategory)
+        {
+            var categoryProduct = _categoryService.TAllGetIncludeProductCategory().Where(x => x.ParentSubCategoryID == subcategory);
+            return Ok(_mapper.Map<List<ResultProductCategoryDto>>(categoryProduct));
+        }
     }
 }
 

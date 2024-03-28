@@ -3,6 +3,7 @@ using B2B.API.Dtos.CategoryDtos;
 using B2B.API.Dtos.ProductCategoryDtos;
 using B2B.BusinessLayer.Abstract;
 using B2B.EntityLayer.Concrate;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Graph.Models;
 
@@ -24,6 +25,7 @@ namespace B2B.API.Controllers
         }
 
         [HttpGet("AllGetCategory")]
+        [Authorize]
         public IActionResult AllGetCategory()
         {
             var category = _categoryService.TGetList();

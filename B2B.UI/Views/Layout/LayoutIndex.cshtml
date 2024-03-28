@@ -1,30 +1,31 @@
 ﻿@{
     Layout = null;
-    var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+    var appSettings = Context.RequestServices.GetRequiredService<IOptions<AppSettings>>().Value;
+    var apiUrl = appSettings.ApiCreateFavori;
+    string userID = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
 }
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 
 @Html.Partial("_LayoutHeadPartial")
 
 <body>
     <div class="page-wrapper">
 
-     
-
         @await Component.InvokeAsync("_LayoutNavbar")
         <main class="main">
             <nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
                 <div class="container">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Anasayfa</a></li>
-                      @*   <li class="breadcrumb-item"><a href="#">Login</a></li> *@
-                        <li class="breadcrumb-item active">Login</li>
+                        <li class="breadcrumb-item"><a href="/">Anasayfa</a></li>
+                        @*   <li class="breadcrumb-item"><a href="#">Login</a></li> *@
+                        <li class="breadcrumb-item active">@ViewBag.breadcrumb</li>
                     </ol>
                 </div><!-- End .container -->
             </nav><!-- End .breadcrumb-nav -->
-        @RenderBody()
+            @RenderBody()
         </main>
         @await Component.InvokeAsync("_Footer")
 
@@ -35,5 +36,61 @@
     </div>
     <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
 </body>
+<script>
+    $(document).ready(function () {
+        $('.btn-wishlist').click(function (event) {
+            event.preventDefault();
+         
+            var formData = {
+                PriceID: parseInt($(this).attr('data-price-id')),
+                UserID: '@Html.Raw(userID)',
+                createDate: new Date().toISOString()
+            };
+            if (formData.UserID === "") {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Favoriye eklemek için giriş yapmalısın..!',
+                    position: "top-end",
+                    timer: 1000,
+                    showConfirmButton: false
+                });
+                return;
+            }
+            $.ajax({
+                url: "@apiUrl",
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(formData),
+                success: function (response, status, xhr) {
+                    if (xhr.status == 204) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Favori Listene Eklendi..!',
+                            position: "top-end",
+                            timer: 1000,
+                            showConfirmButton: false
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Favori Listenizden Kaldırıldı..!',
+                            position: "top-end",
+                            timer: 1000,
+                            showConfirmButton: false
+                        });
+                    }
+                    setTimeout(function () {
+                        location.reload()
+                    }, 1000);
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr.status + ': ' + xhr.statusText);
+                }
+            });
+        });
+    });
 
+
+
+</script>
 </html>

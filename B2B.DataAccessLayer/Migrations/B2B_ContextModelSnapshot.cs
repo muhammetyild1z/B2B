@@ -63,6 +63,10 @@ namespace B2B.DataAccessLayer.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
+                    b.Property<string>("Address")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
@@ -517,7 +521,7 @@ namespace B2B.DataAccessLayer.Migrations
                     b.Property<int>("ProductID")
                         .HasColumnType("int");
 
-                    b.Property<int?>("StockID")
+                    b.Property<int>("Quantity")
                         .HasColumnType("int");
 
                     b.Property<decimal>("price")
@@ -530,8 +534,6 @@ namespace B2B.DataAccessLayer.Migrations
                     b.HasIndex("DimensionsID");
 
                     b.HasIndex("ProductID");
-
-                    b.HasIndex("StockID");
 
                     b.ToTable("productPrices");
                 });
@@ -557,28 +559,6 @@ namespace B2B.DataAccessLayer.Migrations
                     b.HasIndex("ProductID");
 
                     b.ToTable("productSizes");
-                });
-
-            modelBuilder.Entity("B2B.EntityLayer.Concrate.Stock", b =>
-                {
-                    b.Property<int>("StockID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StockID"));
-
-                    b.Property<DateTime>("CreateDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("Status")
-                        .HasColumnType("bit");
-
-                    b.HasKey("StockID");
-
-                    b.ToTable("stock");
                 });
 
             modelBuilder.Entity("B2B.EntityLayer.Concrate.UserFavoriList", b =>
@@ -719,7 +699,7 @@ namespace B2B.DataAccessLayer.Migrations
                     b.HasOne("B2B.EntityLayer.Concrate.ProductPrice", "productPrice")
                         .WithMany()
                         .HasForeignKey("PriceID")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("B2B.EntityLayer.Concrate.AppUser", "appUser")
@@ -762,7 +742,8 @@ namespace B2B.DataAccessLayer.Migrations
 
                     b.HasOne("B2B.EntityLayer.Concrate.Product", "product")
                         .WithMany()
-                        .HasForeignKey("ProductID");
+                        .HasForeignKey("ProductID")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("ChildSubCategory");
 
@@ -812,17 +793,11 @@ namespace B2B.DataAccessLayer.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("B2B.EntityLayer.Concrate.Stock", "stock")
-                        .WithMany()
-                        .HasForeignKey("StockID");
-
                     b.Navigation("Product");
 
                     b.Navigation("color");
 
                     b.Navigation("dimensions");
-
-                    b.Navigation("stock");
                 });
 
             modelBuilder.Entity("B2B.EntityLayer.Concrate.ProductSize", b =>

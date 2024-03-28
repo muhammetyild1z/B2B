@@ -15,5 +15,6 @@ namespace B2B.API.Dtos.AccountDtos
         public string UserName { get; set; }  
         [Required(ErrorMessage = "Isim alanı boş bırakılamaz.")]
         public string NameSurname { get; set; }
+        public DateTime CreateDate { get; set; }
     }
 }

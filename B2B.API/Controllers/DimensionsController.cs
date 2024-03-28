@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
 using B2B.API.Dtos.DimensionsDto;
-using B2B.API.Dtos.ProductPriceDtos;
 using B2B.BusinessLayer.Abstract;
-using B2B.EntityLayer.Concrate;
 using Microsoft.AspNetCore.Mvc;
 
 namespace B2B.API.Controllers
@@ -33,8 +31,15 @@ namespace B2B.API.Controllers
             return Ok(_mapper.Map<List<ResultDimensionsDto>>(productDimensionList));
         }
 
+        [HttpGet("GetAllDimensions")]
+        public IActionResult GetAllDimensions()
+        {
+            var dimensionsList = _dimensionsService.TGetList();
+            var mapperDimensions = _mapper.Map<List<ResultDimensionsDto>>(dimensionsList);
+            return Ok(mapperDimensions);
+        }
 
 
-       
+
     }
 }

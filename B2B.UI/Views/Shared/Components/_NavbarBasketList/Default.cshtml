@@ -1,7 +1,7 @@
 ﻿@model List<ResultBasketDto>
 @{
     var productCount = Model.Sum(x => x.Count);
-    var userID = "3fe7b6fa-82fc-46ba-9087-c9590673aa51";
+  
     var appSettings = Context.RequestServices.GetRequiredService<IOptions<AppSettings>>().Value;
     var apiUrl = appSettings.ApiBasketRemove;
 }
@@ -9,8 +9,9 @@
 
 
 <div class="dropdown cart-dropdown">
-    <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
+    <a  class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
         <i class="icon-shopping-cart"></i>
+
         <span class="cart-count">@productCount</span>
 
     </a>
@@ -25,7 +26,7 @@
                             <a href="product.html">@item.productPrice.Product.ProductName</a>
                         </h4>
                         <span>Renk:</span>
-                        <div class="product-nav product-nav-dots">               
+                        <div class="product-nav product-nav-dots">
                             <a href="#" class="active" style="background: #@item.productPrice.color.ColorCode"><span class="sr-only">Color </span></a>
                         </div>
                         <span>
@@ -43,7 +44,7 @@
                             <img src="@item.productPrice.Product.ProductImage" alt="product">
                         </a>
                     </figure>
-                    <a  class="btn-remove" title="Remove Product" data-basket-id="@item.BasketID"><i class="icon-close"></i></a>
+                    <a class="btn-remove" title="Remove Product" data-basket-id="@item.BasketID"><i class="icon-close"></i></a>
                 </div>
 
                 <!-- End .product -->
@@ -63,11 +64,16 @@
         </div><!-- End .dropdown-cart-total -->
 
         <div class="dropdown-cart-action">
-            <a href="/basket/basketlist/@userID" class="btn btn-primary">Sepete Git</a>
+            <a href="/basket/basketlist" class="btn btn-primary">Sepete Git</a>
             <a href="checkout.html" class="btn btn-outline-primary-2"><span>Sipraiş Ver </span><i class="icon-long-arrow-right"></i></a>
         </div><!-- End .dropdown-cart-total -->
-    </div><!-- End .dropdown-menu -->
-</div><!-- End .cart-dropdown -->
+    </div>
+
+    <!-- End .dropdown-menu -->
+    <!-- End .cart-dropdown -->
+
+</div>
+
 
 
 

@@ -19,6 +19,15 @@
         public string ApiCreateFavori { get; set; }
         public string ApiGetAllProductPriceByProductID { get; set; }
         public string ApiListFavori { get; set; }
+        public string ApiDeleteFavori { get; set; }
+        public string ApiGetIncludeProductSubCategoryUrl { get; set; }
+        public string ApiGetIncludeProductCategoryUrl { get; set; }
+        public string ApiAllGetProductCategoryUrl { get; set; }
+        public string ApiCategoryProductPriceUrl { get; set; }
+        public string ApiColorFilterUrl { get; set; }
+        public string ApiGetAllDimensionsUrl { get; set; }
+
+
       
         
     }

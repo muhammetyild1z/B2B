@@ -14,5 +14,8 @@ namespace B2B.EntityLayer.Concrate
         [MaxLength(150)]
         public string NameSurname { get; set; }
         public bool Status { get; set; }
+        [MaxLength(200)]
+        public string? Address { get; set; }
+
     }
 }

@@ -47,7 +47,7 @@
                         </form>
                         <h5>Hesabın Var Mı? <a href="/Account/SignIn">Giriş Yap!</a></h5>
                     </div>
-                 
+
                 </div>
                 <div class="col-lg-6">
                     <div class="login__social__links">
@@ -81,10 +81,10 @@ else
 
 }
 
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    $(docum ent).ready(function () {
+    $(document).ready(function () {
         $('#register').submit(function (e) {
             e.preventDefault(); // Formun default submit davranışını engelle
 
@@ -103,16 +103,27 @@ else
                 contentType: 'application/json',
                 data: JSON.stringify(formData),
                 success: function (response) {
-                    // Başarılı işlem durumunda yapılacaklar
-                    console.log(response);
-                    // Örneğin başka bir sayfaya yönlendirme yapılabilir
-                    // window.location.href = "/success-page";
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Kayıt Başarılı..!',
+                        position: "top-end",
+                        timer: 1000,
+                        showConfirmButton: false
+                    });
                 },
                 error: function (xhr, status, error) {
-                    // Hata durumunda yapılacaklar
-                    console.error(error);
-                }
-            });
-        });
-    });
+                    if (xhr.status === 400) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Email veya kullanıcı adı daha önce alınmış!',
+                            position: "top-end",
+                            timer: 1000,
+                            showConfirmButton: false
+                        });
+                    }
+                } 
+            }); 
+        }); 
+    }); 
 </script>
+

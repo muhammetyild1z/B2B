@@ -23,7 +23,8 @@ namespace B2B.API.Controllers
         public IActionResult AllGetParentSubCategory()
         {
             var parentSubCategoryies = _parentSubCategoryService.TGetList();
-            return View(_mapper.Map<List<ParentSubCategory>>(parentSubCategoryies));
+            var mappingSubCategory = _mapper.Map<List<ParentSubCategory>>(parentSubCategoryies);
+            return Ok(mappingSubCategory);
         }
         [HttpPost("CreateParentSubCategory")]
         public async Task<IActionResult> CreateParentSubCategory(CreateParentSubCategoryDto createParentSubCategoryDto)

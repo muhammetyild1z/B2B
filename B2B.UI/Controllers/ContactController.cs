@@ -25,6 +25,7 @@ namespace B2B.UI.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.breadcrumb = "İletişim";
             return View();
         }
     

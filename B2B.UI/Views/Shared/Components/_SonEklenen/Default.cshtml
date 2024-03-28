@@ -2,7 +2,7 @@
 @{
     var appSettings = Context.RequestServices.GetRequiredService<IOptions<AppSettings>>().Value;
     var apiUrl = appSettings.ApiCreateFavori;
-    string userID = "3fe7b6fa-82fc-46ba-9087-c9590673aa51";
+  
 }
 
 
@@ -17,54 +17,5 @@
     <!-- End .product-item -->
 }
 
-<script>
-    $(document).ready(function () {
-        $('.btn-wishlist').click(function (event) {
-            event.preventDefault();
 
-            var formData = {
-                PriceID: parseInt($(this).attr('data-price-id')),
-                UserID: '@Html.Raw(userID)',
-                createDate: new Date().toISOString()
-            };
-
-           
-
-            $.ajax({
-                url: "@apiUrl",
-                type: 'POST',
-                contentType: 'application/json',
-                data: JSON.stringify(formData),
-                success: function (response, status, xhr) {
-                    if (xhr.status == 204) {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Favori Listenizden Eklendi..!',
-                            position: "top-end",
-                            timer: 1000,
-                            showConfirmButton: false
-                        });
-                    } else {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Favori Listenizden Kaldırıldı..!',
-                            position: "top-end",
-                            timer: 1000,
-                            showConfirmButton: false
-                        });
-                    }
-                    setTimeout(function () {
-                        location.href = "/";
-                    }, 1000);
-                },
-                error: function (xhr, status, error) {
-                    console.error(xhr.status + ': ' + xhr.statusText);
-                }
-            });
-        });
-    });
-
-
-
-</script>
 

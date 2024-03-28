@@ -6,8 +6,7 @@
     var appSettings = Context.RequestServices.GetRequiredService<IOptions<AppSettings>>().Value;
     var apiUrl = appSettings.ApiSignInUrl;
     var apiUrl1 = appSettings.ApiSignUpUrl;
-
-
+ 
 }
 
 
@@ -31,12 +30,12 @@
                             <form method="post" id="loginForm">
                                 <div class="form-group">
                                     <label for="singin-email">Kullanıcı Adı *</label>
-                                    <input type="text" class="form-control userName" id="singin-email" required>
+                                    <input type="text" class="form-control userName" id="singin-email" asp-for="UserName" required>
                                 </div><!-- End .form-group -->
 
                                 <div class="form-group">
                                     <label for="singin-password">Şifre *</label>
-                                    <input type="password" class="form-control password" id="singin-password" required>
+                                    <input type="password" class="form-control password" id="singin-password" asp-for="Password" required>
                                 </div><!-- End .form-group -->
 
                                 <div class="form-footer">
@@ -134,7 +133,7 @@ else
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-    $(document).ready(function () {
+@*     $(document).ready(function () {
         $('#loginForm').submit(function (event) {
             event.preventDefault();
             var rememberMe = $('#signin-remember').prop('checked');
@@ -150,15 +149,17 @@ else
                 contentType: 'application/json',
                 data: JSON.stringify(formData),
                 success: function (response) {
-                    var token = response.token;
 
-                    // Authorization başlığını isteğe ekleyerek tokeni gönderin
-                    $.ajaxSetup({
-                        headers: {
-                            'Authorization': 'Bearer ' + token
+                    var token = response; // Token'i response'dan alın
+                    // Token'i çözmek için jwt.verify kullanın
+                    jwt.verify(token, 'anahtar', function (err, decoded) {
+                        if (err) {
+                            console.error('Token çözme hatası:', err);
+                        } else {
+                            console.log('Çözülen token:', decoded);
+                            // Token çözüldükten sonra burada istediğiniz işlemleri yapabilirsiniz
                         }
-                    });
-
+                                  
                     Swal.fire({
                         icon: 'success',
                         title: 'Giriş Başarılı Yöneledndiriliyorsunuz..!',
@@ -166,17 +167,22 @@ else
                         timer: 1000,
                         showConfirmButton: false
                     });
-                    setTimeout(function () {
-                        location.href = "/";
-                    }, 1000);
+                   
                 },
                 error: function (xhr, status, error) {
-                    console.error('Giriş hatası:', error);
-                    // Giriş hatası durumunda yapılacak işlemler
+                    if (xhr.status == 400) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Kullanıcı adı veya şifre yanlış!',
+                            position: "top-end",
+                            timer: 1000,
+                            showConfirmButton: false
+                        });
+                    }
                 }
             });
         });
-    });
+    }); *@
     $(document).ready(function () {
         $('#registerFrom').submit(function (event) {
             event.preventDefault();
@@ -188,19 +194,31 @@ else
                 NameSurname: $('.nameSurname').val(),
                 Password: $('.password1').val()
             };
-            console.log(formData1);
+          
             $.ajax({
                 url: '@Html.Raw(apiUrl1)',
                 type: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify(formData1),
                 success: function (response) {
-                    console.log('kayit başarılı:', response);
-                    // Başarılı bir şekilde giriş yapıldığında yapılacak işlemler
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Kayıt Başarılı..!',
+                        position: "top-end",
+                        timer: 1000,
+                        showConfirmButton: false
+                    });
                 },
                 error: function (xhr, status, error) {
-                    console.error('kayit hatası:', error);
-                    // Giriş hatası durumunda yapılacak işlemler
+                    if (xhr.status == 400) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Email veya kullanıcı adı daha önce alınmış!',
+                            position: "top-end",
+                            timer: 1000,
+                            showConfirmButton: false
+                        });
+                    }
                 }
             });
         });

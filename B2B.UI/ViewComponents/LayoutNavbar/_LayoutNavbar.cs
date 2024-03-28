@@ -45,13 +45,6 @@ namespace B2B.UI.ViewComponents.LayoutHeaderPartial
                 // Örneğin: Loglama, istisna fırlatma vs.
                 return Content($"API isteği sırasında bir hata oluştu: {ex.Message}");
             }
-
-
-
-
-
-
-          
         }
     }
 }

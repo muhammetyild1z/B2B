@@ -13,5 +13,6 @@ namespace B2B.UI.DtosUI.AccountDtos
         public string PasswordR { get; set; }
         [Required(ErrorMessage = "Kullanıcı adı alanı boş bırakılamaz.")]
         public string UserName { get; set; }
+        public DateTime CreateDate { get; set; }
     }
 }

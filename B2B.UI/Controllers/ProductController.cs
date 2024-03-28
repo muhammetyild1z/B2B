@@ -27,7 +27,7 @@ namespace B2B.UI.Controllers
 
         public async Task<IActionResult> ProductDetails(int productID)
         {
-
+            ViewBag.breadcrumb = "Ürün Detay";
             try
             {
                 var apiUrl = _appSettings.Value.ApiProductPriceUrl;

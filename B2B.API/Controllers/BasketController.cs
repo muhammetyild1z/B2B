@@ -2,10 +2,12 @@
 using B2B.API.Dtos.BasketDtos;
 using B2B.BusinessLayer.Abstract;
 using B2B.EntityLayer.Concrate;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace B2B.API.Controllers
 {
+   
     [ApiController]
     [Route("api/[Controller]")]
     public class BasketController : Controller
@@ -24,10 +26,16 @@ namespace B2B.API.Controllers
         {
             var basket = _basketService.TGetList();
             return Ok(_mapper.Map<List<Basket>>(basket));
-        } 
+        }
+        
         [HttpGet("UserAllBasket/{id}")]
+       
         public IActionResult UserAllBasket(string id)
         {
+            if (id==null)
+            {
+                return Unauthorized();
+            }
             var basketList = _basketService.TGetIncludeAllUserBasket().Where(x=>x.UserID==id).ToList();
             return Ok(_mapper.Map<List<ResultBasketDto>>(basketList));
         }

@@ -3,9 +3,9 @@
     ViewData["Title"] = "ProductDetails";
     Layout = "~/Views/Layout/LayoutIndex.cshtml";
     var productId = Model.ProductID;
-   // var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-    var userId = "3fe7b6fa-82fc-46ba-9087-c9590673aa51";
-    var productPriceId = Model.PriceID;
+    var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+    //var userId = "3fe7b6fa-82fc-46ba-9087-c9590673aa51";
+   
     var appSettings = Context.RequestServices.GetRequiredService<IOptions<AppSettings>>().Value;
     var apiUrl = appSettings.ApiBasketAddUrl;
     var apiurl1 = appSettings.ApiGetProductDimensionUrl;
@@ -17,7 +17,7 @@
     <div class="container">
         <div class="product-details-top mb-2">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6">            
                     <div class="product-gallery">
                         <figure class="product-main-image">
                             <img id="product-zoom" src="@Model.Product.ProductImage" data-zoom-image="@Model.Product.ProductImage" alt="product image">
@@ -29,15 +29,15 @@
 
                         <div id="product-zoom-gallery" class="product-image-gallery">
 
-                            <a class="product-gallery-item" href="#" data-image="@Model.Product.ProductImage1" data-zoom-image="@Model.Product.ProductImage1">
+                            <a class="product-gallery-item"  data-image="@Model.Product.ProductImage1" data-zoom-image="@Model.Product.ProductImage1">
                                 <img src="@Model.Product.ProductImage1" alt="product side">
                             </a>
 
-                            <a class="product-gallery-item" href="#" data-image="@Model.Product.ProductImage2" data-zoom-image="@Model.Product.ProductImage2">
+                            <a class="product-gallery-item"  data-image="@Model.Product.ProductImage2" data-zoom-image="@Model.Product.ProductImage2">
                                 <img src="@Model.Product.ProductImage2" alt="product cross">
                             </a>
 
-                            <a class="product-gallery-item active" href="#" data-image="@Model.Product.ProductImage3" data-zoom-image="@Model.Product.ProductImage3">
+                            <a class="product-gallery-item active"  data-image="@Model.Product.ProductImage3" data-zoom-image="@Model.Product.ProductImage3">
                                 <img src="@Model.Product.ProductImage3" alt="product with model">
                             </a>
 
@@ -101,10 +101,10 @@
                         </div><!-- End .details-filter-row -->
 
                         <div class="product-details-action">
-                            <a  class="basketAdd1  btn-product btn-cart"><span>sepete ekle</span></a>
+                            <a  class="basketAdd1  btn-product btn-cart" data-price-id="0"><span>sepete ekle</span></a>
 
                             <div class="details-action-wrapper">
-                                <a href="#" class="btn-product btn-wishlist" title="Favoriye Ekle"><span>Favoriye Ekle</span></a>
+                                <a  class="btn-product  btn-wishlist" title="Favoriye Ekle" data-price-id="@Model.PriceID"><span>Favoriye Ekle</span></a>
                                 @*    <a href="#" class="btn-product btn-compare" title="Compare"><span>Add to Compare</span></a> *@
                             </div><!-- End .details-action-wrapper -->
                         </div><!-- End .product-details-action -->
@@ -277,6 +277,8 @@
 
 
     var StockQuantity = 0;
+    var priceID = 0;
+    console.log(priceID);
     $('.basketAdd1').click(function () {
         var apiUrl = $("#apiUrl").val();
       
@@ -292,10 +294,10 @@
         var dto = {
             UserID: '@Html.Raw(userId)',
             Count: count,
-            PriceID: @Html.Raw(productPriceId),
+            PriceID: priceID,
 
-        };    
-       
+        };
+        console.log(dto.UserID);
         if (count > StockQuantity) {
             Swal.fire({
                 icon: 'warning',
@@ -305,7 +307,8 @@
                 showConfirmButton: false
             });
             return;
-        }
+        }  
+      
      
         $.ajax({
             type: 'POST',
@@ -405,9 +408,10 @@
                     ProductID: productID,
                     ColorID: selectedColorId,
                     DimensionsID: selectedDimensionId,
-                    StockQuantity: 0
+                    Quantity: 0,
+                    PriceID: 0
                 };
-                console.log(dto);
+               
 
                 $.ajax({
                     type: 'POST',
@@ -416,11 +420,14 @@
                     data: JSON.stringify(dto),
                     success: function (response) {
                         // Successful response
-                        productPriceID = response.priceID;
-                        StockQuantity = response.stockQuantity;
-                       
+                      
+                        priceID = response.priceID;
+                        console.log(priceID);
+                        StockQuantity = response.quantity;
+                  
                         $(".product-price").text(response.price + " ₺");
                         $(".product__stock").text(StockQuantity + " Adet");
+                      
                     },
                     error: function (xhr, status, error) {
                         // Hata durumu

@@ -13,7 +13,7 @@ namespace B2B.API.Dtos.ProductPriceDtos
 
         public int DimensionsID { get; set; }
 
-        public int StockQuantity { get; set; }
+        public int Quantity { get; set; }
 
         public decimal price { get; set; }
     }

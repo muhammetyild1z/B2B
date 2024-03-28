@@ -30,7 +30,7 @@ namespace B2B.API.Controllers
             return Ok(_mapper.Map<List<ResultProductPriceDto>>(productPrice));
         }
 
-             [HttpGet("GetAllProductPriceByProductID/{productID}")]
+        [HttpGet("GetAllProductPriceByProductID/{productID}")]
         public IActionResult GetAllProductPriceByProductID(int productID)
         {
             var productPrice = _productPriceService.TGetIncludePriceList().Find(x=>x.ProductID==productID);
@@ -47,13 +47,13 @@ namespace B2B.API.Controllers
 
 
         [HttpPost("GetProductDimension")]
-        public IActionResult GetProductDimension([FromBody]CreateProductPriceDto dto)
+        public IActionResult GetProductDimension([FromBody] ResultProductPriceDto dto)
         {
-            CreateProductPriceDto a = new CreateProductPriceDto();
+            ResultProductPriceDto a = new ResultProductPriceDto();
           var  productPrice = _productPriceService.TGetList().FirstOrDefault(x => x.DimensionsID == dto.DimensionsID && x.ColorID == dto.ColorID && x.ProductID == dto.ProductID);
            
-            a = _mapper.Map<CreateProductPriceDto>(productPrice);
-            a.StockQuantity = _stockService.TGetList().Find(x => x.StockID == productPrice.StockID).Quantity;
+            a = _mapper.Map<ResultProductPriceDto>(productPrice);
+           // a.StockQuantity = _stockService.TGetList().Find(x => x.StockID == productPrice.StockID).Quantity;
           
             return Ok(a);
         }

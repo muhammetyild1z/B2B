@@ -18,13 +18,15 @@ namespace B2B.API.Controllers
     {
         private readonly SignInManager<AppUser> _signInManager;
         private readonly UserManager<AppUser> _userManager;
+        private readonly IConfiguration _configuration;
         private readonly IMapper _mapper;
 
-        public AccountController(SignInManager<AppUser> signInManager, UserManager<AppUser> userManager, IMapper mapper)
+        public AccountController(SignInManager<AppUser> signInManager, UserManager<AppUser> userManager, IMapper mapper, IConfiguration configuration)
         {
             _signInManager = signInManager;
             _userManager = userManager;
             _mapper = mapper;
+            _configuration = configuration;
         }
 
         [HttpPost("SignIn")]
@@ -45,28 +47,54 @@ namespace B2B.API.Controllers
                     return Unauthorized(); // Kullanıcı bulunamadı, uygun hata kodunu döndür
                 }
 
-                var tokenHandler = new JwtSecurityTokenHandler();
-                var key = new byte[32]; // 256-bit (32-byte) bir anahtar kullanıyoruz
-                using (var rng = RandomNumberGenerator.Create())
-                {
-                    rng.GetBytes(key);
-                }
+                //var tokenHandler = new JwtSecurityTokenHandler();
+                //var key = new byte[32]; // 256-bit (32-byte) bir anahtar kullanıyoruz
+                //using (var rng = RandomNumberGenerator.Create())
+                //{
+                //    rng.GetBytes(key);
+                //}
+                //var tokenDescriptor = new SecurityTokenDescriptor
+                //{
+                //    Subject = new ClaimsIdentity(new Claim[]
+                //    {
+                //new Claim(ClaimTypes.Name, user.UserName),
+                //new Claim(ClaimTypes.NameIdentifier, user.Id),
+                //new Claim(ClaimTypes.Email, user.Email)
+                //    }),
+                //    Expires = DateTime.UtcNow.AddHours(1), // Token geçerlilik süresi
+                //    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+                //};
+
+                //var token = tokenHandler.CreateToken(tokenDescriptor);
+                //var tokenString = tokenHandler.WriteToken(token);
+
+                //return Ok(new { Token = tokenString });
+                var issuer = _configuration["Jwt:ValidIssuer"];
+                var audience = _configuration["Jwt:ValidAudience"];
+                var key =  Encoding.ASCII.GetBytes(_configuration["Jwt:Secret"]); 
+                //Encoding.ASCII.GetBytes(_configuration["Jwt:Secret"]);
                 var tokenDescriptor = new SecurityTokenDescriptor
                 {
-                    Subject = new ClaimsIdentity(new Claim[]
+                    Subject = new ClaimsIdentity(new[]
                     {
-                new Claim(ClaimTypes.Name, user.UserName),
-                new Claim(ClaimTypes.NameIdentifier, user.Id),
-                new Claim(ClaimTypes.Email, user.Email)
+                            new Claim("Id", Guid.NewGuid().ToString()),
+                            new Claim(ClaimTypes.Name, user.UserName),
+                            new Claim(ClaimTypes.NameIdentifier, user.Id),
+                            new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
+                            new Claim(JwtRegisteredClaimNames.Email, user.UserName), 
                     }),
-                    Expires = DateTime.UtcNow.AddHours(1), // Token geçerlilik süresi
-                    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+                    Expires = DateTime.UtcNow.AddMinutes(5),
+                    Issuer = issuer,
+                    Audience = audience,
+                    SigningCredentials = new SigningCredentials
+                    (new SymmetricSecurityKey(key),
+                    SecurityAlgorithms.HmacSha256)
                 };
-
+                var tokenHandler = new JwtSecurityTokenHandler();
                 var token = tokenHandler.CreateToken(tokenDescriptor);
-                var tokenString = tokenHandler.WriteToken(token);
-
-                return Ok(new { Token = tokenString });
+                var jwtToken = tokenHandler.WriteToken(token);
+                var stringToken = tokenHandler.WriteToken(token);
+                return Ok(stringToken);
             }
             else
             {
@@ -80,16 +108,6 @@ namespace B2B.API.Controllers
         public async Task<IActionResult> SignUp([FromBody] SignUpDto signupDto)
         {
 
-            //var mailCheck = new System.Net.Mail.MailAddress(signupDto.Email);
-            //var userLengthStatus = mailCheck.User.Length <= 5;
-
-            //if (userLengthStatus || (mailCheck.Host != "gmail.com" && mailCheck.Host != "hotmail.com" && mailCheck.Host != "outlook.com"))
-            //{
-            //    ModelState.AddModelError("", "Mail Formatını Kontrol Edin!");
-            //}
-
-
-
             if (!ModelState.IsValid)
             {
                 return View(signupDto);
@@ -101,7 +119,7 @@ namespace B2B.API.Controllers
                 ModelState.AddModelError("", "Girilen şifreler uyuşmuyor.");
                 return Ok(signupDto);
             }
-
+            signupDto.CreateDate= DateTime.Now;
             var result = await _userManager.CreateAsync(_mapper.Map<AppUser>(signupDto), signupDto.Password);
             if (result.Succeeded)
             {

@@ -1,6 +1,75 @@
-@B2B.API_HostAddress = http://localhost:5252
+@B2B.API_HostAddress = https://localhost:7268
 
 GET {{B2B.API_HostAddress}}/weatherforecast/
 Accept: application/json
 
+###
+  
+
+POST {{B2B.API_HostAddress}}/api/account/SignIn
+Content-Type: application/json
+
+{
+  //SignInDto
+}
+
+###
+
+POST {{B2B.API_HostAddress}}/api/account/SignUp
+Content-Type: application/json
+
+{
+  //SignUpDto
+}
+
+###
+
+GET {{B2B.API_HostAddress}}/api/Basket/AllGetBasket
+
+###
+
+POST {{B2B.API_HostAddress}}/api/Basket/CreateBasket
+Content-Type: application/json
+
+{
+  //CreateBasketDto
+}
+
+###
+
+POST {{B2B.API_HostAddress}}/api/Basket/DeleteBasket/0
+
+###
+
+PUT {{B2B.API_HostAddress}}/api/Basket/UpdateBasket
+Content-Type: application/json
+
+{
+  //UpdateBasketDto
+}
+
+###
+
+GET {{B2B.API_HostAddress}}/api/Basket/UserAllBasket/string
+
+###
+
+GET {{B2B.API_HostAddress}}/api/Category/AllGetCategory
+
+###
+
+GET {{B2B.API_HostAddress}}/api/Basket/AllGetBasket
+
+###
+
+GET {{B2B.API_HostAddress}}/api/Basket/UserAllBasket/12
+
+###
+
+GET {{B2B.API_HostAddress}}/api/Category/AllGetCategory
+
+###
+
+GET {{B2B.API_HostAddress}}/api/Basket/AllGetBasket
+Authorization:  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsIm5hbWVpZCI6IjNmZTdiNmZhLTgyZmMtNDZiYS05MDg3LWM5NTkwNjczYWE1MSIsImVtYWlsIjoidXNlckBleGFtcGxlLmNvbSIsIm5iZiI6MTcxMTQ1MjE5MiwiZXhwIjoxNzExNDU1NzkyLCJpYXQiOjE3MTE0NTIxOTJ9.8t18YCbwLksFJWmpvcvDE3Hy6XIzcIKcM_H9KEiHqg0
 ###

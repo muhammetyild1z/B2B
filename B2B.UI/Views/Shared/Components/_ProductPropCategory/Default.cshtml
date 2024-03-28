@@ -7,7 +7,7 @@
     <span>Kategoriler:</span>
     @foreach (var item in Model.DistinctBy(x=>x.category.Name))
     {
-        <a href="#">@item.category.Name.ToLower() </a>
+        <a href="/productcategory/CategoryList?subcategory=@item.ParentSubCategoryID">@item.category.Name.ToLower() </a>
 
     }
 </div>

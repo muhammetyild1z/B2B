@@ -108,6 +108,7 @@ C:\Users\muham\OneDrive\Belgeler\GitHub\B2B\B2B.API\bin\Debug\net8.0\Azure.Ident
 C:\Users\muham\OneDrive\Belgeler\GitHub\B2B\B2B.API\bin\Debug\net8.0\FluentValidation.dll
 C:\Users\muham\OneDrive\Belgeler\GitHub\B2B\B2B.API\bin\Debug\net8.0\FluentValidation.AspNetCore.dll
 C:\Users\muham\OneDrive\Belgeler\GitHub\B2B\B2B.API\bin\Debug\net8.0\FluentValidation.DependencyInjectionExtensions.dll
+C:\Users\muham\OneDrive\Belgeler\GitHub\B2B\B2B.API\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\muham\OneDrive\Belgeler\GitHub\B2B\B2B.API\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
 C:\Users\muham\OneDrive\Belgeler\GitHub\B2B\B2B.API\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 C:\Users\muham\OneDrive\Belgeler\GitHub\B2B\B2B.API\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll

@@ -3,6 +3,7 @@ using B2B.EntityLayer.Concrate;
 using B2B.UI.DtosUI.BasketDtos;
 using B2B.UI.DtosUI.ProductDtos;
 using B2B.UI.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
@@ -25,18 +26,22 @@ namespace B2B.UI.Controllers
 			_httpClient = httpClient;
 			_appSettings = appSettings;
 		}
-
-		public async Task<IActionResult> BasketList(string id)
+		[Authorize]
+		public async Task<IActionResult> BasketList()
 		{
-			var apiUrl = _appSettings.Value.ApiUserBasketUrl;
-			HttpResponseMessage response = await _httpClient.GetAsync(apiUrl + "/" + id);
-			if (response.IsSuccessStatusCode)
+            ViewBag.breadcrumb = "Sepetim";
+            if (User.Identity.IsAuthenticated)
 			{
-				var jsonData = await response.Content.ReadAsStringAsync();
-				var basketList = JsonConvert.DeserializeObject<List<ResultBasketDto>>(jsonData);
-				return View(basketList);
+				var apiUrl = _appSettings.Value.ApiUserBasketUrl;
+				HttpResponseMessage response = await _httpClient.GetAsync(apiUrl + User.FindFirstValue(ClaimTypes.NameIdentifier));
+				if (response.IsSuccessStatusCode)
+				{
+					var jsonData = await response.Content.ReadAsStringAsync();
+					var basketList = JsonConvert.DeserializeObject<List<ResultBasketDto>>(jsonData);
+					return View(basketList);
+				}
 			}
-
+	
 			return View();
 		}
 

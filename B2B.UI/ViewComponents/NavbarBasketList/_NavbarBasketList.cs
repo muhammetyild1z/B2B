@@ -17,12 +17,17 @@ namespace B2B.UI.ViewComponents.NavbarBasketList
             _appSettings = appSettings;
         }
 
-        public async Task<IViewComponentResult> InvokeAsync()
+        public async Task<IViewComponentResult> InvokeAsync(string userId)
         {
+            if (userId == null)
+            {
+               List< ResultBasketDto > a = new List< ResultBasketDto >();
+                return View(a);
+            }
             try
             {
                 var apiUrl = _appSettings.Value.ApiUserBasketUrl;
-                HttpResponseMessage response = await _httpClient.GetAsync(apiUrl+ "/3fe7b6fa-82fc-46ba-9087-c9590673aa51");
+                HttpResponseMessage response = await _httpClient.GetAsync(apiUrl+ userId);
                 if (response.IsSuccessStatusCode)
                 {
                     var jsonData = await response.Content.ReadAsStringAsync();

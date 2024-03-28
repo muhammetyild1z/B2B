@@ -163,6 +163,7 @@ C:\Users\muham\OneDrive\Belgeler\GitHub\b2b_g\B2B\B2B.UI\obj\Debug\net8.0\B2B.UI
 C:\Users\muham\OneDrive\Belgeler\GitHub\b2b_g\B2B\B2B.UI\obj\Debug\net8.0\ref\B2B.UI.dll
 C:\Users\muham\OneDrive\Belgeler\GitHub\B2B\B2B.UI\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\muham\OneDrive\Belgeler\GitHub\B2B\B2B.UI\bin\Debug\net8.0\appsettings.json
+C:\Users\muham\OneDrive\Belgeler\GitHub\B2B\B2B.UI\bin\Debug\net8.0\libman.json
 C:\Users\muham\OneDrive\Belgeler\GitHub\B2B\B2B.UI\bin\Debug\net8.0\B2B.UI.staticwebassets.runtime.json
 C:\Users\muham\OneDrive\Belgeler\GitHub\B2B\B2B.UI\bin\Debug\net8.0\B2B.UI.exe
 C:\Users\muham\OneDrive\Belgeler\GitHub\B2B\B2B.UI\bin\Debug\net8.0\B2B.UI.deps.json
@@ -438,4 +439,3 @@ C:\Users\muham\OneDrive\Belgeler\GitHub\B2B\B2B.UI\obj\Debug\net8.0\refint\B2B.U
 C:\Users\muham\OneDrive\Belgeler\GitHub\B2B\B2B.UI\obj\Debug\net8.0\B2B.UI.pdb
 C:\Users\muham\OneDrive\Belgeler\GitHub\B2B\B2B.UI\obj\Debug\net8.0\B2B.UI.genruntimeconfig.cache
 C:\Users\muham\OneDrive\Belgeler\GitHub\B2B\B2B.UI\obj\Debug\net8.0\ref\B2B.UI.dll
-C:\Users\muham\OneDrive\Belgeler\GitHub\B2B\B2B.UI\bin\Debug\net8.0\libman.json

@@ -45,6 +45,21 @@ namespace B2B.API.Controllers
             return BadRequest();
         }
 
+		[HttpPost("DeleteFavori/{favoriID}")]
+        public IActionResult DeleteFavori(int favoriID)
+        {
+
+            var userFavListCheck = _userFavoriListService.TGetList().Find(x => x.FavoriID== favoriID);
+            if (userFavListCheck != null)
+            {
+                _userFavoriListService.TDelete(userFavListCheck);
+                return Ok();
+            }
+           
+
+            return BadRequest();
+        }
+
         [HttpGet("ListFavori/{userID}")]
         public IActionResult ListFavori(string userID)
         {

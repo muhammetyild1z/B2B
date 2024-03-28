@@ -10,6 +10,7 @@
 
         public int DimensionsID { get; set; }
 
+        public int Quantity { get; set; }
 
         public decimal price { get; set; }
     }

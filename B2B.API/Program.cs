@@ -4,12 +4,15 @@ using B2B.DataAccessLayer.Abstract;
 using B2B.DataAccessLayer.Concrate;
 using B2B.DataAccessLayer.EntityFramework;
 using B2B.EntityLayer.Concrate;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using Microsoft.Graph.Models.ExternalConnectors;
+using Microsoft.IdentityModel.Tokens;
 using System.Reflection;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
@@ -38,12 +41,37 @@ builder.Services.AddIdentity<AppUser, AppRole>(
     //.AddErrorDescriber<CustomerIdentityValidation>()
     .AddDefaultTokenProviders()
     .AddEntityFrameworkStores<B2B_Context>();
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+
+            // Adding Jwt Bearer
+            .AddJwtBearer(options =>
+            {
+                options.SaveToken = true;
+                options.RequireHttpsMetadata = false;
+                options.TokenValidationParameters = new TokenValidationParameters()
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidAudience = builder.Configuration["JWT:ValidAudience"],
+                    ValidIssuer = builder.Configuration["JWT:ValidIssuer"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Secret"])),
+                    ValidateLifetime = false,
+                    ValidateIssuerSigningKey = true
+                };
+            });
+builder.Services.AddAuthorization();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
-
+ 
 builder.Services.AddScoped<IUserFavoriDAL, efUserFavoriRepository>();
 builder.Services.AddScoped<IUserFavoriService, UserFavoriManager>();
 
@@ -95,6 +123,8 @@ builder.Services.AddScoped<IProductCategoriesDAL, efProductCategoriesRepository>
 builder.Services.AddScoped<IProductCategoryService, ProductCategoryManager>();
 
 
+       
+
 
 builder.Services.AddCors(options =>
 {
@@ -118,11 +148,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
     app.UseCors("AllowSpecificOrigin");
 }
-
+ 
 app.UseStaticFiles();
 app.UseRouting();
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

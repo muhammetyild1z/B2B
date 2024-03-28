@@ -26,7 +26,7 @@ namespace B2B.DataAccessLayer.EntityFramework
 				.Include(x=>x.price.Product)
 				.Include(x => x.price.dimensions)
 				.Include(x => x.price.color)
-				.Include(x => x.price.stock)
+				//.Include(x => x.price.stock)
 				.ToList();
 		}
 	}
