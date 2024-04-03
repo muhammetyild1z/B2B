@@ -2,16 +2,14 @@
 @{
     var appSettings = Context.RequestServices.GetRequiredService<IOptions<AppSettings>>().Value;
     var apiUrl = appSettings.ApiCreateFavori;
-  
 }
 
-
 @foreach (var item in Model.DistinctBy(x => x.product.ProductName))
-{ 
+{
 
-    <div class="product-item @item.category.Name.Replace(" ", "").Trim() col-6 col-md-4 col-lg-3">
-        @await Component.InvokeAsync("_HomeProduct",new{productID=item.ProductID})
-     
+    <div class="product-item @item.category.Name.ToLower().Trim().Replace(" ", "") col-6 col-md-4 col-lg-3">
+        @await Component.InvokeAsync("_HomeProduct", new { productID = item.ProductID })
+
     </div>
 
     <!-- End .product-item -->

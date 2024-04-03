@@ -3,7 +3,7 @@
 <div class="widget widget-collapsible">
     <h3 class="widget-title">
         <a data-toggle="collapse" href="#widget-2" role="button" aria-expanded="true" aria-controls="widget-2">
-            Size
+            Ebat
         </a>
     </h3><!-- End .widget-title -->
 
@@ -14,17 +14,13 @@
                 {
                     <div class="filter-item">
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="size-1">
-                            <label class="custom-control-label" for="size-1">@(item.Boy +"X" + item.En)</label>
+                            <input type="checkbox" class="custom-control-input size-checkbox" id="@item.DimensionsID">
+                            <label class="custom-control-label" for="@item.DimensionsID">@(item.Boy + "X" + item.En)</label>
                         </div><!-- End .custom-checkbox -->
                     </div>
 
                     <!-- End .filter-item -->
                 }
-             
-
-
-
 
             </div><!-- End .filter-items -->
         </div><!-- End .widget-body -->

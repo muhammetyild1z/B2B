@@ -3,8 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1A91247A-2B86-4B48-9904-C8F99FA2A1C8}|B2B.UI\\B2B.UI.csproj|c:\\users\\muham\\onedrive\\belgeler\\github\\b2b\\b2b.ui\\views\\product\\productdetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{1A91247A-2B86-4B48-9904-C8F99FA2A1C8}|B2B.UI\\B2B.UI.csproj|solutionrelative:b2b.ui\\views\\product\\productdetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{C0004B1D-E3D1-4E62-A2AC-70EB510984EE}|B2B.API\\B2B.API.csproj|c:\\users\\muham\\onedrive\\belgeler\\github\\b2b\\b2b.api\\controllers\\allproductcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0004B1D-E3D1-4E62-A2AC-70EB510984EE}|B2B.API\\B2B.API.csproj|solutionrelative:b2b.api\\controllers\\allproductcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1A91247A-2B86-4B48-9904-C8F99FA2A1C8}|B2B.UI\\B2B.UI.csproj|c:\\users\\muham\\onedrive\\belgeler\\github\\b2b\\b2b.ui\\views\\productcategory\\categorylist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1A91247A-2B86-4B48-9904-C8F99FA2A1C8}|B2B.UI\\B2B.UI.csproj|solutionrelative:b2b.ui\\views\\productcategory\\categorylist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1A91247A-2B86-4B48-9904-C8F99FA2A1C8}|B2B.UI\\B2B.UI.csproj|c:\\users\\muham\\onedrive\\belgeler\\github\\b2b\\b2b.ui\\views\\shared\\components\\_dimensionsfilter\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1A91247A-2B86-4B48-9904-C8F99FA2A1C8}|B2B.UI\\B2B.UI.csproj|solutionrelative:b2b.ui\\views\\shared\\components\\_dimensionsfilter\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0004B1D-E3D1-4E62-A2AC-70EB510984EE}|B2B.API\\B2B.API.csproj|c:\\users\\muham\\onedrive\\belgeler\\github\\b2b\\b2b.api\\dtos\\categorydtos\\filterdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0004B1D-E3D1-4E62-A2AC-70EB510984EE}|B2B.API\\B2B.API.csproj|solutionrelative:b2b.api\\dtos\\categorydtos\\filterdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1A91247A-2B86-4B48-9904-C8F99FA2A1C8}|B2B.UI\\B2B.UI.csproj|c:\\users\\muham\\onedrive\\belgeler\\github\\b2b\\b2b.ui\\views\\shared\\components\\_categoryfilter\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1A91247A-2B86-4B48-9904-C8F99FA2A1C8}|B2B.UI\\B2B.UI.csproj|solutionrelative:b2b.ui\\views\\shared\\components\\_categoryfilter\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 880,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -22,15 +38,67 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ProductDetails.cshtml",
-              "DocumentMoniker": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\Views\\Product\\ProductDetails.cshtml",
-              "RelativeDocumentMoniker": "B2B.UI\\Views\\Product\\ProductDetails.cshtml",
-              "ToolTip": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\Views\\Product\\ProductDetails.cshtml",
-              "RelativeToolTip": "B2B.UI\\Views\\Product\\ProductDetails.cshtml",
-              "ViewState": "AQIAAAoAAAAAAAAAAAAAACcAAABDAAAA",
+              "DocumentIndex": 2,
+              "Title": "Default.cshtml",
+              "DocumentMoniker": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\Views\\Shared\\Components\\_DimensionsFilter\\Default.cshtml",
+              "RelativeDocumentMoniker": "B2B.UI\\Views\\Shared\\Components\\_DimensionsFilter\\Default.cshtml",
+              "ToolTip": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\Views\\Shared\\Components\\_DimensionsFilter\\Default.cshtml",
+              "RelativeToolTip": "B2B.UI\\Views\\Shared\\Components\\_DimensionsFilter\\Default.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAABXAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-28T10:27:20.466Z",
+              "WhenOpened": "2024-04-02T11:51:30.363Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Default.cshtml",
+              "DocumentMoniker": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\Views\\Shared\\Components\\_CategoryFilter\\Default.cshtml",
+              "RelativeDocumentMoniker": "B2B.UI\\Views\\Shared\\Components\\_CategoryFilter\\Default.cshtml",
+              "ToolTip": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\Views\\Shared\\Components\\_CategoryFilter\\Default.cshtml",
+              "RelativeToolTip": "B2B.UI\\Views\\Shared\\Components\\_CategoryFilter\\Default.cshtml",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAABUAAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-04-02T11:50:32.622Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "FilterDto.cs",
+              "DocumentMoniker": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.API\\Dtos\\CategoryDtos\\FilterDto.cs",
+              "RelativeDocumentMoniker": "B2B.API\\Dtos\\CategoryDtos\\FilterDto.cs",
+              "ToolTip": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.API\\Dtos\\CategoryDtos\\FilterDto.cs",
+              "RelativeToolTip": "B2B.API\\Dtos\\CategoryDtos\\FilterDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-02T11:35:24.431Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AllProductController.cs",
+              "DocumentMoniker": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.API\\Controllers\\AllProductController.cs",
+              "RelativeDocumentMoniker": "B2B.API\\Controllers\\AllProductController.cs",
+              "ToolTip": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.API\\Controllers\\AllProductController.cs",
+              "RelativeToolTip": "B2B.API\\Controllers\\AllProductController.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAIwCUAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-02T11:34:38.862Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CategoryList.cshtml",
+              "DocumentMoniker": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\Views\\ProductCategory\\CategoryList.cshtml",
+              "RelativeDocumentMoniker": "B2B.UI\\Views\\ProductCategory\\CategoryList.cshtml",
+              "ToolTip": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\Views\\ProductCategory\\CategoryList.cshtml",
+              "RelativeToolTip": "B2B.UI\\Views\\ProductCategory\\CategoryList.cshtml",
+              "ViewState": "AQIAALoAAAAAAAAAAAAYwMEAAAALAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-04-02T11:18:30.895Z",
               "EditorCaption": ""
             }
           ]

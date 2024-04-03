@@ -181,7 +181,7 @@ $(document).ready(function () {
 			tooltips: true,
 			format: wNumb({
 		        decimals: 0,
-		        prefix: '$'
+                prefix: '"?"'
 		    })
 		});
 
@@ -457,7 +457,9 @@ $(document).ready(function () {
         });
 	}
  
-	function isotopeFilter ( filterNav, container) {
+    function isotopeFilter(filterNav, container) {
+ 
+
 		$(filterNav).find('a').on('click', function(e) {
 			var $this = $(this),
 				filter = $this.attr('data-filter');

@@ -3,7 +3,5 @@
 <li class="active"><a href="#" data-filter="*">Hepsi</a></li>
     @foreach (var item in Model)
     {
-
-    <li><a href="#" data-filter=".@item.Name.Replace(" ", "").Trim()">@item.Name</a></li>
-    
+    <li><a href="#" data-filter=".@item.Name.ToLower().Trim().Replace(" ", "")">@item.Name.ToLower().Trim()</a></li>
     }

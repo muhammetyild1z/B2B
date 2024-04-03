@@ -13,18 +13,18 @@
                 @foreach (var item in Model)
                 {
                     <div class="filter-item">
-                       
-                            @if (item.parentSubCategory != null)
+
+                        @if (item.parentSubCategory != null)
                         {
                             <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="cat-1">
-                                <label class="custom-control-label" for="cat-1">@item.parentSubCategory?.Name</label>
+                                <input name="categoryName" type="checkbox" class="custom-control-input category-checkbox" id="@item.ParentSubCategoryID">
+                                <label class="custom-control-label" for="@item.ParentSubCategoryID">@item.parentSubCategory?.Name</label>
                             </div>
 
                             <!-- End .custom-checkbox -->
-                            }
+                        }
 
-                       
+
                         @*<span class="item-count">3</span>*@
                     </div>
 

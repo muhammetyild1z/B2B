@@ -26,6 +26,7 @@
         public string ApiCategoryProductPriceUrl { get; set; }
         public string ApiColorFilterUrl { get; set; }
         public string ApiGetAllDimensionsUrl { get; set; }
+        public string ApiupdateUserUrl { get; set; }
 
 
       

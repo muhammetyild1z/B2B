@@ -17,8 +17,7 @@
                     <table class="table table-cart table-mobile">
                         <thead>
                             <tr>
-                                <th>Ürünler</th>
-                                
+                                <th>Ürünler</th>            
                                 <th>Ebat</th>
                                 <th>Fiyat</th>
                                 <th>Adet</th>
@@ -50,13 +49,14 @@
                                
                                         <td class="price-col">@(item.productPrice.dimensions.En + "X" + item.productPrice.dimensions.Boy)</td>
                                         </td>
-                                        <td class="price-col">@item.productPrice.price ₺</td>
+                                        <td class="price-col" >@item.productPrice.price ₺</td>
+                                        <span hidden class="price-col2">@item.productPrice.price</span>
                                         <td class="quantity-col">
                                             <div class="cart-product-quantity">
                                                 <input type="number" class="form-control" value="@item.Count" min="1" max="10" step="1" data-decimals="0" required>
                                             </div><!-- End .cart-product-quantity -->
                                         </td>
-                                        <td class="price-col">@(item.productPrice.price * item.Count)</td>
+                                        <td class="price-col1">@(item.productPrice.price * item.Count)</td>
                                         <td class="remove-col"><button class="btn-remove" data-basket-id="@item.BasketID"><i class="icon-close"></i></button></td>
                                     </tr>
                                 }
@@ -96,8 +96,8 @@
                             <table class="table table-summary">
                                 <tbody>
                                     <tr class="summary-subtotal">
-                                        <td>Genel Toplam:</td>
-                                        <td>
+                                        <td >Genel Toplam:</td>
+                                        <td class="totalPrice">
 
                                             @for (int i = 0; i < Model.Count; i++)
                                             {
@@ -153,6 +153,26 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script>
+    $(document).ready(function () {
+        $('.cart-product-quantity input').on('input', function () {
+            var quantity = parseInt($(this).val());
+            var pricePerItem = parseFloat($('.price-col2').text()); // Parse string to float
+            var pricePer = parseFloat($('.price-col1').text()); // Parse string to float
+
+            // Eğer miktar 0'a eşit veya küçükse, yeni toplam fiyatı 0 olarak ayarla
+            if (quantity <= 0) {
+                $(this).closest('tr').find('.price-col1').text("0.00");
+            } else {
+                var newUnitPrice = pricePerItem * quantity; // Yeni birim fiyatı hesapla
+                $(this).closest('tr').find('.price-col1').text(newUnitPrice.toFixed(2)); // Yeni birim fiyatı alanını güncelle
+
+    
+            }
+        });
+    });
+
+
+
     $(".btn-remove").on("click", function () {
         var basketid = $(this).data("basket-id");
 
@@ -165,7 +185,6 @@
                     timer: 1000,
                     showConfirmButton: false
                 });
-
                 setTimeout(function () {
                     location.reload();
                 }, 1000);

@@ -2,6 +2,10 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Layout/LayoutIndex.cshtml";
+    string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+    var appSettings = Context.RequestServices.GetRequiredService<IOptions<AppSettings>>().Value;
+    var apiUrl = appSettings.ApiupdateUserUrl;
+    
 }
 
 <div class="page-content">
@@ -14,19 +18,19 @@
                             <a class="nav-link active" id="tab-dashboard-link" data-toggle="tab" role="tab" aria-controls="tab-dashboard" aria-selected="true">
                                 <i class="icon-user"></i>
                                 @Model.NameSurname
-                                </a>
+                            </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" id="tab-dashboard-link" data-toggle="tab" href="#tab-dashboard" role="tab" aria-controls="tab-dashboard" aria-selected="true">Profilim</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="tab-orders-link" data-toggle="tab" href="#tab-orders" role="tab" aria-controls="tab-orders" aria-selected="false">
-                     
+
                                 Tüm Siparişlerim
-                                </a>
+                            </a>
                         </li>
-                     @*    <li class="nav-item">
-                            <a class="nav-link" id="tab-downloads-link" data-toggle="tab" href="#tab-downloads" role="tab" aria-controls="tab-downloads" aria-selected="false">Adres Bilgilerim</a>
+                        @*    <li class="nav-item">
+                        <a class="nav-link" id="tab-downloads-link" data-toggle="tab" href="#tab-downloads" role="tab" aria-controls="tab-downloads" aria-selected="false">Adres Bilgilerim</a>
                         </li> *@
 
                         <li class="nav-item">
@@ -38,31 +42,35 @@
                 <div class="col-md-8 col-lg-9">
                     <div class="tab-content">
                         <div class="tab-pane fade show active" id="tab-dashboard" role="tabpanel" aria-labelledby="tab-dashboard-link">
-                            <form class="form">
+                            <form class="form" method="post" >
                                 <div class="form-group">
                                     <label for="UserName">Kullanıcı Adı</label>
-                                    <input class="form-control" type="text" disabled="disabled" value="@Model.UserName" asp-for="UserName" />
+                                    <input class="form-control" type="text" id="UserName" value="@Model.UserName" asp-for="UserName" />
                                 </div>
                                 <div class="form-group">
                                     <label for="Email">Email Adresi</label>
-                                    <input class="form-control" type="email" disabled="disabled" value="@Model.Email" asp-for="Email" />
-                                </div>  
+                                    <input class="form-control" type="email" id="Email" value="@Model.Email" asp-for="Email" />
+                                </div>
                                 <div class="form-group">
                                     <label for="address">Adresim</label>
-                                    <textarea class="form-control" type="text" disabled="disabled" value="@Model.Address" asp-for="Address" > 
+                                    <textarea class="form-control" type="text" id="Adrress"  value="@Model.Address" asp-for="Address"> 
 
                                     </textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="PhoneNumber">Telefon Numarası</label>
-                                    <input class="form-control" type="tel" disabled="disabled"
+                                    <input class="form-control" type="tel" id="PhoneNumber"
                                            value="(+90) @Model.PhoneNumber.Substring(0, 3) @Model.PhoneNumber.Substring(3, 3) @Model.PhoneNumber.Substring(6, 2) @Model.PhoneNumber.Substring(8)"
-                                    asp-for="PhoneNumber" />
+                                           asp-for="PhoneNumber" />
                                 </div>
                                 <div class="form-group">
                                     <label for="CreateDate">Üyelik Tarihi</label>
-                                    <input class="form-control" type="date" disabled="disabled" value="@Model.CreateDate.ToString("yyyy-MM-dd")" asp-for="CreateDate" />
+                                    <input class="form-control" type="date" id="CreateDate" value="@Model.CreateDate.ToString("yyyy-MM-dd")" asp-for="CreateDate" />
                                 </div>
+                                <button class="btn btn-info" type="submit">
+                                    Guncelle
+                                </button>
+                                @Html.ValidationSummary()
                             </form>
 
                         </div><!-- .End .tab-pane -->
@@ -156,3 +164,36 @@
         </div><!-- End .container -->
     </div><!-- End .dashboard -->
 </div><!-- End .page-content -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Form submit edildiğinde
+        $('form').submit(function (e) {
+            // Formun normal submit işlemini engelle
+            e.preventDefault();
+            var formData = {
+                UserName: $('#UserName').val(),
+                Email: $('#Email').val(),
+                Address: $('#Adrress').val(),
+                PhoneNumber: $('#PhoneNumber').val(),
+                CreateDate: $('#CreateDate').val()
+            };
+            var userId = '@Html.Raw(userId)'
+            console.log(userId)
+            $.ajax({
+                type: "post",
+                url: '@Html.Raw(apiUrl)' + userId, //test et
+                data: JSON.stringify(formData),
+                contentType: "application/json",
+                success: function () {
+                    alert("Kullanıcı bilgileri başarıyla güncellendi.");
+                    // Burada isterseniz başka bir eylem yapabilirsiniz, örneğin sayfayı yenileyebilirsiniz.
+                },
+                error: function () {
+                    alert("Bir hata oluştu, lütfen tekrar deneyin.");
+                }
+            });
+        });
+    });
+
+</script>
