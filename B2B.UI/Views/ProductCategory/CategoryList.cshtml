@@ -18,7 +18,7 @@
                     <div class="toolbox">
                         <div class="toolbox-left">
                             <div class="toolbox-info">
-                                <span>@Model.Count()</span> Ürün Çeşidi
+                                <span class="product_range">@Model.Count()</span> Ürün Çeşidi
                             </div><!-- End .toolbox-info -->
                         </div><!-- End .toolbox-left -->
 
@@ -32,75 +32,79 @@
                                         <option value="date">Fiyat düşükten yükseğe</option>
                                     </select>
                                 </div>
-                            </div><!-- End .toolbox-sort -->                        
+                            </div><!-- End .toolbox-sort -->
                         </div><!-- End .toolbox-right -->
                     </div><!-- End .toolbox -->
 
                     <div class="products mb-3">
-                        @foreach (var item in Model.DistinctBy(x => x.ProductID))
+                        @if (Model.Count!=0)
                         {
-                            <div class="product product-list">
-                                <div class="row">
-                                    <div class="col-6 col-lg-3">
-                                        <figure class="product-media">
-                                            @*   <span class="product-label label-new">New</span> *@
-                                            <a href="/product/productDetails?productid=@item.ProductID">
-                                                <img src="@item.product.ProductImage" alt="Product image" class="product-image">
-                                            </a>
-                                        </figure><!-- End .product-media -->
-                                    </div><!-- End .col-sm-6 col-lg-3 -->
-
-                                    <div class="col-6 col-lg-3 order-lg-last">
-                                        <div class="product-list-action">
-                                            @await Component.InvokeAsync("_CategoryProductPrice", new { productId = item.ProductID })
-
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 20%;"></div><!-- End .ratings-val -->
-                                                </div><!-- End .ratings -->
-                                                <span class="ratings-text">( 2 Reviews )</span>
-                                            </div><!-- End .rating-container -->
-
-                                            <div class="product-action">
-                                                <a href="popup/quickView.html" class="btn-product btn-quickview" title="Quick view"><span>Incele</span></a>
-                                                @*       <a href="#" class="btn-product btn-compare" title="Compare"><span>compare</span></a> *@
-                                            </div><!-- End .product-action -->
-
-                                            <a href="/product/productDetails?productid=@item.ProductID" class="btn-product btn-cart"><span>sepete ekle</span></a>
-                                        </div><!-- End .product-list-action -->
-                                    </div><!-- End .col-sm-6 col-lg-3 -->
-
-                                    <div class="col-lg-6">
-                                        <div class="product-body product-action-inner">
-                                            @*   <a href="#" class="btn-product btn-wishlist" title="Add to wishlist" data-fav-id="@item.ProductID"><span>Favoriye Ekle</span></a> *@
-                                            <div class="product-cat">
-                                                <a href="#">??????</a>
-                                            </div><!-- End .product-cat -->
-                                            <h3 class="product-title"><a href="/product/productDetails?productid=@item.ProductID">@item.product.ProductName</a></h3><!-- End .product-title -->
-
-                                            <div class="product-content">
-                                                <p>@item.product.ProductDescription </p>
-                                            </div><!-- End .product-content -->
-
-                                            <div class="product-nav product-nav-thumbs">
-                                                <a class="active">
-                                                    <img src="@item.product.ProductImage1" alt="product desc">
+                            @foreach (var item in Model.DistinctBy(x => x.ProductID))
+                            {
+                                <div class="product product-list">
+                                    <div class="row">
+                                        <div class="col-6 col-lg-3">
+                                            <figure class="product-media">
+                                                @*   <span class="product-label label-new">New</span> *@
+                                                <a href="/product/productDetails?productid=@item.ProductID">
+                                                    <img src="@item.product.ProductImage" alt="Product image" class="product-image">
                                                 </a>
-                                                <a>
-                                                    <img src="@item.product.ProductImage2" alt="product desc">
-                                                </a>
+                                            </figure><!-- End .product-media -->
+                                        </div><!-- End .col-sm-6 col-lg-3 -->
 
-                                                <a>
-                                                    <img src="@item.product.ProductImage3" alt="product desc">
-                                                </a>
-                                            </div><!-- End .product-nav -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .col-lg-6 -->
-                                </div><!-- End .row -->
-                            </div>
+                                        <div class="col-6 col-lg-3 order-lg-last">
+                                            <div class="product-list-action">
+                                                @await Component.InvokeAsync("_CategoryProductPrice", new { productId = item.ProductID })
 
-                            <!-- End .product -->
+                                                <div class="ratings-container">
+                                                    <div class="ratings">
+                                                        <div class="ratings-val" style="width: 20%;"></div><!-- End .ratings-val -->
+                                                    </div><!-- End .ratings -->
+                                                    <span class="ratings-text">( 2 Reviews )</span>
+                                                </div><!-- End .rating-container -->
+
+                                                <div class="product-action">
+                                                    <a href="popup/quickView.html" class="btn-product btn-quickview" title="Quick view"><span>Incele</span></a>
+                                                    @*       <a href="#" class="btn-product btn-compare" title="Compare"><span>compare</span></a> *@
+                                                </div><!-- End .product-action -->
+
+                                                <a href="/product/productDetails?productid=@item.ProductID" class="btn-product btn-cart"><span>sepete ekle</span></a>
+                                            </div><!-- End .product-list-action -->
+                                        </div><!-- End .col-sm-6 col-lg-3 -->
+
+                                        <div class="col-lg-6">
+                                            <div class="product-body product-action-inner">
+                                                @*   <a href="#" class="btn-product btn-wishlist" title="Add to wishlist" data-fav-id="@item.ProductID"><span>Favoriye Ekle</span></a> *@
+                                                <div class="product-cat">
+                                                    <a href="#">??????</a>
+                                                </div><!-- End .product-cat -->
+                                                <h3 class="product-title"><a href="/product/productDetails?productid=@item.ProductID">@item.product.ProductName</a></h3><!-- End .product-title -->
+
+                                                <div class="product-content">
+                                                    <p>@item.product.ProductDescription </p>
+                                                </div><!-- End .product-content -->
+
+                                                <div class="product-nav product-nav-thumbs">
+                                                    <a class="active">
+                                                        <img src="@item.product.ProductImage1" alt="product desc">
+                                                    </a>
+                                                    <a>
+                                                        <img src="@item.product.ProductImage2" alt="product desc">
+                                                    </a>
+
+                                                    <a>
+                                                        <img src="@item.product.ProductImage3" alt="product desc">
+                                                    </a>
+                                                </div><!-- End .product-nav -->
+                                            </div><!-- End .product-body -->
+                                        </div><!-- End .col-lg-6 -->
+                                    </div><!-- End .row -->
+                                </div>
+
+                                <!-- End .product -->
+                            }
                         }
+                       
 
 
                     </div><!-- End .products -->
@@ -132,54 +136,57 @@
                             <label>Filtreler:</label>
                             <a href="#" class="sidebar-filter-clear">Tümünü temizle</a>
                         </div><!-- End .widget widget-clean -->
-                        @await Component.InvokeAsync("_CategoryFilter")
-                        @await Component.InvokeAsync("_DimensionsFilter")
+                      
+                            @await Component.InvokeAsync("_CategoryFilter")
+                            @await Component.InvokeAsync("_DimensionsFilter")
 
-                        <button class="btn btn-primary" id="submitFilter">
-                            Ara
-                        </button>
+                            <button type="submit" class="btn btn-primary" id="submitFilter">
+                                Filtrele
+                            </button>
+                      
+
 
                         @*          @await Component.InvokeAsync("_ColorFilter") *@
-@* 
+                        @*
                         <div class="widget widget-collapsible">
-                            <h3 class="widget-title">
-                                <a data-toggle="collapse" href="#widget-5" role="button" aria-expanded="true" aria-controls="widget-5">
-                                    Fiyat
-                                </a>
-                            </h3><!-- End .widget-title -->
+                        <h3 class="widget-title">
+                        <a data-toggle="collapse" href="#widget-5" role="button" aria-expanded="true" aria-controls="widget-5">
+                        Fiyat
+                        </a>
+                        </h3><!-- End .widget-title -->
 
-                            <div class="collapse show" id="widget-5">
-                                <div class="widget-body">
-                                    <div class="filter-price">
-                                        <div class="filter-price-text">
-                                            Fiyat Range:
-                                            <span id="filter-price-range">0 ₺ - 750 ₺</span>
-                                        </div><!-- End .filter-price-text -->
+                        <div class="collapse show" id="widget-5">
+                        <div class="widget-body">
+                        <div class="filter-price">
+                        <div class="filter-price-text">
+                        Fiyat Range:
+                        <span id="filter-price-range">0 ₺ - 750 ₺</span>
+                        </div><!-- End .filter-price-text -->
 
-                                        <div id="price-slider" class="noUi-target noUi-ltr noUi-horizontal">
-                                            <div class="noUi-base">
-                                                <div class="noUi-connects">
-                                                    <div class="noUi-connect" style="transform: translate(0%, 0px) scale(0.75, 1);"></div>
-                                                </div>
-                                                <div class="noUi-origin" style="transform: translate(-100%, 0px); z-index: 5;">
-                                                    <div class="noUi-handle noUi-handle-lower" data-handle="0" tabindex="0" role="slider" aria-orientation="horizontal" aria-valuemin="0.0" aria-valuemax="550.0" aria-valuenow="0.0" aria-valuetext="0 ₺">
-                                                        <div class="noUi-touch-area"></div>
-                                                        <div class="noUi-tooltip">0 ₺</div>
-                                                    </div>
-                                                </div>
-                                                <div class="noUi-origin" style="transform: translate(-25%, 0px); z-index: 4;">
-                                                    <div class="noUi-handle noUi-handle-upper" data-handle="1" tabindex="0" role="slider" aria-orientation="horizontal" aria-valuemin="200.0" aria-valuemax="1000.0" aria-valuenow="750.0" aria-valuetext="750 ₺">
-                                                        <div class="noUi-touch-area"></div>
-                                                        <div class="noUi-tooltip">750 ₺</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div><!-- End #price-slider -->
-                                    </div><!-- End .filter-price -->
-                                </div><!-- End .widget-body -->
-                            </div><!-- End .collapse -->
+                        <div id="price-slider" class="noUi-target noUi-ltr noUi-horizontal">
+                        <div class="noUi-base">
+                        <div class="noUi-connects">
+                        <div class="noUi-connect" style="transform: translate(0%, 0px) scale(0.75, 1);"></div>
                         </div>
- *@
+                        <div class="noUi-origin" style="transform: translate(-100%, 0px); z-index: 5;">
+                        <div class="noUi-handle noUi-handle-lower" data-handle="0" tabindex="0" role="slider" aria-orientation="horizontal" aria-valuemin="0.0" aria-valuemax="550.0" aria-valuenow="0.0" aria-valuetext="0 ₺">
+                        <div class="noUi-touch-area"></div>
+                        <div class="noUi-tooltip">0 ₺</div>
+                        </div>
+                        </div>
+                        <div class="noUi-origin" style="transform: translate(-25%, 0px); z-index: 4;">
+                        <div class="noUi-handle noUi-handle-upper" data-handle="1" tabindex="0" role="slider" aria-orientation="horizontal" aria-valuemin="200.0" aria-valuemax="1000.0" aria-valuenow="750.0" aria-valuetext="750 ₺">
+                        <div class="noUi-touch-area"></div>
+                        <div class="noUi-tooltip">750 ₺</div>
+                        </div>
+                        </div>
+                        </div>
+                        </div><!-- End #price-slider -->
+                        </div><!-- End .filter-price -->
+                        </div><!-- End .widget-body -->
+                        </div><!-- End .collapse -->
+                        </div>
+                        *@
 
                     </div><!-- End .sidebar sidebar-shop -->
                 </aside><!-- End .col-lg-3 -->
@@ -191,104 +198,42 @@
 <script>
     $(document).ready(function () {
         var dto = {
-            CategoryId: [],
-            SizesId: ''
+            ParentCategoryId: [],
+            SizesId: []
         };
 
         // Function to update selected values
         function updateSelectedValues() {
             $('.size-checkbox:checked').each(function () {
-                dto.SizesId = $(this).attr('id');
+                dto.SizesId.push(parseInt($(this).attr('id')));
             });
 
             $('.category-checkbox:checked').each(function () {
-                dto.CategoryId.push( $(this).attr('id'));
+                dto.ParentCategoryId.push(parseInt($(this).attr('id')));
             });
 
             // AJAX call
-            sendSelectedValues(dto); // Pass dto as argument
+            sendSelectedValues(dto);
         }
 
         // Button click event
         $('#submitFilter').click(function () {
-            // Call updateSelectedValues function when the button is clicked
+
             updateSelectedValues();
         });
 
         // AJAX function to send selected values
         function sendSelectedValues(dto) {
-            console.log(dto);
+            
             $.ajax({
                 url: 'https://localhost:7268/api/AllProduct/FilterCategory',
                 type: 'POST',
                 data: JSON.stringify(dto),
                 contentType: 'application/json',
-                success: function (response) {
-                    // Ürünlerin dönüşünü kontrol et
-                    if (response && response.length > 0) {
-                       
-                        response.forEach(function (item) {
-                            $('.your-target-element').append(`
-                            <div class="product product-list">
-                                <div class="row">
-                                    <div class="col-6 col-lg-3">
-                                        <figure class="product-media">
-                                            <a href="/product/productDetails?productid=${item.ProductID}">
-                                                <img src="${item.product.ProductImage}" alt="Product image" class="product-image">
-                                            </a>
-                                        </figure>
-                                    </div>
-
-                                    <div class="col-6 col-lg-3 order-lg-last">
-                                        <div class="product-list-action">
-                                            <!-- Burada _CategoryProductPrice bileşenini çağırabilirsiniz -->
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 20%;"></div>
-                                                </div>
-                                                <span class="ratings-text">( 2 Reviews )</span>
-                                            </div>
-
-                                            <div class="product-action">
-                                                <a href="popup/quickView.html" class="btn-product btn-quickview" title="Quick view"><span>Incele</span></a>
-                                            </div>
-
-                                            <a href="/product/productDetails?productid=${item.ProductID}" class="btn-product btn-cart"><span>sepete ekle</span></a>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-6">
-                                        <div class="product-body product-action-inner">
-                                            <div class="product-cat">
-                                                <a href="#">??????</a>
-                                            </div>
-                                            <h3 class="product-title"><a href="/product/productDetails?productid=${item.ProductID}">${item.product.ProductName}</a></h3>
-
-                                            <div class="product-content">
-                                                <p>${item.product.ProductDescription}</p>
-                                            </div>
-
-                                            <div class="product-nav product-nav-thumbs">
-                                                <a class="active">
-                                                    <img src="${item.product.ProductImage1}" alt="product desc">
-                                                </a>
-                                                <a>
-                                                    <img src="${item.product.ProductImage2}" alt="product desc">
-                                                </a>
-
-                                                <a>
-                                                    <img src="${item.product.ProductImage3}" alt="product desc">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        `);
-                        });
-                    } else {
-                        console.log("No products found.");
-                    }
+                success: function (data) {
+                    dto=[]
+                    $('.product_range').text(data.length)
+                    displayProducts(data);
                 },
                 error: function (xhr, status, error) {
                     console.error('Error:', error);
@@ -297,5 +242,68 @@
             });
         }
 
+
+        function displayProducts(products) {
+            var productListHTML = '';
+
+            $.each(products, function (index, product) {
+                productListHTML += '<div class="product product-list">';
+                productListHTML += '<div class="row">';
+                productListHTML += '<div class="col-6 col-lg-3">';
+                productListHTML += '<figure class="product-media">';
+                productListHTML += '<a href="/product/productDetails?productid=' + product.productID + '">';
+                productListHTML += '<img src="' + product.product.productImage + '" alt="Product image" class="product-image">';
+                productListHTML += '</a>';
+                productListHTML += '</figure>'; // End .product-media
+                productListHTML += '</div>'; // End .col-6 col-lg-3
+
+                productListHTML += '<div class="col-6 col-lg-3 order-lg-last">';
+                productListHTML += '<div class="product-list-action">';
+                productListHTML += '<div class="ratings-container">';
+                productListHTML += '<div class="ratings">';
+                productListHTML += '<div class="ratings-val" style="width: 20%;"></div>';
+                productListHTML += '</div>'; // End .ratings
+                productListHTML += '<span class="ratings-text">( 2 Reviews )</span>';
+                productListHTML += '</div>'; // End .rating-container
+                productListHTML += '<div class="product-action">';
+                productListHTML += '<a href="popup/quickView.html" class="btn-product btn-quickview" title="Quick view"><span>İncele</span></a>';
+                productListHTML += '</div>'; // End .product-action
+                productListHTML += '<a href="/product/productDetails?productid=' + product.productID + '" class="btn-product btn-cart"><span>Sepete Ekle</span></a>';
+                productListHTML += '</div>'; // End .product-list-action
+                productListHTML += '</div>'; // End .col-6 col-lg-3
+
+                productListHTML += '<div class="col-lg-6">';
+                productListHTML += '<div class="product-body product-action-inner">';
+                productListHTML += '<div class="product-cat">';
+                productListHTML += '<a href="#">' + product.category.name + '</a>';
+                productListHTML += '</div>'; // End .product-cat
+                productListHTML += '<h3 class="product-title"><a href="/product/productDetails?productid=' + product.productID + '">' + product.product.productName + '</a></h3>';
+                productListHTML += '<div class="product-content">';
+                productListHTML += '<p>' + product.product.productDescription + '</p>';
+                productListHTML += '</div>';
+
+                productListHTML += '<div class="product-nav product-nav-thumbs">';
+                productListHTML += '<a class="active">';
+                productListHTML += '<img src="' + product.product.productImage1 + '" alt="product desc">';
+                productListHTML += '</a>';
+                productListHTML += '<a>';
+                productListHTML += '<img src="' + product.product.productImage2 + '" alt="product desc">';
+                productListHTML += '</a>';
+                productListHTML += '<a>';
+                productListHTML += '<img src="' + product.product.productImage3 + '" alt="product desc">';
+                productListHTML += '</a>';
+                productListHTML += '</div>';
+
+                productListHTML += '</div>';
+                productListHTML += '</div>';
+
+                productListHTML += '</div>';
+                productListHTML += '</div>';
+            });
+
+
+            // Ürünleri gösterecek olan div elementini seç ve içeriği ekle
+            $('.products').html(productListHTML);
+        }
     });
 </script>

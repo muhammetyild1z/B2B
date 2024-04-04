@@ -27,15 +27,34 @@ namespace B2B.API.Controllers
         {
             List<ProductCategory> products = new List<ProductCategory>();
 
-            for (int i = 0; i < filter.CategoryId.Count; i++)
+            for (int i = 0; i < filter.ParentCategoryId.Count; i++)
             {
-                 products = _categoryService.TAllGetIncludeProductCategory()
-                                        .Where(x => x.ParentSubCategoryID == filter.CategoryId[i])
-                                        .ToList();
+                int categoryId = filter.ParentCategoryId[i];
 
-                
-            }           
+                // Seçilen kategori için tüm boyutları döngü ile işle
+                foreach (var sizeId in filter.SizesId)
+                {
+                    // Kategori ve boyuta göre filtreleme işlemi gerçekleştir
+                    var filteredProducts = _categoryService.TGetAllCategoriesInclude()
+                        .Where(x => x.ParentSubCategoryID == categoryId && x.productPrice.dimensions.Boy == sizeId)
+                        .ToList();
+
+                    // Filtrelenmiş ürünleri genel listeye ekle, ancak benzersizlik kontrolü yap
+                    foreach (var product in filteredProducts)
+                    {
+                        // Ürün listede yoksa ekle
+                        if (!products.Any(p => p.ProductID == product.ProductID))
+                        {
+                            products.Add(product);
+                        }
+                    }
+                }
+            }
+
+
             return Ok(_mapper.Map<List<ResultProductCategoryDto>>(products));
         }
+
+
     }
 }

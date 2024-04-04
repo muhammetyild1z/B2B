@@ -1,7 +1,9 @@
-﻿using B2B.UI.DtosUI.CategoryDtos;
+﻿
+using B2B.UI.DtosUI.CategoryDtos;
 using B2B.UI.DtosUI.ChildSubCategoryDtos;
 using B2B.UI.DtosUI.ParentSubCategoryDtos;
 using B2B.UI.DtosUI.ProductDtos;
+using B2B.UI.DtosUI.ProductPriceDtos;
 
 
 namespace B2B.UI.DtosUI.ProductCategoryDtos
@@ -21,5 +23,8 @@ namespace B2B.UI.DtosUI.ProductCategoryDtos
 
         public int ProductID { get; set; }
         public  ResultProductDto product { get; set; }
+
+        public int? ProductPriceID { get; set; }
+        public ResultProductPriceDto? productPrice { get; set; }
     }
 }

@@ -468,6 +468,9 @@ namespace B2B.DataAccessLayer.Migrations
                     b.Property<int>("ProductID")
                         .HasColumnType("int");
 
+                    b.Property<int?>("ProductPriceID")
+                        .HasColumnType("int");
+
                     b.HasKey("ProductCategoryID");
 
                     b.HasIndex("CategoryID");
@@ -477,6 +480,8 @@ namespace B2B.DataAccessLayer.Migrations
                     b.HasIndex("ParentSubCategoryID");
 
                     b.HasIndex("ProductID");
+
+                    b.HasIndex("ProductPriceID");
 
                     b.ToTable("productCategories");
                 });
@@ -745,6 +750,10 @@ namespace B2B.DataAccessLayer.Migrations
                         .HasForeignKey("ProductID")
                         .OnDelete(DeleteBehavior.Cascade);
 
+                    b.HasOne("B2B.EntityLayer.Concrate.ProductPrice", "productPrice")
+                        .WithMany()
+                        .HasForeignKey("ProductPriceID");
+
                     b.Navigation("ChildSubCategory");
 
                     b.Navigation("category");
@@ -752,6 +761,8 @@ namespace B2B.DataAccessLayer.Migrations
                     b.Navigation("parentSubCategory");
 
                     b.Navigation("product");
+
+                    b.Navigation("productPrice");
                 });
 
             modelBuilder.Entity("B2B.EntityLayer.Concrate.ProductColor", b =>

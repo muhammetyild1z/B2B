@@ -2,7 +2,7 @@
 {
     public class FilterDto
     {
-        public  List<int> CategoryId { get; set; }
-        public int SizesId { get; set; }
+        public  List<int>? ParentCategoryId { get; set; }
+        public List<int>? SizesId { get; set; }
     }
 }

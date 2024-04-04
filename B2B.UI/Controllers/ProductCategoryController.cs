@@ -1,9 +1,11 @@
 ﻿using B2B.EntityLayer.Concrate;
+using B2B.UI.DtosUI.FilterDto;
 using B2B.UI.DtosUI.ProductCategoryDtos;
 using B2B.UI.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
+using System.Text;
 
 namespace B2B.UI.Controllers
 {
@@ -44,7 +46,7 @@ namespace B2B.UI.Controllers
             }
 
             var apiUrl = _appSettings.Value.ApiAllGetProductCategoryUrl;
-            HttpResponseMessage response = await _httpClient.GetAsync(apiUrl );
+            HttpResponseMessage response = await _httpClient.GetAsync(apiUrl);
             if (response.IsSuccessStatusCode)
             {
                 var jsonData = await response.Content.ReadAsStringAsync();
@@ -54,6 +56,22 @@ namespace B2B.UI.Controllers
             return View();
         }
 
-       
+        [HttpPost]
+        public async Task<IActionResult> CategoryList([FromBody] FilterDto filter)
+        {
+            var apiUrl = _appSettings.Value.FilterCategory;
+            var jsonFilter = JsonConvert.SerializeObject(filter);
+            var content = new StringContent(jsonFilter, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await _httpClient.PostAsync(apiUrl, content);
+            if (response.IsSuccessStatusCode)
+            {
+                var jsonData = await response.Content.ReadAsStringAsync();
+                var productList = JsonConvert.DeserializeObject<List<ResultProductCategoryDto>>(jsonData);
+                return Ok(productList);
+            }
+            return View();
+        }
+
+
     }
 }

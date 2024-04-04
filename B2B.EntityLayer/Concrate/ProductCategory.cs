@@ -26,5 +26,8 @@ namespace B2B.EntityLayer.Concrate
         public int ProductID { get; set; }
         public Product product { get; set; }
 
+        public int? ProductPriceID { get; set; }
+        public ProductPrice? productPrice { get; set; }
+
     }
 }

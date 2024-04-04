@@ -65,13 +65,9 @@ namespace B2B.DataAccessLayer.Concrate
             modelBuilder.Entity<ProductPrice>().HasOne(x => x.color).WithMany().HasForeignKey(x => x.ColorID);
             modelBuilder.Entity<ProductPrice>().HasOne(x => x.Product).WithMany().HasForeignKey(x => x.ProductID);
             modelBuilder.Entity<ProductPrice>().HasOne(x => x.dimensions).WithMany().HasForeignKey(x => x.DimensionsID);
-           // modelBuilder.Entity<ProductPrice>().HasOne(x => x.stock).WithMany().HasForeignKey(x => x.StockID);
+           
 
-            //modelBuilder.Entity<Stock>().HasKey(x => x.StockID);
-           //modelBuilder.Entity<Stock>().HasOne(x => x.productPrice).WithMany().HasForeignKey(x => x.PriceID);
-          //  modelBuilder.Entity<Stock>().HasOne(x => x.color).WithMany().HasForeignKey(x => x.ColorID);
-          //  modelBuilder.Entity<Stock>().HasOne(x => x.Product).WithMany().HasForeignKey(x => x.ProductID);
-          //  modelBuilder.Entity<Stock>().HasOne(x => x.dimensions).WithMany().HasForeignKey(x => x.DimensionsID);
+
 
             modelBuilder.Entity<ContactMailRequest>().HasKey(x => x.ContactMailRequestID);
             modelBuilder.Entity<Contact>().HasKey(x => x.ContactID);
@@ -81,7 +77,7 @@ namespace B2B.DataAccessLayer.Concrate
             modelBuilder.Entity<Basket>().HasKey(x => new { x.BasketID });
             modelBuilder.Entity<Basket>().HasOne(x => x.appUser).WithMany().HasForeignKey(x => x.UserID).OnDelete(DeleteBehavior.NoAction);
             modelBuilder.Entity<Basket>().HasOne(x => x.productPrice).WithMany().HasForeignKey(x => x.PriceID).OnDelete(DeleteBehavior.Cascade);
-         //   modelBuilder.Entity<Basket>().HasOne(x => x.stock).WithMany().HasForeignKey(x => x.StockID).OnDelete(DeleteBehavior.NoAction);  
+        
 
 
             modelBuilder.Entity<Category>().HasKey(x => x.CategoryID);
@@ -93,6 +89,7 @@ namespace B2B.DataAccessLayer.Concrate
             modelBuilder.Entity<ProductCategory>().HasOne(x => x.category).WithMany().HasForeignKey(x => x.CategoryID).IsRequired(true);
             modelBuilder.Entity<ProductCategory>().HasOne(x => x.parentSubCategory).WithMany().HasForeignKey(x => x.ParentSubCategoryID).IsRequired(false);
             modelBuilder.Entity<ProductCategory>().HasOne(x => x.ChildSubCategory).WithMany().HasForeignKey(x => x.ChildSubCategoryID).IsRequired(false);
+            modelBuilder.Entity<ProductCategory>().HasOne(x => x.productPrice).WithMany().HasForeignKey(x => x.ProductPriceID).IsRequired(false);
             modelBuilder.Entity<ProductCategory>().HasOne(x => x.product).WithMany().HasForeignKey(x => x.ProductID).IsRequired(false).OnDelete(DeleteBehavior.Cascade);
 
 

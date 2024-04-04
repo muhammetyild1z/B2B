@@ -1,7 +1,7 @@
 ﻿@model List<ResultCategoryDto>
 
-<li class="active"><a href="#" data-filter="*">Hepsi</a></li>
+<li class="active"><a data-filter="*" style="cursor: pointer;">Hepsi</a></li>
     @foreach (var item in Model)
     {
-    <li><a href="#" data-filter=".@item.Name.ToLower().Trim().Replace(" ", "")">@item.Name.ToLower().Trim()</a></li>
+    <li><a style="cursor: pointer;" data-filter=".@item.Name.ToLower().Trim().Replace(" ", "")">@item.Name.ToLower().Trim()</a></li>
     }

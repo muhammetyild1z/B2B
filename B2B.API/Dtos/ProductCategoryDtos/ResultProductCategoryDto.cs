@@ -2,7 +2,7 @@
 using B2B.API.Dtos.ChildSubCategoryDtos;
 using B2B.API.Dtos.ParentSubCategoryDtos;
 using B2B.API.Dtos.ProductDtos;
-using B2B.EntityLayer.Concrate;
+
 
 namespace B2B.API.Dtos.ProductCategoryDtos
 {

@@ -18,7 +18,6 @@ namespace B2B.UI.ViewComponents.CategoryFilter
         }
         public async Task<IViewComponentResult> InvokeAsync()
         {
-
             try
             {
                 var apiUrl = _appSettings.Value.ApiLayoutNavbar;

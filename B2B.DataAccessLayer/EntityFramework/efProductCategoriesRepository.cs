@@ -26,7 +26,14 @@ namespace B2B.DataAccessLayer.EntityFramework
 
         public List<ProductCategory> GetAllCategoriesInclude()
         {
-           return _context.productCategories.Include(x => x.category).Include(x => x.parentSubCategory).Include(x=>x.ChildSubCategory).ToList();
+           return _context.productCategories
+                .Include(x => x.category)
+                .Include(x => x.parentSubCategory)
+                .Include(x=>x.ChildSubCategory)
+                .Include(x=>x.productPrice)
+                .Include(x=>x.product)
+                .Include(x=>x.productPrice.dimensions)
+                .ToList();
         }
 
         public ProductCategory GetProductCategoryByID(int id)
