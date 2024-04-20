@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "PYqucMiz7GnC3usS5bCsevX6AEH9gCciYO+BZr3cL/pAJikqBVU9KqTGbMEIETh6fZoL+Y5/EnAMzpCUXeHA1w==",
+  "dgSpecHash": "h0pyCOWzcvRjlKAwEGt3+iLYpnOlw+7xXJXi0nPlh6EDikyZTKJpMgC8R0GMT2FjcdcQtyeNiVtIa3htwixNDw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.API\\B2B.API.csproj",
+  "projectFilePath": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B\\B2B.API\\B2B.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\muham\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\muham\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

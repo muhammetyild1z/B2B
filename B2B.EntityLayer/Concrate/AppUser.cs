@@ -10,6 +10,7 @@ namespace B2B.EntityLayer.Concrate
 {
     public class AppUser: IdentityUser
     {
+       
         public DateTime CreateDate { get; set; }
         [MaxLength(150)]
         public string NameSurname { get; set; }

@@ -10411,11 +10411,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\B2B.UI.csproj",
+      "projectUniqueName": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B\\B2B.UI\\B2B.UI.csproj",
       "projectName": "B2B.UI",
-      "projectPath": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\B2B.UI.csproj",
+      "projectPath": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B\\B2B.UI\\B2B.UI.csproj",
       "packagesPath": "C:\\Users\\muham\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.UI\\obj\\",
+      "outputPath": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B\\B2B.UI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\muham\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -10432,8 +10432,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.BusinessLayer\\B2B.BusinessLayer.csproj": {
-              "projectPath": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.BusinessLayer\\B2B.BusinessLayer.csproj"
+            "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B\\B2B.BusinessLayer\\B2B.BusinessLayer.csproj": {
+              "projectPath": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B\\B2B.BusinessLayer\\B2B.BusinessLayer.csproj"
             }
           }
         }

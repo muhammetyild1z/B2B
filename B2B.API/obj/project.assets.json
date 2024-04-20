@@ -6019,11 +6019,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.API\\B2B.API.csproj",
+      "projectUniqueName": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B\\B2B.API\\B2B.API.csproj",
       "projectName": "B2B.API",
-      "projectPath": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.API\\B2B.API.csproj",
+      "projectPath": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B\\B2B.API\\B2B.API.csproj",
       "packagesPath": "C:\\Users\\muham\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.API\\obj\\",
+      "outputPath": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B\\B2B.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\muham\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -6040,8 +6040,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.BusinessLayer\\B2B.BusinessLayer.csproj": {
-              "projectPath": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.BusinessLayer\\B2B.BusinessLayer.csproj"
+            "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B\\B2B.BusinessLayer\\B2B.BusinessLayer.csproj": {
+              "projectPath": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B\\B2B.BusinessLayer\\B2B.BusinessLayer.csproj"
             }
           }
         }

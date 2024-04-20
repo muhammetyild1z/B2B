@@ -17,151 +17,151 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = B2B.UI
 build_property.RootNamespace = B2B.UI
-build_property.ProjectDir = C:\Users\muham\OneDrive\Belgeler\GitHub\B2B\B2B.UI\
+build_property.ProjectDir = C:\Users\muham\OneDrive\Belgeler\GitHub\B2B\B2B\B2B.UI\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\muham\OneDrive\Belgeler\GitHub\B2B\B2B.UI
+build_property.MSBuildProjectDirectory = C:\Users\muham\OneDrive\Belgeler\GitHub\B2B\B2B\B2B.UI
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B.UI/Views/Account/SignIn.cshtml]
+[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B/B2B.UI/Views/Account/SignIn.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxTaWduSW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B.UI/Views/Account/SignUp.cshtml]
+[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B/B2B.UI/Views/Account/SignUp.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxTaWduVXAuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B.UI/Views/Basket/BasketList.cshtml]
+[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B/B2B.UI/Views/Basket/BasketList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFza2V0XEJhc2tldExpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B.UI/Views/Contact/Index.cshtml]
+[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B/B2B.UI/Views/Contact/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B.UI/Views/Home/Index.cshtml]
+[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B/B2B.UI/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B.UI/Views/Home/Privacy.cshtml]
+[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B/B2B.UI/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B.UI/Views/Layout/LayoutIndex.cshtml]
+[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B/B2B.UI/Views/Layout/LayoutIndex.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGF5b3V0XExheW91dEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B.UI/Views/ProductCategory/CategoryList.cshtml]
+[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B/B2B.UI/Views/ProductCategory/CategoryList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdENhdGVnb3J5XENhdGVnb3J5TGlzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B.UI/Views/Product/ProductDetails.cshtml]
+[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B/B2B.UI/Views/Product/ProductDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxQcm9kdWN0RGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B.UI/Views/Profile/FavoriList.cshtml]
+[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B/B2B.UI/Views/Profile/FavoriList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxGYXZvcmlMaXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B.UI/Views/Profile/Index.cshtml]
+[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B/B2B.UI/Views/Profile/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B.UI/Views/Shared/Components/_CategoryFilter/Default.cshtml]
+[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B/B2B.UI/Views/Shared/Components/_CategoryFilter/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX0NhdGVnb3J5RmlsdGVyXERlZmF1bHQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B.UI/Views/Shared/Components/_CategoryProductPrice/Default.cshtml]
+[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B/B2B.UI/Views/Shared/Components/_CategoryProductPrice/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX0NhdGVnb3J5UHJvZHVjdFByaWNlXERlZmF1bHQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B.UI/Views/Shared/Components/_ColorFilter/Default.cshtml]
+[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B/B2B.UI/Views/Shared/Components/_ColorFilter/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX0NvbG9yRmlsdGVyXERlZmF1bHQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B.UI/Views/Shared/Components/_ContactForm/Default.cshtml]
+[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B/B2B.UI/Views/Shared/Components/_ContactForm/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX0NvbnRhY3RGb3JtXERlZmF1bHQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B.UI/Views/Shared/Components/_Contact/Default.cshtml]
+[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B/B2B.UI/Views/Shared/Components/_Contact/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX0NvbnRhY3RcRGVmYXVsdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B.UI/Views/Shared/Components/_DimensionsFilter/Default.cshtml]
+[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B/B2B.UI/Views/Shared/Components/_DimensionsFilter/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX0RpbWVuc2lvbnNGaWx0ZXJcRGVmYXVsdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B.UI/Views/Shared/Components/_Footer/Default.cshtml]
+[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B/B2B.UI/Views/Shared/Components/_Footer/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX0Zvb3RlclxEZWZhdWx0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B.UI/Views/Shared/Components/_HomeCategory/Default.cshtml]
+[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B/B2B.UI/Views/Shared/Components/_HomeCategory/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX0hvbWVDYXRlZ29yeVxEZWZhdWx0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B.UI/Views/Shared/Components/_HomeProductCategoryBoxed/Default.cshtml]
+[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B/B2B.UI/Views/Shared/Components/_HomeProductCategoryBoxed/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX0hvbWVQcm9kdWN0Q2F0ZWdvcnlCb3hlZFxEZWZhdWx0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B.UI/Views/Shared/Components/_HomeProduct/Default.cshtml]
+[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B/B2B.UI/Views/Shared/Components/_HomeProduct/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX0hvbWVQcm9kdWN0XERlZmF1bHQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B.UI/Views/Shared/Components/_HomeSlider/Default.cshtml]
+[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B/B2B.UI/Views/Shared/Components/_HomeSlider/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX0hvbWVTbGlkZXJcRGVmYXVsdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B.UI/Views/Shared/Components/_LayoutNavbar/Default.cshtml]
+[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B/B2B.UI/Views/Shared/Components/_LayoutNavbar/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX0xheW91dE5hdmJhclxEZWZhdWx0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B.UI/Views/Shared/Components/_NavbarBasketList/Default.cshtml]
+[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B/B2B.UI/Views/Shared/Components/_NavbarBasketList/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX05hdmJhckJhc2tldExpc3RcRGVmYXVsdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B.UI/Views/Shared/Components/_ProductDetailsSlider/Default.cshtml]
+[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B/B2B.UI/Views/Shared/Components/_ProductDetailsSlider/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX1Byb2R1Y3REZXRhaWxzU2xpZGVyXERlZmF1bHQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B.UI/Views/Shared/Components/_ProductPropCategory/Default.cshtml]
+[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B/B2B.UI/Views/Shared/Components/_ProductPropCategory/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX1Byb2R1Y3RQcm9wQ2F0ZWdvcnlcRGVmYXVsdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B.UI/Views/Shared/Components/_ProductPropColor/Default.cshtml]
+[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B/B2B.UI/Views/Shared/Components/_ProductPropColor/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX1Byb2R1Y3RQcm9wQ29sb3JcRGVmYXVsdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B.UI/Views/Shared/Components/_ProductPropDimensions/Default.cshtml]
+[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B/B2B.UI/Views/Shared/Components/_ProductPropDimensions/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX1Byb2R1Y3RQcm9wRGltZW5zaW9uc1xEZWZhdWx0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B.UI/Views/Shared/Components/_ProductProp/Default.cshtml]
+[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B/B2B.UI/Views/Shared/Components/_ProductProp/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX1Byb2R1Y3RQcm9wXERlZmF1bHQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B.UI/Views/Shared/Components/_SonEklenen/Default.cshtml]
+[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B/B2B.UI/Views/Shared/Components/_SonEklenen/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX1NvbkVrbGVuZW5cRGVmYXVsdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B.UI/Views/Shared/_LayoutHeadPartial.cshtml]
+[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B/B2B.UI/Views/Shared/_LayoutHeadPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRIZWFkUGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B.UI/Views/Shared/_Script.cshtml]
+[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B/B2B.UI/Views/Shared/_Script.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TY3JpcHQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B.UI/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B/B2B.UI/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B.UI/Views/_ViewImports.cshtml]
+[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B/B2B.UI/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B.UI/Views/_ViewStart.cshtml]
+[C:/Users/muham/OneDrive/Belgeler/GitHub/B2B/B2B/B2B.UI/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

@@ -20,7 +20,7 @@
                 <div class="col-md-6">            
                     <div class="product-gallery">
                         <figure class="product-main-image">
-                            <img id="product-zoom" src="@Model.Product.ProductImage" data-zoom-image="@Model.Product.ProductImage" alt="product image">
+                            <img id="product-zoom" src="~/b2b/b2b_product/@Model.Product.ProductImage" data-zoom-image="~/b2b/b2b_product/@Model.Product.ProductImage" alt="product image">
 
                             <a href="#" id="btn-product-gallery" class="btn-product-gallery">
                                 <i class="icon-arrows"></i>
@@ -29,16 +29,16 @@
 
                         <div id="product-zoom-gallery" class="product-image-gallery">
 
-                            <a class="product-gallery-item"  data-image="@Model.Product.ProductImage1" data-zoom-image="@Model.Product.ProductImage1">
-                                <img src="@Model.Product.ProductImage1" alt="product side">
+                            <a class="product-gallery-item" data-image="@Model.Product.ProductImage1" data-zoom-image="~/b2b/b2b_product/@Model.Product.ProductImage1">
+                                <img src="~/b2b/b2b_product/@Model.Product.ProductImage1" alt="product side">
                             </a>
 
-                            <a class="product-gallery-item"  data-image="@Model.Product.ProductImage2" data-zoom-image="@Model.Product.ProductImage2">
-                                <img src="@Model.Product.ProductImage2" alt="product cross">
+                            <a class="product-gallery-item" data-image="@Model.Product.ProductImage2" data-zoom-image="~/b2b/b2b_product/@Model.Product.ProductImage2">
+                                <img src="~/b2b/b2b_product/@Model.Product.ProductImage2" alt="product cross">
                             </a>
 
-                            <a class="product-gallery-item active"  data-image="@Model.Product.ProductImage3" data-zoom-image="@Model.Product.ProductImage3">
-                                <img src="@Model.Product.ProductImage3" alt="product with model">
+                            <a class="product-gallery-item active" data-image="@Model.Product.ProductImage3" data-zoom-image="~/b2b/b2b_product/@Model.Product.ProductImage3">
+                                <img src="~/b2b/b2b_product/@Model.Product.ProductImage3" alt="product with model">
                             </a>
 
 
@@ -152,7 +152,7 @@
                 <div class="product-desc-content">
                     <div class="container">
                         <div class="row">
-                            <div class="col-md-3" style="    background: no-repeat;   height: 400px;  background-size: contain; background-position: center; background-image: url('@Model.Product.ProductImage')">
+                            <div class="col-md-3" style="    background: no-repeat;   height: 400px;  background-size: contain; background-position: center; background-image: url('/b2b/b2b_product/@Model.Product.ProductImage')">
                                 <!-- No need for additional div for background image -->
                             </div><!-- End .col-md-3 -->
                             <div class="col-md-9 mt-3">

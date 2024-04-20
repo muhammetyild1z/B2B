@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "kK5li5Bc+LCxumB5hz5Ow0QR5b4GX0mGCsTCy9dhsCkUflPMB5tebgnQYHzKVQlA/IZCl7RqcgpACLLYkLZ/ug==",
+  "dgSpecHash": "VRvOXUpPY8KvVYKWoVTBpOy4s53kqTKUrfZG+PVDRDnVKHPVpGbyov1ugTd8nj/18ejaBqxg6A13Ld+IeYwl8g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B.EntityLayer\\B2B.EntityLayer.csproj",
+  "projectFilePath": "C:\\Users\\muham\\OneDrive\\Belgeler\\GitHub\\B2B\\B2B\\B2B.EntityLayer\\B2B.EntityLayer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\muham\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Users\\muham\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
